@@ -62,15 +62,13 @@ class MainActivity : AppCompatActivity() {
         val recipesDAO = room.recipesDAO()
         recipesDAO.insert(RecipesEntity())
 
-
-
         Observable.fromIterable(recipesDAO.getAll())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .filter { t -> t._id <= 297 }
             .subscribeBy(
                 onNext = {
-                    go(it)
+                    //uploadList(it)
                 },
                 onError = {
                     Log.e("TEST RX", "rx:", it)
@@ -79,9 +77,36 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "onComplete", Toast.LENGTH_SHORT).show()
                 }
             )
+    }
+
+    private fun uploadList(recipesEntity: RecipesEntity) {
+        val api = retrofit.create(ListApi::class.java)
 
 
-        /* val file = getDatabasePath(DATA_BASE_VERSION)
+        val firtst = try {
+            val resName = resources.getIdentifier(recipesEntity.name, "string", packageName)
+            Log.i("TEST RX", "NAME: ${getString(resName)}")
+            getString(resName)
+        } catch (e: Resources.NotFoundException) {
+            Log.i("TEST RX", "NAME: NULL")
+            ""
+        }
+
+        val resp =
+            api.postList(RequestList(RecipePrimaryKey(firtst, recipesEntity.imageIcon ?: "")))
+        resp.enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.e("TEST RX", "API RESP: FAIIIIL!", t)
+            }
+
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                Log.i("TEST RX", "API RESP: ${response.body()}!")
+            }
+        })
+    }
+}
+
+/* val file = getDatabasePath(DATA_BASE_VERSION)
 
          if (!file.exists()) {
              if (!file.parentFile.exists()) {
@@ -103,42 +128,3 @@ class MainActivity : AppCompatActivity() {
                  output.flush()
              }
          }*/
-    }
-
-    private fun go(recipesEntity: RecipesEntity) {
-        val api = retrofit.create(ListApi::class.java)
-
-
-        val firtst = try {
-            val resName = resources.getIdentifier(recipesEntity.name, "string", packageName)
-            Log.i("TEST RX", "NAME: ${getString(resName)}")
-            getString(resName)
-        } catch (e: Resources.NotFoundException) {
-            Log.i("TEST RX", "NAME: NULL")
-            ""
-        }
-
-        /*val second = try {
-            val desc =
-                resources.getIdentifier(recipesEntity.descriptionTextCraft, "string", packageName)
-            Log.i("TEST RX", "DESC: ${getString(desc)}")
-            getString(desc)
-        } catch (e: Resources.NotFoundException) {
-            Log.i("TEST RX", "DESC: NULL")
-            ""
-        }*/
-
-
-        val resp =
-            api.postList(RequestList(RecipePrimaryKey(firtst, recipesEntity.imageIcon ?: "")))
-        resp.enqueue(object : Callback<ResponseBody> {
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Log.e("TEST RX", "API RESP: FAIIIIL!", t)
-            }
-
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                Log.i("TEST RX", "API RESP: ${response.body()}!")
-            }
-        })
-    }
-}
