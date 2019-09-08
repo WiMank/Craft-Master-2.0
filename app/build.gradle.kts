@@ -54,7 +54,7 @@ dependencies {
     val roomVersion = "2.2.0-beta01"
     implementation ("androidx.room:room-runtime:$roomVersion")
     implementation ("androidx.room:room-rxjava2:$roomVersion")
-    annotationProcessor ("androidx.room:room-compiler:$roomVersion")
+    kapt ("androidx.room:room-compiler:$roomVersion")
 
     //Retrofit
     val retrofitVersion = "2.6.0"
@@ -64,8 +64,8 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.0.1")
 
     //Dagger 2
-    val daggerVerdion = "2.22.1"
-    api ("com.google.dagger:dagger-android:$daggerVerdion")
-    api ("com.google.dagger:dagger-android-support:$daggerVerdion")
-    kapt ("com.google.dagger:dagger-android-processor:$daggerVerdion")
+    val daggerVersion = "2.22.1"
+    api ("com.google.dagger:dagger-android:$daggerVersion")
+    api ("com.google.dagger:dagger-android-support:$daggerVersion")
+    kapt ("com.google.dagger:dagger-android-processor:$daggerVersion")
 }

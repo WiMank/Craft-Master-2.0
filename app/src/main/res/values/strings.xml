@@ -1,3 +1,2336 @@
 <resources>
-    <string name="app_name">Craft Master 2.0</string>
+    <string name="app_name">Craft Master</string>
+    <string name="app_name_mcm">Craft Master</string>
+    <string name="title_setting">Settings</string>
+    <string name="search">Search</string>
+    <string name="close">Close</string>
+    <string name="industrial_craft">Industrial Craft 2</string>
+    <string name="button_wiki">Visit Wiki</string>
+    <string name="durability">Durability</string>
+    <string name="attack_damage">Attack damage</string>
+    <string name="blocks">Items</string>
+    <string name="instruments">Tools</string>
+    <string name="transport">Transport</string>
+    <string name="redstone">Redstone</string>
+    <string name="potions">Potions</string>
+    <string name="food_and_dyes">Food &amp; Dyes</string>
+    <string name="armor_and_weapon">Combat</string>
+    <string name="mobs">Mobs</string>
+    <string name="brewing_stand">Brewing Stand</string>
+    <string name="biomes">Biomes</string>
+    <string name="music_discs">Music Discs</string>
+    <string name="achievements">Achievements</string>
+    <string name="commands">Commands</string>
+    <string name="restores">Restores</string>
+    <string name="stackable">Stackable</string>
+    <string name="instrument">Instrument</string>
+    <string name="recipe_craft">Crafting recipe</string>
+    <string name="internet">For watching videos need Internet connection.</string>
+    <string name="items">Items</string>
+    <string name="combat">Combat</string>
+    <string name="food_dyes">Food &amp; Dyes"</string>
+    <string name="redstone_dust">Redstone Dust</string>
+    <string name="language">Application language</string>
+    <string name="desc_language_pref">Sets the application language</string>
+    <string name="desc_language_pref_choose">Choose language</string>
+    <string name="get_pro">Disable ads</string>
+    <string name="favorites">Favorites</string>
+    <string name="settings_save_toast">Settings have been saved</string>
+
+    <string name="deleted">Deleted</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+
+
+    <string name="recover_db">Recover Recipe Database</string>
+
+    <string name="disable_crash_reports_and_usage_data">Error &amp; Usage Reporting</string>
+    <string name="desc_disable_crash_reports_and_usage_data">Allow anonymous tracking of crashes, errors and general usage. No personal information collected. TIP! Completely restart the application for the settings to take effect!</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
+    <string name="privacy_policy">Privacy Policy</string>
+
+
+    <string name="realy_delete_fvrt">Are you sure you want to delete the favorite list?</string>
+
+
+    <string name="dark_ui_summary">The changes will take effect after the application is restarted!</string>
+
+    <string name="buy_pro">The maximum number of favorites in the free version of 15. To remove this restriction, purchase the Pro version of the application.</string>
+    <string name="go_pro">Buy Pro</string>
+
+
+    <string name="empty_items">There is nothing here yet. Add something to your favorites.\n
+    (to delete an item from your favorites, swipe your finger across the subject from the left to the right)</string>
+
+
+    <string name="fvrt_list_empty">The favorite list is empty!</string>
+
+
+    <string name="settings">Settings</string>
+    <string name="dark_ui">Dark UI</string>
+    <string name="vibration">Vibration</string>
+    <string name="desc_vibration">Vibration when switching tabs</string>
+    <string name="close_app">Closing the app</string>
+    <string name="desc_close_app">Exit by double click</string>
+
+    <string-array name="languages">
+        <item>English</item>
+        <item>Russian</item>
+    </string-array>
+
+    <string-array name="languages_ent">
+        <item>en</item>
+        <item>ru</item>
+    </string-array>
+
+
+    <string name="empty">Empty</string>
+    <string name="space"> </string>
+    <string name="defense_points">Defense points</string>
+
+    <string name="click_back">Please click BACK again to exit</string>
+
+
+    <string name="title_activity_settings">Settings</string>
+    <string name="about_app">About App</string>
+    <string name="rate_app">Rate App</string>
+    <string name="ideas">Feedback</string>
+    <string name="text_about_app">Thank you for using this app.
+If you have any ideas for the development of this app, write to me at one of these addresses:</string>
+
+
+    <string name="disclaimer">This is an unofficial guide.
+All information is taken from the site [1].
+The information provided in this appendix is the property of Mojang.
+We thank the author of the beautiful mod Indusrtial Craft 2. All information on this mod belongs to its author and is available in
+ Wikipedia [2]. I also express my gratitude to the developer of the BuildCraft mod. All information on this mod belongs to its author and is available on the site [3]. The site is wonderful mod Forestry [4]. </string>
+
+
+    <string name="email">ivan.tananaev@gmail.com</string>
+    <string name="my_email">My email:</string>
+
+
+    <string name="stackable_yes">(YES) 64</string>
+    <string name="stackable_yes_16">(YES) 16</string>
+    <string name="stackable_no">No</string>
+    <string name="brewing">Brewing in Minecraft</string>
+    <string name="wiki">Wiki</string>
+    <string name="attack_strength">Attack Strength</string>
+    <string name="easy">Easy</string>
+    <string name="normal">Normal</string>
+    <string name="hard">Hard</string>
+    <string name="drop">Drop</string>
+    <string name="cows_milking">Cow\'s milking</string>
+
+
+    <string name="passive_mobs">Passive mobs</string>
+    <string name="neutral_mobs">Neutral mobs</string>
+    <string name="hostile_mobs">Hostile mobs</string>
+    <string name="tameable_mobs">Tameable mobs</string>
+    <string name="utility_mobs">Utility mobs</string>
+    <string name="boss_mobs">Boss mobs</string>
+    <string name="unused_mobs">Unused mobs</string>
+    <string name="removed_mobs">Removed mobs</string>
+    <string name="description">Description</string>
+    <string name="temperature">Temperature:</string>
+
+    <string name="snowy_biomes">Snowy biome</string>
+    <string name="cold_biomes">Cold biome</string>
+    <string name="medium_lush_biomes">Medium/Lush biome</string>
+    <string name="dry_warm_biomes">Dry/Warm biome</string>
+    <string name="neutral_biomes">Neutral biome</string>
+    <string name="unused_biomes">Unused biome</string>
+    <string name="other_biomes">Other biome</string>
+    <string name="select_item">Select Item </string>
+
+
+    <string-array name="biomes">
+
+        <item>Ice Plains</item>
+        <item>Ice Plains Spikes</item>
+        <item>Cold Taiga</item>
+        <item>Cold Taiga M</item>
+        <item>Frozen River</item>
+        <item>Cold Beach</item>
+        <item>Extreme Hills</item>
+        <item>Extreme Hills M</item>
+        <item>Extreme Hills +</item>
+        <item>Extreme Hills + M</item>
+        <item>Taiga</item>
+        <item>Taiga M</item>
+        <item>Mega Taiga</item>
+        <item>Mega Spruce Taiga</item>
+        <item>Stone Beach</item>
+        <item>The End</item>
+        <item>Plains</item>
+        <item>Sunflower Plains</item>
+        <item>Forest</item>
+        <item>Flower Forest</item>
+        <item>Birch Forest</item>
+        <item>Birch Forest M</item>
+        <item>Roofed Forest</item>
+        <item>Roofed Forest M</item>
+        <item>Swampland</item>
+        <item>Swampland M</item>
+        <item>Jungle</item>
+        <item>Jungle M</item>
+        <item>Jungle Edge</item>
+        <item>Jungle Edge M</item>
+        <item>River</item>
+        <item>Beach</item>
+        <item>Mushroom Island</item>
+        <item>Mushroom Island Shore</item>
+        <item>Desert</item>
+        <item>Desert M</item>
+        <item>Savanna</item>
+        <item>Savanna M</item>
+        <item>Mesa</item>
+        <item>Mesa (Bryce)</item>
+        <item>Mesa Plateau F M</item>
+        <item>Plateau</item>
+        <item>Plateau M</item>
+        <item>Hell (The Nether)</item>
+        <item>Ocean</item>
+        <item>Deep Ocean</item>
+        <item>Hills</item>
+        <item>Plains M</item>
+        <item>Frozen Ocean</item>
+        <item>Extreme Hills Edge</item>
+        <item>The Void</item>
+
+
+    </string-array>
+
+
+    <string name="ice_plains" formatted="false">A somewhat rare but expansive, flat biome with a huge amount of snow. All sources of water exposed to the sky are frozen over. Sugar cane will generate in this biome, but can become uprooted when chunks load as the water sources freeze to ice. There are very few natural oak and spruce trees in this biome. It has a lower chance of spawning passive mobs during world generation than other biomes (7% versus 10%), however it is one of the few biomes where Polar bears and Strays spawn. Due to the biome\'s size, snow and ice cover, and scarcity of wood and animals, initial survival becomes difficult in comparison to other biomes.</string>
+    <string name="ice_plains_spikes" formatted="false">A rare variation of the Ice Plains biome that features large spikes of packed ice, as well as packed ice \'lakes\'. Usually the spikes are 10 to 20 blocks tall, but some long, thin spikes can reach over 50 blocks in height. All grass blocks in this biome are replaced with blocks of snow. It has a lower chance of spawning passive mobs during world generation than other biomes (7% versus 10%).</string>
+    <string name="cold_taiga" formatted="false">A snowy variation of the taiga biome, where ferns(and large ferns) and spruce trees grow. It is one of the few places where wolves will naturally spawn.</string>
+    <string name="cold_taiga_m" formatted="false">Large, mountainous version of the snowy taiga.</string>
+    <string name="frozen_river" formatted="false">This variant of river only generates in ice plains biomes. The surface layer of water is frozen.</string>
+    <string name="cold_beach" formatted="false">A beach with snowy weather conditions. Often found when the Ice Plain biome borders an ocean biome.</string>
+    <string name="extreme_hills" formatted="false">A highland biome (with some mountaintops reaching y=130 or even higher) with a few scattered oak and spruce trees. Cliffs, peaks, valleys, waterfalls, overhangs, floating islands, caverns, and many other structures exist, offering outstanding views. This is one of the few biomes where llamas spawn naturally. Snowfall also occurs above certain heights, thus creating "snow caps" on the top of the mountains. Falling is a significant risk, as there are many steep ledges large enough to cause severe fall damage or even death. Extreme hills are the only biomes where emerald ores and silverfish can be found naturally.</string>
+    <string name="extreme_hills_m" formatted="false">Variant of the regular extreme hills biome that features higher mountain peaks, most of which reach into the clouds. Mountains here are composed mainly of gravel and a little bit of dirt and grass, with a sparse population of spruce and oak trees.</string>
+    <string name="extreme_hills_plus" formatted="false">A variant of the regular extreme hills biome, adding larger mountains, steeper cliffs, and a moderate amount of spruce trees and scattered oak trees.</string>
+    <string name="extreme_hills_plus_m" formatted="false">A rare variant of the extreme hills+ biome where huge gravel mountains appear, with sparse oak and spruce trees and small patches of grass.</string>
+    <string name="taiga" formatted="false">A biome densely filled with spruce trees, ferns and large ferns. Wolves tend to spawn here fairly commonly.</string>
+    <string name="taiga_m" formatted="false">Mountainous version of the regular taiga biome.</string>
+    <string name="mega_taiga" formatted="false">Mega taiga is an uncommon biome composed of spruce trees, much like the standard taiga biome. However, some trees are 2×2 thick and very tall, not unlike large jungle trees. Moss stone boulders appear frequently, brown mushrooms are common and podzol can be found along the forest floor. There are also patches of coarse dirt, which will not grow grass. Wolves may also spawn here, as they do in normal taiga biomes.</string>
+    <string name="mega_spruce_taiga" formatted="false">A variation of the mega taiga. In this biome there is a much higher density of smaller spruce trees. Also, the tall trees look very similar to regular spruce trees, as opposed to the short-topped trees in the normal mega taiga biome.</string>
+    <string name="stone_beach" formatted="false">This stone-covered biome often appears adjacent to mountains and the ocean. Depending on the height of the nearby land, it can generate medium slopes or huge cliffs.</string>
+    <string name="the_end" formatted="false">This biome is used to generate the End. The ender dragon, and large amounts of endermen, spawn in this biome. Most of the End\'s structure is provided by the dimension itself rather than the biome. It does not rain or snow in this biome unlike the other low temperature biomes. The outer islands in the End can be accessed using the End gateway portal after the ender dragon has been defeated. These contain endermen, chorus plants and End cities. End cites are the only place where shulkers naturally spawn .If the biome is used for a superflat world, the sky will be dark gray and an ender dragon will spawn at 0,0 coordinates in the Overworld. Only endermen will spawn at night.</string>
+    <string name="plains" formatted="false">A relatively flat and grassy biome with rolling hills and few trees. Gullies, water holes, and NPC villages are common. Cave openings and water or lava springs are easily identifiable due to the flat unobstructed terrain. Passive mobs spawn often in plains biomes; this biome and its variants are also one of the only biomes where horses spawn naturally.</string>
+    <string name="sunflower_plains" formatted="false">A rare variation of the plains biome, where sunflowers naturally spawn in abundance.</string>
+    <string name="forest" formatted="false">A biome with a lot of oak and birch trees, occasional hills, and a fair amount of tall grass. Mushrooms and flowers can occasionally be found here. This is one of the most preferred biomes to start out in, due to the abundance of wood. However, the frequency of trees also makes it dangerous to navigate at night, due to obscured vision. Forest biomes are also one of the smallest biomes.</string>
+    <string name="flower_forest" formatted="false">A variant of the forest biome that has fewer trees but has a huge amount of various flowers. There are certain flowers that are exclusive to the flower forest.</string>
+    <string name="birch_forest" formatted="false">A forest made solely out of birch trees.</string>
+    <string name="birch_forest_m" formatted="false">A variation of the birch forest biome which features taller birch trees than usual.</string>
+    <string name="roofed_forest" formatted="false">This biome is composed of dark oak trees, a mostly closed roof of leaves, and occasional large mushrooms. Trees in this forest are so plentiful and so close together, that at some spots it may become dark enough for hostile mobs to spawn, even during the day. Rarely, a woodland mansion may spawn.</string>
+    <string name="roofed_forest_m" formatted="false">A mountainous version of the roofed forest biome, with steep cliffs lining the edge.</string>
+    <string name="swampland" formatted="false">A biome characterized by a mix of flat, dry areas around sea level and shallow pools of brackish green water with floating lily pads. Clay, sand, and dirt are commonly found at the bottom of these pools. Trees are often covered with dark green vines, and can be found growing out from the water. Mushrooms and sugar canes are very abundant; huge mushrooms will spawn in this biome. Witch huts generate exclusively in swamps. Slimes will also spawn naturally at night, most commonly on full moons, making this an especially dangerous biome at night. Temperature varies randomly within the biome, not affected by altitude, causing foliage and grass colors to vary. The water is dark gray instead of blue.</string>
+    <string name="swampland_m" formatted="false">A slightly hillier swampland with greener grass. Witch huts do not generate in this biome, unlike the normal swampland biome.</string>
+    <string name="jungle" formatted="false">A very dense, but rather uncommon tropical biome. It features large jungle trees that can reach up to 31 blocks tall with 2×2 thick trunks. Oak trees are also common. The landscape is lush green and quite hilly, with many small lakes of water often nestled into deep valleys, sometimes above sea level. Leaves cover much of the forest floor—these "bush trees" have single-blocks of jungle wood for trunks, surrounded by oak leaves. When inside a jungle, the sky will become noticeably lighter. Vines are found alongside most blocks and may cover the surface of caves. Ocelots, jungle temples, melons, and cocoa plants can be found exclusively in this biome. Melons generate in small patches, similar to pumpkins.</string>
+    <string name="jungle_m" formatted="false">Much more mountainous version of the normal jungle, with foliage so thick that the ground is barely visible. A very resource-demanding biome. Due to the hilly nature of the terrain in this biome, and the height of the tall jungle trees, trees frequently reach into and go above the clouds. Extremely dense foliage and treacherous hilly terrain make this a very difficult biome to navigate, especially at night.</string>
+    <string name="jungle_edge" formatted="false">A very rare biome that only generates at the border of a jungle biome and any other biome. Similar to a jungle but with much fewer and smaller trees, and relatively flat terrain.</string>
+    <string name="jungle_edge_m" formatted="false">One of the rarest biomes in the game. A slightly more mountainous variation of the jungle edge biome, which only generates on the border of a jungle M and another biome. There are very few to no tall trees in this relatively tiny biome.</string>
+    <string name="river" formatted="false">A biome that consists of water blocks that form an elongated, curving shape similar to a real river. Unlike real rivers, however, they have no current. Rivers cut through terrain or separate the main biomes. They attempt to join up with ocean on the other side, but will sometimes loop around to the same area of ocean. Rarely, they can have no connection to the ocean and form a circle. They have a dull green grass hue, much like the ocean, and trace amounts of oak trees tend to generate there as well. Rivers are also a reliable source of clay. These biomes are good for fishing.</string>
+    <string name="beach" formatted="false">Generated on the shores of oceans, beaches are composed of sand. Beaches penetrate the landscape, removing the original blocks and placing in sand blocks. Some beaches generate with gravel instead of sand. These are also useful for fishing. For the history of beaches, see the Beach page.</string>
+    <string name="mushroom_island" formatted="false">This rare biome consists of a mixture of flat landscape and steep hills and has mycelium instead of grass as its surface. However, if you do place down grass, it is a very bright green color, not unlike that of the jungle. Mushroom islands are most often adjacent to an ocean and are often found isolated from other biomes. It is one of the only biomes where huge mushrooms can generate naturally, and where mushrooms can grow in full sunlight.
+Technically no mobs other than mooshrooms spawn naturally in this biome, including the usual night-time hostile mobs. This also applies to caves, abandoned mine shafts, and other dark structures, meaning exploring underground is supposedly safe. However, mob spawners will still spawn mobs, and the player will also still be able to breed animals and spawn mobs using eggs.</string>
+    <string name="mushroom_island_shore">Mushroom shores represent the flat shore area of the mushroom biome.</string>
+    <string name="desert">A barren and relatively inhospitable biome consisting mostly of sand dunes, dead bushes, and cacti. Sandstone is commonly found underneath the sand. The only passive mobs to spawn naturally in deserts are gold rabbits, their coloring well-camouflaged against the sand. Sugar cane can be found if the desert is next to an ocean or river biome. The lack of visual obstruction makes mobs highly visible at night. Desert villages, desert wells and desert temples are found exclusively in this biome. This biome sometimes appear as edge of mesa biome.</string>
+    <string name="desert_m">Unlike in normal deserts, patches of water can be found in this biome.</string>
+    <string name="savanna">A relatively flat and dry biome with a dry grass color and scattered acacia trees. Villages can generate in this biome, and it is the only biome where both horses and llamas spawn naturally.</string>
+    <string name="savanna_m">Variant of the savanna biome. Dirt paths and giant mountains are prevalent in this biome. However, this biome is unique in that its mountains can generate past the clouds, and even to the world height limit, without using the AMPLIFIED world type.</string>
+    <string name="mesa">A rare biome consisting of hardened clay, stained clay, and dead bushes – similar to a desert. Red sand will also generate here instead of regular sand, with occasional cacti. Its composition is useful when other sources of clay are scarce. However, finding mesa biomes can be difficult due to their rarity. On the other hand, it offers great variety - there are a total of 6 variations of this biome to explore.
+Mesas can contain above ground abandoned mineshafts. They also allow gold ore to generate near surface levels, rather than just at layer 32 and below.</string>
+    <string name="mesa_bryce">Mesa (Bryce) is a variant of the mesa biome, featuring a low desert-like ground area with tall, thin, spire-shaped columns of hardened clay, similar to the structures in the real Bryce Canyon.</string>
+    <string name="mesa_plateau_f_m">Very rare variant of the Mesa Plateau F biome. Features steeper cliffs than the normal Mesa Plateau F biome, with a reduced occurrence of trees and smaller, more erratic hills.</string>
+    <string name="plateau">Like the hills biomes, but flattened at the top, coming to rest at about 20 to 30 blocks above sea level. Only generates in savanna and mesa biomes.</string>
+    <string name="plateau_m">Similar variant of the plateau biomes, which are themselves a variant. The mesa plateau M biome features slightly flatter terrain and smaller plateaus in general, compared to the average mesa plateau biome. On the contrary, the savanna plateau M biome features incredibly large and steep cliffs that jut violently out of the terrain, compared to the regular savanna plateau; these cliffs generally exceed cloud height, sometimes above y=200, and sometimes even border the world height limit.</string>
+    <string name="hell">This is the biome used to generate the Nether. In a Superflat world using this biome, the Overworld will contain only Nether mobs (ghasts, packs of zombie pigmen and occasional magma cubes) and won\'t receive rain, but it won\'t have Nether structures (such as Nether quartz or glowstone veins or Nether fortresses), and it can still have water lakes and mineshafts, beds will also explode in this biome, even when in the Overworld.</string>
+    <string name="ocean">A large, open biome made entirely of water going up to y=63, with underwater relief on the sea floor, such as small mountains and plains, usually including gravel. Oceans typically extend under 3,000 blocks in any direction, around 60% of the Overworld\'s surface is covered in Ocean. Small islands with infrequent vegetation can be found in oceans. Passive mobs are unable to spawn on these islands, but hostiles can. Cavern entrances can be found infrequently at the bottom of the ocean. In the Console versions, they surround the edges of the map.</string>
+    <string name="deep_ocean" formatted="false">A variation of the Ocean biome. In deep ocean biomes, the ocean can exceed 30 blocks in depth, making it twice as deep as the normal ocean. In contrast to default oceans, the ground is mainly covered with gravel. Ocean monuments generate in deep oceans, which spawn guardians.</string>
+    <string name="hills" formatted="false">Hills are generated within certain biomes (including some of their variants) and are referred in the F3 menu with Hills or Mountains added to their name.
+This includes: Forest Hills, Taiga Hills, Cold Taiga Hills, Jungle Hills, Desert Hills, Birch Forest Hills (M), Mega Taiga Hills, Redwood Taiga Hills, and Ice Mountains.
+Ice Mountains are usually taller, with height comparable to Extreme Hills biomes, and has a lower chance of spawning passive mobs during world generation than other biomes (7% versus 10%).</string>
+
+    <string name="plains_m">A variant of the Plains biome with occasional water patches and slightly hillier terrain.</string>
+    <string name="frozen_ocean">A variant of the ocean biome that is completely frozen over. However, warmer rivers occasionally run through it.</string>
+    <string name="extreme_plus_hills_edge">A variant of the ocean biome that is completely frozen over. However, warmer rivers occasionally run through it.</string>
+    <string name="the_void">A completely empty biome that generates only a single structure: a 33×33 stone platform with a single block of cobblestone in the center. Can only be accessed through The Void superflat preset, or through Customized worlds.</string>
+
+
+    <string-array name="passive_mobs">
+        <item>Bat</item>
+        <item>Chicken</item>
+        <item>Cow</item>
+        <item>Mooshroom</item>
+        <item>Pig</item>
+        <item>Rabbit</item>
+        <item>Sheep</item>
+        <item>Skeleton Horse</item>
+        <item>Squid</item>
+        <item>Villager</item>
+        <item>Cave Spider</item>
+        <item>Enderman</item>
+        <item>Polar Bear</item>
+        <item>Spider</item>
+        <item>Zombie Pigman</item>
+        <item>Blaze</item>
+        <item>Chicken Jockey</item>
+        <item>Creeper</item>
+        <item>Elder Guardian</item>
+        <item>Endermite</item>
+        <item>Evoker</item>
+        <item>Ghast</item>
+        <item>Guardian</item>
+        <item>Husk</item>
+        <item>Magma Cube</item>
+        <item>Shulker</item>
+        <item>Silverfish</item>
+        <item>Skeleton</item>
+        <item>Skeleton Horseman</item>
+        <item>Slime</item>
+        <item>Spider Jockey</item>
+        <item>Stray</item>
+        <item>Vex</item>
+        <item>Vindicator</item>
+        <item>Witch</item>
+        <item>Wither Skeleton</item>
+        <item>Zombie</item>
+        <item>Zombie Villager</item>
+        <item>Donkey</item>
+        <item>Horse</item>
+        <item>Llama</item>
+        <item>Mule</item>
+        <item>Ocelot</item>
+        <item>Wolf</item>
+        <item>Parrot</item>
+        <item>Iron Golem</item>
+        <item>Snow Golem</item>
+        <item>Ender Dragon</item>
+        <item>Wither</item>
+        <item>Giant</item>
+        <item>Killer Bunny</item>
+        <item>Illusioner</item>
+        <item>Beast Boy</item>
+        <item>Black Steve</item>
+        <item>Human</item>
+        <item>Rana</item>
+        <item>Steve</item>
+        <item>Phantom</item>
+        <item>Drowned</item>
+        <item>Turtle</item>
+        <item>Dolphin</item>
+        <item>Cod</item>
+        <item>Salmon</item>
+        <item>Tropical Fish</item>
+        <item>Pufferfish</item>
+
+
+    </string-array>
+
+
+    <string name="illusioner">Illusioner</string>
+    <string name="description_illusioner">Illusioners are unused hostile mobs. They are one of the three Illagers, which are offshoot villagers – the others being the vindicator and the evoker.
+    Illusioners can only be spawned using the /summon illusion_illager command. Currently there is no illusioner spawn egg.</string>
+
+    <string name="parrot">Parrot</string>
+    <string name="description_parrot">Parrots are flying tamable mobs. Parrots come in five different colors: red, green, blue, cyan and gray. Parrots are passive mobs, and will never attack, even if provoked. They are able to fly, and will usually fly upwards if struck. They will fly under normal conditions, but they can "tire" and return to the ground.
+Parrots crowd and settle around other nearby mobs, including neutral and hostile mobs.
+If they end up in water, they will swim by flapping their wings. They can be tamed by feeding them seeds. Once tamed, they can be told to sit with a right-click.
+Like tamed wolves and cats, a tamed parrot will follow the player unless told to sit, and may teleport if there is a sufficient distance. Like all tame animals, a death message will be displayed to their owner if they are killed.</string>
+
+
+    <string name="bat">Bat</string>
+    <string name="description_bat">Bats are flying passive mobs that spawn in caves. Bats can spawn in the Overworld at a light level of 3 or less on opaque blocks below layer 63. Between October 20 and November 3, they only require a light level of 6 or less to spawn. On Superflat worlds, bats spawn below the top non-air layer, ignoring the usual layer-63 limitation. Bats are very small, being less than half a block tall and wide. They will randomly squeak. They often fly around aimlessly, tending to favor the east, and will sometimes fly into lava and catch on fire.Bats also will often hang upside down on the underside of a solid block when idle, though they cannot hang on transparent or non-solid blocks. If a player approaches it while hanging upside down, including if the player is invisible, they start to fly away from the player. If you break the block a bat is resting on, the bat will go into the flying state and fly away from you.Although the bat is a passive mob, they still despawn when going too far away, similarly to ocelots and squids.</string>
+
+    <string name="chicken">Chicken</string>
+    <string name="description_chicken">Chickens are egg-laying passive mobs. Chickens naturally generate on grass blocks with 2 blocks of free space above it at light level of 9 or more. Chickens are 0.7 blocks tall and 0.4 blocks wide.Chickens appear to wander around aimlessly, and usually swim in water. When falling they will flap their wings quickly and fall slowly, making them immune to fall damage. Despite this, they will still avoid falling off cliffs high enough to cause fall damage.While in a loaded chunk, a chicken will lay one egg every 5 to 10 minutes (6000 to 12000 ticks), unless it is (or was) a part of a chicken jockey. If you are close enough to a chicken when it lays an egg, a popping sound can be heard.They share some behaviors with other "farm animals":They are drawn to light when in a dark environment.When struck, they run around quickly and aimlessly.They can swim, visibly flapping their wings as they stay on the surface.They can be led around by holding a seed, and are also able to breed with seeds.Chickens are attacked by wild ocelots.Chicks do not lay eggs. Due to their small size, they can pass through openings even smaller than a full block, though not willingly. A chick\'s height is somewhere in between 0.51 to 0.80 blocks.When swimming, chicks need only one block of air above their heads. Full-grown chickens need two blocks of air above their heads or else they will take damage when they float up and will eventually die.</string>
+
+
+    <string name="cow">Cow</string>
+    <string name="description_cow">Cows are passive mobs found in the Overworld. Cows spawn in herds of 4 on top of opaque blocks with at least 2 blocks of space above them, at a light level of 9 or higher. They mostly spawn in herds while the world is first generating; although if there are no passive mobs in loaded chunks, they can spawn after world generation in normal spawning cycles. Cows tend to walk around slowly and aimlessly, mooing and breathing occasionally. They will avoid walking off cliffs high enough to cause fall damage. Like other passive mobs, they will panic and randomly run around if you hit them.A cow will follow the player if they are holding wheat, but will stop if the player travels too far away (approximately 10 blocks).</string>
+
+
+    <string name="mooshroom">Mooshroom</string>
+    <string name="description_mooshroom">Mooshrooms are unique variations of cows. Mooshrooms spawn on mycelium blocks in mushroom island biomes in herds of 4 to 8. They do not spawn in any other biome. Mooshrooms tend to walk around slowly and aimlessly, huffing and mooing occasionally. They will avoid danger such as cliffs, fire or lava, but will make no attempt to stay out of water.A mooshroom will follow players holding wheat.Mooshrooms are 1.4 blocks tall, and baby mooshrooms are 0.7 blocks tall.</string>
+
+    <string name="pig">Pig</string>
+    <string name="description_pig">Pigs are rideable passive mobs. Pigs spawn on grass blocks at a light level of 9 or more. Herds of pigs spawn upon world generation. Pigs typically roam the Overworld in groups of 4.Pigs act similarly to other passive mobs; they will wander aimlessly, avoiding falling off cliffs high enough to cause fall damage, and will usually stay out of water. Pigs will follow any player who is carrying a carrot, carrot on a stick, potato, or beetroot, and will stop following if the player moves over approximately 5 blocks away from the pig. Pigs will also randomly oink. When struck by lightning, pigs turn into zombie pigmen.</string>
+
+    <string name="rabbit">Rabbit</string>
+    <string name="description_rabbit" formatted="false">Rabbits (or bunnies) are mostly harmless, passive mobs.  Rabbits naturally spawn in deserts, flower forests, taiga, mega taiga, cold taiga, ice plains, ice mountains, ice spikes, and the "hills" and "M" variants of these biomes. They spawn in groups of two or three; one adult and one or two babies. They have different skins that depend on the biome.With the exception of deserts and ice plains/mountains/spikes, all the biomes that naturally spawn rabbits also spawn wolves. If left alone, wolves will quickly eat rabbits, so rabbits are generally more plentiful in desert and ice biomes. Rabbits hop around aimlessly instead of walking. They will slowly approach players holding carrots or dandelions within 8 blocks. Rabbits will also jump off of cliffs to reach carrots, but will not go into lava for them. They will randomly flee around if struck. All non-hostile rabbits will avoid players within 8 blocks and avoid most hostile mobs within 4 blocks (except slimes, magma cubes, and ghasts). They will also avoid wolves within 10 blocks.Rabbits will find and eat mature carrot crops. Eating of carrot crops will reduce the growth stage by one, only removing the crop completely if the growth stage is 0. Wild wolves will track down and kill any rabbits.</string>
+
+
+    <string name="sheep">Sheep</string>
+    <string name="description_sheep" formatted="false">Sheep are passive mobs that supply wool and mutton. The majority of sheep are white, with an 81.836% chance of spawning. The light gray, dark gray, and black sheep have a 5% chance of spawning. Using a spawn egg to get one of these sheep types lies at a reasonable 15%. Brown sheep have an uncommon 3% chance to spawn. Pink sheep have a rare 0.164% chance of naturally spawning. Sheep are 0.9 blocks wide and 1.3 blocks tall.Sheep act like most passive mobs; they wander around aimlessly, usually avoiding falling off cliffs high enough to cause damage, and usually staying out of water. They can be heard bleating occasionally. They will try to jump over obstacles one block high, which causes strange and somewhat humorous behavior near fences, walls and similar blocks. Sheep will follow a player holding wheat, but will cease following if the player moves more than approximately 5 blocks away from the sheep.Sheep\'s wool can be dyed by pressing the use key while holding any dye, and can be sheared the same way when holding shears. Sheared sheep cannot be dyed until they grow their wool back.Sheep will eat grass blocks (turning them into dirt) and tall grass (destroying them). When they do this, their wool grows back. This means that if there is no grass anywhere, a sheep cannot regain its wool after being sheared. They will retain their wool color if it has been dyed before it was sheared, although the wool patches seen on a sheared sheep will be white regardless of their actual color.</string>
+
+
+    <string name="skeleton_horse">Horse</string>
+    <string name="description_skeleton_horse">Skeletal horses can spawn as skeleton traps from natural lightning strikes, but do not otherwise spawn naturally.</string>
+
+
+    <string name="squid">Squid</string>
+    <string name="description_squid" formatted="false">Squids are 8-armed mobs that spawn in water. Squids spawn in water between layers 46 and sea level, and can be found in any biome. Squid do not spawn anywhere if the worldtype is flat (due to the sea level for superflat worlds being at Y0). Squids are always passive towards the player, akin to the other passive mobs found on land.When moving about, the squid\'s tentacles open and close, giving them an appearance of pushing themselves forward. Squids hover in place when first spawned into the world and wander around aimlessly, swimming up and down through each layer. They are not attracted to light, and do not deliberately interact with the player. However, if attacked, squid will attempt to swim away from the player.Squids suffocate if they are beached on land for too long. While on land, they do not move, and stay stationary until they suffocate. They can take fall damage and burn like any land mob, but they cannot drown.Squids cannot swim in lava, even if given a Fire Resistance potion. They simply pass through the lava and behave as if on land.Squids (unlike land-based mobs) can swim against a current and not get pushed by it</string>
+
+    <string name="villager">Villager</string>
+    <string name="description_villager" formatted="false">A villager is an intelligent passive NPC that the player can trade with. A villager has one of six professions: farmer (brown robe), librarian (white robe), priest (purple robe), blacksmith (black apron), butcher (white apron), and nitwit (green robe). Villagers spawn inhabiting their villages, which spawn in several biomes. Upon spawning, villagers will leave their homes and begin to explore the village. Generally, they wander aimlessly inside the village during the day. They may go indoors or outdoors. Occasionally, two villagers may stop, and turn to look at each other, in a behavior called socializing, in which they will stare at another villager for a few seconds at a time. In the case of players, they will continuously stare at them as long as the player is close enough, unless the villager tries to get into a house at night, farm food, or run away from a zombie. When a player attacks a villager, the villager will not run away, but anger particles will fly out from the villager if it is in a village.Villagers, like other mobs, will find paths around obstructions and will avoid some harmful blocks and walking off cliffs. However, in crowded situations it\'s possible for one villager to push another off a cliff or into harm.At night or during rain, villagers will run inside, closing doors behind them, staying indoors until the morning. In the morning, the villagers will head outside, fleeing from any remaining zombies. Once the zombies are gone, the villagers will resume normal behavior.If a villager finds itself outside the village boundary, or a villager without a village detects a village boundary within 32 blocks, it will move quickly back within the boundary. A villager taken more than 32 blocks away from its village boundary will forget the village within about 6 seconds. Whether in a village or not, a villager is never prone to despawning.Villagers cannot open trapdoors, fence gates, or iron doors.There is evidence that villagers are prone to overcrowding certain areas of a village while leaving other areas completely empty. When moving inside, the AI prefers doors within 16 blocks (Euclidean distance). It also tends to prefer doors with fewer villagers nearby, however "nearby" in this case is only 1.5 blocks and, when moving inside, villagers prefer to move 2.5 blocks inside when the inside is to the south or east and therefore will be out of range of this check. During the day, it has been observed that villagers will tend to cluster near a trapped villager or any existing large cluster of villagers, likely due to the "socialize" AI routine overriding their inclination to wander.</string>
+
+
+    <string name="cave_spider">Cave Spider</string>
+    <string name="description_cave_spider" formatted="false">The cave spider is a neutral mob that can inflict poisoning. Cave spiders spawn from monster spawners in abandoned mineshafts. When attacked by a cave spider on normal or hard difficulty, the bitten entity is inflicted with
+Poison I for 7 seconds on normal difficulty and 15 seconds on hard. Cave spiders inherit most of their behavior from regular spiders:They are pacified (made neutral) by bright light (daylight or light levels of 9 or higher) but will continue attacking regardless of light change once hostile. Subjecting them to darkness will render them hostile. They can climb walls when needed. They attack by leaping at the player. They are unaffected by cobwebs or poison. Can fit through a space that is 1 block wide and half a block tall. Runs much faster than spiders. Poison damage does not work when the player has 1 health left. Can go through the spaces between Nether Brick and Normal Fences. Unlike regular spiders, they do not spawn with status effects.</string>
+
+
+    <string name="enderman">Enderman</string>
+    <string name="description_enderman" formatted="false">Endermen are black, neutral mobs from the End that have the ability to teleport. Endermen spawn on solid blocks at light level 7 or less. They spawn commonly in the End in packs (or "hauntings") of 4. In the Overworld they spawn in groups of 1–4 and are rarer than most other mobs. In the Nether they spawn in groups of 4 and are even rarer. Endermen do not attack unless provoked by a player attacking them or looking at their head from up to 64 blocks away. When provoked, endermen will open their mouths and shake with rage; when provoked by being stared at, they will also make a lengthy, loud, threatening sound and will run towards the player to attack. If an aggravated enderman is hit by another mob, it will cease attacking the player. They can also step up one full block without having to jump.Endermen are damaged by water, splash water bottles or rain and will teleport away when they take damage from any of these. However, endermen do not take damage while standing in a filled cauldron. They will also teleport if they take suffocation, projectile, fire or lava damage, as well as damage from poison or the wither effect.Endermen will continue chasing a player until they are either killed, sustain several hits, or become distracted by exterior elements like rain, fire, or sun; they are likely to teleport away to underground locations, such as caves and mineshafts, at day break. If the player sleeps in a bed, it is possible for an enderman to teleport on it and knock them off, however the player will continue sleeping.Endermen cannot be provoked by players looking through transparent blocks or wearing a pumpkin on their head. However, they can become aggravated by a player in a minecart from some angles.Endermen will attempt to kill endermites, provided they were spawned from ender pearls and there is no nearby player in Survival or Adventure mode. If the player is close enough to an endermite, endermen focus on the player instead of the endermite. Endermen can spot endermites from a distance of 64 blocks.When under the invisibility effect, the enderman\'s body will disappear, but its eyes will still be visible.</string>
+
+    <string name="polar_bear">Polar Bear</string>
+    <string name="description_polar_bear" formatted="false">Polar bears are usually neutral mobs. Polar bears are found in ice plains, ice mountains and ice spikes biomes. They are 1.3 blocks wide and 1.4 blocks tall. Polar bears can exist in a passive, neutral, or hostile state. The cubs are passive; adults are neutral, but they will become hostile if attacked. They will also attack you if you get too close to their cubs. If a cub is attacked, all adults within a 41×21×41 cuboid will become hostile towards the attacker, regardless of difficulty (although in peaceful difficulty, their attacks will do zero damage to players). Attacking an adult who is within a 16×8×16 cuboid of a cub will also provoke other adults within a 21×21×21 cuboid of the attacked adult. Polar bears can be accidentally provoked by other mobs.Polar bears attack by rearing on their back legs and then mauling down on the attacker with their front paws. Their swimming speed is faster than the player\'s, making them difficult to get away from if they are attacking.Polar bear cubs\' growth cannot be sped up.</string>
+
+    <string name="spider">Spider</string>
+    <string name="description_spider" formatted="false">Spiders are common neutral mobs that have the unique ability to climb walls. Spiders spawn in the Overworld in 3x3x2 space on solid blocks (centered on the middle block) at a light level of 7 or less, in groups of 4. The top blocks can be transparent, but not solid. Spiders are hostile to the player and to iron golems as long as the light level immediately around them is 11 or less; otherwise they won\'t attack unless a player attacks first. Hostile spiders will continue to chase the player even if they are exposed to well-lit locations. If a spider sustains damage from a source other than a direct attack from the player, such as falling, its hostility will be reset.Spiders can climb up over walls and other obstacles. If a spider cannot find an ideal path to the player (when a player goes behind or on top of a wall), it will get as close as it can to the player\'s position from the outside or below, and proceed to climb the wall vertically until it gets to the top, even if it loses its aggression towards the player. Additionally, when a spider loses its aggression on the player, it will continue moving forward blindly for about two seconds. This behavior causes the spider to climb up any walls in its path.If shot from distance with an arrow when outside detection range, spiders will now turn and run in the direction the arrow was fired, essentially towards the player. If the player moves away, the spider will still follow the same path unless the player enters detection range, then the spider will change direction and attack.While not poisonous themselves, spiders are unaffected by the poison status effect.Spiders will often jump around when attacking. At close range, spiders occasionally pounce their attackers.</string>
+
+
+    <string name="zombie_pigman">Zombie Pigman</string>
+    <string name="description_pigman" formatted="false">Zombie pigmen are common neutral mobs that live in the Nether. Zombie pigmen can spawn in the Nether, from Nether portals, or from pigs. They have a 5% chance of spawning as a baby zombie pigman, and a baby zombie pigman has a 5% chance of spawning as a pigman jockey. All zombie pigmen spawn with a golden sword, which may randomly be enchanted. This chance increases at higher difficulties, and the sword\'s enchantment will more commonly be of a higher level. Zombie pigmen tend to move relatively slowly. They can drown, but are immune to fire and lava damage. Baby zombie pigmen are faster than adult zombie pigmen. Like zombies, some zombie pigmen will sometimes bang on wooden doors, and in Hard difficulty, they even break them.Some zombie pigmen have the ability to pick up items. They will even pick up a weapon if they feel it is better than their golden sword, dropping their golden sword with the same chance as if killed with Looting I.</string>
+
+    <string name="horse">Horse</string>
+    <string name="description_horse" formatted="false">Horses are tamable mobs that have five in–game variants: horses, donkeys, mules, zombie horses, and skeleton horses. The variants can appear in one of several different coat colors that exhibit different markings. Horses and donkeys only spawn in plains and savannas in herds of 2–6. 10% of herds will be donkeys. For horses, all combinations of color and markings are equally likely. All members of the herd will have the same color, but markings may vary. 20% of the individual horses or donkeys will spawn as babies. All horses will roam idly, occasionally stopping to rear, swish their tails, or lower their heads as though eating the grass. Unlike sheep, the eating animation does not actually cause any grass to be consumed. If a player comes near, the horses may turn to look at them. Any (non-undead) horse, even a wild one, will allow itself to be attached to a lead without protest. However, if the player attempts to saddle an untamed horse, it will rear and flail its front hooves. Horses remain passive, even when hit.</string>
+
+
+    <string name="blaze">Blaze</string>
+    <string name="description_blaze" formatted="false">Blazes are mobs found in the Nether. Blazes can spawn naturally in nether fortresses at a light level of 11 or less. Although blazes are able to fly, they will stay on the ground or sink down slowly in the air when not attacking. Blazes will not attempt to swim upwards in lava or water, unlike zombie pigmen. Despite taking damage from water, blazes will make no attempts at their protection if somehow pushed or dropped into water. Blazes\' pathfinding does not avoid fire, avoids water like other mobs avoid lava, and treats lava like other mobs treat water.
+
+Blazes will target players within 48 blocks. If a blaze is damaged by a player or other mob, it will alert other blazes within 48 blocks to target the attacker. When a blaze has a target, it will begin flying (attempting to remain 0.5–3.5 blocks above the target) and slowly approach the target.
+
+The blaze\'s normal attack is a trio of fireballs, shot from up to 16 blocks away. Blazes will shoot even without line of sight to the target. When using this attack, the blaze will catch fire for 3 seconds, shoot three fireballs over the course of 0.9 second, then extinguish the fire and wait for 5 seconds before attacking again. A blaze shoots its fireballs with roughly the same lack of accuracy as a dispenser; however the blaze\'s shots maintain the same speed all the way to the target, unlike the dispenser\'s which starts slow and accelerates.</string>
+
+
+    <string name="chicken_jockey">Chicken Jockey</string>
+    <string name="description_chicken_jockey" formatted="false">Each baby zombie or baby zombie pigman that spawns has a 5% chance to spawn riding a chicken (including baby zombie villagers and baby husks). There is an additional 5% chance of it mounting any existing chicken within a 10×6×10 box centered on the baby zombie\'s spawn location. In a chicken-free environment, this gives each spawned zombie a 0.25% chance of becoming a chicken jockey; if chickens are present, the chance increases to 0.4875%. Chicken jockeys generally run around, behaving like the zombie, instead of using the chicken AI.
+Chicken jockeys fall slowly and do not take fall damage, like normal chickens.
+The chicken moves at the speed of the baby zombie, which is much faster than a normal chicken.
+The chicken will run through 1 block high gaps. If the above block is solid, the baby zombie will suffocate.
+Chicken jockeys can pick up/equip items.
+The chicken does not lay eggs. However, they can still be bred into regular chickens.
+In Creative mode, a chicken jockey that isn\'t already targeting a player will follow a player holding seeds, like a normal chicken, and can be fed. In Survival mode, the chicken jockey will target a player who attempts to do this, and the chicken cannot be fed.
+Chicken jockeys have difficulty hurting a player in water.</string>
+
+
+    <string name="creeper">Creeper</string>
+    <string name="description_creeper">Creepers are common hostile mobs that will explode when close to the player. Creepers naturally spawn in the Overworld on top of solid blocks with a light level of 7 or less. Creepers will chase after any player, as long as it is within a 16 block (±5%) radius and ±4 blocks vertically. The detection range of creepers is reduced to half of their normal range (8 blocks) when the player is wearing a creeper mob head.
+
+Creepers can climb up ladders and vines like any other mob, but do not do so intentionally.
+
+When within three blocks of a player, a creeper will hiss loudly, start flashing and inflating, and explode after 1.5 seconds. A creeper\'s detonation can be halted if the player gets out of the blast radius (7 blocks), including by knocking back the creeper or killing it. Creepers can be forced to explode by using a flint and steel.
+
+Creepers will flee from ocelots and cats if one is too close, until they are approximately 16 blocks away from the feline(s). A creeper\'s explosion has a power of 3 (but see an exception below). If a creeper is inflicted with a status effect, its explosion will create an area effect cloud of the effect. Creepers are never targeted by any mobs, other than the wither, the snow golem, and the vindicator named "Johnny." If they are hit by a stray projectile, they will only retaliate if they are not already chasing a player.</string>
+
+
+    <string name="elder_guardian">Elder Guardian</string>
+    <string name="description_elder_guardian">The elder guardian is a hostile mob which only spawns underwater in ocean monuments. It is a stronger variant of the guardian. Three elder guardians spawn naturally during the generation of each ocean monument: one in the top room of the monument and the other two in each wing section of the monument. They will not respawn after their initial spawn, thus there are a limited amount of them per world. Elder guardians spawned with monuments do not naturally despawn, although they will be removed along with other hostile mobs in peaceful difficulty. Elder guardians do not swim around as much as normal guardians, but otherwise act the same as regular guardians both in water and on land. Elder guardians will NOT swim away when approached by a player it is targeting, unlike regular guardians. Like normal guardians, elder guardians will attempt to attack both the player and squid.
+
+The elder guardian\'s eye follows and stares at any nearby players, and always looks directly at its target. The eye still follows and attacks a completely unarmored player under the effects of a potion of invisibility. It seems that their eyes are coded to simply track to closest player, as they also follow players in spectator mode.</string>
+
+
+    <string name="endermite">Endermite</string>
+    <string name="description_endermite">Endermites are the smallest hostile mobs in Minecraft. Using an ender pearl has a 5% chance of spawning an endermite. Their movement and appearance is almost identical to that of a Silverfish. They will not enter blocks.
+        Endermites will attack players within 16 blocks of them. Endermites despawn within 2 minutes, regardless of the player\'s distance from the endermite, except for when they have been named with a name tag. Endermites will take damage if walking on soul sand, due to its small hitbox. Endermites will spawn two portal particles around them. If a mob attacks an endermite, any endermites in the area will become hostile towards that mob.</string>
+
+    <string name="evoker">Evoker</string>
+    <string name="description_evoker">Evokers are hostile mobs. They are one of the two type of illagers, which are offshoot villagers – the other being the vindicator. Individual evokers spawn during the generation of particular woodland mansion rooms. They will not respawn after their initial spawn, thus there are a limited number of them per world. Evokers spawned with mansions do not naturally despawn. Evokers will attack players, villagers and iron golems within about 16 blocks. When not in the middle of summoning an attack, the evoker will attempt to run away from the player to avoid being attacked, before stopping to attack once again. While the evoker is not engaged in combat and mobGriefing is allowed, it will change the wool color of any blue sheep within 16 blocks to red, making a "wololo" sound.The evoker has two attacks, fang attacks and vex summoning. When attacking, the evoker is much more likely to use a fang attack, and may immediately follow it up by summoning some vexes.</string>
+
+    <string name="ghast">Ghast</string>
+    <string name="description_ghast">Ghasts are huge, floating Nether mobs that shoot explosive fireballs at the player. To spawn naturally, ghasts require a solid block below them and 5×4×5 free space in order to spawn, and only spawn in the Nether, in any light level. Ghasts normally float around the Nether with their eyes and mouth closed and periodically make high-pitched, cat- or infant-like sounds. They open their red eyes and mouth when attacking. They make a chirp-like noise when shooting and scream pitifully when taking damage. The sounds that ghasts make have a minimum intensity regardless of their distance, meaning that they can sound closer than they actually are. They have a size of 4×4×4 blocks, as well as 9 tentacles about the size of a player, although longer and skinnier. However, the tentacles are not part of the ghast\'s hitbox.
+        Ghasts have an extreme attack range, explosive attack power, and mobility. Unlike most other aggressive mobs, the ghast does not have a pursuit mode - it does not attempt to draw closer to the player when at long range (and likewise is not particularly likely to float away). Ghasts can cause other mobs to attack it, but the ghast will never target other mobs; it will only target the player. Compared to other mobs, the ghast has a very long search range and can target a player up to 100 blocks away. When the player comes within about sixteen blocks, the ghast will turn to face the player, open fire and attempt to gain altitude but will fly away when hit in Creative. Ghasts will not fire at the player without a line-of-sight, which can be blocked by solid transparent blocks.
+        If the player is able to fly inside an aggressive ghast, the mob may die of shooting fireballs at itself. They are also careless about shooting at short range where they will be hurt </string>
+
+    <string name="guardian">Guardian</string>
+    <string name="description_guardian">The guardian is an underwater hostile mob. Guardians spawn naturally only in and around ocean monuments. They require water to spawn. Specifically, they can spawn only if the spawning block and the block below the spawning block are water (regardless of stationary water or flowing water), and the block above the spawning block has no collision mask (air, water, sign, etc.). Guardians swim around in water, attacking any players or squid that come into sight. They swim in abrupt charges, moving their tail rapidly when doing so. When swimming, their spikes retract. When not swimming they sink slowly and their spikes extend.
+    The guardian\'s eye follows and stares at any nearby players, and always looks directly at its target. The eye still follows a completely unarmored player under the effects of a potion of invisibility, and the guardians will attack them.
+    Stationary guardians can be pushed by flowing water, but swimming guardians cannot. When pushed horizontally they move significantly faster than other mobs pushed by water.
+    When out of water, guardians angrily squeak at the player while flopping about. They do not suffocate in air and can live indefinitely out of water. Their spikes are always extended when out of water.</string>
+
+
+    <string name="husk">Husk</string>
+    <string name="description_husk">Zombies are common, undead hostile mobs that come in many variants. They behave similar to regular zombies, with the following differences:
+They do not burn in sunlight.
+They will apply hunger to any player it hits. This effect lasts for 7 × floor (regional difficulty) seconds.
+They do not have a villager counterpart.
+They are visually 2 pixels taller than Zombies, but have the same hitbox.
+Their voices are more raspy than their normal counterparts.
+They avoid water.</string>
+
+
+    <string name="magma_cube">Magma Cube</string>
+    <string name="description_magma_cube">Magma cubes are hostile mobs with dark red and black skin and red, orange and yellow eyes that can be found exclusively in the Nether. They are considered the Nether equivalent of slimes, with similar behaviors. Magma cubes spawn rarely everywhere in the Nether at all light levels, but their spawn rate is higher in nether fortresses.Magma cubes move by hopping, which they will do each 40 to 120 ticks (2 to 6 seconds).
+
+Magma cubes will search for a player within 16 blocks (spherical) distance.
+If no players are found, they wait 40 to 120 ticks (2 to 6 seconds). Then they will change direction, by a random amount up to 57.26° (1 radian) left or right, jump, and repeat the process.
+If a player is found, the delay before jumping will be 1⁄3 as long (13 to 40 ticks), and the magma cube\'s direction will be set directly toward the nearest player before jumping.
+Magma cubes cannot burn and are not slowed down or damaged by lava. Instead, it seems that they can swim upward extremely quickly in lava. They cannot be hurt from fall damage and do not drown in normal water.
+Magma cubes\' jump height depends on their size. Their forward speed is twice that of most other mobs. They always make a distinct sound upon jumping up and landing, but no idle sounds.
+Unlike most other mobs, magma cubes have no pathfinding ability, meaning that they will not avoid falling off cliffs and cannot go around walls, even when they are chasing a player.</string>
+
+    <string name="shulker">Shulker</string>
+    <string name="description_shulker">Shulkers are hostile mobs that are found in End cities, located on the outer islands of the End. They hide in their shell to blend in with surrounding purpur blocks. Shulkers spawn during generation of end cities, which are located on the outer islands of the End. They usually spawn on the walls of the city. They don\'t despawn naturally, even in Peaceful difficulty, and once killed, they don\'t respawn. The shell of the mob looks similar to a purpur block, blending in relatively easily to its surroundings. Inside the shell of the mob is a small yellow head with two eyes. Shulkers come in multiple colors besides purple; however, spawning non-purple shulkers requires the use of the /summon command,[Computer edition only] as detailed below. Shulkers can be dyed in a similar fashion to sheep in Creative mode. Purple is the default color when using spawn eggs, while white is the default when using /summon or monster spawners.
+
+Shulkers generally remain stationary, attached to an adjacent solid block. However, if the block the shulker occupies becomes something other than air or the shulker finds itself not adjacent to any solid block, or the shell cannot open, it will attempt to teleport (5 attempts per tick) to an air block within a 17×17×17 cuboid centered on the shulker that is adjacent to a solid block. If it finds no solid blocks to teleport onto (like when in the Void) it will "attach" to the air and not move.
+Shulkers will occasionally open their shell for 1–3 seconds to peer outside. When a target comes within about 16 blocks, it will open up fully and shoot guided projectiles (which follow the player) which only move along the X, Y, or Z axis and leave trails of white particles. The projectiles can be destroyed by attacking them, or blocked with a shield. If the bullet hits an entity, it does 4 (Heart.svgHeart.svg) of damage and inflicts the levitation status effect for 10 seconds. (Levitation has no effect underwater, or on players in e.g. boats.) As long as the target is in range, the shulker will continue to fire every 1–5.5 seconds. If the shulker\'s target dies while the bullets directed at that entity still exist, they will simply fall to the ground.
+When its shell is closed, a shulker has 20 (Armor.svg × 10) armor points and deflects arrows. When the shell opens, it loses this natural armor and takes damage as normal. When at less than half health, a shulker has a 25% chance of teleporting (as described above) after taking damage. When a shulker is attacked, other shulkers in the area will target the attacker as well.
+Shulkers are immune to lava and fire. They will teleport when touched by water.
+In Peaceful difficulty, shulkers will stay within the world. However, they will not attack.</string>
+
+
+    <string name="silverfish">Silverfish</string>
+    <string name="description_silverfish">Silverfish are small, bug-like hostile mobs. Silverfish spawn from broken monster eggs, which generate in strongholds, igloos with basements and extreme hills biomes. Silverfish will not spawn if the block is broken with Silk Touch. Silverfish are the second smallest mobs in Minecraft, after the endermite; their height is less than that of a slab. Because of this, they take suffocation damage from standing on soul sand.
+Silverfish have the ability to "call" other silverfish in the area upon being hit. These silverfish have the ability to see through walls, and will pathfind until they reach the player.
+When idle, silverfish will enter a nearby stone block, transforming it into a monster egg.
+When they suffer poison damage or damage inflicted by the player, and survive, they may cause other silverfish within a 21×11×21 area to break out of their monster eggs. You can therefore prevent other silverfish from appearing by killing them in one shot.</string>
+
+
+    <string name="skeleton">Skeleton</string>
+    <string name="description_skeleton">Skeletons are undead, ranged hostile mobs equipped with bows. Skeletons can spawn almost anywhere in the Overworld at a light level of 7 or less. In the Nether, they can also spawn in nether fortresses at a light level of 7 or less in place of a wither skeleton. Skeletons spawn in dimly lit areas, and will burn in sunlight. When skeletons are nearby, their presence is indicated by the intermittent harsh rattling sound of their bones. Skeletons will chase any player they see within 16 blocks, and will climb stairs, navigate mazes, and traverse other complex obstacles in order to get within shooting range. When they are within 8 blocks of the player with a clear line of sight, they will stop chasing and start shooting the player with arrows. They will strafe during the process, and will retreat to safe range if the player comes too close to them. If the player moves more than 16 blocks away from the skeleton, it will cease pursuit. The detection range of skeletons is reduced to half of their normal range (8 blocks) when the player is wearing a skeleton mob head. Skeletons can attempt to avoid damage from the player by continuously circling around them while shooting at them.
+The skeleton\'s accuracy is based on the difficulty. Skeletons have an "error" of 10 on easy, 6 on normal, and 2 on hard. This is compared to the player\'s "error" of 1. When their target is closer, skeletons shoot faster, but do less damage. To account for gravity, skeletons aim 0.2 blocks higher for every block horizontal they are from the target.
+If a skeleton\'s arrow hits certain hostile mobs, that mob will then attack the skeleton the same way it would attack the player, given it was not hit by the player first. If a skeleton is attacked by another mob (usually another skeleton), it may attack that mob, reorienting on the player once that mob is dead.
+When wielding anything but a bow, they will move at about the player\'s walking speed. If spawned with no weapon at all (by using commands) a skeleton acts like a zombie (though faster), coming at the player with arms outstretched and damaging the player by touching them.
+Skeletons are also able to climb ladders, but only when forced to, as their AI does not handle ladders in a special way.
+Like zombies, skeleton burning occurs at dawn when the sun is 15 degrees or greater above the ground, unless the skeleton is either in shade, water, or wearing a helmet. If not wearing a helmet, they will attempt to find shade or water to keep from burning. Unlike zombies, which will always chase the player if they see one, skeletons will not exit the shade area even if attacking a player. Burning skeletons have a 50% chance of shooting flaming arrows if the raw regional difficulty is 3 or greater.
+Skeletons holding tipped arrows in their offhand will shoot that type of arrow; these arrows are not consumed.
+Skeletons run from wolves, as wolves attack and chase skeletons. When skeletons are safe from sunlight, they will shoot at any wolves that attack it. Skeletons will also shoot at iron golems. Creepers killed by a skeleton\'s arrow will drop a music disc.</string>
+
+    <string name="skeleton_horseman">Skeleton Horseman</string>
+    <string name="description_skeleton_horseman">When a player comes within 10 blocks, lightning will strike the horse. This lightning cannot start fires or damage nearby entities. When struck, the skeleton trap horse transforms into a skeleton horseman, a skeleton riding a skeleton horse. It will also spawn three additional skeleton horsemen in the vicinity. Each skeleton is equipped with an enchanted iron helmet and an enchanted bow, and have damage immunity for 3 seconds after spawning. Skeleton horsemen move extremely fast and maneuver exactly like skeletons, strafing when attacking and backing up when the player moves towards them.</string>
+
+    <string name="slime">Slime</string>
+    <string name="description_slime">A slime is a hostile mob that spawns deep underground and in swamp biomes. They also spawn in flat worlds. Slimes spawn in the Overworld in specific chunks below layer 40 regardless of light levels. They can also spawn in swamp biomes between layers 50 and 70 in light levels of 7 or less.A slime\'s health is equal to their size squared, and its dimensions are 0.51 blocks times its size in each dimension. When a slime attacks, it will deal damage equal to its size, except for size 1 (smallest) slimes, which cannot do damage.
+A slime\'s jump distance also depends on their size; a slime will jump a distance slightly farther than its length.
+When the player kills a slime and the slime\'s size is larger than 1, it will die and spawn 2-4 new slimes equivalent to its size divided by 2, rounding down.
+A slime\'s attack speed is twice that of other melee-combat mobs. Mobs like zombies and spiders attack at a rate of one hit per second, while slimes attack at a rate of two hits per second. Slimes damage all players and iron golems they collide with, unlike other mobs that only damage targets they specifically attack.</string>
+
+
+    <string name="spider_jockey">Spider Jockey</string>
+    <string name="description_spider_jockey" formatted="false">A spider jockey is the rare appearance of a spider being ridden by a skeleton. A spider has a 1% chance to spawn with a skeleton rider. This means that a spider spawner, spawn egg, or the /summon command can very rarely spawn a spider jockey. Spider jockeys spawning in conditions necessary for spawning strays have the usual 80% chance that the skeleton will be a stray. Spider jockeys spawned using spawn eggs in the Nether similarly have an 80% chance that the skeleton will be a wither skeleton.
+Spider jockeys spawned in narrow enclosures can cause the skeleton rider to die of suffocation, due to the spider scaling the walls.
+Using the summon command: /summon Spider ~ ~ ~ {Passengers:[{id:Skeleton}]} will yield a spider jockey. The spider controls the movement, so a spider jockey will wander aimlessly in the day and only pursue the player at night or in dimly lit areas when the spider is hunting. The two creatures attack and take damage individually (i.e. if the spider is killed, the skeleton will continue to attack and move, and vice-versa). If a spider jockey jumps into water, the skeleton will jump off the spider.
+The skeleton will turn and fire at the player as soon as it sees them no matter the time of day (although the skeleton will quickly burn in sunlight, leaving the spider unharmed). A spider jockey can attack two different players in SMP - this is caused by one player damaging one half of the spider jockey and not the other. If the skeleton shoots another hostile mob, the mob will focus its attack on the skeleton but not the spider being ridden, even after the skeleton is killed. If the skeleton on the spider jockey is shot by another skeleton, it will jump off and leave the spider to engage the skeleton that shot it.
+A spider jockey can kill itself - sometimes the skeleton arrows will injure the spider and other times the spider\'s pouncing will run the skeleton into its own arrow.
+When a spider jockey rides a minecart, the minecart will automatically accelerate.</string>
+
+
+    <string name="stray">Stray</string>
+    <string name="description_stray" formatted="false">80% of skeletons spawned directly under the sky in ice plains, ice mountains, and ice plains spikes biomes will be strays. The 1% of spiders spawned in those biomes which end up spawning as a spider jockey also have an 80% chance to be a stray spider jockey.</string>
+
+
+    <string name="vex">Vex</string>
+    <string name="description_vex" formatted="false">A vex is a flying hostile mob that is summoned in small groups by the evoker, another hostile mob, during combat. Vexes only spawn naturally as part of an evoker\'s summoning attack; the evoker signals this attack by producing off-white smoke and a high-pitched horn-like sound. Between 2 and 4 vexes will appear near the evoker. The evoker will summon vexes even if there are some still left alive from the last summoning. Vexes are hostile mobs that will attack players or villagers, as commanded by the evokers. They are capable of flying through the air, and will pass through any block, including water, unharmed and uninhibited. When they are attacking, they glow red and lunge at their target. They are immune to fire and lava damage.
+Vexes that are summoned by an evoker will start to take damage after 33 to 108 seconds, and will eventually die. This does not apply if the vex is summoned by a spawn egg, or is summoned with the /summon command.</string>
+
+
+    <string name="vindicator">Vindicator</string>
+    <string name="description_vindicator" formatted="false">Vindicators are hostile mobs. They are one of the two type of illagers, which are offshoot villagers – the other being the evoker. Vindicators spawn during the generation of woodland mansions, in particular rooms. Some rooms will contain 1, others will contain 3, and some will contain 2 accompanied by an evoker. They will not respawn after their initial spawn, thus there are a limited number of them per world. Vindicators spawned with mansions do not naturally despawn. Vindicators are hostile towards players and villagers. They will try to attack them, raising their main hand and wielding an iron axe. When in pursuit of their target they will sprint toward them. When not attacking, they cross their arms similar to a villager, and don\'t show the axe in their hand.
+A vindicator will not pursue the player through the iron door of any naturally occurring woodland mansion jail cells, and after a time, will cease hostility as long as the player remains inside.
+If a vindicator is named Johnny or has its Johnny tag set to 1b, it will be hostile to any kind of mob, except for evokers and other vindicators. It even will be hostile to vexes. The tag overrides its name, the player can give the vindicator any other name and set the Johnny tag to 1b and it will still be hostile in the same way as described. Conversely, you can name the vindicator Johnny and set the Johnny tag to 0b, and the vindicator will not be hostile as described, it will act as a normal vindicator.</string>
+
+
+    <string name="witch">Witch</string>
+    <string name="description_witch" formatted="false">Witches are hostile mobs that use splash potions as their ranged weapon. They also use beneficial potions on themselves defensively. Witches can spawn anywhere in the Overworld at a light level of 7 or less, sometimes in groups of up to three. Witches use splash potions offensively, and drink ordinary potions defensively. They have a search radius of 16 blocks.</string>
+
+    <string name="wither_skeleton">Wither Skeleton</string>
+    <string name="description_wither_skeleton" formatted="false">Wither skeletons are dangerous hostile mobs that spawn in Nether fortresses. Wither skeletons spawn in Nether fortresses at a light level of 7 or less. They spawn in place of a regular skeleton 80% of the time.
+Wither skeletons are 2.4 blocks tall and 0.7 blocks wide.
+On Halloween, wither skeletons have a 22.5% chance of spawning wearing a pumpkin and a 2.5% chance of spawning wearing a jack o\'lantern.</string>
+
+
+    <string name="zombie">Zombie</string>
+    <string name="description_zombie" formatted="false">Zombies are common, undead hostile mobs that come in many variants. In the Overworld, zombies spawn in groups of 4 at a light level of 7 or less. In desert biomes, all zombies exposed to the sky will have an 80% chance to be replaced by husks, a zombie variant. Zombies that are not husks have a 5% chance to spawn as a zombie villager while all zombie variants also have a 5% chance to spawn as a baby zombie type. Baby zombies have an additional 5% chance of spawning as a chicken jockey.</string>
+
+    <string name="zombie_villagers">Zombie Villager</string>
+    <string name="description_zombie_villagers" formatted="false">Zombie villagers comprise 5% of all spawned zombies (1% in desert, desert hills and desert M biomes, including husks). They behave as ordinary zombies, but their character model\'s head and face is reminiscent of that of a villager, shaded with a darker green hue. Zombie villagers retain their professions and clothes, which have a tattered appearance. In the Console Edition, their clothing will be the same that other zombies wear.
+A zombie villager farmer with an enchanted iron sword.
+Zombie villagers can also result from zombie attacks on villagers. If any type of zombie kills a villager, there is a chance that the villager will transform into a zombie villager (100% on Hard difficulty, 50% on Normal, 0% on Easy).</string>
+
+
+    <string name="wolf">Wolf</string>
+    <string name="description_wolf" formatted="false">Wolves are neutral mobs that can be allied with the player. Wolves only spawn naturally in forest, taiga, mega taiga, cold taiga, and cold taiga M biomes. In the Pocket Edition they only spawn naturally in taiga biomes and their variants.
+Naturally-spawned wolves are untamed, and will become hostile if attacked by the player.</string>
+
+    <string name="donkeys">Donkey</string>
+    <string name="description_donkeys" formatted="false">Donkeys are smaller all around than the normal horses and sport long, erect ears. Their manes do not protrude, but rather are drawn directly on the back of their heads and necks. All donkeys have gray-brown coats with darker ankles, ears, manes, and tails. Donkeys cannot be equipped with horse armor, but can be equipped with chests to store up to 15 stacks of items.</string>
+
+
+    <string name="llama">Llama</string>
+    <string name="description_llama" formatted="false">Llamas are neutral mobs which can be tamed and used to transport large shipments of items. Llamas spawn naturally in savanna (plateau variant) and extreme hills biomes, in herds of four or five and typically on top of hills. Their wool colors often depend on what biome they are in. Llamas are neutral, and if a player or mob attacks one, it will spit at the attacker once, dealing 1 damage. They are hostile to untamed wolves, and will spit at them without provocation. Sometimes when they spit at a wolf or player they can start a fight within a group of llamas by accidentally hitting each other.
+Llamas will tend to repel wolves with their spitting, depending on their strength value. For llamas with strength 4 and 5, wolves will always run away, and for weaker llamas, wolves will run away correspondingly less often.
+Llamas won\'t attack tamed wolves (dogs) unless provoked.</string>
+
+
+    <string name="mule">Mule</string>
+    <string name="description_mule" formatted="false">Mules are the offspring of horses and donkeys, and are closer to (but not quite) the size of a normal Horse. Their ears, coats, and manes are like those of a donkey, though mules’ coats are darker and reddish-brown. Like donkeys, mules cannot be equipped with armor, but can be equipped with chests.</string>
+
+
+    <string name="ocelot">Ocelot</string>
+    <string name="description_ocelot" formatted="false">Ocelots are tamable passive mobs. Ocelots try to spawn on grass blocks or leaves at sea level or higher in jungle biomes. There is a 1⁄3 chance that a spawn attempt will fail.
+When a wild ocelot spawns, there is a 1⁄7 chance that two ocelot kittens will also spawn with it; this chance includes any kind of spawning, including spawning naturally, by spawn egg, or by monster spawner.
+If a player spawns an ocelot within 10 blocks of them in creative mode, the player must leave the range then re-enter if they wish to tame the ocelot. Ocelots will occasionally attack chickens. They assume a "sneaking" stance and will stalk a chicken before chasing it down. They can even kill through a fence or a door if the chicken is against it.
+Creepers will actively avoid ocelots and cats. However, this will not deter them from chasing a player, only keeping the creeper a distance away.
+Ocelots are immune to fall damage, but will still avoid falling off cliffs high enough to normally cause fall damage.
+Ocelots can still see players even with Invisibility.
+With the exception of a faster movement rate, ocelot kittens obey the same behavior as adults.</string>
+
+    <string name="iron_golem">Iron Golem</string>
+    <string name="description_iron_golem" formatted="false">Iron golems are large, strong utility mobs that defend villagers. Golems will spawn in a 16×6×16 area, centered between the 21 or more valid doors in a village if it has at least 10 villagers. The chance of spawning is 1 in 7000 per game tick, which averages around one every six minutes. Iron golems can spawn provided the blocks it spawns in are transparent and the block it spawns on top of has a solid surface. Iron golems are 2.7 blocks tall and 1.4 blocks wide.
+Iron golems will wander around a village in a patrol-like fashion, staying close to the edges of buildings and other structures. Like villagers, iron golems will not wander away from a village, regardless of how they were spawned. Iron golems will sometimes face a villager, as if they are speaking to each other. Iron golems are able to spawn poppies in their hands and offer them to villagers, symbolizing the friendly relationship between the villagers and golems. However, they won\'t spawn and offer poppies to other iron golems.
+If not within a village, iron golems will slowly wander aimlessly.
+Iron golems can walk up a full block height without jumping and walk over a 1 block wide hole without falling in. They will avoid water, lava, fire and cacti. Iron golems are immune to both drowning and fall damage. When in water, they will sink, immobilize, and become passive, but will still be pushed by flowing water.
+Like all utility mobs, iron golems can be leashed.</string>
+
+
+    <string name="snow_golem">Snow Golem</string>
+    <string name="description_snow_golem" formatted="false">Snow golems (also known as Snowmen) are utility mobs that help defend against hostile mobs. Snow golems do not follow players. Snow golems have good path-finding skills, like most mobs, will not jump off cliffs, go into cactus and fire or fall into lava or water. They do not take fall damage. Snow golems can be put on leads and tied to fences.</string>
+
+
+    <string name="ender_dragon">Ender Dragon</string>
+    <string name="description_ender_dragon" formatted="false">The ender dragon is a versatile boss mob that appears in the End, and is the first boss mob to be added to Minecraft. A single ender dragon spawns naturally in the End, immediately as the first player enters the dimension. It will spawn on any difficulty, including Peaceful, but will be unable to directly harm a player with its body in Peaceful difficulty (although it does still fire Ender charges at the player in Peaceful difficulty).</string>
+
+
+    <string name="wither">Wither</string>
+    <string name="description_wither" formatted="false">The wither is a boss mob.</string>
+
+    <string name="giant">Giant</string>
+    <string name="description_giant" formatted="false">Giants are unused, over-sized mobs that look like zombies. They currently have no purpose other than decoration. Giants require a light level greater than 11 and less than 8. This effectively makes it impossible to make them appear naturally or through spawners. Giants can be spawned using commands such as /summon giant.</string>
+
+
+    <string name="killer_bunny">Killer Bunny</string>
+    <string name="description_killer_bunny" formatted="false">The Killer Bunny (previously known as The Killer Rabbit of Caerbannog, which is a reference to the scene in Monty Python\'s The Holy Grail) is a variant of the rabbit that is hostile to all players. Its fur is pure white with blood-red eyes that are horizontal, compared to a normal rabbit\'s vertical eyes. It can only be spawned using the /summon rabbit ~ ~ ~ {RabbitType:99} command. It appears with a nameplate over its head reading "The Killer Bunny".
+If the killer bunny finds any player within a 16-block radius, it will hop very quickly towards the player, much faster than a normal rabbit. It moves in a style similar to that of a spider. Once it closes in, it will jump at the player, dealing a fair amount of damage. If the player strikes at the killer bunny, it will run away for a brief moment, then return to lunging at the player. Killer rabbits are also immune to the Thorns enchantment.
+If it cannot find a player, the killer bunny will actively seek out and attack any wolves as well, including tamed dogs. These wolves will, in turn, attack the killer bunny, leading to a vicious fight.
+On peaceful difficulty, the killer bunny will not despawn, despite its hostile nature. It will still attack wolves and pet dogs, but not the player.</string>
+
+
+    <string name="beast_boy">Beast Boy</string>
+    <string name="description_beast_boy">Beast Boy were human mobs originally in-game as a test during the Indev phase. They were made by "Dock", Minecraft\'s past artist, and were removed from the game when Dock left the development team in early 2010. These mobs had no animation and glided around in the same pose.</string>
+
+
+    <string name="black_steve">Black Steve</string>
+    <string name="description_black_steve">Black Steve were human mobs originally in-game as a test during the Indev phase. They were made by "Dock", Minecraft\'s past artist, and were removed from the game when Dock left the development team in early 2010. These mobs had no animation and glided around in the same pose.</string>
+
+    <string name="steve">Steve</string>
+    <string name="description_steve">Steve were human mobs originally in-game as a test during the Indev phase. They were made by "Dock", Minecraft\'s past artist, and were removed from the game when Dock left the development team in early 2010. These mobs had no animation and glided around in the same pose.</string>
+
+
+    <string name="human">Human</string>
+    <string name="description_human">Humans, known as monsters in the code, were hostile mobs with the default skin.Humans could not create or delete blocks, they would just move around the map aimlessly, walking in slightly imperfect circles and jumping occasionally. While walking, they would flail their arms around and move their head randomly. Humans were affected by solid blocks, but strangely not liquids, walking through them as if they were air. If the player had a custom skin, any humans created would still use default skin and will not assume the look of the player.</string>
+
+
+    <string name="rana">Rana</string>
+    <string name="description_rana">Rana were human mobs originally in-game as a test during the Indev phase. They were made by "Dock", Minecraft\'s past artist, and were removed from the game when Dock left the development team in early 2010. These mobs had no animation and glided around in the same pose.</string>
+
+
+    <string-array name="recipes_array">
+        <item>Wood Planks</item>
+        <item>Craft Table</item>
+        <item>Stick</item>
+        <item>Torch</item>
+        <item>Furnace</item>
+        <item>Chest</item>
+        <item>Bed</item>
+        <item>Ender Chest</item>
+        <item>Enchantment Table</item>
+        <item>Anvil</item>
+        <item>Painting</item>
+        <item>Sign</item>
+        <item>Ladder</item>
+        <item>Paper</item>
+        <item>Book</item>
+        <item>Book and Quill</item>
+        <item>Written Book</item>
+        <item>Wood Fence</item>
+        <item>Nether Brick Fence</item>
+        <item>Cobblestone Wall</item>
+        <item>Glass</item>
+        <item>Stained Glass</item>
+        <item>Glass Pane</item>
+        <item>Stained Glass Pane</item>
+        <item>Slab</item>
+        <item>Stairs</item>
+        <item>Fence Gate</item>
+        <item>Bookshelf</item>
+        <item>Item Frame</item>
+        <item>Banner</item>
+        <item>Jack o\'Lantern</item>
+        <item>Shulker Box</item>
+        <item>Block of Iron</item>
+        <item>Block of Gold</item>
+        <item>Lapis Lazuli Block</item>
+        <item>Block of Diamond</item>
+        <item>Block of Emerald</item>
+        <item>Block of Coal</item>
+        <item>Bone Block</item>
+        <item>Block of Quartz</item>
+        <item>Purpur Block</item>
+        <item>Iron Bars</item>
+        <item>Cauldron</item>
+        <item>Eye of Ender</item>
+        <item>End Crystal</item>
+        <item>Beacon</item>
+        <item>Flower Pot</item>
+        <item>Firework Star</item>
+        <item>Firework Rocket</item>
+        <item>End Rod</item>
+        <item>Wood</item>
+        <item>Coal</item>
+        <item>Charcoal</item>
+        <item>Cobblestone</item>
+        <item>Wool</item>
+        <item>Obsidian</item>
+        <item>Diamond</item>
+        <item>Iron Ingot</item>
+        <item>Nether Brick</item>
+        <item>Sand</item>
+        <item>Stone</item>
+        <item>Sandstone</item>
+        <item>Bricks</item>
+        <item>Brick</item>
+        <item>Clay</item>
+        <item>Stone Bricks</item>
+        <item>Nether Quartz</item>
+        <item>Popped Chorus Fruit</item>
+        <item>Leather</item>
+        <item>Gold Ingot</item>
+        <item>Lapis Lazuli</item>
+        <item>Emerald</item>
+        <item>Ender Pearl</item>
+        <item>TNT</item>
+        <item>Gunpowder</item>
+        <item>Coal Ore</item>
+        <item>Iron Ore</item>
+        <item>Lapis Lazuli Ore</item>
+        <item>Diamond Ore</item>
+        <item>Gold Ore</item>
+        <item>Emerald Ore</item>
+        <item>Nether Quartz Ore</item>
+        <item>Flint</item>
+        <item>Iron Nugget</item>
+        <item>Nether Brick (item)</item>
+        <item>Netherrack</item>
+        <item>Sponge</item>
+        <item>Carpet</item>
+        <item>Nether Wart Block</item>
+        <item>Brewing Stand</item>
+        <item>Blaze Powder</item>
+        <item>Glass Bottle</item>
+        <item>Nether Wart</item>
+        <item>Glowstone Dust</item>
+        <item>Fermented Spider Eye</item>
+        <item>Glistering Melon</item>
+        <item>Magma Cream</item>
+        <item>Andesite</item>
+        <item>Polished Andesite</item>
+        <item>Diorite</item>
+        <item>Polished Diorite</item>
+        <item>Granite</item>
+        <item>Polished Granite</item>
+        <item>Totem of Undying</item>
+        <item>Snow</item>
+        <item>Blaze Rod</item>
+        <item>Prismarine</item>
+        <item>Prismarine Bricks</item>
+        <item>Dark Prismarine</item>
+        <item>Sea Lantern</item>
+        <item>Prismarine Crystals</item>
+        <item>Prismarine Shard</item>
+        <item>Nether Star</item>
+        <item>Mob Head</item>
+        <item>Command Block</item>
+        <item>Feather</item>
+        <item>Pumpkin</item>
+        <item>Shulker Shell</item>
+        <item>Bone</item>
+        <item>Ghast Tear</item>
+        <item>Redstone Ore</item>
+        <item>String</item>
+        <item>Slimeball</item>
+        <item>Gold Nugget</item>
+        <item>Cactus</item>
+        <item>Gravel</item>
+        <item>Concrete Powder</item>
+        <item>Concrete</item>
+        <item>Terracotta</item>
+        <item>Stained Terracotta</item>
+        <item>Glazed Terracotta</item>
+        <item>Sea Pickle</item>
+        <item>Conduit</item>
+        <item>Nautilus Shell</item>
+        <item>Heart of the Sea</item>
+        <item>Kelp</item>
+        <item>Dried Kelp Block</item>
+        <item>Phantom Membrane</item>
+        <item>Scute</item>
+
+    </string-array>
+
+
+    <string name="stained_terracotta">Stained Terracotta</string>
+
+
+    <string name="terracotta">Terracotta</string>
+    <string name="desc_terracotta">Terracotta (known as hardened clay in New Nintendo 3DS Edition and previously in other editions) is a block formed from clay, with a hardness and blast resistance comparable to stone. It can be stained in the same 16 colors that wool can be dyed, although the color is tinted orange. The dyed version is known as stained clay in New Nintendo 3DS Edition, and was previously named this in other editions.</string>
+
+    <string name="glazed_terracotta">Glazed Terracotta</string>
+    <string name="desc_glazed_terracotta">Glazed terracotta is a vibrant solid block which comes in the 16 regular dye colors.</string>
+
+
+    <string name="gravel">Gravel</string>
+    <string name="description_gravel">Gravel is a block that is affected by gravity.</string>
+
+    <string name="concrete_powder">Concrete Powder</string>
+    <string name="description_concrete_powder">Concrete powder is a solid block which comes in the 16 regular dye colors. Like sand, gravel, dragon eggs and anvils, concrete powder is affected by gravity.</string>
+
+    <string name="concrete">Concrete</string>
+    <string name="description_concrete">Concrete is a solid block which comes in the 16 regular dye colors.
+The creation of concrete. Concrete is formed when concrete powder comes into contact with a block of water. It is not formed by contact with rain, cauldrons, particles, or similar.
+    </string>
+
+    <string name="pumpkin">Pumpkin</string>
+    <string name="description_pumpkin">Pumpkins are blocks that appear on grass blocks, generated in random clusters in most Overworld biomes, though somewhat rarely.</string>
+
+    <string name="cactus">Cactus</string>
+    <string name="description_cactus_block">A cactus is a plant that occurs naturally in dry areas.</string>
+
+
+    <string name="gold_nugget">Gold Nugget</string>
+    <string name="description_gold_nugget">A gold nugget is an item obtained by killing zombie pigmen, or by smelting gold tools, weapons, and armor.</string>
+
+    <string name="string">String</string>
+    <string name="description_string">String is used for the crafting recipes of many tools and utilities. When placed as a block, string becomes tripwire which, when combined with tripwire hooks can form a tripwire circuit.</string>
+
+    <string name="slimeball">Slimeball</string>
+    <string name="description_slimeball">A slimeball is an item dropped by slimes.</string>
+
+    <string name="shulker_shell">Shulker Shell</string>
+    <string name="description_shulker_shell">Shulker Shells are items obtained as drops from Shulkers.</string>
+
+    <string name="bone">Bone</string>
+    <string name="description_bone">Bones are items primarily obtained as drops from skeletons.</string>
+
+    <string name="ghast_tear">Ghast Tear</string>
+    <string name="description_ghast_tear">Ghast tears are items dropped by ghasts when they are killed.</string>
+
+
+    <string name="chorus_fruit">Chorus Fruit</string>
+    <string name="desc_chorus_fruit">Chorus fruit is a food item that can be eaten, or cooked into popped chorus fruit.</string>
+
+
+    <string name="redstone_ore">Redstone Ore</string>
+    <string name="description_redstone_ore">Redstone ore is the ore block from which redstone is obtained.</string>
+
+
+    <string-array name="tools">
+
+        <item>Wooden Axe</item>
+        <item>Stone Axe</item>
+        <item>Iron Axe</item>
+        <item>Gold Axe</item>
+        <item>Diamond Axe</item>
+
+        <item>Wooden Pickaxe</item>
+        <item>Stone Pickaxe</item>
+        <item>Iron Pickaxe</item>
+        <item>Gold Pickaxe</item>
+        <item>Diamond Pickaxe</item>
+
+        <item>Wooden Shovel</item>
+        <item>Stone Shovel</item>
+        <item>Iron Shovel</item>
+        <item>Gold Shovel</item>
+        <item>Diamond Shovel</item>
+
+        <item>Wooden Hoe</item>
+        <item>Stone Hoe</item>
+        <item>Iron Hoe</item>
+        <item>Gold Hoe</item>
+        <item>Diamond Hoe</item>
+
+        <item>Flint and Steel</item>
+        <item>Lead</item>
+        <item>Bucket</item>
+        <item>Compass</item>
+        <item>Map</item>
+        <item>Clock</item>
+        <item>Fishing Rod</item>
+        <item>Carrot on a Stick</item>
+        <item>Shears</item>
+        <item>Fire Charge</item>
+
+
+    </string-array>
+
+
+    <string-array name="combat">
+
+        <item>Wooden Sword</item>
+        <item>Stone Sword</item>
+        <item>Iron Sword</item>
+        <item>Gold Sword</item>
+        <item>Diamond Sword</item>
+        <item>Bow</item>
+        <item>Arrow</item>
+        <item>Spectral Arrow</item>
+        <item>Tipped Arrow</item>
+        <item>Leather Helmet</item>
+        <item>Gold Helmet</item>
+        <item>Chain Helmet</item>
+        <item>Iron Helmet</item>
+        <item>Diamond Helmet</item>
+        <item>Leather Chestplate</item>
+        <item>Gold Chestplate</item>
+        <item>Chain Chestplate</item>
+        <item>Iron Chestplate</item>
+        <item>Diamond Chestplate</item>
+        <item>Leather Leggings</item>
+        <item>Gold Leggings</item>
+        <item>Chain Leggings</item>
+        <item>Iron Leggings</item>
+        <item>Diamond Leggings</item>
+        <item>Leather Boots</item>
+        <item>Gold Boots</item>
+        <item>Chain Boots</item>
+        <item>Iron Boots</item>
+        <item>Diamond Boots</item>
+        <item>Shield</item>
+        <item>Armor Stand</item>
+        <item>Horse Armor</item>
+        <item>Snowball</item>
+        <item>Trident</item>
+        <item>Turtle Shell</item>
+    </string-array>
+
+
+    <string-array name="food_and_dyes">
+        <item>Bowl</item>
+        <item>Mushroom Stew</item>
+        <item>Bread</item>
+        <item>Sugar</item>
+        <item>Cake</item>
+        <item>Pumpkin Pie</item>
+        <item>Cookie</item>
+        <item>Golden Apple</item>
+        <item>Melon (block)</item>
+        <item>Melon Seeds</item>
+        <item>Pumpkin Seeds</item>
+        <item>Hay Bale</item>
+        <item>Golden Carrot</item>
+        <item>Beetroot Soup</item>
+        <item>Rabbit Stew</item>
+        <item>Mushroom</item>
+        <item>Wheat</item>
+        <item>Sugar Canes</item>
+        <item>Apple</item>
+        <item>Melon</item>
+        <item>Beetroot</item>
+        <item>Baked Potato</item>
+        <item>Carrot</item>
+        <item>Cooked Rabbit</item>
+        <item>Raw Rabbit</item>
+
+        <item>Bone Meal</item>
+        <item>Light Gray Dye</item>
+        <item>Gray Dye</item>
+        <item>Rose Red</item>
+        <item>Orange Dye</item>
+        <item>Dandelion Yellow</item>
+        <item>Lime Dye</item>
+        <item>Light Blue Dye</item>
+        <item>Cyan Dye</item>
+        <item>Purple Dye</item>
+        <item>Magenta Dye</item>
+        <item>Pink Dye</item>
+        <item>Dandelion</item>
+        <item>Sunflower</item>
+        <item>Poppy</item>
+        <item>Blue Orchid</item>
+        <item>Allium</item>
+        <item>Azure Bluet</item>
+        <item>Red Tulip</item>
+        <item>Orange Tulip</item>
+        <item>White Tulip</item>
+        <item>Pink Tulip</item>
+        <item>Oxeye Daisy</item>
+        <item>Lilac</item>
+        <item>Rose Bush</item>
+        <item>Peony</item>
+        <item>Cactus Green</item>
+        <item>Steak</item>
+        <item>Cooked Porkchop</item>
+        <item>Cooked Mutton</item>
+        <item>Fish</item>
+        <item>Cooked Chicken</item>
+        <item>Rotten Flesh</item>
+        <item>Raw Porkchop</item>
+        <item>Raw Chicken</item>
+        <item>Raw Beef</item>
+        <item>Raw Mutton</item>
+        <item>Potato</item>
+        <item>Ink Sac</item>
+        <item>Chorus Fruit</item>
+        <item>Cocoa Beans</item>
+        <item>Egg</item>
+        <item>Dried Kelp</item>
+
+    </string-array>
+
+
+    <string-array name="transport">
+        <item>Minecart</item>
+        <item>Minecart with Furnace</item>
+        <item>Minecart with Chest</item>
+        <item>Minecart with TNT</item>
+        <item>Minecart with Hopper</item>
+        <item>Rail</item>
+        <item>Powered Rail</item>
+        <item>Activator Rail</item>
+        <item>Detector Rail</item>
+        <item>Boat</item>
+        <item>Elytra</item>
+        <item>Saddle</item>
+
+
+    </string-array>
+
+
+    <string name="description_brewing_stand">A brewing stand is a block used for brewing potions, splash potions and lingering potions.</string>
+
+    <string name="glass_bottle">Glass Bottle</string>
+    <string name="description_glass_bottle">A glass bottle is an item used to pick up water to make water bottles, which is the start of the brewing process.</string>
+
+
+    <string name="chicken_egg">Egg</string>
+    <string name="description_chicken_egg">Eggs are items that can be used to craft food items, or used as a throwable entity. Chickens lay eggs every 5–10 minutes and these can be collected while on the ground.</string>
+
+    <string name="nether_wart">Nether Wart</string>
+    <string name="description_nether_wart">Nether wart is a plant grown in the Nether.</string>
+
+    <string name="glowstone_dust">Glowstone Dust</string>
+    <string name="description_glowstone_dust">Glowstone dust is an item used to craft glowstone, create thick potions, and increase the strength of potions.</string>
+
+    <string name="fermented_spider_eye">Fermented Spider Eye</string>
+    <string name="description_fermented_spider_eye">A fermented spider eye is a brewing ingredient.</string>
+
+    <string name="glistering_melon">Glistering Melon</string>
+    <string name="description_glistering_melon">Glistering melon is a non-edible item used for imbuing potions with health restoration effects. It is one of the many potion ingredients that can be used to make mundane potions.</string>
+
+    <string name="magma_cream">Magma Cream</string>
+    <string name="description_magma_cream">Magma cream is an item used to brew potions of Fire Resistance, and to build magma blocks.</string>
+
+
+    <string name="minecart">Minecart</string>
+    <string name="description_minecart">A minecart is both an item and a vehicle entity. A minecart can be placed in the same manner as most blocks, but can only be placed on top of a rail. Once placed, it may be derailed by pushing it off the end of the track. After this, it can be railed again by placing a rail directly below it, or pushing it onto a track.</string>
+
+    <string name="minecart_with_furnace">Minecart with Furnace</string>
+    <string name="description_minecart_with_furnace">A minecart with furnace (also called a furnace minecart) are self-propelling minecarts with furnaces inside. Minecarts with furnace will propel along straight lengths of track and pause after each bend in the track.</string>
+
+    <string name="minecart_with_chest">Minecart with Chest</string>
+    <string name="description_minecart_with_chest">A minecart with chest (also called a chest minecart) are minecarts with chests inside.</string>
+
+    <string name="minecart_with_tnt">Minecart with TNT</string>
+    <string name="description_minecart_with_tnt">The minecart with TNT is a block of TNT inside a minecart.</string>
+
+    <string name="minecart_with_hopper">Minecart with Hopper</string>
+    <string name="description_minecart_with_hopper">A minecart with hopper is a hopper inside a minecart.</string>
+
+    <string name="rail">Rail</string>
+    <string name="description_rail">Rails are non-solid blocks that provide a path along which minecarts can travel.</string>
+
+    <string name="powered_rail">Powered Rail</string>
+    <string name="description_powered_rail">A powered rail is a type of rail that is used to decrease or increase the velocity of moving minecarts.</string>
+
+    <string name="activator_rail">Activator Rail</string>
+    <string name="description_activator_rail">An activator rail is a type of rail that can "activate" certain minecarts.</string>
+
+    <string name="detector_rail">Detector Rail</string>
+    <string name="description_detector_rail">A detector rail is a block which can transport minecarts and can be used as a switchable redstone power source.</string>
+
+    <string name="elytra">Elytra</string>
+    <string name="description_elytra">Elytra are an item that allows the player to glide. Elytra are gray in color unless the player is wearing a cape, in which case the elytra will adopt the cape\'s design.
+    Elytra are found in end cities. One pair of elytra is found within an item frame in each end ship.</string>
+
+
+    <string name="saddle">Saddle</string>
+    <string name="description_saddle" formatted="false"> Saddles are items that can be placed on ridable mobs. Saddles can be found in 2.5% of stronghold altar chests, 35.7% of nether fortress chests, 23.7% of desert temple chests, 16.3% of village blacksmith chests, 29.0% of dungeon chests, 13.4% of End city chests, and 15.5% of jungle temple chests, all in groups of 1. Saddles can be obtained as a "treasure" item from fishing. Villager leatherworkers will sell saddles for 8–10 emeralds as a third tier trade</string>
+
+    <string name="light_blue_painter">Light blue roller</string>
+    <string name="dandelion">Dandelion</string>
+    <string name="sunflower">Sunflower</string>
+    <string name="poppy">Poppy</string>
+    <string name="blue_orchid">Blue Orchid</string>
+    <string name="allium">Allium</string>
+    <string name="azure_bluet">Azure Bluet</string>
+    <string name="red_tulip">Red Tulip</string>
+    <string name="orange_tulip">Orange Tulip</string>
+    <string name="white_tulip">White Tulip</string>
+    <string name="pink_tulip">Pink Tulip</string>
+    <string name="oxeye_daisy">Oxeye Daisy</string>
+    <string name="lilac">Lilac</string>
+    <string name="rose_bush">Rose Bush</string>
+    <string name="peony">Peony</string>
+    <string name="cactus_green">Cactus Green</string>
+    <string name="description_flowers">Flowers are naturally occurring plants that come in a variety of shapes and colors.</string>
+
+
+    <string name="mushroom_stew">Mushroom Stew</string>
+    <string name="description_mushroom_stew">Mushroom stew is a food item. The bowl is returned to the player empty after the stew has been eaten, and can be re-used to craft more.</string>
+
+    <string name="bread">Bread</string>
+    <string name="description_bread">Bread is a food item that can be eaten by the player.</string>
+
+    <string name="sugar">Sugar</string>
+    <string name="description_sugar">Sugar is a food ingredient derived from sugar canes.</string>
+
+    <string name="cake">Cake</string>
+    <string name="description_cake">Cake is a food block that can be eaten by the player.</string>
+
+    <string name="pumpkin_pie">Pumpkin Pie</string>
+    <string name="description_pumpkin_pie">Pumpkin pie is a food item which can be eaten by the player.</string>
+
+    <string name="cookie">Cookie</string>
+    <string name="description_cookie">Cookies are food items that are easily obtainable, but do not restore a lot of hunger or saturation.</string>
+
+    <string name="golden_apple">Golden Apple</string>
+    <string name="description_golden_apple">The golden apple is a special food item that can be eaten by the player. The enchanted golden apple, referred to also in an achievement as a Notch apple, is a rare variant of golden apple that has stronger effects.</string>
+
+    <string name="melon_block">Melon (block)</string>
+    <string name="description_melon_block">Melons are blocks that grow from fully grown melon seeds.</string>
+
+    <string name="melon_seeds">Melon Seeds</string>
+    <string name="description_melon_seeds">Melon seeds are an item that can be used to grow melon plants.</string>
+
+    <string name="pumpkin_seeds">Pumpkin Seeds</string>
+    <string name="description_pumpkin_seeds">Pumpkin seeds are an item that can be used to grow pumpkin plants.</string>
+
+    <string name="golden_carrot">Golden Carrots</string>
+    <string name="description_golden_carrot">A golden carrot is a valuable food item and brewing ingredient.</string>
+
+    <string name="beetroot_soup">Beetroot Soup</string>
+    <string name="description_beetroot_soup">Beetroot soup is a liquid food item.</string>
+
+    <string name="rabbit_stew">Rabbit Stew</string>
+    <string name="description_rabbit_stew">Rabbit stew is a food item that can be eaten by the player.</string>
+
+    <string name="mushroom">Mushroom</string>
+    <string name="description_mushroom">Mushrooms are fungi that grow and spread in dark areas.</string>
+
+    <string name="wheat">Wheat</string>
+    <string name="description_wheat">Wheat is an item primarily obtained by farming.</string>
+
+    <string name="sugar_canes">Sugar Canes</string>
+    <string name="description_sugar_canes">Sugar canes are an item and an important crafting ingredient.</string>
+
+    <string name="apple">Apple</string>
+    <string name="description_apple">Apples are food items that can be eaten by the player.</string>
+
+    <string name="melon">Melon</string>
+    <string name="description_melon">Melon is a food item that can be eaten by the player.</string>
+
+    <string name="beetroot">Beetroot</string>
+    <string name="description_beetroot">Beetroots are edible food items.</string>
+
+    <string name="baked_potato">Baked Potato</string>
+    <string name="description_baked_potato">A baked potato is a food item that can be eaten by the player.</string>
+
+    <string name="carrot">Carrot</string>
+    <string name="description_carrot">A carrot is a food item that can be eaten by the player.</string>
+
+    <string name="raw_rabbit">Raw Rabbit</string>
+    <string name="description_raw_rabbit">Raw rabbit is a food item that can be eaten by the player, or cooked in a furnace to make cooked rabbit.</string>
+
+    <string name="cooked_rabbit">Cooked Rabbit</string>
+    <string name="description_cooked_rabbit">Cooked rabbit is a food item that can be eaten by the player.</string>
+
+    <string name="bone_meal">Bone Meal</string>
+    <string name="description_bone_meal">Bone meal is a material that can be used as a dye as well as a fertilizer for most plants.</string>
+
+    <string name="light_gray_dye">Light Gray Dye</string>
+    <string name="description_light_gray_dye">Light gray dye is a primary dye.</string>
+
+    <string name="gray_dye">Gray Dye</string>
+    <string name="description_gray_dye">Gray dye is a secondary color dye.</string>
+
+    <string name="rose_red">Rose Red</string>
+    <string name="description_rose_red">Rose red is a primary color dye created primarily from flowers.</string>
+
+    <string name="orange_dye">Orange Dye</string>
+    <string name="description_orange_dye">Orange dye is a dye crafted from orange tulips, or by combining one rose red with one dandelion yellow.</string>
+
+    <string name="dandelion_yellow">Dandelion Yellow</string>
+    <string name="description_dandelion_yellow">Dandelion yellow is a primary dye color created by placing a dandelion or sunflower into a crafting square.</string>
+
+
+    <string name="lime_dye">Lime Dye</string>
+    <string name="description_lime_dye">Lime dye is a secondary dye color obtained by combining one cactus green and one bone meal in a crafting square.</string>
+
+    <string name="cocoa_beans">Cocoa Beans</string>
+    <string name="description_cocoa_beans">Cocoa beans are a primary color dye and food ingredient.</string>
+
+
+    <string name="light_blue_dye">Light Blue Dye</string>
+    <string name="description_light_blue_dye">Light blue dye is a primary dye.</string>
+
+    <string name="cyan_dye">Cyan Dye</string>
+    <string name="description_cyan_dye">Cyan dye is a secondary dye color.</string>
+
+    <string name="purple_dye">Purple Dye</string>
+    <string name="description_purple_dye">Purple dye is a secondary dye color created by combining one rose red and a lapis lazuli in a crafting square.</string>
+
+    <string name="magenta_dye">Magenta Dye</string>
+    <string name="description_magenta_dye">Magenta dye is a dye.</string>
+
+    <string name="pink_dye">Pink Dye</string>
+    <string name="description_pink_dye">Pink dye is a dye made from Pink Tulips or Peonies, or by combining a Rose Red and one Bone Meal in a crafting square.</string>
+
+    <string name="steak">Steak</string>
+    <string name="description_steak">Steak is a food item obtained from cows.</string>
+
+    <string name="cooked_porkchop">Cooked Porkchop</string>
+    <string name="description_cooked_porkchop">Cooked porkchop is a food item that can be eaten by the player.</string>
+
+    <string name="cooked_mutton">Cooked Mutton</string>
+    <string name="description_cooked_mutton">Cooked mutton is a food item obtained from cooking raw mutton in a furnace or from a sheep that dies while on fire.</string>
+
+    <string name="fish">Fish</string>
+    <string name="description_fish">The most common way of obtaining any type of raw fish is fishing. The chance of one being caught can be increased with the \'Lure\' enchantment.</string>
+
+    <string name="cooked_chicken">Cooked Chicken</string>
+    <string name="description_cooked_chicken">Cooked chicken is a food item that can be eaten by the player.</string>
+
+    <string name="rotten_flesh">Rotten Flesh</string>
+    <string name="description_rotten_flesh">Rotten flesh is a food item which can be eaten by the player, but with the risk of food poisoning.</string>
+
+    <string name="raw_porkchop">Raw Porkchop</string>
+    <string name="description_raw_porkchop">A raw porkchop is a food item that can be eaten by the player or cooked in a furnace to make a cooked porkchop.</string>
+
+    <string name="raw_chicken">Raw Chicken</string>
+    <string name="description_raw_chicken">Raw chicken is a food item which can be eaten by the player, or cooked in a furnace to make cooked chicken.</string>
+
+    <string name="raw_beef">Raw Beef</string>
+    <string name="description_raw_beef">Raw beef is a food item which can be eaten by the player, or cooked in a furnace to make steak.</string>
+
+    <string name="raw_mutton">Raw Mutton</string>
+    <string name="description_raw_mutton">Raw mutton is a food item dropped by sheep when killed.</string>
+
+    <string name="raw_potato">Potato</string>
+    <string name="description_raw_potato">Potatoes are food items that can be planted, consumed raw, or cooked in a furnace to make baked potatoes.</string>
+
+    <string name="ink_sac">Ink Sac</string>
+    <string name="description_ink_sac">Ink sacs are the darkest possible primary color dye.</string>
+
+
+    <string name="wood_sword">Wooden Sword</string>
+    <string name="stone_sword">Stone Sword</string>
+    <string name="iron_sword">Iron Sword</string>
+    <string name="gold_sword">Gold Sword</string>
+    <string name="diamond_sword">Diamond Sword</string>
+    <string name="description_sword">Swords are melee weapons that are mainly used to deal damage to mobs and/or players.</string>
+
+
+    <string name="bow">Bow</string>
+    <string name="description_bow">A bow is a ranged weapon that fires arrows.</string>
+
+    <string name="arrow">Arrow</string>
+    <string name="spectral_arrow">Spectral Arrow</string>
+    <string name="tipped_arrow">Tipped Arrow</string>
+    <string name="description_arrow">Arrows are ammunition for bows and dispensers. They can be modified to imbue status effects on players and mobs.</string>
+
+    <string name="leather_helmet">Leather Helmet</string>
+    <string name="gold_helmet">Gold Helmet</string>
+    <string name="chain_helmet">Chain Helmet</string>
+    <string name="iron_helmet">Iron Helmet</string>
+    <string name="diamond_helmet">Diamond Helmet</string>
+    <string name="description_leather_helmet">Helmets are a type of armor that covers the head of the player. There are five types of helmets: leather cap, chain helmet, iron helmet, diamond helmet and gold helmet.</string>
+
+
+    <string name="leather_chestplate">Leather Chestplate</string>
+    <string name="gold_chestplate">Gold Chestplate</string>
+    <string name="chain_chestplate">Chain Chestplate</string>
+    <string name="iron_chestplate">Iron Chestplate</string>
+    <string name="diamond_chestplate">Diamond Chestplate</string>
+    <string name="description_chestplate">Chestplates are a type of armor that covers the upper body of the player. There are five types of chestplates: leather tunic, chain chestplate, iron chestplate, diamond chestplate and gold chestplate.</string>
+
+
+    <string name="leather_leggings">Leather Leggings</string>
+    <string name="gold_leggings">Gold Leggings</string>
+    <string name="chain_leggings">Chain Leggings</string>
+    <string name="iron_leggings">Iron Leggings</string>
+    <string name="diamond_leggings">Diamond Leggings</string>
+    <string name="description_leggings">Leggings are a type of armor that covers the lower body of the player. There are five types of leggings: leather pants, chain leggings, iron leggings, diamond leggings and gold leggings.</string>
+
+
+    <string name="leather_boots">Leather Boots</string>
+    <string name="gold_boots">Gold Boots</string>
+    <string name="chain_boots">Chain Boots</string>
+    <string name="iron_boots">Iron Boots</string>
+    <string name="diamond_boots">Diamond Boots</string>
+    <string name="description_boots">Boots are a type of armor that covers the feet of the player. There are five types of boots: leather boots, chain boots, iron boots, diamond boots and gold boots.</string>
+
+
+    <string name="shield">Shield</string>
+    <string name="description_shield">Shields are tools used for protecting the player against attacks.</string>
+
+    <string name="horse_armor">Horse Armor</string>
+    <string name="description_horse_armor">Horse armor is a special type of armor that can be given to a horse to wear. </string>
+
+    <string name="snowball">Snowball</string>
+    <string name="description_snowball">Snowballs are throwable items. In the Computer Edition, they deal no damage to other mobs, but mobs will still have knockback and give the same effect as if they were being damaged. In both versions, they can still damage armor.</string>
+
+
+    <string name="wood_axe">Wooden Axe</string>
+    <string name="stone_axe">Stone Axe</string>
+    <string name="iron_axe">Iron Axe</string>
+    <string name="gold_axe">Gold Axe</string>
+    <string name="diamond_axe">Diamond Axe</string>
+    <string name="description_axe">Axes are tools used to ease the process of collecting wood based items.</string>
+
+
+    <string name="wooden_pickaxe">Wooden Pickaxe</string>
+    <string name="stone_pickaxe">Stone Pickaxe</string>
+    <string name="iron_pickaxe">Iron Pickaxe</string>
+    <string name="gold_pickaxe">Gold Pickaxe</string>
+    <string name="diamond_pickaxe">Diamond Pickaxe</string>
+    <string name="description_pickaxe">Pickaxes are one of the most commonly used tools in the game, being required to mine all ores and many other types of blocks.</string>
+
+
+    <string name="wooden_shovel">Wooden Shovel</string>
+    <string name="stone_shovel">Stone Shovel</string>
+    <string name="iron_shovel">Iron Shovel</string>
+    <string name="gold_shovel">Gold Shovel</string>
+    <string name="diamond_shovel">Diamond Shovel</string>
+    <string name="description_shovel">Shovels are tools used to ease the process of collecting dirt and other blocks.</string>
+
+
+    <string name="wooden_hoe">Wooden Hoe</string>
+    <string name="stone_hoe">Stone Hoe</string>
+    <string name="iron_hoe">Iron Hoe</string>
+    <string name="gold_hoe">Gold Hoe</string>
+    <string name="diamond_hoe">Diamond Hoe</string>
+    <string name="description_hoe">Hoes are tools used to till dirt and grass blocks into farmland blocks.</string>
+
+
+    <string name="flint_and_steel">Flint and Steel</string>
+    <string name="description_flint_and_steel">The flint and steel is a tool used to light fires.</string>
+
+    <string name="lead">Lead</string>
+    <string name="description_lead">Leads, also known as leashes, are items used to leash and lead passive mobs.</string>
+
+    <string name="bucket">Bucket</string>
+    <string name="description_bucket">Buckets are tools used to carry water, lava, or milk.</string>
+
+    <string name="compass">Compass</string>
+    <string name="description_compass">Compasses are an item used to point to the world spawn.</string>
+
+    <string name="map">Map</string>
+    <string name="description_map">A map is an item used to view explored terrain.</string>
+
+    <string name="clock">Clock</string>
+    <string name="description_clock">Clocks are items that display the current in-game time by displaying the sun and the moon\'s position relative to the horizon.</string>
+
+    <string name="fishing_rod">Fishing Rod</string>
+    <string name="description_fishing_rod">Fishing rods are tools that are mainly used for obtaining fish.</string>
+
+    <string name="carrot_on_a_stick">Carrot on a Stick</string>
+    <string name="description_carrot_on_a_stick">A carrot on a stick is an item that can be used to control saddled pigs.</string>
+
+    <string name="shears">Shears</string>
+    <string name="description_shears">Shears are a tool used primarily to shear sheep and mine a few types of blocks.</string>
+
+    <string name="fire_charge">Fire Charge</string>
+    <string name="description_fire_charge">Fire charges are items which light fires when used.</string>
+
+
+    <string name="wood_planks">Wood Planks</string>
+    <string name="description_wood_planks">Wood planks are used in many crafting recipes. Doors, fences, fence gates, slab, and stairs – and boats in all editions except the Console Edition – must be crafted from wood planks of the same type and will match the wood type used. For other products, wood planks of different types can be mixed freely, with no effect on the result.</string>
+
+    <string name="crafting_table">Crafting Table</string>
+    <string name="description_crafting_table">The crafting table (also referred to in an achievement as the workbench) is one of the most essential blocks in Minecraft.</string>
+
+
+    <string name="sticks">Sticks</string>
+    <string name="description_sticks">A stick is an item used for crafting many tools and items.</string>
+
+
+    <string name="torch">Torch</string>
+    <string name="description_torch">Torches are non-solid blocks that emit light. Torches give off a light level of 14. Torches also melt snow layers and ice within 2 blocks (taxicab distance).</string>
+
+    <string name="furnace">Furnace</string>
+    <string name="description_furnace">A furnace is a block used to smelt blocks and items and convert them into other blocks or items.</string>
+
+    <string name="chest">Chest</string>
+    <string name="description_chest">A chest is a block that stores items.</string>
+
+
+    <string name="ender_chest">Ender Chest</string>
+    <string name="description_ender_chest">Ender chests are a type of chest that can store items, although the contents of an Ender Chest are bound to the player opening it, not the ender chest being opened, regardless of where it is (or what dimension it\'s in). Ender chests can be opened by pressing use. If a solid block is placed above an ender chest, it will not be able to open.
+Ender chests can be used like chests, except all ender chests in the world share the same inventory, including in different dimensions. The ender chest\'s inventory is also separate for each player; consequently, items stored in an ender chest cannot be seen or taken by other players.</string>
+
+
+    <string name="enchantment_table">Enchantment Table</string>
+    <string name="description_enchantment_table">An enchantment table is a block that allows players to spend their experience point levels to enchant tools, books and armor.</string>
+
+
+    <string name="anvil">Anvil</string>
+    <string name="description_anvil">Anvils are blocks that use the item repair interface to repair and to rename items, as well as to combine enchantments.</string>
+
+    <string name="painting">Painting</string>
+    <string name="description_painting">Paintings are decorative entities that hang on walls.</string>
+
+
+    <string name="sign">Sign</string>
+    <string name="description_sign">Signs are non-solid blocks that can display text.</string>
+
+
+    <string name="ladder">Ladder</string>
+    <string name="description_ladder">Ladders are wooden blocks used for climbing walls either vertically or horizontally. They can only be placed on the sides of other blocks.</string>
+
+    <string name="paper">Paper</string>
+    <string name="description_paper">Paper is an item crafted from sugar cane.</string>
+
+
+    <string name="book">Book</string>
+    <string name="description_book">Books are items crafted from paper and leather.</string>
+
+    <string name="book_and_quill">Book and Quill</string>
+    <string name="description_book_and_quill">Books and quills are items used to write written books.</string>
+
+
+    <string name="fence">Wood Fence</string>
+    <string name="description_fence">Fences are wall blocks that cannot normally be jumped over.</string>
+
+
+    <string name="nether_brick_fence">Nether Brick Fence</string>
+    <string name="description_nether_brick_fence">Fences are wall blocks that cannot normally be jumped over. Wood fences are broken most quickly with an axe, but will drop when broken with any tool. Nether brick fences require a pickaxe to get it back, mining it with anything else will drop nothing.</string>
+
+
+    <string name="cobblestone_wall">Cobblestone Wall</string>
+    <string name="description_cobblestone_wall">Cobblestone walls are decorative blocks. There are 2 types: cobblestone walls and mossy cobblestone walls.\nCobblestone walls are one and a half blocks tall for player/mob collision, and one block tall for all other purposes, similar to fences. This prevents players and mobs from jumping over them, while using only one actual block space. A wall occupies the center space of blocks and automatically connects to any solid block that is placed next to it. Since their hitbox is smaller than a single block, it will allow a mob in the block to breathe even when submerged.
+
+Cobblestone walls are more efficient at fencing off mobs than a two-block high wall of cobblestone, costing only half as many blocks, and being more space-efficient as well. The drawback, however, is that a skeleton might shoot over the wall, a creeper could explode if a player is standing near the wall and a spider could still climb over the wall.
+
+Unlike fences, if two cobblestone walls are placed one block apart diagonally, you cannot walk between them.</string>
+
+
+    <string name="bed">Bed</string>
+    <string name="description_bed">A bed is a block that allows a player to sleep and to reset their spawn point to within a few blocks of the bed.</string>
+
+
+    <string name="glass">Glass</string>
+    <string name="description_glass">Glass is a decorative fully transparent block which can be dyed into stained glass.</string>
+
+
+    <string name="stained_glass">Stained Glass</string>
+    <string name="description_stained_glass">Stained glass.</string>
+
+
+    <string name="glass_pane">Glass Pane</string>
+    <string name="description_glass_pane">Glass panes are transparent blocks which can be used as a much more efficient alternative to glass blocks.</string>
+
+
+    <string name="stained_glass_pane">Stained Glass Pane</string>
+    <string name="description_stained_glass_pane">Glass panes are much more efficient than glass, as they can make windows of 267% the area of glass blocks, because only 6 glass blocks are required to make 16 glass panes.</string>
+
+
+    <string name="wood_door">Wood Door</string>
+    <string name="description_wood_door">A door is a block that can be used as a switchable barrier. Wood doors can be opened and closed by players and villagers, and can be broken by zombies in Hard mode.</string>
+
+    <string name="iron_door">Iron Door</string>
+
+
+    <string name="slab">Slab</string>
+    <string name="description_wood_slab">Slabs are half-versions of their respective blocks.</string>
+
+
+    <string name="stairs">Stairs</string>
+    <string name="description_stairs">Stairs are blocks that allow mobs and players to change elevation without jumping.</string>
+
+
+    <string name="boat">Boat</string>
+    <string name="description_boat">A boat is both an item and a vehicle entity.</string>
+
+    <string name="trapdoor">Trapdoor</string>
+    <string name="description_trapdoor">A trapdoor is a solid, transparent block that can be used as an openable barrier.</string>
+
+
+    <string name="iron_trapdoor">Iron Trapdoor</string>
+    <string name="description_iron_trapdoor">Wooden trapdoors can be mined with anything, but an axe is fastest. Iron trapdoors require a pickaxe to mine. Trapdoors will remain in place if their attachment block is moved, removed, or destroyed.</string>
+
+
+    <string name="pressure_plate">Pressure Plate</string>
+    <string name="description_pressure_plate">A pressure plate is a non-solid block that can be used to detect players, mobs, items, etc.
+There are two versions of the pressure plate: the stone pressure plate and the wooden pressure plate. The only difference between the two are which entities they can detect.</string>
+
+
+    <string name="weighted_pressure_plate">Weighted Pressure Plate</string>
+    <string name="description_weighted_pressure_plate">A weighted pressure plate is a block that can be used to measure the number of entities on it.
+There are two versions of the weighted pressure plate: the light weighted pressure plate (aka "gold plate") and the heavy weighted pressure plate (aka "iron plate"). The only difference between the two are the number of entities required to produce specific signal strengths.</string>
+
+
+    <string name="bowl">Bowl</string>
+    <string name="description_bowl">Bowls are containers which are used to hold certain meals.</string>
+
+
+    <string name="button">Button</string>
+    <string name="description_button">A button is a non-solid block which can provide temporary redstone power.</string>
+
+
+    <string name="tripwire_hook">Tripwire Hook</string>
+    <string name="desc_tripwire_hook">A tripwire hook is a block that can be used to detect entities (players, mobs, items, etc.) when part of a tripwire circuit.</string>
+    <string name="trapped_chest">Trapped Chest</string>
+    <string name="description_trapped_chest">A trapped chest is a block that stores items and which produces redstone power when opened. It can be visually distinguished from normal chests by a red coloration around the latch.</string>
+
+
+    <string name="fence_gate">Fence Gate</string>
+    <string name="description_fence_gate">A fence gate is a block that shares the functions of both the door and the fence.</string>
+
+
+    <string name="bookshelf">Bookshelf</string>
+    <string name="description_bookshelf">Bookshelves are blocks that primarily serve to enhance enchanting with an enchantment table.
+    If an enchantment table is placed near a bookshelf, glyph particles will fly from a bookshelf towards the enchantment table. Having bookshelves in the proper position near the table will allow the table to apply higher-level enchantments.
+    </string>
+
+
+    <string name="note_block">Note Block</string>
+    <string name="description_note_block">A note block is a musical block that emits sounds when powered with redstone.</string>
+
+
+    <string name="jukebox">Jukebox</string>
+    <string name="description_jukebox">A jukebox is a block used to play music discs.</string>
+
+
+    <string name="piston">Piston</string>
+    <string name="description_piston">Pistons are blocks capable of pushing most blocks, depending on the direction they are facing. They come in two varieties: a
+regular piston, and a sticky piston, which can also pull movable blocks.</string>
+    <string name="sticky_piston">Sticky Piston</string>
+
+
+    <string name="redstone_torch">Redstone Torch</string>
+    <string name="description_redstone_torch">A redstone torch is a non-solid block that can be used as an invertible redstone power source.</string>
+
+    <string name="lever">Lever</string>
+    <string name="description_lever">A lever is a non-solid block which can provide switchable redstone power.</string>
+
+    <string name="item_frame">Item Frame</string>
+    <string name="description_item_frame">An item frame is an entity that displays the item or block that is inside it.</string>
+
+    <string name="armor_stand">Armor Stand</string>
+    <string name="description_armor_stand">Armor stands are entities that are able to hold and display wearable items.</string>
+
+
+    <string name="banner">Banner</string>
+    <string name="description_banner">Banners are tall decorative blocks, featuring a field that is highly customizable using dyes.</string>
+
+
+    <string name="jack_o_lantern">Jack o\'Lantern</string>
+    <string name="description_jack_o_lantern">A jack o\'lantern is a solid block that provides light.</string>
+
+
+    <string name="shulker_box">Shulker Box</string>
+    <string name="description_shulker_box">(Stained using dyes).\nA shulker box is a block that can store and transport items. Unlike other storage units, such as chests, shulker boxes keep their items when broken, which can be retrieved when placed again. Shulker boxes will drop as an item if pushed by pistons, and can be placed using dispensers. When holding a shulker box with items inside, the items will be listed as properties.
+Items inside the shulker box are listed below the block type properties.
+Shulker boxes can be stored in other containers, though they cannot be stored in other shulker boxes.
+A shulker box can hold the same amount of items as a chest. (27 slots)</string>
+
+
+    <string name="block_of_iron">Block of Iron</string>
+    <string name="description_block_of_iron">A block of iron is a decorative mineral block made from iron ingots.</string>
+
+    <string name="block_of_gold">Block of Gold</string>
+    <string name="description_block_of_gold">A block of gold is a decorative mineral block crafted from gold ingots.</string>
+
+    <string name="lapis_lazuli_block">Lapis Lazuli Block</string>
+    <string name="description_lapis_lazuli_block">A lapis lazuli block is a decorative mineral block that is crafted from lapis lazuli. It is a medium blue color, with darker and lighter blue markings on it.</string>
+
+    <string name="block_of_diamond">Block of Diamond</string>
+    <string name="description_block_of_diamond">A block of diamond is a decorative mineral block.</string>
+
+    <string name="block_of_emerald">Block of Emerald</string>
+    <string name="description_block_of_emerald">A block of emerald is a decorative mineral block.</string>
+
+    <string name="block_of_coal">Block of Coal</string>
+    <string name="description_block_of_coal">The block of coal is a mineral block that can also be used as a fuel.</string>
+
+    <string name="bone_block">Bone Block</string>
+    <string name="description_bone_block">Bone blocks are decorative blocks that can face in different directions.</string>
+
+    <string name="iron_bars">Iron Bars</string>
+    <string name="description_iron_bars">Iron bars are blocks that serve a similar purpose to glass panes, but made of iron instead of glass blocks.</string>
+
+    <string name="cauldron">Cauldron</string>
+    <string name="description_cauldron">A cauldron can be crafted from iron ingots.</string>
+
+    <string name="eye_of_ender">Eye of Ender</string>
+    <string name="description_eye_of_ender">An eye of ender (or ender eye) is a craftable item used to locate and activate end portals within strongholds.</string>
+
+    <string name="end_crystal">End Crystal</string>
+    <string name="description_end_crystal">An end crystal, or by its entity ID, ender crystal, is both an item and an entity found in the End.</string>
+
+    <string name="beacon">Beacon</string>
+    <string name="description_beacon">A beacon is a unique block that projects a light beam skyward and can provide status effects to players in the vicinity.</string>
+
+    <string name="flower_pot">Flower Pot</string>
+    <string name="description_flower_pot">A flower pot is a decorative block that allows plants in it.</string>
+
+    <string name="firework_star">Firework Star</string>
+    <string name="description_firework_star">Firework stars are items used to determine the color, effect and shape of firework rockets.</string>
+
+    <string name="firework_rocket">Firework Rocket</string>
+    <string name="description_firework_rocket">Firework rockets are items and entities used to create decorative explosions and to boost players flying with elytra.</string>
+
+    <string name="end_rod">End Rod</string>
+    <string name="description_end_rod">End rods are decorative light sources that emit white particles.</string>
+
+    <string name="hay_bale">Hay Bale</string>
+    <string name="description_hay_bale">Hay bales are decorative, flammable blocks that can also be fed to horses.</string>
+
+    <string name="written_book">Written Book</string>
+    <string name="description_written_book">Written books are an item created after a book and quill is signed. It appears as the same red book, but without the quill, and has an enchanted-looking glint.</string>
+
+    <string name="wood">Wood</string>
+    <string name="description_wood">Wood, or log (from the name ID), is a naturally occurring block found in trees, primarily used to create wood planks. It comes in six species: oak, birch, spruce, jungle, dark oak, and acacia.</string>
+
+    <string name="coal">Coal</string>
+    <string name="description_coal">Coal lumps are items mainly obtained by harvesting coal ore blocks. Their main uses are as a fuel or crafting torches.</string>
+
+    <string name="charcoal">Charcoal </string>
+    <string name="description_charcoal">Charcoal is an alternative to coal obtained from smelting wood. It can do everything coal can, except be traded with villagers or crafted into a block of coal. Coal and charcoal also cannot stack together.</string>
+
+    <string name="cobblestone">Cobblestone</string>
+    <string name="description_cobblestone">Cobblestone is a common block, obtained from mining stone. Its texture resembles an uneven, roughly paved surface. Cobblestone is mainly used for crafting or as a common building block.</string>
+
+    <string name="wool">Wool</string>
+    <string name="description_wool">Wool is a block derived from sheep that can be dyed in any of the 16 different colors, which are white, orange, magenta, light blue, yellow, lime green, pink, gray, light gray, cyan, purple, blue, brown, green, red, and black.</string>
+
+    <string name="obsidian">Obsidian</string>
+    <string name="description_obsidian">Obsidian is a navy blue block with purple specks known for its high blast resistance and strength.</string>
+
+
+    <string name="diamond">Diamond</string>
+    <string name="description_diamond">Diamonds are one of the rarest and most recognizable materials in Minecraft.</string>
+
+    <string name="iron_ingot">Iron Ingot</string>
+    <string name="description_iron_ingot">Iron ingots are versatile metal crafting ingredients. They are most commonly obtained by smelting iron ore.</string>
+
+    <string name="nether_brick">Nether Brick</string>
+    <string name="description_nether_brick">Nether bricks are blocks used to form nether fortresses in the Nether.</string>
+
+    <string name="sand">Sand</string>
+    <string name="description_sand">Sand is a block affected by gravity. Red sand is a variation of sand, the only difference being its color.</string>
+
+    <string name="stone">Stone</string>
+    <string name="description_stone">Stone is a block found in abundance in the Overworld.</string>
+
+    <string name="sandstone">Sandstone</string>
+    <string name="description_sandstone">Sandstone and red sandstone are solid blocks, with sandstone commonly found in deserts and beaches, and red sandstone found in mesas.</string>
+
+    <string name="bricks">Bricks</string>
+    <string name="description_bricks">Bricks are a decorative building block.</string>
+
+    <string name="brick">Brick</string>
+    <string name="description_brick">Brick is an item used to craft brick blocks and flower pots.</string>
+
+    <string name="clay">Clay</string>
+    <string name="description_clay">Clay is the item obtained from clay blocks used for crafting or making bricks.</string>
+
+    <string name="stone_bricks">Stone Bricks</string>
+    <string name="description_stone_bricks">Stone bricks are one of the materials that are used in strongholds and in the basements of igloos.</string>
+
+    <string name="block_of_quartz">Block of Quartz</string>
+    <string name="description_block_of_quartz">A block of quartz is a mineral block used only for decoration.</string>
+
+    <string name="nether_quartz">Nether Quartz</string>
+    <string name="description_nether_quartz">Nether quartz, or simply quartz, is an item mined exclusively in the Nether.</string>
+
+    <string name="purpur_block">Purpur Block</string>
+    <string name="description_purpur_block">Purpur blocks and purpur pillars are decorative blocks that are naturally generated in end city dungeons in the End.</string>
+
+    <string name="popped_chorus_fruit">Popped Chorus Fruit</string>
+    <string name="description_popped_chorus_fruit">Popped chorus fruit is an item obtained by smelting chorus fruit, and used to craft purpur blocks. Unlike raw chorus fruit, the popped fruit is inedible.</string>
+
+    <string name="leather">Leather</string>
+    <string name="description_leather">Leather is a versatile crafting material. Cows, mooshrooms, horses and llamas drop up to 2 pieces of leather upon death.</string>
+
+    <string name="gold_ingot">Gold Ingot</string>
+    <string name="description_gold_ingot">Gold ingots are a metal which is used to craft the second tier of armor, and the first of tools.</string>
+
+    <string name="lapis_lazuli">Lapis Lazuli</string>
+    <string name="description_lapis_lazuli">Lapis lazuli is a primary color dye and an enchanting item.</string>
+
+    <string name="emerald">Emerald</string>
+    <string name="description_emerald">Emeralds are an uncommon material, and are the currency used in villager trading.  Emerald ore is mined using an iron or diamond pickaxe and will drop one emerald. If the pickaxe is enchanted with fortune, it may drop an extra emerald per level of Fortune, up to a maximum of 4 with Fortune III. If the ore is mined using a pickaxe enchanted with Silk Touch, it will drop itself instead of emeralds.</string>
+
+    <string name="ender_pearl">Ender Pearl</string>
+    <string name="description_ender_pearl">An ender pearl is an item which is used to teleport. Endermen drop 0–1 ender pearl when killed.</string>
+
+    <string name="blaze_powder">Blaze Powder</string>
+    <string name="description_blaze_powder">Blaze powder is an item made from a blaze rod obtained from a blaze.</string>
+
+    <string name="tnt">TNT</string>
+    <string name="description_tnt">TNT is an explosive block.</string>
+
+    <string name="gunpowder">Gunpowder</string>
+    <string name="description_gunpowder">Gunpowder is an item that is used for explosive-related actions.</string>
+
+    <string name="coal_ore">Coal Ore</string>
+    <string name="description_coal_ore">Coal ore is a mineral block that drops coal when mined.</string>
+
+    <string name="iron_ore">Iron Ore</string>
+    <string name="description_iron_ore">Iron ore is a mineral block found underground. It is the most common mineral that can be used to make tools and armor.</string>
+
+    <string name="lapis_lazuli_ore">Lapis Lazuli Ore</string>
+    <string name="description_lapis_lazuli_ore">Lapis lazuli ore is the ore block from which lapis lazuli is obtained.</string>
+
+    <string name="diamond_ore">Diamond Ore</string>
+    <string name="description_diamond_ore">Diamond ore is a mineral block that is one of the most valuable and elusive blocks in the game.</string>
+
+    <string name="gold_ore">Gold Ore</string>
+    <string name="description_gold_ore">Gold ore is one of the rarest types of mineral blocks found underground.</string>
+
+    <string name="emerald_ore">Emerald Ore</string>
+    <string name="description_emerald_ore">Emerald ore is the rarest mineral block in the game, which drops emerald when mined.</string>
+
+    <string name="nether_quartz_ore">Nether Quartz Ore</string>
+    <string name="description_nether_quartz_ore">Nether quartz ore is the only ore available in the Nether.</string>
+
+    <string name="flint">Flint</string>
+    <string name="description_flint">Flint is a raw material.</string>
+
+    <string name="iron_nugget">Iron Nugget</string>
+    <string name="description_iron_nugget">An iron nugget is an item obtained by smelting iron tools, weapons, or armor.</string>
+
+    <string name="nether_brick_item">Nether Brick (item)</string>
+    <string name="description_nether_brick_item">A nether brick is an item made by smelting netherrack in a furnace.</string>
+
+    <string name="netherrack">Netherrack</string>
+    <string name="description_netherrack">Netherrack is a rock-like block found in the Nether.</string>
+
+    <string name="sponge">Sponge</string>
+    <string name="description_sponge">A sponge is a block that can be used to remove water around itself when placed, turning into a wet sponge in the process.</string>
+
+    <string name="carpet">Carpet</string>
+    <string name="description_carpet">Carpets are thin blocks which are mainly used for decoration.</string>
+
+    <string name="nether_wart_block">Nether Wart Block</string>
+    <string name="description_nether_wart_block">Nether wart blocks are decorative blocks crafted using nether wart.</string>
+
+    <string name="andesite">Andesite</string>
+    <string name="polished_andesite">Polished Andesite</string>
+    <string name="description_andesite">Andesite is a type of igneous rock. Andesite can be mined using any pickaxe. If mined without a pickaxe, it will drop nothing.</string>
+
+
+    <string name="diorite">Diorite</string>
+    <string name="polished_diorite">Polished Diorite</string>
+    <string name="description_diorite">Diorite is a type of igneous rock. Diorite can be mined using any pickaxe. If mined without a pickaxe, it will drop nothing.</string>
+
+    <string name="granite">Granite</string>
+    <string name="polished_granite">Polished Granite</string>
+    <string name="description_granite">Granite is a type of igneous rock. Granite can be mined using any pickaxe. If mined without a pickaxe, it will drop nothing.</string>
+
+
+    <string name="totem_of_undying">Totem of Undying</string>
+    <string name="description_totem_of_undying">A totem of undying is an item which can save a player from death.</string>
+
+    <string name="snow">Snow</string>
+    <string name="description_snow">A snow block is a full-sized block of snow.</string>
+
+    <string name="blaze_rod">Blaze Rod</string>
+    <string name="description_blaze_rod">Blaze rods are items which are dropped by blazes.</string>
+
+    <string name="prismarine">Prismarine</string>
+    <string name="description_prismarine">Prismarine is a stone-like material that only appears underwater in ocean monuments.</string>
+
+    <string name="prismarine_bricks">Prismarine Bricks</string>
+    <string name="description_prismarine_bricks">Prismarine bricks are a decorative form of prismarine with a sawtooth-edged brick pattern.</string>
+
+    <string name="dark_prismarine">Dark Prismarine</string>
+    <string name="description_dark_prismarine">Dark prismarine is a decorative form of prismarine; it is dark, with a tight grid pattern.</string>
+
+    <string name="sea_lantern">Sea Lantern</string>
+    <string name="description_sea_lantern">Sea lanterns are underwater light sources that appear in ocean monuments.</string>
+
+    <string name="prismarine_crystals">Prismarine Crystals</string>
+    <string name="description_prismarine_crystals">Prismarine crystals are items obtained by defeating guardians and elder guardians.</string>
+
+    <string name="prismarine_shard">Prismarine Shard</string>
+    <string name="description_prismarine_shard">Prismarine shards are items obtained by defeating guardians or elder guardians.</string>
+
+    <string name="nether_star">Nether Star</string>
+    <string name="description_nether_star">The nether star is an item drop from the wither that is used solely to craft beacons.</string>
+
+    <string name="mob_head">Mob Head</string>
+    <string name="desc_mob_head">Mob heads are decorative blocks.</string>
+
+    <string name="command_block">Command Block</string>
+    <string name="description_command_block">A command block is a block that can execute commands. Because it cannot be obtained in survival mode without cheats, it is primarily used on multiplayer servers and in custom maps.</string>
+
+
+    <string-array name="redstone">
+
+        <item>Wooden Door</item>
+        <item>Iron Door</item>
+        <item>Trapdoor</item>
+        <item>Iron Trapdoor</item>
+        <item>Pressure Plate</item>
+        <item>Weighted Pressure Plate</item>
+        <item>Button</item>
+        <item>Tripwire Hook</item>
+        <item>Trapped Chest</item>
+        <item>Note Block</item>
+        <item>Jukebox</item>
+        <item>Piston</item>
+        <item>Sticky Piston</item>
+        <item>Redstone Torch</item>
+        <item>Lever</item>
+        <item>Glowstone</item>
+        <item>Redstone Lamp</item>
+        <item>Redstone Repeater</item>
+        <item>Redstone Comparator</item>
+        <item>Daylight Sensor</item>
+        <item>Block of Redstone</item>
+        <item>Redstone Dust</item>
+        <item>Observer</item>
+        <item>Hopper</item>
+        <item>Dispenser</item>
+        <item>Dropper</item>
+
+    </string-array>
+
+
+    <string name="dropper">Dropper</string>
+    <string name="description_dropper">The dropper is a block that can be used to eject items, or push items into another container.</string>
+
+
+    <string name="glowstone">Glowstone</string>
+    <string name="description_glowstone">Glowstone is a light-emitting block that appears in the Nether.</string>
+
+    <string name="redstone_lamp">Redstone Lamp</string>
+    <string name="description_redstone_lamp">A redstone lamp is a block which produces light when activated with a redstone trigger.</string>
+
+    <string name="redstone_repeater">Redstone Repeater</string>
+    <string name="description_repeater">A redstone repeater is a block used in redstone circuits to "repeat" redstone signals back to full strength, delay signals, prevent signals moving backwards, or to "lock" signals in one state.</string>
+
+    <string name="redstone_comparator">Redstone Comparator</string>
+    <string name="description_comparator">A redstone comparator is a block used in redstone circuits to maintain, compare, or subtract signal strength, or to measure certain block states (primarily the fullness of containers).</string>
+
+
+    <string name="daylight_sensor">Daylight Sensor</string>
+    <string name="description_daylight_sensor">A daylight sensor is a block that outputs a redstone signal based on sunlight (or lack thereof).</string>
+
+    <string name="block_of_redstone">Block of Redstone</string>
+    <string name="description_block_of_redstone">A block of redstone acts as a piston-movable redstone power source which cannot be turned off.</string>
+    <string name="description_redstone">Redstone is a flat transparent block which can transmit redstone power.</string>
+
+
+    <string name="observer">Observer</string>
+    <string name="description_observer">An observer is a block that emits a redstone signal when an adjacent block is updated.</string>
+
+    <string name="hopper">Hopper</string>
+    <string name="description_hopper">A hopper is a block that can be used to catch item entities, or to transfer items into and out of containers.</string>
+
+    <string name="dispenser">Dispenser</string>
+    <string name="description_dispenser">A dispenser is a solid block used as a redstone component to dispense items.</string>
+
+    <string name="feather">Feather</string>
+    <string name="description_feather">Feathers are items dropped by chickens.</string>
+
+
+    <string-array name="discs">
+
+        <item>13</item>
+        <item>cat</item>
+        <item>blocks</item>
+        <item>chirp</item>
+        <item>far</item>
+        <item>mall</item>
+        <item>mellohi</item>
+        <item>stal</item>
+        <item>strad</item>
+        <item>ward</item>
+        <item>11</item>
+        <item>wait</item>
+
+    </string-array>
+
+    <string name="disc_13">13</string>
+    <string name="description_disc_13">A somewhat unsettling ambient track consisting mostly of cave noises, metallic clinks, splashes, wind blowing, and muffled bow firings.</string>
+
+    <string name="cat">cat</string>
+    <string name="description_disc_cat">An upbeat, synthetic melody. In the .minecraft directory, the music disc plays another tune by C418, titled Dog.</string>
+
+    <string name="blocks_disc">blocks</string>
+    <string name="description_disc_blocks">An upbeat, catchy tune.</string>
+
+    <string name="chirp">chirp</string>
+    <string name="description_chirp">An upbeat, retro melody.</string>
+
+    <string name="far">far</string>
+    <string name="description_far">A calm, relaxing, nature-like melody.</string>
+
+    <string name="mall">mall</string>
+    <string name="description_mall">A calm piece of serene music.</string>
+
+
+    <string name="mellohi">mellohi</string>
+    <string name="description_mellohi">A slow, slightly melancholic waltz.</string>
+
+    <string name="stal">stal</string>
+    <string name="description_stal">A moderate jazz-like piece.</string>
+
+    <string name="strad">strad</string>
+    <string name="description_strad">A tropical-sounding synth piece.</string>
+
+    <string name="ward">ward</string>
+    <string name="description_ward">The record starts off with an excerpt from Chopin\'s Funeral March played on synth organ but goes into an electronic, upbeat, exploration and adventure tune with a dark undertone.</string>
+
+    <string name="odinadcat">11</string>
+    <string name="description_11">A slightly disturbing disk, the recording seems to be of a person running across (or maybe breaking) different block types and later on, stopping to use equipment of some kind, cough, and then continue running with a hastened pace. The block sounds similar to that of dirt and stone. The person struggling, and haunting background noises are heard throughout the recording. Strange noises of barking or wind blowing are heard near the end before abruptly stopping. One can hear static noise akin to what would be expected at the end of a vinyl album after this point before ending.</string>
+
+    <string name="wait">wait</string>
+    <string name="description_wait">An upbeat and relaxing song, with a "blocky" feel to it. This disc is the latest to be added to Minecraft, although it has existed in the game data for quite some time (as where are we now).</string>
+    <string name="id">ID:</string>
+
+
+    <string name="op_0_lvl">Op 0 lvl</string>
+    <string name="op_2_lvl">Op 2 lvl</string>
+    <string name="op_3_lvl">Op 3 lvl</string>
+    <string name="op_4_lvl">Op 4 lvl</string>
+
+
+    <string-array name="commands">
+
+
+        <item>/help</item>
+        <item>/list</item>
+        <item>/me</item>
+        <item>/tell</item>
+        <item>/transferserver</item>
+        <item>/trigger</item>
+        <item>/wsserver</item>
+        <item>/achievement &lt;give|take> &lt;name|*> [player]</item>
+        <item>/blockdata 0 64 0 {Primary:3}</item>
+        <item>/clear [player] [item] [data] [maxCount] [dataTag]</item>
+        <item>/clone &lt;x1> &lt;y1> &lt;z1> &lt;x2> &lt;y2> &lt;z2> &lt;x> &lt;y> &lt;z> [maskMode] [cloneMode] [TileName] [dataValue|state]</item>
+        <item>/difficulty &lt;difficulty></item>
+        <item>/effect &lt;player> clear \n/effect &lt;player> &lt;effect> [seconds] [amplifier] [hideParticles]</item>
+        <item>/enchant &lt;player> &lt;enchantment ID> [level]</item>
+        <item>/entitydata &lt;entity> &lt;dataTag></item>
+        <item>/execute &lt;entity> &lt;x> &lt;y> &lt;z> &lt;command …></item>
+        <item>/fill &lt;x1> &lt;y1> &lt;z1> &lt;x2> &lt;y2> &lt;z2> &lt;block> [dataValue|state] [oldBlockHandling] [dataTag]</item>
+        <item>/gamerule &lt;rule name> [value]</item>
+        <item>/give &lt;player> &lt;item> [amount] [data] [dataTag]</item>
+        <item>/kill</item>
+        <item>/locate &lt;StructureType></item>
+        <item><![CDATA[/particle <name> <x> <y> <z> <xd> <yd> <zd> <speed> [count] [mode] [player] [params …]]]></item>
+        <item>/playsound &lt;sound> &lt;source> &lt;player> [x] [y] [z] [volume] [pitch] [minimumVolume]</item>
+        <item>/replaceitem block &lt;x> &lt;y> &lt;z> &lt;slot> &lt;item> [amount] [data] [dataTag]</item>
+        <item>/say &lt;message …></item>
+        <item>/scoreboard</item>
+        <item>/seed</item>
+        <item>/setblock &lt;x> &lt;y> &lt;z> &lt;block> [dataValue|state] [oldBlockHandling] [dataTag]</item>
+        <item>/setworldspawn &lt;x> &lt;y> &lt;z></item>
+        <item>/spawnpoint &lt;player></item>
+        <item>/spreadplayers &lt;x> &lt;z> &lt;spreadDistance> &lt;maxRange> &lt;respectTeams> &lt;player …></item>
+        <item>/stats block &lt;x> &lt;y> &lt;z> clear &lt;stat>\n
+/stats block &lt;x> &lt;y> &lt;z> set &lt;stat> &lt;selector> &lt;objective>\n
+/stats entity &lt;selector2> clear &lt;stat>\n
+/stats entity &lt;selector2> set &lt;stat> &lt;selector> &lt;objective></item>
+        <item>/stopsound &lt;player> [source] [sound]</item>
+        <item>/summon &lt;EntityName> [x] [y] [z] &lt;dataTag></item>
+        <item>/teleport &lt;target entity> &lt;x> &lt;y> &lt;z> [&lt;y-rot> &lt;x-rot>]</item>
+        <item>/tellraw &lt;player> &lt;raw json message</item>
+        <item>/testfor &lt;player> [dataTag]</item>
+        <item>/testforblock &lt;x> &lt;y> &lt;z> &lt;block> [dataValue|state] [dataTag]</item>
+        <item>/testforblocks &lt;x1> &lt;y1> &lt;z1> &lt;x2> &lt;y2> &lt;z2> &lt;x> &lt;y> &lt;z> [mode]</item>
+        <item>/time &lt;add|query|set> &lt;value></item>
+        <item>/title &lt;player> clear\n/title &lt;player> reset\n/title &lt;player> title &lt;raw json title></item>
+        <item>/toggledownfall</item>
+        <item>/tp [target player] &lt;destination player>\n/tp [target player] &lt;x> &lt;y> &lt;z> [&lt;yaw> &lt;pitch>]</item>
+        <item>/weather &lt;clear|rain|thunder> [duration]</item>
+        <item>/worldborder add &lt;distance> [time]\n /worldborder center &lt;x> &lt;z>\n/worldborder damage amount &lt;damagePerBlock>\n/worldborder damage buffer &lt;distance>
+        \n/worldborder get\n/worldborder set &lt;distance> [time]\n/worldborder warning distance &lt;distance>\n/worldborder warning time &lt;time></item>
+        <item>/xp &lt;amount> [player]\n/xp &lt;amount>L [player]</item>
+        <item>/ban &lt;play> [reason …]</item>
+        <item>/ban-ip &lt;address|name> [reason …]</item>
+        <item>/banlist ips\n/banlist players</item>
+        <item>/debug &lt;start|stop></item>
+        <item>/defaultgamemode &lt;mode></item>
+        <item>/deop &lt;player></item>
+        <item>/kick &lt;player> [reason …]</item>
+        <item>/op &lt;player></item>
+        <item>/pardon &lt;name>\n/pardon-ip &lt;address></item>
+        <item>/setidletimeout &lt;Minutes until kick></item>
+
+        <item>/whitelist add &lt;player>\n
+/whitelist list\n
+/whitelist off\n
+/whitelist on\n
+/whitelist reload\n
+/whitelist remove &lt;player></item>
+        <item>/publish</item>
+        <item>/save-all [flush]</item>
+        <item>/save-on</item>
+        <item>/stop-on</item>
+
+    </string-array>
+
+
+    <string name="help_c">Provides help for commands.</string>
+    <string name="list_c">Lists players on the server.</string>
+    <string name="me_c">Displays a message about yourself.</string>
+    <string name="tell_c">Displays a message about yourself.</string>
+    <string name="transferserver_c">Connect to a server.</string>
+    <string name="trigger_c">Sets a trigger to be activated.</string>
+    <string name="wsserver_c">Connects to an automation server (developer use only).</string>
+    <string name="blockdata_c">Modifies the data tag of a block.</string>
+    <string name="clear_c">Clears items from player inventory.</string>
+    <string name="clone_c">Copies blocks from one place to another.</string>
+    <string name="difficulty_c">Sets the difficulty level.</string>
+    <string name="achievement_c">Gives or removes an achievement from a player.</string>
+    <string name="effect_c">Add or remove status effects.</string>
+    <string name="enchant_c">Enchants a player item.</string>
+    <string name="entitydata_c">Modifies the data tag of an entity.</string>
+    <string name="execute_c">Modifies the data tag of an entity.</string>
+    <string name="fill_c">Fills a region with a specific block.</string>
+    <string name="gamerule_c">Sets or queries a game rule value.</string>
+    <string name="give_c">Gives an item to a player.</string>
+    <string name="kill_c">Kills entities (players, mobs, items, etc.).</string>
+    <string name="locate_c">Displays coordinates for the closest instance of a given structure.</string>
+    <string name="particle_c">Creates particles.</string>
+    <string name="playsoundd_c">Plays a sound.</string>
+    <string name="replaceitem_c">Replaces items in the inventories of blocks (chest, furnaces, etc.) or entities (players or mobs) with the given item(s).</string>
+    <string name="say_c">Sends a message in the chat to other players.</string>
+    <string name="scoreboard_c">Manages objectives, players, teams, and tags.</string>
+    <string name="seed_c">Displays the world seed.</string>
+    <string name="setblock_c">Changes a block to another block.</string>
+    <string name="setworldspawn_c">Sets the world spawn.</string>
+    <string name="spawnpoint_c">Sets the world spawn.</string>
+    <string name="spreadplayers_c">Teleports entities to random locations.</string>
+    <string name="stats_c">Update objectives from command results.</string>
+    <string name="stopsound_c">Stops a sound.</string>
+    <string name="summon_c">Summons an entity (mobs, projectiles, items, vehicles, etc.).</string>
+    <string name="teleport_c">Teleports entities.</string>
+    <string name="tellraw_c">Sends a JSON message to players.</string>
+    <string name="testfor_c">Counts entities (players, mobs, items, etc.) matching specified conditions.</string>
+    <string name="testforblok_c">Tests whether a certain block is in a specific location.</string>
+    <string name="testforbloks_c">Tests whether the blocks in two regions match.</string>
+    <string name="time_c">Changes or queries the world\'s game time.</string>
+    <string name="title_c">Manages screen titles.</string>
+    <string name="toggledownfall_c">Toggles the weather.</string>
+    <string name="tp_c">Teleports entities.</string>
+    <string name="weather_c">Sets the weather.</string>
+    <string name="worldboarder_c">These commands control the world border.</string>
+    <string name="xp_c">Adds experience to a player.</string>
+    <string name="ban_c">Adds player to banlist.</string>
+    <string name="banip_c">Adds an IP address to the blacklist.</string>
+    <string name="banlist_c">Displays the server\'s blacklist.</string>
+    <string name="debug_c">Starts or stops a debugging session.</string>
+    <string name="defaultgamemode_c">Sets the default game mode (creative, survival, etc.) for new players entering a multiplayer server.</string>
+    <string name="deop_c">Revoke operator status from a player.</string>
+    <string name="kick_c">Kicks a player off a server.</string>
+    <string name="op_c">Grants operator status to a player.</string>
+    <string name="pardon_c">Removes entries from the banlist.</string>
+    <string name="setidletimeout_c">Sets the time before idle players are kicked from the server.</string>
+    <string name="whitelist_c">Manages the server whitelist. Server ops will always be able to connect when the whitelist is active, even if their names do not appear in the whitelist.</string>
+    <string name="publish_c">Opens single-player world to local network.</string>
+    <string name="save_all_c">Saves the server to disk.</string>
+    <string name="save_on_c">Enables automatic server saves.</string>
+    <string name="stop_on_c">Stops a server.</string>
+
+
+    <string-array name="achievements_ar">
+        <item>Taking Inventory</item>
+        <item>Getting Wood</item>
+        <item>Benchmarking</item>
+        <item>Time to Mine!</item>
+        <item>Hot Topic</item>
+        <item>Acquire Hardware</item>
+        <item>Time to Farm!</item>
+        <item>Bake Bread</item>
+        <item>The Lie</item>
+        <item>Getting an Upgrade</item>
+        <item>Delicious Fish</item>
+        <item>On A Rail</item>
+        <item>Time to Strike!</item>
+        <item>Monster Hunter</item>
+        <item>Cow Tipper</item>
+        <item>When Pigs Fly</item>
+        <item>Sniper Duel</item>
+        <item>DIAMONDS!</item>
+        <item>We Need to Go Deeper</item>
+        <item>Return to Sender</item>
+        <item>Into Fire</item>
+        <item>Local Brewery</item>
+        <item>The End?</item>
+        <item>The End.</item>
+        <item>Enchanter</item>
+        <item>Overkill</item>
+        <item>Librarian</item>
+        <item>Adventuring Time</item>
+        <item>The Beginning?</item>
+        <item>The Beginning.</item>
+        <item>Beaconator</item>
+        <item>Repopulation</item>
+        <item>Diamonds to you!</item>
+        <item>Overpowered</item>
+        <item>A Throwaway Joke</item>
+        <item>Very Very Frightening</item>
+    </string-array>
+
+
+    <string name="desc_taking_inventory">Press \'E\' to open your inventory.</string>
+    <string name="desc_getting_wood">Attack a tree until a block of wood pops ou.</string>
+    <string name="desc_benchmarking">Craft a workbench with four blocks of planks.</string>
+    <string name="desc_time_to_mine">Use planks and sticks to make a pickaxe.</string>
+    <string name="desc_hot_topic">Construct a furnace out of eight cobblestone blocks.</string>
+    <string name="desc_acquire_hardware">Smelt an iron ingot.</string>
+    <string name="desc_time_to_farm">Use planks and sticks to make a hoe.</string>
+    <string name="desc_bake_bread">Turn wheat into bread.</string>
+    <string name="desc_the_lie">Wheat, sugar, milk, and eggs.</string>
+    <string name="desc_getting_an_upgrade">Construct a better pickaxe.</string>
+    <string name="desc_delicious_fish">Catch and cook a fish!</string>
+    <string name="desc_on_a_rail">Travel by minecart at least 1 km from where you started.</string>
+    <string name="desc_time_to_strike">Use planks and sticks to make a sword.</string>
+    <string name="desc_monster_hunter">Attack and destroy a monster.</string>
+    <string name="desc_cow_tipper">Harvest some leather.</string>
+    <string name="desc_when_pigs_fly">Fly a pig off a cliff.</string>
+    <string name="desc_sniper_duel">Kill a skeleton with an arrow from more than 50 meters.</string>
+    <string name="desc_diamonds">Acquire diamonds with your iron tools</string>
+    <string name="desc_we_need_to_go_deeper">Build a portal to the Nether.</string>
+    <string name="desc_return_to_sender">Destroy a Ghast with a fireball.</string>
+    <string name="desc_into_fire">Relieve a Blaze of its rod.</string>
+    <string name="desc_local_brewery">Brew a potion.</string>
+    <string name="desc_the_end_q">Locate the End.</string>
+    <string name="desc_the_end_etc">Defeat the Ender Dragon.</string>
+    <string name="desc_enchanter">Use a book, obsidian and diamonds to construct an enchantment table.</string>
+    <string name="desc_overkill">Deal nine hearts of damage in a single hit.</string>
+    <string name="desc_librarian">Build some bookshelves to improve your enchantment table.</string>
+    <string name="desc_adventuring_time">Discover 17 of the 40 different biomes.</string>
+    <string name="desc_the_beginning">Spawn the Wither.</string>
+    <string name="desc_the_beginning_etc">Kill the Wither.</string>
+    <string name="desc_beaconator">Create a full beacon.</string>
+    <string name="desc_repopulation">Breed two cows with wheat.</string>
+    <string name="desc_diamonds_to_you">Throw diamonds at another player.</string>
+    <string name="desc_overpowered">Eat an enchanted golden apple.</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-7455717081229088/4942096451</string>
+    <string name="banner_ad_unit_id_ic">ca-app-pub-7455717081229088/5777871257</string>
+
+    <string name="add_in_favorites">Added to favorites</string>
+
+    <string name="choose_item">Select an item :)</string>
+
+    <string name="desc_cactus_green">Cactus green is a primary color dye.</string>
+
+    <string name="duplicate_fav_list">This item is already in the favorites list!</string>
+    <string name="db_update">Data base updated!</string>
+    <string name="db_recreate">Database restored!</string>
+
+    <string name="interface_settings">Interface Settings</string>
+
+
+    <string name="confidentiality">Confidentiality</string>
+
+
+    <string name="warning_message_db">Important message!</string>
+    <string name="desc_warning_message_db">If not display recipes, there are inscriptions "empty", there are no images, then RECREATE the RECIPE DATABASE! To do this, click on the 3 dots in the upper right corner and click "Restore recipe database". After these actions, everything should work fine.</string>
+    <string name="i_all_understand">I understand</string>
+
+
+    <string name="like_my_app">Rate this app</string>
+    <string name="desc_like_my_app">If you enjoy using this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thank for you support!</string>
+    <string name="rate">Rate now!</string>
+    <string name="rate_later">Later</string>
+    <string name="rate_never">No, thanks.</string>
+
+
+    <string name="phantom">Phantom</string>
+    <string name="description_phantom" formatted="false">This manta-ray–like monster is a flying creature that spawns at high altitudes. It is attracted to
+        insomnia, and will find players who haven\'t slept for many days. It will swoop down in groups and bite your flesh.
+    Phantoms are common, undead flying hostile mobs that attack players who haven\'t slept in over three in-game days.
+        Phantoms spawn in the Overworld at night, or at any time during a thunderstorm;
+        high above players that have not slept for at least 3 days. Phantoms will spawn more often the longer a player has gone without sleep.
+        When idle, phantoms will fly around in a circle at a constant y-elevation, leaving a trail of gray smoke while doing so. They have a quite large search radius, and will occasionally either swoop down or up quickly to attack their victim. If stopped or hurt during this action, the phantom will retreat back to its original elevation.
+        When idle over water, the phantom will sometimes swoop into the water and will die as it is not pushed back up.
+Phantoms are able to move through water at the same speed as they do normally.
+When under the Invisibility effect, the phantom\'s body will disappear, but its eyes and smoke particles will still be visible.
+Like zombies and skeletons, phantoms will burn in sunlight.</string>
+
+
+    <string name="drowned">Drowned</string>
+    <string name="description_drowned" formatted="false">Drowned are common hostile undead mobs that spawn in all oceans and rivers, swamps, or when a zombie drowns.
+        They are also currently the only source of tridents.
+    Drowned will naturally spawn at light level of 7 or less in ocean biomes (all variants), and in river and swamp biomes. They spawn at the bottom of the body of water they are in, and walk on the bottom instead of swimming like other mobs.
+Drowned have a chance to spawn with either a trident or a fishing rod, and occasionally with a nautilus shell. They also have a small chance of spawning while riding a chicken, even after drowning as a zombie, creating a drowned chicken jockey.
+        This is the only zombie counterpart within the game that can not spawn naturally with any armor.
+        If a zombie is underwater and not in a boat continuously for 30 seconds, it begins the process of converting to a drowned. Once this happens, it will start shaking, a similar effect to when a zombie villager is being cured. At this point the process cannot be stopped, and 15 seconds later the zombie will turn into a drowned.
+A zombie that is being drowned. (Click to see the animation)
+If a zombie is holding or wearing an item when it becomes a drowned, it will drop the item it is holding or wearing, 100% of the time if it had picked the item up, or the normal 8.5% +1% per looting level if it spawned with the item naturally.
+        Zombie villagers do not transform, and husks will not transform instantly, instead transforming into a regular zombie as a midway point.
+Drowned have a melee attack, and if they spawn with a trident, they will use it as a ranged weapon including underwater. Each trident is thrown every 1.5 second and will not be enchanted. In the Bedrock Edition drowned with tridents will use a melee attack if the target is 3 blocks away or less. They will intentionally stomp on turtle eggs, attack baby turtles and pufferfish, and like zombies will chase and attack villagers and iron golems. If on land, drowned will seek out nearby water. They will sometimes step onto land, but will quickly return to the water. If a drowned is in anyway removed by force from the water, and all nearby water sources has been blocked from it, it becomes passive in daytime, however will go to the nearest water source when provided and once again becomes hostile as soon as it contacts water.
+During the day, drowned only swim to attack players that are swimming in the water with them; otherwise, they stay on the floor of the water body they are in, ignoring players that are on land or in a boat. They remain passive to players not in contact with water and will not attack them during the day only. This is because drowned will stay in water to prevent burning in sunlight. However, at night, drowned swim to the surface and will chase players as well as baby turtles, even outside the water, like regular zombies, since they cannot burn at that time. The speed of their swim is equal to that of the player.
+If a drowned kills a villager with a thrown trident, the villager has a chance of turning into a zombie villager.</string>
+
+
+    <string name="turtle">Turtle</string>
+    <string name="description_turtle">Turtles[Java Edition only] or sea turtles[Bedrock Edition only] are common passive mobs that move both on land and in water.
+    Turtles spawn in the Overworld on warm beaches, occasionally in small groups of up to 5 individuals.
+Baby turtles can occasionally spawn naturally.[Bedrock Edition only]
+Turtles can both move around on land and swim in water. They move slowly on land, but they can swim at a fast speed in water. Like other passive mobs, they will move around aimlessly and will flee when attacked. When on land, they will generally attempt to move to the nearest water source. When on top of eggs, they levitate.
+Turtles will follow a player holding seagrass.
+Turtles cannot be attached to leads.
+    </string>
+
+
+    <string name="dolphin">Dolphin</string>
+    <string name="desc_dolphin">Social creatures of habit, dolphins can be found swimming together through the ocean in large groups. As they spot the player, they will try to interact with them, showing them just how highly intelligent and curious they are. Above all else – they are extremely playful!
+Dolphins are neutral mobs that live in the ocean.
+Dolphins are found in large groups in all ocean biomes, except frozen oceans.
+Dolphins will normally swim in groups, occasionally leaping out of the water to get air, they\'re also able to jump from one body of water to another. They will also try to chase after players in boats. They are also able to ride in boats themselves and can thus be transported.
+Players who swim near dolphins will receive Dolphin\'s Grace for 5 seconds.[Java Edition only] On the Bedrock Edition, the player simply gets a speed boost without a status effect.
+Dolphins are lured by dropped items, knocking them around and chasing them.[Java Edition only] If the player or other mob hits a dolphin, the entire group will become hostile towards the attacker (like wolves and zombie pigmen).
+Feeding dolphins raw cod will improve their "trust" with you, depending on the amount of fish fed, causing them to interact with the player more.
+When dolphins are fed raw cod, they will swim to the nearest shipwreck or underwater ruins. Because they are locating the chest in the structures rather than the structures themselves, breaking the chests will cause the dolphin to locate a new structure with intact chests.[verify]
+Dolphins also avoid guardians and elder guardians.
+
+If a dolphin is not in water, it will start taking suffocation damage after a while (about two minutes), and eventually die, similar to squids. This also applies if a dolphin rides in a boat[Java Edition only] . Dolphins cannot ride boats on the Bedrock version, similarly to squid, turtles, and all types of fish. When on land they will actively seek out a body of water. They will also start suffocating immediately after entering the nether.
+They can\'t survive without getting air every once in a while either, so if they stay submerged for about 4 minutes, they will begin drowning. The water breathing effect does not prevent them from drowning.
+Because the dolphin is an aquatic mob, they are affected by the impaling enchantment.</string>
+
+
+    <string name="cod">Cod</string>
+    <string name="desc_cod">Cod is a friendly mob that lives in certain oceans in packs.
+    The maximum amount of cod in the pack is 9. The player has the opportunity to get it with a bucket of water, buying a bucket of fish. In the future, with the help of this subject, you can place water and fish on the surface.
+    </string>
+
+
+    <string name="salmon">Salmon</string>
+    <string name="desc_salmon">Salmon is a friendly mob that lives in certain oceans and various rivers in packs. Like cod, salmon come in different sizes.
+     The maximum number of salmon in the pack is 6. The player has the opportunity to get it with a bucket of water, buying a bucket of fish.
+         In the future, with the help of this subject, you can place water and fish on the surface.
+    </string>
+
+
+    <string name="tropical_fish">Tropical Fish</string>
+    <string name="desc_tropical_fish">A tropical fish is a friendly mob that lives in certain oceans in packs.</string>
+
+
+    <string name="pufferfish">Pufferfish</string>
+    <string name="desc_pufferfish">Pufferfish is a mob that lives in certain oceans.
+     A delightful puffer that will fill you with a delicious poison, because you were too close :(
+    </string>
+
+
+    <string name="defensive_mobs">Defensive mobs</string>
+
+
+    <string name="sea_pickle">Sea Pickle</string>
+    <string name="desc_sea_pickle">Sea pickles are light-emitting colonies of small stationary animals found underwater.
+    A sea pickle colony will break instantly[Java Edition only] and drop itself as an item if broken using anything, or if the block below it breaks, dropping as many pickles as there are on the block.
+In Bedrock Edition, a sea pickle colony requires a few seconds to break, unlike in Java Edition, but otherwise they still have the same properties listed above.
+   From Sea Pickle you can make a lime dye.
+    </string>
+
+
+    <string name="conduit">Conduit</string>
+    <string name="desc_conduit">
+A conduit is a block that gives nearby players the Conduit Power status effect and attacks hostile mobs when powered by placing a certain configuration of blocks.
+    </string>
+
+
+    <string name="nautilus_shell">Nautilus Shell</string>
+    <string name="desc_nautilus_shell">
+Nautilus shell is an item that is used for crafting conduits.
+        Nautilus shells can be obtained as treasure from fishing and can sometimes be held by drowned.
+    </string>
+
+
+    <string name="heart_of_the_sea">Heart of the Sea</string>
+    <string name="desc_heart_of_the_sea">The "Heart of the Sea" can be found using a treasure map, found in chests within shipwrecks usually found near icebergs. These shipwrecks are spruce-based, normally half of a damaged ship, and will usually be found in the water. Sometimes they are beached on land. The map will lead you to a chest which may be in the water. It will contain valuable loot, and will have a "Heart of the Sea" in the chest.</string>
+
+
+    <string name="kelp">Kelp</string>
+    <string name="desc_kelp">Kelp is a non-solid plant block that generates in all oceans. It has an item form that can be smelted to dried kelp.
+    Kelp can be mined with any tool or without a tool. Breaking part of a kelp stalk will destroy the entire stalk. Each block has an undetermined chance to drop a kelp item.
+    </string>
+
+    <string name="dried_kelp">Dried Kelp</string>
+    <string name="desc_dried_kelp">
+        Dried kelp is a food item that can be quickly eaten by the player.
+    </string>
+
+    <string name="dried_kelp_block">Dried Kelp Block</string>
+    <string name="desc_dried_kelp_block">
+      Dried kelp blocks are blocks that are primarily used as a fuel in furnaces.
+        Dried kelp blocks can be used as fuel in a furnace. It lasts 200 seconds, meaning that it is able to smelt 20 items. This is 2.5 times as long as the burning time for coal or charcoal.
+    </string>
+
+
+    <string name="phantom_membrane">Phantom Membrane</string>
+    <string name="desc_phantom_membrane">Phantom membrane is a brewing item obtained from phantoms.
+    Phantoms will drop 0–1 phantom membranes when killed by a player.
+        Elytra can be repaired with phantom membranes in an anvil.
+    </string>
+
+
+    <string name="trident">Trident</string>
+    <string name="desc_trident">Tridents are a type of weapon that can be used in melee or ranged combat.
+Tridents are not craftable; it can only be obtained from drowned as a drop.
+Drowned that spawn with a trident as their natural weapon have a 8.5% chance of dropping the trident which has a random durability. Each level of Looting will increase the chance by 1 percentage point (11.5% with Looting III).
+Drowned can also drop a trident as one of its normal drops. The trident has a 3.7% chance, 4% chance with Looting I, 4.3% chance with Looting II and 4.7% chance with Looting III of dropping itself. [Bedrock Edition only]
+Only naturally-spawned drowned will spawn with a trident. Converted zombies will not.[Java Edition only]
+Tridents that were thrown onto the ground can be picked up, similarly to a fired arrow. Tridents that are enchanted with Loyalty will return to the thrower within seconds, the time taken will become shorter with each level of Loyalty enchanted onto the trident. Like skeleton and stray arrows, tridents fired by drowned cannot be picked up.
+    </string>
+
+
+    <string name="scute">Scute</string>
+    <string name="desc_scute">
+        Scutes are items that baby turtles drop when they grow into adults.
+Baby turtles drop a single scute when they grow up into adults.
+    </string>
+
+
+    <string name="desc_a_throwaway_joke">Throw a trident at something.
+Note: Throwing away your only weapon is not a good idea.</string>
+    <string name="desc_very_very_frightening">Strike a Villager with lightning. Hit a villager with lightning created by a trident with the channeling enchantment.</string>
+
+
+    <string name="turtle_shell">Turtle Shell</string>
+    <string name="desc_turtle_shell">
+        Turtle shells, referred to as turtle helmets in the game’s code, are items that are used for brewing or as a helmet to give the player the Water Breathing status effect.
+    </string>
+
+    <string name="dirt_joke">You do not know where to get the dirt? Really? SHE IS UNDER YOUR FEET!</string>
+    <string name="i_found_a_mistake">I found a mistake!</string>
+
+
+    <string name="group_in_telegram">Group in Telegram</string>
+    <string name="write_on_twitter">Write on Twitter</string>
+    <string name="write_a_letter">Write a letter</string>
+    <string name="report_bug">You can report the error in one of these ways:</string>
+    <string name="send_mail">Send mail…</string>
+    <string name="not_email_app">There is no application to send an email</string>
+    <string name="not_browser_app">Missing browser</string>
+
+
+    <string name="dev_plan">Development Plan (Kanban board) on Trello:</string>
+
+    <string name="watch_ads">Watch ads</string>
+    <string name="_1_hour">1 Hour</string>
+    <string name="_1_day">1 Day</string>
+    <string name="temporarily_disable_ads">Temporarily disable ads</string>
+    <string name="progress_ads_count">Progress: %1$d/5</string>
+    <string name="advertising_disabled">Advertising is disabled on one day:</string>
+    <string name="ads_disabled_until">Ads disabled until: %1$s</string>
+    <string name="disable_ads_forever">Disable ads forever</string>
+    <string name="disable_ads_desc">To temporarily disable advertising in the app, view the video advertising in the amount of 5.</string>
+    <string name="nice">Nice!</string>
 </resources>
