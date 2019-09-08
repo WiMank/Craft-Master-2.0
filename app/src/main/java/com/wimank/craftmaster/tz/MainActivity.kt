@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.gson.GsonBuilder
 import com.wimank.craftmaster.tz.postgres.AppDataBase
+import com.wimank.craftmaster.tz.postgres.CraftDescEntity
 import com.wimank.craftmaster.tz.postgres.RecipesEntity
 import com.wimank.craftmaster.tz.request.ListApi
 import com.wimank.craftmaster.tz.request.RecipePrimaryKey
@@ -104,7 +105,36 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun uploadDescCrafts(recipesEntity: RecipesEntity) {
+        val api = retrofit.create(ListApi::class.java)
+/*
+
+        val firtst = try {
+            val resName = resources.getIdentifier(recipesEntity.name, "string", packageName)
+            Log.i("TEST RX", "NAME: ${getString(resName)}")
+            getString(resName)
+        } catch (e: Resources.NotFoundException) {
+            Log.i("TEST RX", "NAME: NULL")
+            ""
+        }
+
+        val resp =
+            api.postCraft(CraftDescEntity(RecipePrimaryKey(firtst, recipesEntity.imageIcon ?: ""),
+                recipesEntity.in
+                ))
+        resp.enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.e("TEST RX", "API RESP: FAIIIIL!", t)
+            }
+
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                Log.i("TEST RX", "API RESP: ${response.body()}!")
+            }
+        })*/
+    }
 }
+
 
 /* val file = getDatabasePath(DATA_BASE_VERSION)
 
