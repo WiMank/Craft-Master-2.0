@@ -10,12 +10,12 @@ import retrofit2.http.POST
 
 interface ListApi {
 
-    @POST("/recipes/minecraft_recipes")
+    @POST("/recipes/minecraft_recipe/list")
     @Headers("Accept: application/json", "Content-Type: application/json")
     fun postList(@Body requestList: RequestList): Call<ResponseBody>
 
 
-    @POST("/minecraft_recipe/craft")
+    @POST("/recipes/minecraft_recipe/crafts_bp")
     @Headers("Accept: application/json", "Content-Type: application/json")
     fun postCraft(@Body craftDescEntity: CraftDescEntity): Call<ResponseBody>
 

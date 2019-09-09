@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.gson.GsonBuilder
 import com.wimank.craftmaster.tz.postgres.AppDataBase
+import com.wimank.craftmaster.tz.postgres.CraftBluePrintEntity
 import com.wimank.craftmaster.tz.postgres.CraftDescEntity
 import com.wimank.craftmaster.tz.postgres.RecipesEntity
 import com.wimank.craftmaster.tz.request.ListApi
@@ -32,7 +33,7 @@ val DATA_BASE_VERSION = "RecipesDataBase14.db"
 class MainActivity : AppCompatActivity() {
 
     val interceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.NONE
+        level = HttpLoggingInterceptor.Level.BODY
     }
 
     val okhttp = OkHttpClient()
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             .filter { t -> t._id <= 297 }
             .subscribeBy(
                 onNext = {
-                    //uploadList(it)
+                    uploadDescCrafts(it)
                 },
                 onError = {
                     Log.e("TEST RX", "rx:", it)
@@ -108,30 +109,56 @@ class MainActivity : AppCompatActivity() {
 
     private fun uploadDescCrafts(recipesEntity: RecipesEntity) {
         val api = retrofit.create(ListApi::class.java)
-/*
 
         val firtst = try {
             val resName = resources.getIdentifier(recipesEntity.name, "string", packageName)
-            Log.i("TEST RX", "NAME: ${getString(resName)}")
             getString(resName)
         } catch (e: Resources.NotFoundException) {
-            Log.i("TEST RX", "NAME: NULL")
+            ""
+        }
+
+        val instrumentName = when (recipesEntity.imageInstrument) {
+            "anim_axe" -> "axe"
+            "anim_pickaxe" -> "pickaxe"
+            else -> ""
+        }
+
+        val descCraft = try {
+            val resName =
+                resources.getIdentifier(recipesEntity.descriptionTextCraft, "string", packageName)
+            getString(resName)
+        } catch (e: Resources.NotFoundException) {
             ""
         }
 
         val resp =
             api.postCraft(CraftDescEntity(RecipePrimaryKey(firtst, recipesEntity.imageIcon ?: ""),
-                recipesEntity.in
-                ))
+                instrumentName,
+                instrumentName,
+                recipesEntity.stackable ?: "",
+                descCraft,
+                recipesEntity.wikiLink ?: "",
+                CraftBluePrintEntity(
+                    RecipePrimaryKey(firtst, recipesEntity.imageIcon ?: ""),
+                    recipesEntity.one ?: "",
+                    recipesEntity.two ?: "",
+                    recipesEntity.three ?: "",
+                    recipesEntity.four ?: "",
+                    recipesEntity.five ?: "",
+                    recipesEntity.six ?: "",
+                    recipesEntity.seven ?: "",
+                    recipesEntity.eight ?: "",
+                    recipesEntity.nine ?: ""
+                )))
         resp.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Log.e("TEST RX", "API RESP: FAIIIIL!", t)
             }
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                Log.i("TEST RX", "API RESP: ${response.body()}!")
+                Log.i("TEST RX", "API RESP: ${response.isSuccessful}!")
             }
-        })*/
+        })
     }
 }
 
