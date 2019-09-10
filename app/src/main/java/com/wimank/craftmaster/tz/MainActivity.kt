@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz
 
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonObject
 import com.wimank.craftmaster.tz.postgres.AppDataBase
 import com.wimank.craftmaster.tz.postgres.CraftBluePrintEntity
 import com.wimank.craftmaster.tz.postgres.CraftDescEntity
@@ -26,7 +28,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 import java.util.concurrent.TimeUnit
+
 
 val DATA_BASE_VERSION = "RecipesDataBase14.db"
 
@@ -70,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             .filter { t -> t._id <= 297 }
             .subscribeBy(
                 onNext = {
+                    //  uploadList(it)
                     uploadDescCrafts(it)
                 },
                 onError = {
@@ -85,71 +90,155 @@ class MainActivity : AppCompatActivity() {
         val api = retrofit.create(ListApi::class.java)
 
 
-        val firtst = try {
+        val eng = try {
             val resName = resources.getIdentifier(recipesEntity.name, "string", packageName)
-            Log.i("TEST RX", "NAME: ${getString(resName)}")
-            getString(resName)
+            val englishName = getLocaleStringResource(Locale("en"), resName)
+            englishName
         } catch (e: Resources.NotFoundException) {
-            Log.i("TEST RX", "NAME: NULL")
             ""
         }
 
+        val rus = try {
+            val resName = resources.getIdentifier(recipesEntity.name, "string", packageName)
+            val englishName = getLocaleStringResource(Locale("ru"), resName)
+            englishName
+        } catch (e: Resources.NotFoundException) {
+            ""
+        }
+
+
+        val jsname = JsonObject()
+        jsname.addProperty("en", eng)
+        jsname.addProperty("ru", rus)
+
+
         val resp =
-            api.postList(RequestList(RecipePrimaryKey(firtst, recipesEntity.imageIcon ?: "")))
+            api.postList(
+                RequestList(
+                    RecipePrimaryKey(
+                        recipesEntity.name ?: "",
+                        recipesEntity.imageIcon ?: ""
+                    ), jsname
+                )
+            )
         resp.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Log.e("TEST RX", "API RESP: FAIIIIL!", t)
             }
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                Log.i("TEST RX", "API RESP: ${response.body()}!")
+                Log.i("TEST RX", "API RESP: ${response.isSuccessful}!")
             }
         })
     }
 
+
+    private fun getLocaleStringResource(requestedLocale: Locale, resourceId: Int): String {
+        val config = Configuration(resources.configuration)
+        config.setLocale(requestedLocale)
+        return createConfigurationContext(config).getText(resourceId).toString()
+    }
+
+
     private fun uploadDescCrafts(recipesEntity: RecipesEntity) {
         val api = retrofit.create(ListApi::class.java)
 
-        val firtst = try {
+        val eng = try {
             val resName = resources.getIdentifier(recipesEntity.name, "string", packageName)
-            getString(resName)
+            getLocaleStringResource(Locale("en"), resName)
         } catch (e: Resources.NotFoundException) {
             ""
         }
 
-        val instrumentName = when (recipesEntity.imageInstrument) {
+        val rus = try {
+            val resName = resources.getIdentifier(recipesEntity.name, "string", packageName)
+            getLocaleStringResource(Locale("ru"), resName)
+        } catch (e: Resources.NotFoundException) {
+            ""
+        }
+
+
+        val instrumentiMAGE = when (recipesEntity.imageInstrument) {
             "anim_axe" -> "axe"
             "anim_pickaxe" -> "pickaxe"
             else -> ""
         }
 
-        val descCraft = try {
+
+        val instrumentNameEn = when (recipesEntity.imageInstrument) {
+            "anim_axe" -> "Axe"
+            "anim_pickaxe" -> "Pickaxe"
+            else -> ""
+        }
+
+        val instrumentNameRu = when (recipesEntity.imageInstrument) {
+            "anim_axe" -> "Топор"
+            "anim_pickaxe" -> "Кирка"
+            else -> ""
+        }
+
+        val descCraftEN = try {
             val resName =
                 resources.getIdentifier(recipesEntity.descriptionTextCraft, "string", packageName)
-            getString(resName)
+            getLocaleStringResource(Locale("en"), resName)
         } catch (e: Resources.NotFoundException) {
             ""
         }
 
+        val descCraftRU = try {
+            val resName =
+                resources.getIdentifier(recipesEntity.descriptionTextCraft, "string", packageName)
+            getLocaleStringResource(Locale("ru"), resName)
+        } catch (e: Resources.NotFoundException) {
+            ""
+        }
+
+        val jsname = JsonObject()
+        jsname.addProperty("en", eng)
+        jsname.addProperty("ru", rus)
+
+        val jsDesc = JsonObject()
+        jsDesc.addProperty("en", descCraftEN)
+        jsDesc.addProperty("ru", descCraftRU)
+
+
+        val jsInstrument = JsonObject()
+        if (instrumentNameEn.isNotEmpty() and instrumentNameRu.isNotEmpty()) {
+            jsInstrument.addProperty("en", instrumentNameEn)
+            jsInstrument.addProperty("ru", instrumentNameRu)
+        }
+
         val resp =
-            api.postCraft(CraftDescEntity(RecipePrimaryKey(firtst, recipesEntity.imageIcon ?: ""),
-                instrumentName,
-                instrumentName,
-                recipesEntity.stackable ?: "",
-                descCraft,
-                recipesEntity.wikiLink ?: "",
-                CraftBluePrintEntity(
-                    RecipePrimaryKey(firtst, recipesEntity.imageIcon ?: ""),
-                    recipesEntity.one ?: "",
-                    recipesEntity.two ?: "",
-                    recipesEntity.three ?: "",
-                    recipesEntity.four ?: "",
-                    recipesEntity.five ?: "",
-                    recipesEntity.six ?: "",
-                    recipesEntity.seven ?: "",
-                    recipesEntity.eight ?: "",
-                    recipesEntity.nine ?: ""
-                )))
+            api.postCraft(
+                CraftDescEntity(
+                    RecipePrimaryKey(
+                        recipesEntity.name ?: "",
+                        recipesEntity.imageIcon ?: ""),
+                    jsname,
+                    jsInstrument,
+                    instrumentiMAGE,
+                    recipesEntity.stackable ?: "",
+                    jsDesc,
+                    recipesEntity.wikiLink ?: "",
+
+                    CraftBluePrintEntity(
+                        RecipePrimaryKey(
+                            recipesEntity.name ?: "",
+                            recipesEntity.imageIcon ?: ""
+                        ),
+                        recipesEntity.one ?: "",
+                        recipesEntity.two ?: "",
+                        recipesEntity.three ?: "",
+                        recipesEntity.four ?: "",
+                        recipesEntity.five ?: "",
+                        recipesEntity.six ?: "",
+                        recipesEntity.seven ?: "",
+                        recipesEntity.eight ?: "",
+                        recipesEntity.nine ?: ""
+                    )
+                )
+            )
+
         resp.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Log.e("TEST RX", "API RESP: FAIIIIL!", t)

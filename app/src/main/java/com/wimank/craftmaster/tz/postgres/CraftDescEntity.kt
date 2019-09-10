@@ -1,18 +1,21 @@
 package com.wimank.craftmaster.tz.postgres
 
+import com.google.gson.JsonObject
 import com.wimank.craftmaster.tz.request.RecipePrimaryKey
 
 data class CraftDescEntity(
 
     var recipePrimaryKey: RecipePrimaryKey,
 
-    var lleftParameter: String,
+    val recipe_name: JsonObject,
+
+    var lleftParameter: JsonObject,
 
     var lleftParameterImage: String,
 
     var rrightParameter: String,
 
-    var descriptionCraft: String,
+    var descriptionCraft: JsonObject,
 
     var wikiLink: String,
 
