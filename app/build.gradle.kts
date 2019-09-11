@@ -47,8 +47,8 @@ dependencies {
     //Moxy
     val moxyVer = "1.7.0"
     implementation ("tech.schoolhelper:moxy-x-androidx:$moxyVer")
-    implementation ("tech.schoolhelper:moxy-x-material:$moxyVer")
-    kapt ("com.arello-mobile:moxy-compiler:1.5.5")
+    implementation ("tech.schoolhelper:moxy-x:$moxyVer")
+    kapt ("tech.schoolhelper:moxy-x-compiler:$moxyVer")
 
     //Room
     val roomVersion = "2.2.0-beta01"
@@ -64,8 +64,10 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.0.1")
 
     //Dagger 2
-    val daggerVersion = "2.22.1"
-    api ("com.google.dagger:dagger-android:$daggerVersion")
-    api ("com.google.dagger:dagger-android-support:$daggerVersion")
+    val daggerVersion = "2.24"
+    implementation ("com.google.dagger:dagger:$daggerVersion")
+    implementation ("com.google.dagger:dagger-android:$daggerVersion")
+    implementation ("com.google.dagger:dagger-android-support:$daggerVersion")
+    kapt ("com.google.dagger:dagger-compiler:$daggerVersion")
     kapt ("com.google.dagger:dagger-android-processor:$daggerVersion")
 }
