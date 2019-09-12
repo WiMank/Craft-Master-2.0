@@ -1,8 +1,8 @@
 package com.wimank.craftmaster.tz.main_screen
 
-import androidx.appcompat.app.AppCompatActivity
+import com.wimank.craftmaster.tz.common.ui.BaseActivity
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
 }
