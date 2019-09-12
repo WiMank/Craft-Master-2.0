@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             .filter { t -> t._id <= 297 }
             .subscribeBy(
                 onNext = {
-                    uploadList(it)
+                    //  uploadList(it)
                     uploadDescCrafts(it)
                 },
                 onError = {
