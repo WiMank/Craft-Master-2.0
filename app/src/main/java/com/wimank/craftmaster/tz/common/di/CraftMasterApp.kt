@@ -7,6 +7,7 @@ class CraftMasterApp : DaggerApplication() {
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerAppComponent
             .builder()
+            .context(this)
             .build()
     }
 }

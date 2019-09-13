@@ -6,7 +6,7 @@ import rx.Subscription
 import rx.subscriptions.CompositeSubscription
 
 
-abstract class RootPresenter<View : MvpView> : MvpPresenter<View>() {
+open class BasePresenter<View : MvpView> : MvpPresenter<View>() {
     private val compositeSubscription = CompositeSubscription()
 
     fun unsubscribeOnDestroy(subscription: Subscription) {
