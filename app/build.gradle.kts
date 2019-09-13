@@ -73,4 +73,9 @@ dependencies {
     implementation ("com.google.dagger:dagger-android-support:$daggerVersion")
     kapt ("com.google.dagger:dagger-compiler:$daggerVersion")
     kapt ("com.google.dagger:dagger-android-processor:$daggerVersion")
+
+    //Glide
+    val glideVer = "4.9.0"
+    implementation ("com.github.bumptech.glide:glide:$glideVer")
+    kapt ("com.github.bumptech.glide:compiler:$glideVer")
 }

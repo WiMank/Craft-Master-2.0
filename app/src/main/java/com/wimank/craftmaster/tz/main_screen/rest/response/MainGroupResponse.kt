@@ -1,11 +1,19 @@
 package com.wimank.craftmaster.tz.main_screen.rest.response
 
+import com.google.gson.annotations.SerializedName
+
 data class MainGroupResponse(
+    @field:SerializedName("groupList")
     val groupList: List<GroupListItem>
 )
 
 class GroupListItem(
+    @field:SerializedName("group")
+    val group: String,
+
+    @field:SerializedName("endpoint")
     val endpoint: String,
-    val groupImage: ByteArray,
-    val group: String
+
+    @field:SerializedName("groupImage")
+    val groupImage: String
 )

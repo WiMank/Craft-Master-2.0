@@ -1,7 +1,9 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
 import android.content.Context
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
+import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupModel
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
@@ -27,11 +29,13 @@ class MainPresenter(private val context: Context,
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-
+                        if (!it.groupList.isNullOrEmpty()) {
+                            viewState.groupListLoaded(it.groupList)
+                            viewState.showMessage(R.string.groups_successfully_uploaded)
+                        } else
+                            viewState.showError(R.string.group_list_load_error)
                     },
-                    onError = {
-
-                    }
+                    onError = { viewState.showError(R.string.group_list_load_error) }
                 )
         )
     }
