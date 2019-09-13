@@ -25,7 +25,6 @@ class MainActivity : BaseActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mMainPresenter.kek()
     }
 
     override fun showMessage(message: String) {
