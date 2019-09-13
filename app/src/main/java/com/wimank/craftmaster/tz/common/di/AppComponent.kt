@@ -9,7 +9,14 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class, ActivityModule::class])
+@Component(
+    modules = [
+        AndroidInjectionModule::class,
+        ActivityModule::class,
+        ApiModule::class,
+        RoomModule::class,
+        RetrofitModule::class]
+)
 interface AppComponent : AndroidInjector<CraftMasterApp> {
 
     @Component.Builder

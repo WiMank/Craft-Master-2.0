@@ -13,6 +13,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -33,6 +34,7 @@ class RetrofitModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(converterFactory)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
     }
@@ -45,10 +47,9 @@ class RetrofitModule {
 
     @Singleton
     @Provides
-    internal fun provideGson(strategy: FieldNamingStrategy): Gson {
+    internal fun provideGson(): Gson {
         return GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-            .setFieldNamingStrategy(strategy)
             .setPrettyPrinting()
             .setDateFormat("dd-MM-yyyy'T'HH:mm:ssZ")
             .serializeNulls()

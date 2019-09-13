@@ -45,6 +45,7 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("io.reactivex.rxjava2:rxjava:2.2.12")
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
+    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.6.0")
 
     //Moxy
     val moxyVer = "1.7.0"

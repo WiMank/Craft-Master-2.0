@@ -13,7 +13,7 @@ abstract class BaseActivity : MvpAppCompatActivity(), HasAndroidInjector {
     @Inject
     internal lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
-   override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
     }

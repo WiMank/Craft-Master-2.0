@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/main_ll"
-    tools:context=".main_screen.MainActivity">
+    tools:context=".main_screen.ui.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/group_list"
