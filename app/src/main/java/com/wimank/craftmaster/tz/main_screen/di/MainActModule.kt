@@ -6,16 +6,15 @@ import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import dagger.Module
 import dagger.Provides
-import retrofit2.Retrofit
 
 @Module
 class MainActModule {
 
-    @MainScope
+    @MainScreenScope
     @Provides
     fun provideMainPresenter(context: Context, mainGroupModel : MainGroupModel) = MainPresenter(context, mainGroupModel)
 
-    @MainScope
+    @MainScreenScope
     @Provides
     fun provideMainGroupModel(mainGroupApi: MainGroupApi): MainGroupModel {
         return MainGroupModel(mainGroupApi)
