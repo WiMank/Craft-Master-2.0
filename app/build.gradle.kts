@@ -77,5 +77,6 @@ dependencies {
     //Glide
     val glideVer = "4.9.0"
     implementation("com.github.bumptech.glide:glide:$glideVer")
+    implementation ("com.github.bumptech.glide:okhttp3-integration:$glideVer")
     kapt("com.github.bumptech.glide:compiler:$glideVer")
 }

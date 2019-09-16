@@ -1,13 +1,14 @@
 package com.wimank.craftmaster.tz.main_screen.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
+import com.wimank.craftmaster.tz.common.utils.BASE_URL
 import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
@@ -30,14 +31,6 @@ class MainActivity : BaseActivity(), MainView {
         setContentView(R.layout.activity_main)
     }
 
-    override fun showProgress(visibilityFlag: Int) {
-
-    }
-
-    override fun showError(message: Int) {
-
-    }
-
     override fun groupListLoaded(groupListItem: List<GroupListItem>) {
         group_recycler_view.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
@@ -46,6 +39,14 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun showMessage(message: Int) {
+        Snackbar.make(main_ll, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showProgress(visibilityFlag: Int) {
+
+    }
+
+    override fun showError(message: Int) {
         Snackbar.make(main_ll, message, Snackbar.LENGTH_SHORT).show()
     }
 }

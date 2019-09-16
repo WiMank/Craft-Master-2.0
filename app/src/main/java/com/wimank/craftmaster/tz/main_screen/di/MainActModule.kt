@@ -12,11 +12,11 @@ class MainActModule {
 
     @MainScreenScope
     @Provides
-    fun provideMainPresenter(context: Context, mainGroupModel : MainGroupModel) = MainPresenter(context, mainGroupModel)
+    fun provideMainPresenter(mainGroupModel: MainGroupModel) = MainPresenter(mainGroupModel)
 
     @MainScreenScope
     @Provides
-    fun provideMainGroupModel(mainGroupApi: MainGroupApi): MainGroupModel {
-        return MainGroupModel(mainGroupApi)
+    fun provideMainGroupModel(context: Context, mainGroupApi: MainGroupApi): MainGroupModel {
+        return MainGroupModel(context, mainGroupApi)
     }
 }
