@@ -2,8 +2,9 @@
     <string name="app_name">Craft Master 2.0</string>
     <string name="group_list_load_error">Error loading groups</string>
     <string name="groups_successfully_uploaded">Groups successfully uploaded!</string>
+    <string name="failed_to_save_images">Failed to save images</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -15,5 +15,8 @@ class GroupListItem(
     val endpoint: String,
 
     @field:SerializedName("groupImage")
-    val groupImage: String
+    val groupImage: String,
+
+    @field:SerializedName("orderGroup")
+    val orderGroup: Int
 )
