@@ -8,10 +8,8 @@ import io.reactivex.schedulers.Schedulers
 class MainGroupDataBaseManager(private val craftMasterDataBase: CraftMasterDataBase) {
 
     fun writeResponseInDb(mainGroupEntity: MainGroupEntity) {
-        Completable.fromAction { craftMasterDataBase.mainGroupDao().insert(mainGroupEntity) }.subscribeOn(Schedulers.io()).subscribe()
+
+
+
     }
-
-    /*fun checkMainGroup(mainGroupEntity: MainGroupEntity): Boolean {
-
-    }*/
 }

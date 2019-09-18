@@ -5,7 +5,7 @@ import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupManager
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
-import io.reactivex.Completable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -19,31 +19,40 @@ class MainPresenter(
         super.onFirstViewAttach()
         loadGroupList()
     }
-    
-    private fun loadGroupList(){
+
+    private fun loadGroupList() {
         unsubscribeOnDestroy(
             mainGroupManager
                 .getMainGroup()
+                .flatMap { t -> Single.just(t.groupList) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = { list ->
+                        if (!list.isNullOrEmpty()) {
+                            list.forEach {
+                                downloadGroupImages(it.groupImage)
+                            }
+                        }
+                    },
+                    onError = {
+                        viewState.showError(R.string.group_list_load_error)
+                    }
+                )
+        )
+    }
+
+    private fun downloadGroupImages(imageName: String) {
+        unsubscribeOnDestroy(
+            mainGroupManager.getMainGroupImage(imageName)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-                        if (!it.groupList.isNullOrEmpty()) {
-                            viewState.groupListLoaded(it.groupList)
-                            viewState.showMessage(R.string.groups_successfully_uploaded)
-                            Completable.fromAction { mainGroupManager.writeResponse(it) }
-                                .subscribeOn(Schedulers.io())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribeBy(
-                                    onError = {
-                                        viewState.showError(R.string.group_list_load_error)
-                                    }
-                                )
-                        } else
-                            viewState.showError(R.string.group_list_load_error)
+
                     },
                     onError = {
-                        viewState.showError(R.string.group_list_load_error)
+
                     }
                 )
         )
