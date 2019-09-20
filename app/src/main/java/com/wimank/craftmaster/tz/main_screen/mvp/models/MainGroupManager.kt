@@ -30,11 +30,42 @@ class MainGroupManager(
 
         if (sortedGroupList.size == sortedListEntity.size) {
             for (i in sortedGroupList.indices) {
-                if (sortedGroupList[i].vers != sortedListEntity[i].vers)
+                if (sortedGroupList[i].vers > sortedListEntity[i].vers)
                     replaceList.add(sortedGroupList[i])
             }
         }
+
+        if (sortedGroupList.size > sortedListEntity.size) {
+            for (i in sortedGroupList.indices) {
+                if (checkLocalArray(sortedListEntity, sortedGroupList[i].group)) {
+                    if (i < sortedListEntity.size)
+                        if (sortedGroupList[i].vers > sortedListEntity[i].vers)
+                            replaceList.add(sortedGroupList[i])
+                } else
+                    replaceList.add(sortedGroupList[i])
+            }
+        }
+
+        if (sortedGroupList.size < sortedListEntity.size) {
+            for (i in sortedListEntity.indices) {
+                if (checkServerArray(sortedGroupList, sortedListEntity[i].group)) {
+                    if (i < sortedGroupList.size)
+                        if (sortedGroupList[i].vers > sortedListEntity[i].vers)
+                            replaceList.add(sortedGroupList[i])
+                } else
+                    mainGroupDataBaseManager.deleteGroupEntity(sortedListEntity[i])
+            }
+        }
+
         return replaceList
+    }
+
+    private fun checkLocalArray(list: List<MainGroupEntity>, targetItem: String): Boolean {
+        return list.any { it.group == targetItem }
+    }
+
+    private fun checkServerArray(list: List<GroupListItem>, targetItem: String): Boolean {
+        return list.any { it.group == targetItem }
     }
 
     fun getMainGroupFromDb(): Flowable<List<MainGroupEntity>> {

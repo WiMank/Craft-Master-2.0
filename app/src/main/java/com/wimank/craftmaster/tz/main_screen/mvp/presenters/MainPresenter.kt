@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
@@ -69,7 +70,9 @@ class MainPresenter(
             }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(onError = { viewState.showError(R.string.failed_to_save_response) })
+                .subscribeBy(onError = {
+                    Log.e("TEST", "checkItemsVersion()", it)
+                    viewState.showError(R.string.failed_to_save_response) })
         )
     }
 
@@ -91,7 +94,10 @@ class MainPresenter(
                 .fromAction { mainGroupManager.writeResponse(inputStream, groupListItem) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(onError = { viewState.showError(R.string.failed_to_save_response) })
+                .subscribeBy(onError = {
+                    Log.e("TEST", "writeImageAndGroupListItem()", it)
+                    viewState.showError(R.string.failed_to_save_response)
+                })
         )
     }
 }
