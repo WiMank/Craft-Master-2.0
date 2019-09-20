@@ -21,43 +21,51 @@ class MainGroupManager(
     private val mainGroupApi: MainGroupApi,
     private val mainGroupDataBaseManager: MainGroupDataBaseManager
 ) {
+    private val replaceList = mutableListOf<GroupListItem>()
 
     fun checkItemsVersion(pGroupList: List<GroupListItem>): List<GroupListItem> {
-        val replaceList = mutableListOf<GroupListItem>()
-        val sortedGroupList = pGroupList.sortedWith(compareBy { it.orderGroup })
-        val sortedListEntity =
-            mainGroupDataBaseManager.getJustMainGroup().sortedWith(compareBy { it.orderGroup })
-
-        if (sortedGroupList.size == sortedListEntity.size) {
-            for (i in sortedGroupList.indices) {
-                if (sortedGroupList[i].vers > sortedListEntity[i].vers)
-                    replaceList.add(sortedGroupList[i])
-            }
-        }
-
-        if (sortedGroupList.size > sortedListEntity.size) {
-            for (i in sortedGroupList.indices) {
-                if (checkLocalArray(sortedListEntity, sortedGroupList[i].group)) {
-                    if (i < sortedListEntity.size)
-                        if (sortedGroupList[i].vers > sortedListEntity[i].vers)
-                            replaceList.add(sortedGroupList[i])
-                } else
-                    replaceList.add(sortedGroupList[i])
-            }
-        }
-
-        if (sortedGroupList.size < sortedListEntity.size) {
-            for (i in sortedListEntity.indices) {
-                if (checkServerArray(sortedGroupList, sortedListEntity[i].group)) {
-                    if (i < sortedGroupList.size)
-                        if (sortedGroupList[i].vers > sortedListEntity[i].vers)
-                            replaceList.add(sortedGroupList[i])
-                } else
-                    mainGroupDataBaseManager.deleteGroupEntity(sortedListEntity[i])
-            }
-        }
-
+        val serverList = pGroupList.sortedWith(compareBy { it.orderGroup })
+        val localList = mainGroupDataBaseManager.getJustMainGroup().sortedWith(compareBy { it.orderGroup })
+        replaceList.clear()
+        simpleCheckItems(serverList, localList)
+        checkAddItems(serverList, localList)
+        checkDeleteItems(serverList, localList)
         return replaceList
+    }
+
+    private fun simpleCheckItems(serverList: List<GroupListItem>, localList: List<MainGroupEntity>) {
+        if (serverList.size == localList.size) {
+            for (i in serverList.indices) {
+                if (serverList[i].vers > localList[i].vers)
+                    replaceList.add(serverList[i])
+            }
+        }
+    }
+
+    private fun checkAddItems(serverList: List<GroupListItem>, localList: List<MainGroupEntity>) {
+        if (serverList.size > localList.size) {
+            for (i in serverList.indices) {
+                if (checkLocalArray(localList, serverList[i].group)) {
+                    if (i < localList.size)
+                        if (serverList[i].vers > localList[i].vers)
+                            replaceList.add(serverList[i])
+                } else
+                    replaceList.add(serverList[i])
+            }
+        }
+    }
+
+    private fun checkDeleteItems(serverList: List<GroupListItem>, localList: List<MainGroupEntity>) {
+        if (serverList.size < localList.size) {
+            for (i in localList.indices) {
+                if (checkServerArray(serverList, localList[i].group)) {
+                    if (i < serverList.size)
+                        if (serverList[i].vers > localList[i].vers)
+                            replaceList.add(serverList[i])
+                } else
+                    mainGroupDataBaseManager.deleteGroupEntity(localList[i])
+            }
+        }
     }
 
     private fun checkLocalArray(list: List<MainGroupEntity>, targetItem: String): Boolean {
