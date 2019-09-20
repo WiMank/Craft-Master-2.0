@@ -22,8 +22,19 @@ class MainGroupManager(
     private val mainGroupDataBaseManager: MainGroupDataBaseManager
 ) {
 
-    fun checkDbVersions(groupListItem: GroupListItem){
+    fun checkItemsVersion(pGroupList: List<GroupListItem>): List<GroupListItem> {
+        val replaceList = mutableListOf<GroupListItem>()
+        val sortedGroupList = pGroupList.sortedWith(compareBy { it.orderGroup })
+        val sortedListEntity =
+            mainGroupDataBaseManager.getJustMainGroup().sortedWith(compareBy { it.orderGroup })
 
+        if (sortedGroupList.size == sortedListEntity.size) {
+            for (i in sortedGroupList.indices) {
+                if (sortedGroupList[i].vers != sortedListEntity[i].vers)
+                    replaceList.add(sortedGroupList[i])
+            }
+        }
+        return replaceList
     }
 
     fun getMainGroupFromDb(): Flowable<List<MainGroupEntity>> {

@@ -53,12 +53,23 @@ class MainPresenter(
                 .subscribeBy(
                     onSuccess = { list ->
                         viewState.showError(R.string.groups_successfully_uploaded)
-                        if (!list.isNullOrEmpty()) {
-                            list.forEach { downloadGroupImages(it) }
-                        }
+                        if (!list.isNullOrEmpty()) checkItemsVersion(list)
                     },
                     onError = { viewState.showError(R.string.group_list_load_error) }
                 )
+        )
+    }
+
+    private fun checkItemsVersion(list: List<GroupListItem>) {
+        unsubscribeOnDestroy(
+            Completable.fromAction {
+                with(mainGroupManager.checkItemsVersion(list)) {
+                    if (isNotEmpty()) forEach { item -> downloadGroupImages(item) }
+                }
+            }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(onError = { viewState.showError(R.string.failed_to_save_response) })
         )
     }
 

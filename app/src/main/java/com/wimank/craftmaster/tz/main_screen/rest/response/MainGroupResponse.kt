@@ -7,7 +7,7 @@ data class MainGroupResponse(
     val groupList: List<GroupListItem>
 )
 
-class GroupListItem(
+data class GroupListItem(
     @field:SerializedName("group")
     val group: String,
 

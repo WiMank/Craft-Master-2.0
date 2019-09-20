@@ -15,4 +15,12 @@ class MainGroupDataBaseManager(private val craftMasterDataBase: CraftMasterDataB
     fun getMainGroup(): Flowable<List<MainGroupEntity>> {
         return craftMasterDataBase.mainGroupDao().getMainGroup()
     }
+
+    fun getJustMainGroup(): List<MainGroupEntity> {
+        return craftMasterDataBase.mainGroupDao().getMainGroupTest()
+    }
+
+    fun deleteGroupEntity(mainGroupEntity: MainGroupEntity) {
+        return craftMasterDataBase.mainGroupDao().delete(mainGroupEntity)
+    }
 }
