@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.main_screen.rest.response.GroupListItem
 
-class MainGroupAdapter(private val groupList: List<GroupListItem>) :
+class MainGroupAdapter(private val list: List<MainGroupEntity>) :
     RecyclerView.Adapter<MainGroupViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainGroupViewHolder {
@@ -20,8 +21,8 @@ class MainGroupAdapter(private val groupList: List<GroupListItem>) :
     }
 
     override fun onBindViewHolder(holder: MainGroupViewHolder, position: Int) {
-        holder.bind(groupList[position])
+        holder.bind(list[position])
     }
 
-    override fun getItemCount() = groupList.size
+    override fun getItemCount() = list.size
 }

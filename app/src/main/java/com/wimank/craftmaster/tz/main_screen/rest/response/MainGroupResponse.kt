@@ -18,5 +18,8 @@ class GroupListItem(
     val groupImage: String,
 
     @field:SerializedName("orderGroup")
-    val orderGroup: Int
+    val orderGroup: Int,
+
+    @field:SerializedName("vers")
+    val vers: Int
 )

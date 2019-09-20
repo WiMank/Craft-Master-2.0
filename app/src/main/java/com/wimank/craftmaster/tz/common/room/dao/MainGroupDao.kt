@@ -5,6 +5,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
+import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface MainGroupDao {
@@ -12,7 +14,7 @@ interface MainGroupDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(mainGroupEntity: MainGroupEntity)
 
-    @Query("SELECT * FROM main_group")
-    fun getMainGroup(): MainGroupEntity
+    @Query("SELECT * FROM main_group ORDER BY order_group")
+    fun getMainGroup(): Flowable<List<MainGroupEntity>>
 
 }

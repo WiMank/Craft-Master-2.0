@@ -2,7 +2,6 @@ package com.wimank.craftmaster.tz.common.room.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 
 
@@ -18,6 +17,8 @@ data class MainGroupEntity(
     val endpoint: String,
 
     @ColumnInfo(name = "order_group")
-    val orderGroup: Int
+    val orderGroup: Int,
+
+    val vers: Int
 
 )

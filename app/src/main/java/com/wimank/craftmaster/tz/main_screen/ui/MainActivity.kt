@@ -7,6 +7,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
 import com.wimank.craftmaster.tz.common.utils.BASE_URL
 import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
@@ -31,10 +32,10 @@ class MainActivity : BaseActivity(), MainView {
         setContentView(R.layout.activity_main)
     }
 
-    override fun groupListLoaded(groupListItem: List<GroupListItem>) {
+    override fun showGroupList(mainGroupEntity: List<MainGroupEntity>) {
         group_recycler_view.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = MainGroupAdapter(groupListItem)
+            adapter = MainGroupAdapter(mainGroupEntity)
         }
     }
 

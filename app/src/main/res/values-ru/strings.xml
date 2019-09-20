@@ -2,7 +2,10 @@
     <string name="app_name">Craft Master 2.0</string>
     <string name="group_list_load_error">Ошибка загрузки групп</string>
     <string name="groups_successfully_uploaded">Группы успешно загружены!</string>
-    <string name="failed_to_save_images">Не удалось сохранить изображения</string>
+    <string name="failed_to_save_response">Не удалось сохранить данные</string>
+    <string name="failed_to_download_images">Не удалось загрузить изображения</string>
+    <string name="failed_load_data_in_db">Ошибка загрузки данных из базы данных</string>
+    <string name="offline_mode">Офлайн режим</string>
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
