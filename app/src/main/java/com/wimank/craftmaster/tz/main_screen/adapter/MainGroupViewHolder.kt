@@ -11,10 +11,5 @@ class MainGroupViewHolder(private val view: View) : RecyclerView.ViewHolder(view
 
     fun bind(groupItem: GroupListItem) {
         view.group_name.text = groupItem.group
-
-        GlideApp.with(view)
-            .load("$MAIN_URL${groupItem.groupImage}")
-            .centerCrop()
-            .into(view.group_image)
     }
 }

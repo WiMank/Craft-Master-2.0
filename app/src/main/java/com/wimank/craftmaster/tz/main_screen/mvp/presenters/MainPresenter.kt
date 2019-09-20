@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
@@ -49,10 +50,10 @@ class MainPresenter(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-
+                        mainGroupManager.prepareWriteImage(it.byteStream(), imageName)
                     },
                     onError = {
-
+                        Log.e("TEST", "downloadGroupImages()", it)
                     }
                 )
         )
