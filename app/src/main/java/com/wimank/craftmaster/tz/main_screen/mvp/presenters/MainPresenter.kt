@@ -4,10 +4,10 @@ import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
+import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.utils.NetManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupManager
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
-import com.wimank.craftmaster.tz.main_screen.rest.response.GroupListItem
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -24,22 +24,25 @@ class MainPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        getMainGroupFromDb()
         if (netManager.isInternetOn())
             loadGroupList()
-        else
+        else {
             viewState.showMessage(R.string.offline_mode)
+            getMainGroupFromDb()
+        }
     }
 
     private fun getMainGroupFromDb() {
         unsubscribeOnDestroy(
             mainGroupManager
-                .getMainGroupFromDb()
+                .getFlowableMainGroupFromDb()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onNext = { viewState.showGroupList(it) },
-                    onError = { viewState.showError(R.string.failed_load_data_in_db) }
+                    onError = {
+                        viewState.showError(R.string.failed_load_data_in_db)
+                        Log.e("TEST", "getMainGroupFromDb()", it)}
                 )
         )
     }
@@ -53,45 +56,54 @@ class MainPresenter(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = { list ->
-                        viewState.showError(R.string.groups_successfully_uploaded)
-                        if (!list.isNullOrEmpty()) checkItemsVersion(list)
+                        if (list.isNotEmpty()) {
+                            diffItemsVersion(list)
+                            viewState.showError(R.string.groups_successfully_uploaded)
+                        } else
+                            viewState.showError(R.string.group_list_load_error)
                     },
-                    onError = { viewState.showError(R.string.group_list_load_error) }
+                    onError = {
+                        Log.e("TEST", "loadGroupList()", it)
+                        viewState.showError(R.string.group_list_load_error)
+                    }
                 )
         )
     }
 
-    private fun checkItemsVersion(list: List<GroupListItem>) {
+    private fun diffItemsVersion(list: List<MainGroupEntity>) {
         unsubscribeOnDestroy(
-            Completable.fromAction {
-                with(mainGroupManager.checkItemsVersion(list)) {
-                    if (isNotEmpty()) forEach { item -> downloadGroupImages(item) }
-                }
-            }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(onError = {
-                    Log.e("TEST", "checkItemsVersion()", it)
-                    viewState.showError(R.string.failed_to_save_response) })
-        )
-    }
-
-    private fun downloadGroupImages(groupListItem: GroupListItem) {
-        unsubscribeOnDestroy(
-            mainGroupManager.getMainGroupImage(groupListItem.groupImage)
+            Single
+                .fromCallable { mainGroupManager.diffItemsVersion(list)  }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                    onSuccess = { writeImageAndGroupListItem(it.byteStream(), groupListItem) },
+                    onSuccess = { viewState.showDiffGroupList(list, it) },
+                    onError = {
+                    viewState.showError(R.string.failed_to_save_response)
+                    Log.e("TEST", "diffItemsVersion()", it)
+                })
+        )
+    }
+
+    private fun downloadGroupImages(mainGroupEntity: MainGroupEntity) {
+        unsubscribeOnDestroy(
+            mainGroupManager.getMainGroupImage(mainGroupEntity.groupImage)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = { writeImageAndGroupListItem(it.byteStream(), mainGroupEntity) },
                     onError = { viewState.showError(R.string.failed_to_download_images) }
                 )
         )
     }
 
-    private fun writeImageAndGroupListItem(inputStream: InputStream, groupListItem: GroupListItem) {
+    private fun writeImageAndGroupListItem(
+        inputStream: InputStream,
+        mainGroupEntity: MainGroupEntity
+    ) {
         unsubscribeOnDestroy(
             Completable
-                .fromAction { mainGroupManager.writeResponse(inputStream, groupListItem) }
+                .fromAction { mainGroupManager.writeResponse(inputStream, mainGroupEntity) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(onError = {

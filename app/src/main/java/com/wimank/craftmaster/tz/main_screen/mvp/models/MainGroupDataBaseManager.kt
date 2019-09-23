@@ -3,8 +3,6 @@ package com.wimank.craftmaster.tz.main_screen.mvp.models
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import io.reactivex.Flowable
-import io.reactivex.Single
-import io.reactivex.subjects.BehaviorSubject
 
 class MainGroupDataBaseManager(private val craftMasterDataBase: CraftMasterDataBase) {
 
@@ -12,12 +10,12 @@ class MainGroupDataBaseManager(private val craftMasterDataBase: CraftMasterDataB
         craftMasterDataBase.mainGroupDao().insert(mainGroupEntity)
     }
 
-    fun getMainGroup(): Flowable<List<MainGroupEntity>> {
-        return craftMasterDataBase.mainGroupDao().getMainGroup()
+    fun getFlowableMainGroup(): Flowable<List<MainGroupEntity>> {
+        return craftMasterDataBase.mainGroupDao().getFlowableMainGroup()
     }
 
-    fun getJustMainGroup(): List<MainGroupEntity> {
-        return craftMasterDataBase.mainGroupDao().getMainGroupTest()
+    fun getMainGroup(): List<MainGroupEntity> {
+        return craftMasterDataBase.mainGroupDao().getMainGroup()
     }
 
     fun deleteGroupEntity(mainGroupEntity: MainGroupEntity) {

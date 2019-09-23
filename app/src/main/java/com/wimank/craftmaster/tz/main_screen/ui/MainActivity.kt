@@ -1,19 +1,17 @@
 package com.wimank.craftmaster.tz.main_screen.ui
 
 import android.os.Bundle
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
-import com.wimank.craftmaster.tz.common.utils.BASE_URL
 import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
-import com.wimank.craftmaster.tz.main_screen.rest.response.GroupListItem
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -37,6 +35,13 @@ class MainActivity : BaseActivity(), MainView {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = MainGroupAdapter(mainGroupEntity)
         }
+    }
+
+    override fun showDiffGroupList(
+        mainGroupEntity: List<MainGroupEntity>,
+        diffResult: DiffUtil.DiffResult
+    ) {
+
     }
 
     override fun showMessage(message: Int) {

@@ -11,10 +11,10 @@ interface MainGroupDao {
     fun insert(mainGroupEntity: MainGroupEntity)
 
     @Query("SELECT * FROM main_group ORDER BY order_group")
-    fun getMainGroup(): Flowable<List<MainGroupEntity>>
+    fun getFlowableMainGroup(): Flowable<List<MainGroupEntity>>
 
     @Query("SELECT * FROM main_group ORDER BY order_group")
-    fun getMainGroupTest(): List<MainGroupEntity>
+    fun getMainGroup(): List<MainGroupEntity>
 
     @Delete
     fun delete(mainGroupEntity: MainGroupEntity)
