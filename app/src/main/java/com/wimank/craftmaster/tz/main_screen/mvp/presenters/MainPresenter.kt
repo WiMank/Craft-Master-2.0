@@ -8,7 +8,7 @@ import com.wimank.craftmaster.tz.common.utils.NetManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupManager
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -27,46 +27,47 @@ class MainPresenter(
             loadGroupList()
         else {
             viewState.showMessage(R.string.offline_mode)
+            loadMainGroupFromDb()
         }
     }
 
-    private fun getMainGroupFromDb() {
+    fun loadGroupList() {
+        viewState.showProgress(true)
         unsubscribeOnDestroy(
             mainGroupManager
-                .getFlowableMainGroupFromDb()
+                .getMainGroup()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .toObservable()
+                .flatMap { t -> Observable.fromIterable(t.groupList) }
+                .subscribeBy(
+                    onNext = { downloadGroupImages(it) },
+                    onError = {
+                        viewState.showError(R.string.group_list_load_error)
+                        viewState.showProgress(false)
+                    },
+                    onComplete = { loadMainGroupFromDb() }
+                )
+        )
+    }
+
+    private fun loadMainGroupFromDb() {
+        unsubscribeOnDestroy(
+            mainGroupManager
+                .getMainGroupFromDb()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
                         viewState.showGroupList(it)
+                        viewState.showProgress(false)
                     },
-                    onError = { viewState.showError(R.string.failed_load_data_in_db) }
+                    onError = {
+                        viewState.showError(R.string.failed_load_data_in_db)
+                        viewState.showProgress(false)
+                    }
                 )
         )
-    }
-
-    fun loadGroupList() {
-        unsubscribeOnDestroy(
-            mainGroupManager
-                .getMainGroup()
-                .flatMap { t -> Single.just(t.groupList) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                    onSuccess = { list ->
-                        if (list.isNotEmpty()) {
-                            list.forEach { downloadGroupImages(it) }
-                            viewState.showError(R.string.groups_successfully_uploaded)
-                        } else
-                            viewState.showError(R.string.group_list_load_error)
-                    },
-                    onError = { viewState.showError(R.string.group_list_load_error) }
-                )
-        )
-    }
-
-    private fun diffItemsVersion(list: List<MainGroupEntity>) {
-
     }
 
     private fun downloadGroupImages(mainGroupEntity: MainGroupEntity) {
@@ -76,7 +77,10 @@ class MainPresenter(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = { writeImageAndGroupListItem(it.byteStream(), mainGroupEntity) },
-                    onError = { viewState.showError(R.string.failed_to_download_images) }
+                    onError = {
+                        viewState.showError(R.string.failed_to_download_images)
+                        viewState.showProgress(false)
+                    }
                 )
         )
     }
@@ -87,8 +91,10 @@ class MainPresenter(
                 .fromAction { mainGroupManager.writeResponse(inps, entity) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                    onError = { viewState.showError(R.string.failed_to_save_response) })
+                .subscribeBy(onError = {
+                    viewState.showError(R.string.failed_to_save_response)
+                    viewState.showProgress(false)
+                })
         )
     }
 }

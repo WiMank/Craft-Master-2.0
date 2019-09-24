@@ -31,7 +31,6 @@ class MainActivity : BaseActivity(), MainView {
         initView()
     }
 
-
     private fun initView() {
         refresh.setOnRefreshListener {
             mMainPresenter.loadGroupList()
@@ -45,10 +44,7 @@ class MainActivity : BaseActivity(), MainView {
         }
     }
 
-    override fun showDiffGroupList(
-        mainGroupEntity: List<MainGroupEntity>,
-        diffResult: DiffUtil.DiffResult
-    ) {
+    override fun showDiffGroupList(entity: List<MainGroupEntity>, result: DiffUtil.DiffResult) {
 
     }
 
@@ -56,8 +52,8 @@ class MainActivity : BaseActivity(), MainView {
         Snackbar.make(main_ll, message, Snackbar.LENGTH_SHORT).show()
     }
 
-    override fun showProgress(visibilityFlag: Int) {
-
+    override fun showProgress(visibilityFlag: Boolean) {
+        refresh.isRefreshing = visibilityFlag
     }
 
     override fun showError(message: Int) {

@@ -20,16 +20,7 @@ class MainGroupManager(
     private val mainGroupDataBaseManager: MainGroupDataBaseManager
 ) {
 
-    /* fun diffItemsVersion(serverList: List<MainGroupEntity>): DiffUtil.DiffResult {
-         return DiffUtil.calculateDiff(
-             MainGroupDiffCallback(
-                 serverList,
-                 mainGroupDataBaseManager.getMainGroup()
-             )
-         )
-     }*/
-
-    fun getFlowableMainGroupFromDb(): Single<List<MainGroupEntity>> {
+    fun getMainGroupFromDb(): Single<List<MainGroupEntity>> {
         return mainGroupDataBaseManager.getMainGroupFromDb()
     }
 

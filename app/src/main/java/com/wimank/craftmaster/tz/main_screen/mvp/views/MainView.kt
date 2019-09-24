@@ -13,10 +13,10 @@ interface MainView : MvpView {
 
     fun showError(message: Int)
 
-    fun showProgress(visibilityFlag : Int)
+    fun showProgress(visibilityFlag : Boolean)
 
     fun showGroupList(mainGroupEntity: List<MainGroupEntity>)
 
-    fun showDiffGroupList(mainGroupEntity: List<MainGroupEntity>, diffResult : DiffUtil.DiffResult)
+    fun showDiffGroupList(entity: List<MainGroupEntity>, result : DiffUtil.DiffResult)
 
 }
