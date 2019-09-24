@@ -14,6 +14,10 @@ class MainGroupDataBaseManager(private val craftMasterDataBase: CraftMasterDataB
         return craftMasterDataBase.mainGroupDao().getMainGroupFromDb()
     }
 
+    fun getJustMainGroupFromDb(): List<MainGroupEntity> {
+        return craftMasterDataBase.mainGroupDao().getJustMainGroupFromDb()
+    }
+
     fun deleteGroupEntity(mainGroupEntity: MainGroupEntity) {
         return craftMasterDataBase.mainGroupDao().delete(mainGroupEntity)
     }

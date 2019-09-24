@@ -41,7 +41,6 @@ class MainGroupManager(
             }
             output.flush()
         }
-        mainGroupEntity.groupImage = targetImage.path
         mainGroupDataBaseManager.writeResponseInDb(mainGroupEntity)
     }
 }

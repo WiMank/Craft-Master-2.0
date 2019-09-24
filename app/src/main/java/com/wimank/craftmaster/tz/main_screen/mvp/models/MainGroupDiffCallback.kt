@@ -17,11 +17,11 @@ class MainGroupDiffCallback(
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return localList[oldItemPosition].vers == serverList[newItemPosition].vers
+        return localList[oldItemPosition].vers < serverList[newItemPosition].vers
     }
 
     override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any {
-        return if (localList[oldItemPosition].vers < serverList[newItemPosition].vers)
+        return if (localList[oldItemPosition] != serverList[newItemPosition])
             UpdateListItem.UPDATE
         else
             UpdateListItem.NOTHING_TO_UPDATE
