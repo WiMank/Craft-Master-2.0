@@ -17,21 +17,13 @@ class MainGroupDiffCallback(
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return localList[oldItemPosition].group == serverList[newItemPosition].group
-                &&
-                localList[oldItemPosition].groupImage == serverList[newItemPosition].groupImage
-                &&
-                localList[oldItemPosition].endpoint == serverList[newItemPosition].endpoint
-                &&
-                localList[oldItemPosition].orderGroup == serverList[newItemPosition].orderGroup
-                &&
-                localList[oldItemPosition].vers == serverList[newItemPosition].vers
+        return localList[oldItemPosition].vers == serverList[newItemPosition].vers
     }
 
     override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any {
         return if (localList[oldItemPosition].vers < serverList[newItemPosition].vers)
-            UpdateImage.UPDATE
+            UpdateListItem.UPDATE
         else
-            UpdateImage.NOTHING_TO_UPDATE
+            UpdateListItem.NOTHING_TO_UPDATE
     }
 }

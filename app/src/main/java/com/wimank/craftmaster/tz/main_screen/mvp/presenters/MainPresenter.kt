@@ -24,14 +24,14 @@ class MainPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         if (netManager.isInternetOn())
-            loadGroupList()
+            loadGroupList(false)
         else {
             viewState.showMessage(R.string.offline_mode)
             loadMainGroupFromDb()
         }
     }
 
-    fun loadGroupList() {
+    fun loadGroupList(update: Boolean) {
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             mainGroupManager
@@ -46,12 +46,14 @@ class MainPresenter(
                         viewState.showError(R.string.group_list_load_error)
                         viewState.showProgress(false)
                     },
-                    onComplete = { loadMainGroupFromDb() }
-                )
+                    onComplete = {
+                        if (update) updateList() else loadMainGroupFromDb()
+                    })
         )
     }
 
     private fun loadMainGroupFromDb() {
+        viewState.showProgress(true)
         unsubscribeOnDestroy(
             mainGroupManager
                 .getMainGroupFromDb()
@@ -65,8 +67,26 @@ class MainPresenter(
                     onError = {
                         viewState.showError(R.string.failed_load_data_in_db)
                         viewState.showProgress(false)
-                    }
-                )
+                    })
+        )
+    }
+
+    private fun updateList() {
+        viewState.showProgress(true)
+        unsubscribeOnDestroy(
+            mainGroupManager
+                .getMainGroupFromDb()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.updateGroupList(it)
+                        viewState.showProgress(false)
+                    },
+                    onError = {
+                        viewState.showError(R.string.list_update_error)
+                        viewState.showProgress(false)
+                    })
         )
     }
 
@@ -76,16 +96,15 @@ class MainPresenter(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                    onSuccess = { writeImageAndGroupListItem(it.byteStream(), mainGroupEntity) },
+                    onSuccess = { writeImageAndEntity(it.byteStream(), mainGroupEntity) },
                     onError = {
                         viewState.showError(R.string.failed_to_download_images)
                         viewState.showProgress(false)
-                    }
-                )
+                    })
         )
     }
 
-    private fun writeImageAndGroupListItem(inps: InputStream, entity: MainGroupEntity) {
+    private fun writeImageAndEntity(inps: InputStream, entity: MainGroupEntity) {
         unsubscribeOnDestroy(
             Completable
                 .fromAction { mainGroupManager.writeResponse(inps, entity) }

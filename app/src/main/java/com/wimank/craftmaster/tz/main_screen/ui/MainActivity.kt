@@ -25,6 +25,8 @@ class MainActivity : BaseActivity(), MainView {
     @ProvidePresenter
     fun provideMainPresenter() = mMainPresenter
 
+    private lateinit var mAdapter: MainGroupAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,15 +35,20 @@ class MainActivity : BaseActivity(), MainView {
 
     private fun initView() {
         refresh.setOnRefreshListener {
-            mMainPresenter.loadGroupList()
+            mMainPresenter.loadGroupList(true)
         }
     }
 
-    override fun showGroupList(mainGroupEntity: List<MainGroupEntity>) {
+    override fun showGroupList(list: List<MainGroupEntity>) {
+        mAdapter = MainGroupAdapter(list)
         group_recycler_view.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = MainGroupAdapter(mainGroupEntity)
+            adapter = mAdapter
         }
+    }
+
+    override fun updateGroupList(newList: List<MainGroupEntity>) {
+        mAdapter.update(newList)
     }
 
     override fun showDiffGroupList(entity: List<MainGroupEntity>, result: DiffUtil.DiffResult) {

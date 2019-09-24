@@ -15,7 +15,9 @@ interface MainView : MvpView {
 
     fun showProgress(visibilityFlag : Boolean)
 
-    fun showGroupList(mainGroupEntity: List<MainGroupEntity>)
+    fun showGroupList(list: List<MainGroupEntity>)
+
+    fun updateGroupList(newList: List<MainGroupEntity>)
 
     fun showDiffGroupList(entity: List<MainGroupEntity>, result : DiffUtil.DiffResult)
 
