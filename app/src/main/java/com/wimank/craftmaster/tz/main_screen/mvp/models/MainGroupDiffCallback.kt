@@ -13,7 +13,7 @@ class MainGroupDiffCallback(
     override fun getNewListSize() = serverList.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return localList[oldItemPosition] == serverList[newItemPosition]
+        return localList[oldItemPosition].group == serverList[newItemPosition].group
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

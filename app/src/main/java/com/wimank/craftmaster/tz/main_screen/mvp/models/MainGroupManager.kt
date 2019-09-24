@@ -3,12 +3,10 @@ package com.wimank.craftmaster.tz.main_screen.mvp.models
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.recyclerview.widget.DiffUtil
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.utils.IMAGE_FOLDER_NAME
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import com.wimank.craftmaster.tz.main_screen.rest.response.MainGroupResponse
-import io.reactivex.Flowable
 import io.reactivex.Single
 import okhttp3.ResponseBody
 import java.io.File
@@ -22,17 +20,17 @@ class MainGroupManager(
     private val mainGroupDataBaseManager: MainGroupDataBaseManager
 ) {
 
-    fun diffItemsVersion(serverList: List<MainGroupEntity>): DiffUtil.DiffResult {
-        return DiffUtil.calculateDiff(
-            MainGroupDiffCallback(
-                serverList,
-                mainGroupDataBaseManager.getMainGroup()
-            )
-        )
-    }
+    /* fun diffItemsVersion(serverList: List<MainGroupEntity>): DiffUtil.DiffResult {
+         return DiffUtil.calculateDiff(
+             MainGroupDiffCallback(
+                 serverList,
+                 mainGroupDataBaseManager.getMainGroup()
+             )
+         )
+     }*/
 
-    fun getFlowableMainGroupFromDb(): Flowable<List<MainGroupEntity>> {
-        return mainGroupDataBaseManager.getFlowableMainGroup()
+    fun getFlowableMainGroupFromDb(): Single<List<MainGroupEntity>> {
+        return mainGroupDataBaseManager.getMainGroupFromDb()
     }
 
     fun getMainGroup(): Single<MainGroupResponse> {
@@ -52,6 +50,7 @@ class MainGroupManager(
             }
             output.flush()
         }
+        mainGroupEntity.groupImage = targetImage.path
         mainGroupDataBaseManager.writeResponseInDb(mainGroupEntity)
     }
 }

@@ -28,6 +28,14 @@ class MainActivity : BaseActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initView()
+    }
+
+
+    private fun initView() {
+        refresh.setOnRefreshListener {
+            mMainPresenter.loadGroupList()
+        }
     }
 
     override fun showGroupList(mainGroupEntity: List<MainGroupEntity>) {

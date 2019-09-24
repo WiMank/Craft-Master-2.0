@@ -10,16 +10,21 @@ import com.google.gson.annotations.SerializedName
 data class MainGroupEntity(
 
     @PrimaryKey
-    val group: String,
+    @SerializedName("group")
+    var group: String,
 
     @ColumnInfo(name = "group_image")
-    val groupImage: String,
+    @SerializedName("groupImage")
+    var groupImage: String,
 
-    val endpoint: String,
+    @SerializedName("endpoint")
+    var endpoint: String,
 
     @ColumnInfo(name = "order_group")
-    val orderGroup: Int,
+    @SerializedName("orderGroup")
+    var orderGroup: Int,
 
-    val vers: Int
+    @SerializedName("vers")
+    var vers: Int
 
 )

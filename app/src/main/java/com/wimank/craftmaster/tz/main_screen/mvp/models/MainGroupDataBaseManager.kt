@@ -2,7 +2,7 @@ package com.wimank.craftmaster.tz.main_screen.mvp.models
 
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
-import io.reactivex.Flowable
+import io.reactivex.Single
 
 class MainGroupDataBaseManager(private val craftMasterDataBase: CraftMasterDataBase) {
 
@@ -10,12 +10,8 @@ class MainGroupDataBaseManager(private val craftMasterDataBase: CraftMasterDataB
         craftMasterDataBase.mainGroupDao().insert(mainGroupEntity)
     }
 
-    fun getFlowableMainGroup(): Flowable<List<MainGroupEntity>> {
-        return craftMasterDataBase.mainGroupDao().getFlowableMainGroup()
-    }
-
-    fun getMainGroup(): List<MainGroupEntity> {
-        return craftMasterDataBase.mainGroupDao().getMainGroup()
+    fun getMainGroupFromDb(): Single<List<MainGroupEntity>> {
+        return craftMasterDataBase.mainGroupDao().getMainGroupFromDb()
     }
 
     fun deleteGroupEntity(mainGroupEntity: MainGroupEntity) {

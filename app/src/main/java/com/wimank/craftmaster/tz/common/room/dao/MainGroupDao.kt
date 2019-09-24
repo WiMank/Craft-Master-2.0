@@ -3,6 +3,7 @@ package com.wimank.craftmaster.tz.common.room.dao
 import androidx.room.*
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface MainGroupDao {
@@ -11,10 +12,7 @@ interface MainGroupDao {
     fun insert(mainGroupEntity: MainGroupEntity)
 
     @Query("SELECT * FROM main_group ORDER BY order_group")
-    fun getFlowableMainGroup(): Flowable<List<MainGroupEntity>>
-
-    @Query("SELECT * FROM main_group ORDER BY order_group")
-    fun getMainGroup(): List<MainGroupEntity>
+    fun getMainGroupFromDb(): Single<List<MainGroupEntity>>
 
     @Delete
     fun delete(mainGroupEntity: MainGroupEntity)
