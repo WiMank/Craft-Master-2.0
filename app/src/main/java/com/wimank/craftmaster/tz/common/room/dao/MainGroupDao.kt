@@ -13,9 +13,6 @@ interface MainGroupDao {
     @Query("SELECT * FROM main_group ORDER BY order_group")
     fun getMainGroupFromDb(): Single<List<MainGroupEntity>>
 
-    @Query("SELECT * FROM main_group ORDER BY order_group")
-    fun getJustMainGroupFromDb(): List<MainGroupEntity>
-
     @Delete
     fun delete(mainGroupEntity: MainGroupEntity)
 

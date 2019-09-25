@@ -35,7 +35,7 @@ class MainActivity : BaseActivity(), MainView {
 
     private fun initView() {
         refresh.setOnRefreshListener {
-            mMainPresenter.loadGroupList(true)
+          //  mMainPresenter.loadGroupList(true)
         }
     }
 

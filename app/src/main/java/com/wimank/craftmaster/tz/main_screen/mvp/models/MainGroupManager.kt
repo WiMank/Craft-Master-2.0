@@ -3,9 +3,13 @@ package com.wimank.craftmaster.tz.main_screen.mvp.models
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
+import com.wimank.craftmaster.tz.common.room.entities.DbVersEntity
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.utils.IMAGE_FOLDER_NAME
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
+import com.wimank.craftmaster.tz.main_screen.rest.response.DbVersResponse
+import com.wimank.craftmaster.tz.main_screen.rest.response.GroupsVersionResponse
 import com.wimank.craftmaster.tz.main_screen.rest.response.MainGroupResponse
 import io.reactivex.Single
 import okhttp3.ResponseBody
@@ -17,12 +21,8 @@ import java.io.InputStream
 class MainGroupManager(
     private val context: Context,
     private val mainGroupApi: MainGroupApi,
-    private val mainGroupDataBaseManager: MainGroupDataBaseManager
+    private val craftMasterDataBase: CraftMasterDataBase
 ) {
-
-    fun getMainGroupFromDb(): Single<List<MainGroupEntity>> {
-        return mainGroupDataBaseManager.getMainGroupFromDb()
-    }
 
     fun getMainGroup(): Single<MainGroupResponse> {
         return mainGroupApi.getGroupList()
@@ -30,6 +30,14 @@ class MainGroupManager(
 
     fun getMainGroupImage(imageName: String): Single<ResponseBody> {
         return mainGroupApi.getGroupImage(imageName)
+    }
+
+    fun getGroupsVersion(): Single<GroupsVersionResponse> {
+        return mainGroupApi.getGroupsVersion()
+    }
+
+    fun getServerDbVersion(): Single<DbVersResponse> {
+        return mainGroupApi.geServerDbVersion()
     }
 
     fun writeResponse(inputStream: InputStream, mainGroupEntity: MainGroupEntity) {
@@ -41,6 +49,30 @@ class MainGroupManager(
             }
             output.flush()
         }
-        mainGroupDataBaseManager.writeResponseInDb(mainGroupEntity)
+        writeResponseInDb(mainGroupEntity)
+    }
+
+    private fun writeResponseInDb(mainGroupEntity: MainGroupEntity) {
+        craftMasterDataBase.mainGroupDao().insert(mainGroupEntity)
+    }
+
+    fun getMainGroupFromDb(): Single<List<MainGroupEntity>> {
+        return craftMasterDataBase.mainGroupDao().getMainGroupFromDb()
+    }
+
+    fun getGroupsVersionFromDb(): Single<List<MainGroupEntity>> {
+        return craftMasterDataBase.mainGroupDao().getMainGroupFromDb()
+    }
+
+    fun getDbVersionFromDb(): Single<DbVersEntity> {
+        return craftMasterDataBase.dbVersDaoDao().getDbVersionFromDb()
+    }
+
+    fun insertDbVersionFromDb(bbVersEntity: DbVersEntity) {
+        return craftMasterDataBase.dbVersDaoDao().insert(bbVersEntity)
+    }
+
+    fun deleteMainGroupsFromDb() {
+        craftMasterDataBase.dbVersDaoDao().deleteMainGroups()
     }
 }
