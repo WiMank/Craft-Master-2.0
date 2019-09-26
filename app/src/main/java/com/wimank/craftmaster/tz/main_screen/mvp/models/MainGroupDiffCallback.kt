@@ -8,18 +8,16 @@ class MainGroupDiffCallback(
     private val oldList: List<MainGroupEntity>
 ) : DiffUtil.Callback() {
 
-    override fun getOldListSize() = oldList.size
-
     override fun getNewListSize() = newList.size
 
+    override fun getOldListSize() = oldList.size
+
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition] == newList[newItemPosition]
+        return oldList[oldItemPosition].group == newList[newItemPosition].group
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].group == newList[newItemPosition].group
-                &&
-                oldList[oldItemPosition].orderGroup == newList[newItemPosition].orderGroup
+        return oldList[oldItemPosition].orderGroup == newList[newItemPosition].orderGroup
                 &&
                 oldList[oldItemPosition].endpoint == newList[newItemPosition].endpoint
                 &&

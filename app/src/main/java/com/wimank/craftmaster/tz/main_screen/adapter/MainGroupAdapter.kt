@@ -26,9 +26,9 @@ class MainGroupAdapter(private var mList: ArrayList<MainGroupEntity>) :
         holder.bind(mList[position])
     }
 
-    fun update(newData: ArrayList<MainGroupEntity>) {
-        with(DiffUtil.calculateDiff(MainGroupDiffCallback(mList, newData), true)) {
-            mList = newData
+    fun update(newList: ArrayList<MainGroupEntity>) {
+        with(DiffUtil.calculateDiff(MainGroupDiffCallback(newList, mList))) {
+            mList = newList
             dispatchUpdatesTo(this@MainGroupAdapter)
         }
     }
