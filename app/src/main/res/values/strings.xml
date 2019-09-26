@@ -7,7 +7,7 @@
     <string name="failed_load_data_in_db">Error loading data from database</string>
     <string name="offline_mode">Offline mode</string>
     <string name="list_update_error">List update error</string>
-    <string name="database_version_check_error">database version check error</string>
+    <string name="database_version_check_error">Database version check error</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

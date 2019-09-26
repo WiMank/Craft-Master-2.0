@@ -6,6 +6,8 @@ import com.wimank.craftmaster.tz.common.rest.Success
 data class DbVersResponse(
     @SerializedName("success")
     var success: Success,
+    @SerializedName("dbId")
+    var dbId: Int,
     @SerializedName("versionDb")
     var versionDb: Int
 )

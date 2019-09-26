@@ -3,6 +3,7 @@ package com.wimank.craftmaster.tz.main_screen.mvp.models
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.room.entities.DbVersEntity
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
@@ -11,6 +12,7 @@ import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import com.wimank.craftmaster.tz.main_screen.rest.response.DbVersResponse
 import com.wimank.craftmaster.tz.main_screen.rest.response.GroupsVersionResponse
 import com.wimank.craftmaster.tz.main_screen.rest.response.MainGroupResponse
+import io.reactivex.Flowable
 import io.reactivex.Single
 import okhttp3.ResponseBody
 import java.io.File
@@ -56,23 +58,20 @@ class MainGroupManager(
         craftMasterDataBase.mainGroupDao().insert(mainGroupEntity)
     }
 
-    fun getMainGroupFromDb(): Single<List<MainGroupEntity>> {
-        return craftMasterDataBase.mainGroupDao().getMainGroupFromDb()
-    }
-
-    fun getGroupsVersionFromDb(): Single<List<MainGroupEntity>> {
-        return craftMasterDataBase.mainGroupDao().getMainGroupFromDb()
+    fun getFlowableMainGroupFromDb(): Flowable<List<MainGroupEntity>> {
+        return craftMasterDataBase.mainGroupDao().getFlowableMainGroupFromDb()
     }
 
     fun getDbVersionFromDb(): Single<DbVersEntity> {
         return craftMasterDataBase.dbVersDaoDao().getDbVersionFromDb()
     }
 
-    fun insertDbVersionFromDb(bbVersEntity: DbVersEntity) {
-        return craftMasterDataBase.dbVersDaoDao().insert(bbVersEntity)
+    fun updateDbVersionFromDb(serverDbVersion : Int, dbId: Int) {
+        Log.d("TEST", "insertDbVersionFromDb() $serverDbVersion")
+        return craftMasterDataBase.dbVersDaoDao().update(serverDbVersion, dbId)
     }
 
     fun deleteMainGroupsFromDb() {
-        craftMasterDataBase.dbVersDaoDao().deleteMainGroups()
+        craftMasterDataBase.mainGroupDao().delete()
     }
 }

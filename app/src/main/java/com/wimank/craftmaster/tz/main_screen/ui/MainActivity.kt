@@ -1,6 +1,7 @@
 package com.wimank.craftmaster.tz.main_screen.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -9,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
+import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
 import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
@@ -35,24 +37,20 @@ class MainActivity : BaseActivity(), MainView {
 
     private fun initView() {
         refresh.setOnRefreshListener {
-          //  mMainPresenter.loadGroupList(true)
+            mMainPresenter.updateData()
         }
     }
 
     override fun showGroupList(list: List<MainGroupEntity>) {
-        mAdapter = MainGroupAdapter(list)
-        group_recycler_view.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = mAdapter
+        if (::mAdapter.isInitialized) {
+            mAdapter.update(ArrayList(list))
+        } else {
+            mAdapter = MainGroupAdapter(ArrayList(list))
+            group_recycler_view.apply {
+                layoutManager = LinearLayoutManagerWrapper(this@MainActivity)
+                adapter = mAdapter
+            }
         }
-    }
-
-    override fun updateGroupList(newList: List<MainGroupEntity>) {
-        mAdapter.update(newList)
-    }
-
-    override fun showDiffGroupList(entity: List<MainGroupEntity>, result: DiffUtil.DiffResult) {
-
     }
 
     override fun showMessage(message: Int) {

@@ -22,6 +22,7 @@ class RoomModule {
             override fun onCreate(db: SupportSQLiteDatabase) {
                 val values = ContentValues()
                 values.put("version_db", 0)
+                values.put("db_id", 1)
                 db.insert("data_base_version", OnConflictStrategy.IGNORE, values)
             }
             override fun onOpen(db: SupportSQLiteDatabase) {

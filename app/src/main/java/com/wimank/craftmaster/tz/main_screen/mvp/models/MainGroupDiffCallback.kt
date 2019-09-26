@@ -4,32 +4,26 @@ import androidx.recyclerview.widget.DiffUtil
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 
 class MainGroupDiffCallback(
-    private val serverList: List<MainGroupEntity>,
-    private val localList: List<MainGroupEntity>
+    private val newList: List<MainGroupEntity>,
+    private val oldList: List<MainGroupEntity>
 ) : DiffUtil.Callback() {
 
-    override fun getOldListSize() = localList.size
+    override fun getOldListSize() = oldList.size
 
-    override fun getNewListSize() = serverList.size
+    override fun getNewListSize() = newList.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return localList[oldItemPosition].group == serverList[newItemPosition].group
+        return oldList[oldItemPosition] == newList[newItemPosition]
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return localList[oldItemPosition].group != serverList[newItemPosition].group
+        return oldList[oldItemPosition].group == newList[newItemPosition].group
                 &&
-                localList[oldItemPosition].orderGroup != serverList[newItemPosition].orderGroup
+                oldList[oldItemPosition].orderGroup == newList[newItemPosition].orderGroup
                 &&
-                localList[oldItemPosition].endpoint != serverList[newItemPosition].endpoint
+                oldList[oldItemPosition].endpoint == newList[newItemPosition].endpoint
                 &&
-                localList[oldItemPosition].groupImage != serverList[newItemPosition].groupImage
-    }
+                oldList[oldItemPosition].groupImage == newList[newItemPosition].groupImage
 
-    override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any {
-        return if (localList[oldItemPosition] != serverList[newItemPosition])
-            UpdateListItem.UPDATE
-        else
-            UpdateListItem.NOTHING_TO_UPDATE
     }
 }

@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
@@ -18,6 +17,7 @@ import io.reactivex.functions.BiFunction
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.io.InputStream
+import java.util.concurrent.TimeUnit
 
 
 @InjectViewState
@@ -28,13 +28,16 @@ class MainPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        updateData()
+        loadMainGroupFromDb()
+    }
+
+    fun updateData() {
+        viewState.showProgress(true)
         if (netManager.isInternetOn())
             checkDbVersion()
-        else {
+        else
             viewState.showMessage(R.string.offline_mode)
-            viewState.showProgress(true)
-            loadMainGroupFromDb()
-        }
     }
 
     private fun checkDbVersion() {
@@ -44,28 +47,21 @@ class MainPresenter(
                 mainGroupManager.getServerDbVersion(),
                 mainGroupManager.getDbVersionFromDb(),
                 BiFunction { sDb: DbVersResponse, lDb: DbVersEntity ->
-                    Log.d("TEST", "BiFunction: server: ${sDb.versionDb}, local: ${lDb.versionDb}")
-                    if (sDb.success.isSuccess()) {
+                    if (sDb.success.isSuccess())
                         if (sDb.versionDb > lDb.versionDb) {
-                            Log.d("TEST", "sDb.versionDb > lDb.versionDb")
                             mainGroupManager.deleteMainGroupsFromDb()
-                            mainGroupManager.insertDbVersionFromDb(DbVersEntity(sDb.versionDb))
+                            mainGroupManager.updateDbVersionFromDb(sDb.versionDb, sDb.dbId)
                             loadGroupList()
-                        } else {
-                            loadMainGroupFromDb()
-                            Log.d("TEST", "ELSE 1")
                         }
-                    } else {
-                        loadMainGroupFromDb()
-                        Log.d("TEST", "ELSE 2")
-                    }
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(onError = {
-                    viewState.showError(R.string.database_version_check_error)
-                    viewState.showProgress(false)
-                })
+                .subscribeBy(
+                    onError = {
+                        viewState.showError(R.string.database_version_check_error)
+                        viewState.showProgress(false)
+                    },
+                    onSuccess = { viewState.showProgress(false) })
         )
     }
 
@@ -79,19 +75,18 @@ class MainPresenter(
                 .flatMap { t -> Observable.fromIterable(t.groupList) }
                 .subscribeBy(
                     onNext = { downloadGroupImages(it) },
-                    onError = { viewState.showError(R.string.group_list_load_error) },
-                    onComplete = { loadMainGroupFromDb() })
-        )
+                    onError = { viewState.showError(R.string.group_list_load_error) }
+                ))
     }
 
     private fun loadMainGroupFromDb() {
         unsubscribeOnDestroy(
             mainGroupManager
-                .getMainGroupFromDb()
+                .getFlowableMainGroupFromDb()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                    onSuccess = {
+                    onNext = {
                         if (it.isEmpty())
                             loadGroupList()
                         else {
@@ -127,7 +122,8 @@ class MainPresenter(
                 .fromAction { mainGroupManager.writeResponse(inps, entity) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(onError = {
+                .subscribeBy(
+                    onError = {
                     viewState.showError(R.string.failed_to_save_response)
                     viewState.showProgress(false)
                 })
