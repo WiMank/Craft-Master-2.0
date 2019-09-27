@@ -13,12 +13,13 @@ import com.wimank.craftmaster.tz.common.ui.BaseActivity
 import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
 import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
+import com.wimank.craftmaster.tz.main_screen.mvp.views.CategoriesView
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
-class MainActivity : BaseActivity(), MainView {
+class MainActivity : BaseActivity(), MainView, CategoriesView {
 
     @Inject
     @InjectPresenter

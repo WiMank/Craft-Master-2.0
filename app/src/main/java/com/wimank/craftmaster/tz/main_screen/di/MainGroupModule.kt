@@ -10,21 +10,24 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class MainActModule {
+class MainGroupModule {
 
     @MainScreenScope
     @Provides
-    fun provideMainPresenter(mainGroupManager: MainGroupManager, netManager: NetManager):MainPresenter{
-        return MainPresenter(mainGroupManager, netManager)
+    fun provideMainPresenter(
+        context: Context,
+        mainGroupManager: MainGroupManager,
+        netManager: NetManager
+    ): MainPresenter {
+        return MainPresenter(context, mainGroupManager, netManager)
     }
 
     @MainScreenScope
     @Provides
     fun provideMainGroupModel(
-        context: Context,
         mainGroupApi: MainGroupApi,
         craftMasterDataBase: CraftMasterDataBase
     ): MainGroupManager {
-        return MainGroupManager(context, mainGroupApi, craftMasterDataBase)
+        return MainGroupManager(mainGroupApi, craftMasterDataBase)
     }
 }

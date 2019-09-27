@@ -13,7 +13,9 @@ class NetManager(private var context: Context) {
         return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             val network = connectivityManager.activeNetwork ?: return false
             val capabilities = connectivityManager.getNetworkCapabilities(network)
-            capabilities != null && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+            capabilities != null
+                    && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+                    && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
         } else {
             val network = connectivityManager.activeNetworkInfo ?: return false
             network.type == ConnectivityManager.TYPE_WIFI

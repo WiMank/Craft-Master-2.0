@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.common.di
 
+import com.wimank.craftmaster.tz.main_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -16,4 +16,9 @@ class ApiModule {
         return retrofit.create(MainGroupApi::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun provideCategoriesApi(retrofit: Retrofit): CategoriesApi {
+        return retrofit.create(CategoriesApi::class.java)
+    }
 }

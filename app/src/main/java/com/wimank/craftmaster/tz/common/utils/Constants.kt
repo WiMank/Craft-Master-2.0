@@ -1,5 +1,4 @@
 package com.wimank.craftmaster.tz.common.utils
 
-const val BASE_URL = "http://192.168.22.193:8080"
-const val MAIN_URL = "http://192.168.22.193:8080/main_group/"
+const val BASE_URL = "https://craftmasterserver.herokuapp.com"
 const val IMAGE_FOLDER_NAME = "CMPics"

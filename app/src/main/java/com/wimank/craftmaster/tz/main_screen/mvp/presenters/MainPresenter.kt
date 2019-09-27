@@ -1,11 +1,14 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
+import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
 import com.wimank.craftmaster.tz.common.room.entities.DbVersEntity
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.utils.NetManager
+import com.wimank.craftmaster.tz.common.utils.writeImage
+import com.wimank.craftmaster.tz.main_screen.mvp.models.CategoriesManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupManager
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
 import com.wimank.craftmaster.tz.main_screen.rest.response.DbVersResponse
@@ -17,13 +20,13 @@ import io.reactivex.functions.BiFunction
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.io.InputStream
-import java.util.concurrent.TimeUnit
 
 
 @InjectViewState
 class MainPresenter(
+    private val mContext: Context,
     private val mainGroupManager: MainGroupManager,
-    private val netManager: NetManager
+    private val mNetManager: NetManager
 ) : BasePresenter<MainView>() {
 
     override fun onFirstViewAttach() {
@@ -34,7 +37,7 @@ class MainPresenter(
 
     fun updateData() {
         viewState.showProgress(true)
-        if (netManager.isInternetOn())
+        if (mNetManager.isInternetOn())
             checkDbVersion()
         else
             viewState.showMessage(R.string.offline_mode)
@@ -51,7 +54,7 @@ class MainPresenter(
                         if (sDb.versionDb > lDb.versionDb) {
                             mainGroupManager.deleteMainGroupsFromDb()
                             mainGroupManager.updateDbVersionFromDb(sDb.versionDb, sDb.dbId)
-                            loadGroupList()
+                            loadMainGroupList()
                         }
                 })
                 .subscribeOn(Schedulers.io())
@@ -65,7 +68,12 @@ class MainPresenter(
         )
     }
 
-    private fun loadGroupList() {
+
+    fun checkCategoriesVersion(){
+
+    }
+
+    private fun loadMainGroupList() {
         unsubscribeOnDestroy(
             mainGroupManager
                 .getMainGroup()
@@ -75,7 +83,10 @@ class MainPresenter(
                 .flatMap { t -> Observable.fromIterable(t.groupList) }
                 .subscribeBy(
                     onNext = { downloadGroupImages(it) },
-                    onError = { viewState.showError(R.string.group_list_load_error) }
+                    onError = { viewState.showError(R.string.group_list_load_error) },
+                    onComplete = {
+
+                    }
                 ))
     }
 
@@ -88,7 +99,7 @@ class MainPresenter(
                 .subscribeBy(
                     onNext = {
                         if (it.isEmpty())
-                            loadGroupList()
+                            loadMainGroupList()
                         else {
                             viewState.showGroupList(it)
                             viewState.showProgress(false)
@@ -119,7 +130,10 @@ class MainPresenter(
     private fun writeImageAndEntity(inps: InputStream, entity: MainGroupEntity) {
         unsubscribeOnDestroy(
             Completable
-                .fromAction { mainGroupManager.writeResponse(inps, entity) }
+                .fromAction {
+                    mainGroupManager.writeResponseInDb(entity)
+                    writeImage(mContext, inps, entity.groupImage)
+                }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
