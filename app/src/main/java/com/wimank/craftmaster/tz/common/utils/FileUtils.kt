@@ -10,10 +10,17 @@ import java.io.InputStream
 fun writeImage(context: Context, inputStream: InputStream, imageName: String) {
     val parent = context.getExternalFilesDir(IMAGE_FOLDER_NAME)
     val targetImage = File(parent, "${imageName}.png")
-    FileOutputStream(targetImage).use { output ->
-        BitmapFactory.decodeStream(inputStream.buffered()).run {
-            compress(Bitmap.CompressFormat.PNG, 100, output)
+    if (!targetImage.exists())
+        FileOutputStream(targetImage).use { output ->
+            BitmapFactory.decodeStream(inputStream.buffered()).run {
+                compress(Bitmap.CompressFormat.PNG, 100, output)
+            }
+            output.flush()
         }
-        output.flush()
-    }
+}
+
+fun checkImageExist(context: Context, imageName: String): Boolean {
+    val parent = context.getExternalFilesDir(IMAGE_FOLDER_NAME)
+    val targetImage = File(parent, "${imageName}.png")
+    return targetImage.exists()
 }

@@ -2,6 +2,7 @@ package com.wimank.craftmaster.tz.main_screen.mvp.models
 
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.room.entities.DbVersEntity
+import com.wimank.craftmaster.tz.common.room.entities.GroupsVersionEntity
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import com.wimank.craftmaster.tz.main_screen.rest.response.DbVersResponse
@@ -33,7 +34,7 @@ class MainGroupManager(
         return mainGroupApi.geServerDbVersion()
     }
 
-    fun writeResponseInDb(mainGroupEntity: MainGroupEntity) {
+    fun insertMainGroupEntity(mainGroupEntity: MainGroupEntity) {
         craftMasterDataBase.mainGroupDao().insert(mainGroupEntity)
     }
 
@@ -43,6 +44,14 @@ class MainGroupManager(
 
     fun getDbVersionFromDb(): Single<DbVersEntity> {
         return craftMasterDataBase.dbVersDaoDao().getDbVersionFromDb()
+    }
+
+    fun getGroupsVersionFromDb(): Single<List<GroupsVersionEntity>> {
+        return craftMasterDataBase.groupsVersionDao().getGroupsVersionFromDb()
+    }
+
+    fun insertGroupsVersionFromDb(groupsVersionEntity: GroupsVersionEntity) {
+        craftMasterDataBase.groupsVersionDao().insert(groupsVersionEntity)
     }
 
     fun updateDbVersionFromDb(serverDbVersion : Int, dbId: Int) {

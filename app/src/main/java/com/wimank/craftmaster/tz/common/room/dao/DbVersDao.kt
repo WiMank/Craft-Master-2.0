@@ -18,7 +18,4 @@ interface DbVersDao {
 
     @Query("SELECT * FROM data_base_version")
     fun getDbVersionFromDb(): Single<DbVersEntity>
-
-    @Query("DELETE FROM data_base_version")
-    fun deleteMainGroups()
 }

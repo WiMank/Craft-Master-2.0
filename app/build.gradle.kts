@@ -79,4 +79,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:$glideVer")
     implementation ("com.github.bumptech.glide:okhttp3-integration:$glideVer")
     kapt("com.github.bumptech.glide:compiler:$glideVer")
+    
+    implementation ("org.apache.commons:commons-collections4:4.1")
 }

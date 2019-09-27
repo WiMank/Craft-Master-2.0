@@ -12,7 +12,7 @@ interface GroupsVersionDao {
     fun insert(groupsVersionEntity: GroupsVersionEntity)
 
     @Query("SELECT * FROM groups_version")
-    fun getDbVersionFromDb(): Single<List<GroupsVersionEntity>>
+    fun getGroupsVersionFromDb(): Single<List<GroupsVersionEntity>>
 
     @Delete
     fun delete(groupsVersionEntity: GroupsVersionEntity)
