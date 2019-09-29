@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Craft Master 2.0</string>
     <string name="group_list_load_error">Error loading groups</string>
-    <string name="groups_successfully_uploaded">Groups successfully uploaded!</string>
+    <string name="groups_successfully_uploaded">Groups successfully loaded!</string>
     <string name="failed_to_save_response">Failed to save data</string>
     <string name="failed_to_download_images">Failed to download images</string>
     <string name="failed_load_data_in_db">Error loading data from database</string>

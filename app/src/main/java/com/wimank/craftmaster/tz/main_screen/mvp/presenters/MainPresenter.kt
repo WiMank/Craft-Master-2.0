@@ -1,33 +1,23 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
-import android.content.Context
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
-import com.wimank.craftmaster.tz.common.room.entities.DbVersEntity
-import com.wimank.craftmaster.tz.common.room.entities.GroupsVersionEntity
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.utils.NetManager
-import com.wimank.craftmaster.tz.common.utils.checkImageExist
-import com.wimank.craftmaster.tz.common.utils.writeImage
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupManager
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
-import com.wimank.craftmaster.tz.main_screen.rest.response.DbVersResponse
-import com.wimank.craftmaster.tz.main_screen.rest.response.GroupsVersionResponse
-import io.reactivex.Completable
-import io.reactivex.Observable
+import com.wimank.craftmaster.tz.main_screen.rest.response.MainGroupResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import java.io.InputStream
+import java.util.concurrent.TimeUnit
 
 
 @InjectViewState
 class MainPresenter(
-    private val mContext: Context,
     private val mainGroupManager: MainGroupManager,
     private val mNetManager: NetManager
 ) : BasePresenter<MainView>() {
@@ -41,72 +31,31 @@ class MainPresenter(
     fun updateData() {
         viewState.showProgress(true)
         if (mNetManager.isInternetOn())
-            checkDbVersion()
+            loadMainGroupList()
         else
             viewState.showMessage(R.string.offline_mode)
     }
 
-    private fun checkDbVersion() {
-        viewState.showProgress(true)
+    private fun loadMainGroupList() {
         unsubscribeOnDestroy(
             Single.zip(
-                mainGroupManager.getServerDbVersion(),
-                mainGroupManager.getDbVersionFromDb(),
-                BiFunction { sDb: DbVersResponse, lDb: DbVersEntity ->
-                    if (sDb.success.isSuccess())
-                        if (sDb.versionDb > lDb.versionDb) {
-                            mainGroupManager.deleteMainGroupsFromDb()
-                            mainGroupManager.updateDbVersionFromDb(sDb.versionDb, sDb.dbId)
-                            loadMainGroupList()
-                        }
+                mainGroupManager.getMainGroup(),
+                mainGroupManager.getMainGroupFromDb(),
+                BiFunction { sVer: MainGroupResponse, lVer: List<MainGroupEntity> ->
+                    mainGroupManager.containsData(sVer.groupList, lVer)
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
+                        viewState.showMessage(R.string.groups_successfully_uploaded)
                         viewState.showProgress(false)
-                        checkCategoriesVersion()
-                        Log.d("TEST", "checkDbVersion onSuccess")
                     },
                     onError = {
-                        viewState.showError(R.string.database_version_check_error)
                         viewState.showProgress(false)
+                        viewState.showError(R.string.group_list_load_error)
                     })
         )
-    }
-
-    private fun checkCategoriesVersion() {
-        unsubscribeOnDestroy(
-            Single.zip(
-                mainGroupManager.getGroupsVersion(),
-                mainGroupManager.getGroupsVersionFromDb(),
-                BiFunction { sVer: GroupsVersionResponse, lVer: List<GroupsVersionEntity> ->
-
-                }
-            ).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                    onSuccess = {
-
-                    },
-                    onError = {
-
-                    })
-        )
-    }
-
-    private fun loadMainGroupList() {
-        unsubscribeOnDestroy(
-            mainGroupManager
-                .getMainGroup()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .toObservable()
-                .flatMap { t -> Observable.fromIterable(t.groupList) }
-                .subscribeBy(
-                    onNext = { downloadGroupImages(it) },
-                    onError = { viewState.showError(R.string.group_list_load_error) }
-                ))
     }
 
     private fun loadMainGroupFromDb() {
@@ -114,12 +63,11 @@ class MainPresenter(
             mainGroupManager
                 .getFlowableMainGroupFromDb()
                 .subscribeOn(Schedulers.io())
+                .debounce(300, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onNext = {
-                        if (it.isEmpty())
-                            loadMainGroupList()
-                        else {
+                        if (it.isNotEmpty()) {
                             viewState.showGroupList(it)
                             viewState.showProgress(false)
                         }
@@ -128,42 +76,6 @@ class MainPresenter(
                         viewState.showError(R.string.failed_load_data_in_db)
                         viewState.showProgress(false)
                     })
-        )
-    }
-
-    private fun downloadGroupImages(mainGroupEntity: MainGroupEntity) {
-        if (checkImageExist(mContext, mainGroupEntity.groupImage)) {
-            unsubscribeOnDestroy(
-                mainGroupManager
-                    .getMainGroupImage(mainGroupEntity.groupImage)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeBy(
-                        onSuccess = { writeImageAndEntity(it.byteStream(), mainGroupEntity) },
-                        onError = {
-                            viewState.showError(R.string.failed_to_download_images)
-                            viewState.showProgress(false)
-                        })
-            )
-        } else
-            writeImageAndEntity(null, mainGroupEntity)
-    }
-
-    private fun writeImageAndEntity(inps: InputStream?, entity: MainGroupEntity) {
-        unsubscribeOnDestroy(
-            Completable
-                .fromAction {
-                    if (inps != null)
-                        writeImage(mContext, inps, entity.groupImage)
-                    mainGroupManager.insertMainGroupEntity(entity)
-                }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                    onError = {
-                    viewState.showError(R.string.failed_to_save_response)
-                    viewState.showProgress(false)
-                })
         )
     }
 }

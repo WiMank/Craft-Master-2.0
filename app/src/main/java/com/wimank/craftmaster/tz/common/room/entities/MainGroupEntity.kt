@@ -22,6 +22,10 @@ data class MainGroupEntity(
 
     @ColumnInfo(name = "order_group")
     @SerializedName("orderGroup")
-    var orderGroup: Int
+    var orderGroup: Int,
+
+    @ColumnInfo(name = "vers")
+    @SerializedName("vers")
+    var vers: Int
 
 )

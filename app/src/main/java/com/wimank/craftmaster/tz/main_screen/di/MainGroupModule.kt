@@ -15,19 +15,19 @@ class MainGroupModule {
     @MainScreenScope
     @Provides
     fun provideMainPresenter(
-        context: Context,
         mainGroupManager: MainGroupManager,
         netManager: NetManager
     ): MainPresenter {
-        return MainPresenter(context, mainGroupManager, netManager)
+        return MainPresenter(mainGroupManager, netManager)
     }
 
     @MainScreenScope
     @Provides
     fun provideMainGroupModel(
+        context: Context,
         mainGroupApi: MainGroupApi,
         craftMasterDataBase: CraftMasterDataBase
     ): MainGroupManager {
-        return MainGroupManager(mainGroupApi, craftMasterDataBase)
+        return MainGroupManager(context, mainGroupApi, craftMasterDataBase)
     }
 }
