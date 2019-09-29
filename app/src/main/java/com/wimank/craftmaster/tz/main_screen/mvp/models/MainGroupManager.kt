@@ -1,7 +1,6 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.models
 
 import android.content.Context
-import android.util.Log
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.utils.checkImageExist
@@ -21,22 +20,19 @@ class MainGroupManager(
 
     fun containsData(serAr: List<MainGroupEntity>, locAr: List<MainGroupEntity>) {
         if (serAr.isNotEmpty()) {
-            val disjunctionArray = CollectionUtils.disjunction(serAr, locAr)
-            disjunctionArray.sortedWith(compareBy { it.vers })
+            val disjunctionArray =
+                ArrayList(
+                    CollectionUtils.disjunction(
+                        serAr,
+                        locAr
+                    )
+                ).sortedWith(compareBy { it.vers })
 
             disjunctionArray.forEach {
-                Log.d("TEST", "FR: $it")
-            }
-
-            disjunctionArray.forEach {
-                if (locAr.contains(it)) {
+                if (locAr.contains(it))
                     deleteMainGroupEntity(it)
-                    Log.d("TEST", "IF: $it")
-                }
-                else {
+                else
                     downloadImageAndInsertEntity(it)
-                    Log.d("TEST", "ELSE: $it")
-                }
             }
         }
     }
