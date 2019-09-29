@@ -21,12 +21,10 @@ class MainGroupManager(
     fun containsData(serAr: List<MainGroupEntity>, locAr: List<MainGroupEntity>) {
         if (serAr.isNotEmpty()) {
             val disjunctionArray =
-                ArrayList(
                     CollectionUtils.disjunction(
                         serAr,
                         locAr
-                    )
-                ).sortedWith(compareBy { it.vers })
+                    ).sortedWith(compareBy { it.vers })
 
             disjunctionArray.forEach {
                 if (locAr.contains(it))

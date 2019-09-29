@@ -7,6 +7,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 
+
 fun writeImage(context: Context, inputStream: InputStream, imageName: String) {
     val parent = context.getExternalFilesDir(IMAGE_FOLDER_NAME)
     val targetImage = File(parent, "${imageName}.png")
