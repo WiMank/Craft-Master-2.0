@@ -8,7 +8,6 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "categories")
 data class CategoriesEntity(
 
-    //TODO: add converter
     @PrimaryKey
     @SerializedName("categoriesPrKey")
     val categoriesPrKey: CategoriesPrKey,
@@ -16,7 +15,6 @@ data class CategoriesEntity(
     @SerializedName("categoryImage")
     val categoryImage: String,
 
-    //TODO: add converter
     @SerializedName("category")
     val category: Category,
 
