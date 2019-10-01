@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
@@ -47,7 +46,8 @@ class MainPresenter(
                 mainGroupManager.getMainGroup(),
                 mainGroupManager.getMainGroupFromDb(),
                 BiFunction { sVer: MainGroupResponse, lVer: List<MainGroupEntity> ->
-                    mainGroupManager.containsData(sVer.groupList, lVer)
+                    if (sVer.success.isSuccess())
+                        mainGroupManager.containsData(sVer.groupList, lVer)
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -83,7 +83,6 @@ class MainPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.categories_list_load_error)
-                        Log.e("TEST", "loadCategories()", it)
                     })
         )
     }
