@@ -15,7 +15,8 @@ class CategoriesPresenter(
     private val mNetManager: NetManager
 ) : BasePresenter<CategoriesView>() {
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
+    fun loadCategories(endpoint: String) {
+
     }
+
 }

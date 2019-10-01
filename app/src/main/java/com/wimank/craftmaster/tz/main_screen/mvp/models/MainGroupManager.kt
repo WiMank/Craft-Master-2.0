@@ -52,16 +52,16 @@ class MainGroupManager(
         insertMainGroupEntity(mainGroupEntity)
     }
 
-    fun getMainGroup(): Single<MainGroupResponse> {
-        return mainGroupApi.getMainGroupList()
-    }
-
     private fun insertMainGroupEntity(mainGroupEntity: MainGroupEntity) {
         craftMasterDataBase.mainGroupDao().insert(mainGroupEntity)
     }
 
     private fun deleteMainGroupEntity(mainGroupEntity: MainGroupEntity) {
         craftMasterDataBase.mainGroupDao().delete(mainGroupEntity)
+    }
+
+    fun getMainGroup(): Single<MainGroupResponse> {
+        return mainGroupApi.getMainGroupList()
     }
 
     fun getFlowableMainGroupFromDb(): Flowable<List<MainGroupEntity>> {
