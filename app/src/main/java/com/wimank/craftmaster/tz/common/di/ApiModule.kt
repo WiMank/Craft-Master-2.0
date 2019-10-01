@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.common.di
 
+import com.wimank.craftmaster.tz.common.rest.ImageApi
 import com.wimank.craftmaster.tz.main_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import dagger.Module
@@ -20,5 +21,11 @@ class ApiModule {
     @Provides
     fun provideCategoriesApi(retrofit: Retrofit): CategoriesApi {
         return retrofit.create(CategoriesApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideImageApi(retrofit: Retrofit): ImageApi {
+        return retrofit.create(ImageApi::class.java)
     }
 }

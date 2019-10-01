@@ -16,6 +16,6 @@ interface CategoriesDao {
     @Delete
     fun delete(categoriesEntity: CategoriesEntity)
 
-    @Query("SELECT * FROM categories WHERE `group` =:category ORDER BY orderCategories")
-    fun getCategoriesFromDb(category: String): Single<List<CategoriesEntity>>
+    @Query("SELECT * FROM categories")
+    fun getCategoriesFromDb(): Single<List<CategoriesEntity>>
 }

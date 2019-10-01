@@ -1,6 +1,7 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.models
 
 import android.content.Context
+import com.wimank.craftmaster.tz.common.rest.ImageApi
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.utils.checkImageExist
@@ -15,6 +16,7 @@ import org.apache.commons.collections4.CollectionUtils
 class MainGroupManager(
     private val mContext: Context,
     private val mainGroupApi: MainGroupApi,
+    private val mImageApi: ImageApi,
     private val craftMasterDataBase: CraftMasterDataBase
 ) {
 
@@ -37,7 +39,7 @@ class MainGroupManager(
 
     private fun downloadImageAndInsertEntity(mainGroupEntity: MainGroupEntity) {
         if (!checkImageExist(mContext, mainGroupEntity.groupImage)) {
-            with(mainGroupApi.getMainGroupImage(mainGroupEntity.groupImage).execute()) {
+            with(mImageApi.downloadImage(mainGroupEntity.groupImage).execute()) {
                 if (isSuccessful) {
                     body()?.byteStream()?.let {
                         writeImage(

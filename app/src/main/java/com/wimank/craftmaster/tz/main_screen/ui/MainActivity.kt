@@ -1,9 +1,6 @@
 package com.wimank.craftmaster.tz.main_screen.ui
 
 import android.os.Bundle
-import android.util.Log
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
@@ -12,6 +9,7 @@ import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
 import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
 import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
+import com.wimank.craftmaster.tz.main_screen.mvp.presenters.CategoriesPresenter
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
 import com.wimank.craftmaster.tz.main_screen.mvp.views.CategoriesView
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
@@ -27,6 +25,14 @@ class MainActivity : BaseActivity(), MainView, CategoriesView {
 
     @ProvidePresenter
     fun provideMainPresenter() = mMainPresenter
+
+    @Inject
+    @InjectPresenter
+    lateinit var mCategoriesPresenter: CategoriesPresenter
+
+    @ProvidePresenter
+    fun providePresenter() = mCategoriesPresenter
+
 
     private lateinit var mAdapter: MainGroupAdapter
 
