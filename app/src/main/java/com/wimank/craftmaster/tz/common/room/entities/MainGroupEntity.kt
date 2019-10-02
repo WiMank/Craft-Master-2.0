@@ -28,4 +28,7 @@ data class MainGroupEntity(
     @SerializedName("vers")
     var vers: Int
 
-)
+) : BaseEntity {
+    override fun getImage(): String = groupImage
+    override fun getVersion(): Int = vers
+}

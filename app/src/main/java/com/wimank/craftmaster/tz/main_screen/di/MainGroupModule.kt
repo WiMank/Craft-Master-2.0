@@ -4,7 +4,7 @@ import android.content.Context
 import com.wimank.craftmaster.tz.common.rest.ImageApi
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.utils.NetManager
-import com.wimank.craftmaster.tz.main_screen.mvp.models.CategoriesManager
+import com.wimank.craftmaster.tz.main_screen.mvp.models.DataManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupManager
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
 import com.wimank.craftmaster.tz.main_screen.rest.CategoriesApi
@@ -18,16 +18,15 @@ class MainGroupModule {
     @MainScreenScope
     @Provides
     fun provideMainPresenter(
-        mainGroupManager: MainGroupManager,
-        categoriesManager: CategoriesManager,
+        dataManager: DataManager,
         netManager: NetManager
     ): MainPresenter {
-        return MainPresenter(mainGroupManager, categoriesManager, netManager)
+        return MainPresenter(dataManager, netManager)
     }
 
     @MainScreenScope
     @Provides
-    fun provideMainGroupModel(
+    fun provideMainGroupManager(
         context: Context,
         mainGroupApi: MainGroupApi,
         imageApi: ImageApi,
@@ -38,12 +37,13 @@ class MainGroupModule {
 
     @MainScreenScope
     @Provides
-    fun provideCategoriesManager(
+    fun provideDataManager(
         context: Context,
         categoriesApi: CategoriesApi,
+        mainGroupApi: MainGroupApi,
         imageApi: ImageApi,
         craftMasterDataBase: CraftMasterDataBase
-    ): CategoriesManager {
-        return CategoriesManager(context, categoriesApi, imageApi, craftMasterDataBase)
+    ): DataManager {
+        return DataManager(context, categoriesApi, mainGroupApi, imageApi, craftMasterDataBase)
     }
 }
