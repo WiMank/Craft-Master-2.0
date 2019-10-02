@@ -8,7 +8,7 @@ import com.wimank.craftmaster.tz.common.utils.checkImageExist
 import com.wimank.craftmaster.tz.common.utils.writeImage
 import com.wimank.craftmaster.tz.main_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
-import com.wimank.craftmaster.tz.main_screen.rest.response.CategoriesResponse
+import com.wimank.craftmaster.tz.main_screen.rest.response.CategoryResponse
 import com.wimank.craftmaster.tz.main_screen.rest.response.MainGroupResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -89,12 +89,11 @@ class DataManager(
         return mCraftMasterDataBase.mainGroupDao().getMainGroupFromDb()
     }
 
-    fun getMcCategory(): Single<CategoriesResponse<McCategoryEntity>> {
+    fun getMcCategory(): Single<CategoryResponse<McCategoryEntity>> {
         return mCategoriesApi.getMcCategory()
     }
 
     fun getMcCategoryFromDb(): Single<List<McCategoryEntity>> {
         return mCraftMasterDataBase.mcCategoryDao().getMcCategoryFromDb()
     }
-
 }

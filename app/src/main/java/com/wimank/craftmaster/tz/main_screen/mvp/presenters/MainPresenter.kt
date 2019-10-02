@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
@@ -9,7 +8,7 @@ import com.wimank.craftmaster.tz.common.room.entities.McCategoryEntity
 import com.wimank.craftmaster.tz.common.utils.NetManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.DataManager
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
-import com.wimank.craftmaster.tz.main_screen.rest.response.CategoriesResponse
+import com.wimank.craftmaster.tz.main_screen.rest.response.CategoryResponse
 import com.wimank.craftmaster.tz.main_screen.rest.response.MainGroupResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -60,7 +59,6 @@ class MainPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.group_list_load_error)
-                        Log.e("TEST", "loadMainGroupList()", it)
                     })
         )
     }
@@ -70,9 +68,11 @@ class MainPresenter(
             Single.zip(
                 mDataManager.getMcCategory(),
                 mDataManager.getMcCategoryFromDb(),
-                BiFunction { serData: CategoriesResponse<McCategoryEntity>, locData: List<McCategoryEntity> ->
-                    if (serData.success.isSuccess())
-                        mDataManager.containsData(serData.categoryList, locData)
+                BiFunction { serData: CategoryResponse<McCategoryEntity>, locData: List<McCategoryEntity> ->
+                    if (serData.success.isSuccess()) {
+                        mDataManager.containsData(serData.mcCategoryList, locData)
+
+                    }
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -84,7 +84,6 @@ class MainPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.categories_list_load_error)
-                        Log.e("TEST", "loadCategories()", it)
                     })
         )
     }
