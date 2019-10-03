@@ -10,6 +10,8 @@ import com.wimank.craftmaster.tz.common.utils.checkImageExist
 import com.wimank.craftmaster.tz.common.utils.writeImage
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupResponse
+import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeApi
+import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
@@ -20,6 +22,7 @@ class DataManager(
     private val mCategoriesApi: CategoriesApi,
     private val mainGroupApi: MainGroupApi,
     private val mImageApi: ImageApi,
+    private val mRecipeApi: RecipeApi,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
 
@@ -96,4 +99,12 @@ class DataManager(
     fun getMcCategoryFromDb(): Single<List<McCategoryEntity>> {
         return mCraftMasterDataBase.mcCategoryDao().getMcCategoryFromDb()
     }
+
+    fun getRecipes(): Single<RecipeResponse> {
+        return mRecipeApi.getRecipes()
+    }
+
+    /*fun getRecipesFromDb(): Single<List<McCategoryEntity>> {
+        return mCraftMasterDataBase.mcCategoryDao().getMcCategoryFromDb()
+    }*/
 }

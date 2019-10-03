@@ -9,6 +9,7 @@ import com.wimank.craftmaster.tz.main_screen.mvp.models.DataManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupManager
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
+import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeApi
 import dagger.Module
 import dagger.Provides
 
@@ -42,8 +43,16 @@ class MainGroupModule {
         categoriesApi: CategoriesApi,
         mainGroupApi: MainGroupApi,
         imageApi: ImageApi,
+        recipeApi: RecipeApi,
         craftMasterDataBase: CraftMasterDataBase
     ): DataManager {
-        return DataManager(context, categoriesApi, mainGroupApi, imageApi, craftMasterDataBase)
+        return DataManager(
+            context,
+            categoriesApi,
+            mainGroupApi,
+            imageApi,
+            recipeApi,
+            craftMasterDataBase
+        )
     }
 }

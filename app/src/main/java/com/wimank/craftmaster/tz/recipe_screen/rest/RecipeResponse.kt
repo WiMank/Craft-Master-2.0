@@ -3,20 +3,14 @@ package com.wimank.craftmaster.tz.recipe_screen.rest
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.common.rest.Success
-import com.wimank.craftmaster.tz.recipe_screen.room.McDescriptionEntity
-import com.wimank.craftmaster.tz.recipe_screen.room.McRecipeEntity
 import com.wimank.craftmaster.tz.recipe_screen.room.RecipeDeserializer
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
 
 @JsonAdapter(RecipeDeserializer::class)
 data class RecipeResponse(
-
-    @SerializedName("success")
     var success: Success,
-
-    @SerializedName("recipesList")
     var recipesList: List<McDescriptionEntity>,
-
-    @SerializedName("blueprint")
     var blueprint: List<McRecipeEntity>
 )
 
@@ -34,7 +28,6 @@ data class RecipeName(
 
     @SerializedName("ru")
     var ru: String
-
 )
 
 data class DescriptionCraft(
@@ -44,5 +37,4 @@ data class DescriptionCraft(
 
     @SerializedName("ru")
     var ru: String
-
 )

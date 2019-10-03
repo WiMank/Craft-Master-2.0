@@ -5,8 +5,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.wimank.craftmaster.tz.common.room.dao.*
 import com.wimank.craftmaster.tz.common.room.entities.*
-import com.wimank.craftmaster.tz.recipe_screen.room.McDescriptionEntity
-import com.wimank.craftmaster.tz.recipe_screen.room.McRecipeEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.dao.McDescriptionDao
+import com.wimank.craftmaster.tz.recipe_screen.room.dao.McRecipeDao
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
 
 
 @Database(
@@ -31,4 +33,6 @@ abstract class CraftMasterDataBase : RoomDatabase() {
     abstract fun icCategoryDao(): IcCategoryDao
     abstract fun frCategoryDao(): FrCategoryDao
     abstract fun mcRecipesListDao(): McRecipesListDao
+    abstract fun mcDescriptionDao(): McDescriptionDao
+    abstract fun mcRecipeDao(): McRecipeDao
 }

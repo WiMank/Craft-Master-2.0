@@ -6,6 +6,8 @@ import com.wimank.craftmaster.tz.recipe_screen.rest.DescriptionCraft
 import com.wimank.craftmaster.tz.recipe_screen.rest.LleftParameter
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeName
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeResponse
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
 import java.lang.reflect.Type
 
 class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
