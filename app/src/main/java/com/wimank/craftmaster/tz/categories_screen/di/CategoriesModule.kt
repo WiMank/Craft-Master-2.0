@@ -1,13 +1,13 @@
-package com.wimank.craftmaster.tz.main_screen.di
+package com.wimank.craftmaster.tz.categories_screen.di
 
-import com.wimank.craftmaster.tz.main_screen.mvp.presenters.CategoriesPresenter
+import com.wimank.craftmaster.tz.categories_screen.mvp.presenters.CategoriesPresenter
 import dagger.Module
 import dagger.Provides
 
 @Module
 class CategoriesModule {
 
-    @MainScreenScope
+    @CategoriesScreenScope
     @Provides
     fun provideCategoriesPresenter(
     ): CategoriesPresenter {

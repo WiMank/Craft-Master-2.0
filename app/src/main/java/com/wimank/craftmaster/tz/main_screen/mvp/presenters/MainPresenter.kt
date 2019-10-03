@@ -2,14 +2,14 @@ package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.categories_screen.rest.CategoryResponse
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
 import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.room.entities.McCategoryEntity
 import com.wimank.craftmaster.tz.common.utils.NetManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.DataManager
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
-import com.wimank.craftmaster.tz.main_screen.rest.response.CategoryResponse
-import com.wimank.craftmaster.tz.main_screen.rest.response.MainGroupResponse
+import com.wimank.craftmaster.tz.main_screen.rest.MainGroupResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
@@ -68,7 +68,8 @@ class MainPresenter(
             Single.zip(
                 mDataManager.getMcCategory(),
                 mDataManager.getMcCategoryFromDb(),
-                BiFunction { serData: CategoryResponse<McCategoryEntity>, locData: List<McCategoryEntity> ->
+                BiFunction { serData: CategoryResponse<McCategoryEntity>,
+                             locData: List<McCategoryEntity> ->
                     if (serData.success.isSuccess()) {
                         mDataManager.containsData(serData.mcCategoryList, locData)
 

@@ -1,13 +1,13 @@
 package com.wimank.craftmaster.tz.main_screen.di
 
 import android.content.Context
+import com.wimank.craftmaster.tz.categories_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.common.rest.ImageApi
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.utils.NetManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.DataManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupManager
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
-import com.wimank.craftmaster.tz.main_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import dagger.Module
 import dagger.Provides

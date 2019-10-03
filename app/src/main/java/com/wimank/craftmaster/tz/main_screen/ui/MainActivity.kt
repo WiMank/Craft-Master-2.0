@@ -9,15 +9,13 @@ import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
 import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
 import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
-import com.wimank.craftmaster.tz.main_screen.mvp.presenters.CategoriesPresenter
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
-import com.wimank.craftmaster.tz.main_screen.mvp.views.CategoriesView
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
-class MainActivity : BaseActivity(), MainView, CategoriesView {
+class MainActivity : BaseActivity(), MainView {
 
     @Inject
     @InjectPresenter
@@ -25,14 +23,6 @@ class MainActivity : BaseActivity(), MainView, CategoriesView {
 
     @ProvidePresenter
     fun provideMainPresenter() = mMainPresenter
-
-    @Inject
-    @InjectPresenter
-    lateinit var mCategoriesPresenter: CategoriesPresenter
-
-    @ProvidePresenter
-    fun providePresenter() = mCategoriesPresenter
-
 
     private lateinit var mAdapter: MainGroupAdapter
 

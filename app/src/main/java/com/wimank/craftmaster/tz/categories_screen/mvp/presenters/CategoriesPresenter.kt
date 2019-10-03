@@ -1,8 +1,8 @@
-package com.wimank.craftmaster.tz.main_screen.mvp.presenters
+package com.wimank.craftmaster.tz.categories_screen.mvp.presenters
 
 import com.arellomobile.mvp.InjectViewState
+import com.wimank.craftmaster.tz.categories_screen.mvp.views.CategoriesView
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
-import com.wimank.craftmaster.tz.main_screen.mvp.views.CategoriesView
 
 
 @InjectViewState

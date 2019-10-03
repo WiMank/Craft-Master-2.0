@@ -7,7 +7,7 @@ import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.utils.checkImageExist
 import com.wimank.craftmaster.tz.common.utils.writeImage
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
-import com.wimank.craftmaster.tz.main_screen.rest.response.MainGroupResponse
+import com.wimank.craftmaster.tz.main_screen.rest.MainGroupResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils

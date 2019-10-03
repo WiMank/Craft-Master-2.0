@@ -1,15 +1,15 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.models
 
 import android.content.Context
+import com.wimank.craftmaster.tz.categories_screen.rest.CategoriesApi
+import com.wimank.craftmaster.tz.categories_screen.rest.CategoryResponse
 import com.wimank.craftmaster.tz.common.rest.ImageApi
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.room.entities.*
 import com.wimank.craftmaster.tz.common.utils.checkImageExist
 import com.wimank.craftmaster.tz.common.utils.writeImage
-import com.wimank.craftmaster.tz.main_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
-import com.wimank.craftmaster.tz.main_screen.rest.response.CategoryResponse
-import com.wimank.craftmaster.tz.main_screen.rest.response.MainGroupResponse
+import com.wimank.craftmaster.tz.main_screen.rest.MainGroupResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils

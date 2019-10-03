@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.main_screen.ui
+package com.wimank.craftmaster.tz.categories_screen.ui
 
 
 import android.os.Bundle
@@ -8,14 +8,15 @@ import android.view.ViewGroup
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.categories_screen.mvp.presenters.CategoriesPresenter
+import com.wimank.craftmaster.tz.categories_screen.mvp.views.CategoriesView
 import com.wimank.craftmaster.tz.common.ui.BaseFragment
-import com.wimank.craftmaster.tz.main_screen.mvp.presenters.CategoriesPresenter
-import com.wimank.craftmaster.tz.main_screen.mvp.views.CategoriesView
 import javax.inject.Inject
 
 private const val ENDPOINT_KEY = "endpoint"
 
-class CategoriesFragment : BaseFragment(), CategoriesView {
+class CategoriesFragment : BaseFragment(),
+    CategoriesView {
 
     @Inject
     @InjectPresenter

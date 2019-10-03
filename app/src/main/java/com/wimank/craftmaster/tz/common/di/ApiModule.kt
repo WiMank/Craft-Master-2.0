@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.common.di
 
+import com.wimank.craftmaster.tz.categories_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.common.rest.ImageApi
-import com.wimank.craftmaster.tz.main_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import dagger.Module
 import dagger.Provides
