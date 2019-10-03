@@ -86,7 +86,6 @@ class DataManager(
         return mainGroupApi.getMainGroupList()
     }
 
-
     fun getMcCategory(): Single<CategoryResponse<McCategoryEntity>> {
         return mCategoriesApi.getMcCategory()
     }

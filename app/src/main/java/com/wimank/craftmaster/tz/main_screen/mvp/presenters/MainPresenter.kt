@@ -10,9 +10,13 @@ import com.wimank.craftmaster.tz.common.utils.NetManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.DataManager
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupResponse
+import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeResponse
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
+import io.reactivex.functions.Function3
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -86,6 +90,24 @@ class MainPresenter(
                         viewState.showProgress(false)
                         viewState.showError(R.string.categories_list_load_error)
                     })
+        )
+    }
+
+    private fun loadRecipes() {
+        unsubscribeOnDestroy(
+            Single.zip(
+                mDataManager.getRecipes(),
+                mDataManager.getRecipeFromDb(),
+                mDataManager.getDescriptionFromDb(),
+                Function3 { servRecipes: RecipeResponse,
+                            mcRecipeEntity: List<McRecipeEntity>,
+                            mcDescriptionEntity: List<McDescriptionEntity> ->
+
+                }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+
+                )
         )
     }
 
