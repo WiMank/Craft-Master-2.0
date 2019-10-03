@@ -12,6 +12,8 @@ import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupResponse
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeApi
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeResponse
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
 import io.reactivex.Flowable
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
@@ -84,6 +86,15 @@ class DataManager(
         return mainGroupApi.getMainGroupList()
     }
 
+
+    fun getMcCategory(): Single<CategoryResponse<McCategoryEntity>> {
+        return mCategoriesApi.getMcCategory()
+    }
+
+    fun getRecipes(): Single<RecipeResponse> {
+        return mRecipeApi.getRecipes()
+    }
+
     fun getFlowableMainGroupFromDb(): Flowable<List<MainGroupEntity>> {
         return mCraftMasterDataBase.mainGroupDao().getFlowableMainGroupFromDb()
     }
@@ -92,19 +103,15 @@ class DataManager(
         return mCraftMasterDataBase.mainGroupDao().getMainGroupFromDb()
     }
 
-    fun getMcCategory(): Single<CategoryResponse<McCategoryEntity>> {
-        return mCategoriesApi.getMcCategory()
-    }
-
     fun getMcCategoryFromDb(): Single<List<McCategoryEntity>> {
         return mCraftMasterDataBase.mcCategoryDao().getMcCategoryFromDb()
     }
 
-    fun getRecipes(): Single<RecipeResponse> {
-        return mRecipeApi.getRecipes()
+    fun getRecipeFromDb(): Single<List<McRecipeEntity>> {
+        return mCraftMasterDataBase.mcRecipeDao().getRecipeFromDb()
     }
 
-    /*fun getRecipesFromDb(): Single<List<McCategoryEntity>> {
-        return mCraftMasterDataBase.mcCategoryDao().getMcCategoryFromDb()
-    }*/
+    fun getDescriptionFromDb(): Single<List<McDescriptionEntity>> {
+        return mCraftMasterDataBase.mcDescriptionDao().getDescriptionFromDb()
+    }
 }
