@@ -39,7 +39,10 @@ data class RecipesListItem(
     var descriptionCraft: DescriptionCraft,
 
     @SerializedName("rrightParameter")
-    var rrightParameter: String
+    var rrightParameter: String,
+
+    @SerializedName("vers")
+    var vers: Int
 )
 
 data class LleftParameter(
@@ -86,7 +89,10 @@ data class Recipe(
     var sixthSlot: String,
 
     @SerializedName("threeSlot")
-    var threeSlot: String
+    var threeSlot: String,
+
+    @SerializedName("vers")
+    var vers: Int
 )
 
 data class DescriptionCraft(
