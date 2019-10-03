@@ -10,8 +10,8 @@ import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
 @JsonAdapter(RecipeDeserializer::class)
 data class RecipeResponse(
     var success: Success,
-    var recipesList: List<McDescriptionEntity>,
-    var blueprint: List<McRecipeEntity>
+    var descriptionList: List<McDescriptionEntity>,
+    var recipesList: List<McRecipeEntity>
 )
 
 data class LleftParameter(

@@ -102,6 +102,7 @@ class MainPresenter(
                 Function3 { servRecipes: RecipeResponse,
                             mcRecipeEntity: List<McRecipeEntity>,
                             mcDescriptionEntity: List<McDescriptionEntity> ->
+                    servRecipes.recipesList
 
                 }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

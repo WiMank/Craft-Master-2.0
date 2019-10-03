@@ -18,8 +18,8 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
     ): RecipeResponse {
         return RecipeResponse(
             parseSuccess(json.asJsonObject.get("success").asJsonObject),
-            parseMcDescriptionEntityList(json.asJsonObject.get("recipesList").asJsonArray),
-            parseMcRecipeEntityList(json.asJsonObject.get("recipesList").asJsonArray)
+            parseMcDescriptionEntityList(json.asJsonObject.get("descriptionList").asJsonArray),
+            parseMcRecipeEntityList(json.asJsonObject.get("descriptionList").asJsonArray)
         )
     }
 
