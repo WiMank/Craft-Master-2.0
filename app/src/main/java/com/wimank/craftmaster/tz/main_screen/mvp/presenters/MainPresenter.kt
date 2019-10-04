@@ -48,17 +48,16 @@ class MainPresenter(
                 mDataManager.getMainGroup(),
                 mDataManager.getMainGroupFromDb(),
                 BiFunction { sVer: MainGroupResponse, lVer: List<MainGroupEntity> ->
-                    if (sVer.success.isSuccess()) {
+                    if (sVer.success.isSuccess())
                         mDataManager.containsData(sVer.groupList, lVer)
-                        loadCategories()
-                    }
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
                         viewState.showMessage(R.string.groups_successfully_uploaded)
-                        viewState.showProgress(false)
+                        viewState.showProgress(true)
+                        loadCategories()
                     },
                     onError = {
                         viewState.showProgress(false)
@@ -74,17 +73,16 @@ class MainPresenter(
                 mDataManager.getMcCategoryFromDb(),
                 BiFunction { serData: CategoryResponse<McCategoryEntity>,
                              locData: List<McCategoryEntity> ->
-                    if (serData.success.isSuccess()) {
+                    if (serData.success.isSuccess())
                         mDataManager.containsData(serData.mcCategoryList, locData)
-
-                    }
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
                         viewState.showMessage(R.string.categories_successfully_uploaded)
-                        viewState.showProgress(false)
+                        viewState.showProgress(true)
+                        loadRecipes()
                     },
                     onError = {
                         viewState.showProgress(false)
@@ -102,13 +100,21 @@ class MainPresenter(
                 Function3 { servRecipes: RecipeResponse,
                             mcRecipeEntity: List<McRecipeEntity>,
                             mcDescriptionEntity: List<McDescriptionEntity> ->
-                    servRecipes.recipesList
-
+                    if (servRecipes.success.isSuccess()) {
+                        mDataManager.containsData(servRecipes.recipesList, mcRecipeEntity)
+                        mDataManager.containsData(servRecipes.descriptionList, mcDescriptionEntity)
+                    }
                 }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-
-                )
+                    onSuccess = {
+                        viewState.showMessage(R.string.recipe_loading_completed)
+                        viewState.showProgress(false)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.recipe_loading_error)
+                    })
         )
     }
 

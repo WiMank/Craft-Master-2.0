@@ -16,25 +16,25 @@ data class RecipeResponse(
 
 data class LleftParameter(
     @SerializedName("en")
-    var en: String,
+    var en: String = "",
 
     @SerializedName("ru")
-    var ru: String
+    var ru: String = ""
 )
 
 data class RecipeName(
     @SerializedName("en")
-    var en: String,
+    var en: String = "",
 
     @SerializedName("ru")
-    var ru: String
+    var ru: String = ""
 )
 
 data class DescriptionCraft(
 
     @SerializedName("en")
-    var en: String,
+    var en: String = "",
 
     @SerializedName("ru")
-    var ru: String
+    var ru: String = ""
 )

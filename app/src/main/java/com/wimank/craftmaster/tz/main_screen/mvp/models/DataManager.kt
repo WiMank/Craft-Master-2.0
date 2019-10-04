@@ -35,7 +35,6 @@ class DataManager(
                     serAr,
                     locAr
                 ).sortedWith(compareBy { it.getVersion() })
-
             disjunctionArray.forEach {
                 if (locAr.contains(it))
                     deleteEntity(it)
@@ -69,6 +68,8 @@ class DataManager(
             is BcCategoryEntity -> mCraftMasterDataBase.bcCategoryDao().insert(entity)
             is IcCategoryEntity -> mCraftMasterDataBase.icCategoryDao().insert(entity)
             is FrCategoryEntity -> mCraftMasterDataBase.frCategoryDao().insert(entity)
+            is McRecipeEntity -> mCraftMasterDataBase.mcRecipeDao().insert(entity)
+            is McDescriptionEntity -> mCraftMasterDataBase.mcDescriptionDao().insert(entity)
         }
     }
 
@@ -79,6 +80,8 @@ class DataManager(
             is BcCategoryEntity -> mCraftMasterDataBase.bcCategoryDao().delete(entity)
             is IcCategoryEntity -> mCraftMasterDataBase.icCategoryDao().delete(entity)
             is FrCategoryEntity -> mCraftMasterDataBase.frCategoryDao().delete(entity)
+            is McRecipeEntity -> mCraftMasterDataBase.mcRecipeDao().delete(entity)
+            is McDescriptionEntity -> mCraftMasterDataBase.mcDescriptionDao().delete(entity)
         }
     }
 

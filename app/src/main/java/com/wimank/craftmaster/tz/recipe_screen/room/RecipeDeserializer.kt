@@ -18,8 +18,8 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
     ): RecipeResponse {
         return RecipeResponse(
             parseSuccess(json.asJsonObject.get("success").asJsonObject),
-            parseMcDescriptionEntityList(json.asJsonObject.get("descriptionList").asJsonArray),
-            parseMcRecipeEntityList(json.asJsonObject.get("descriptionList").asJsonArray)
+            parseMcDescriptionEntityList(json.asJsonObject.get("recipesList").asJsonArray),
+            parseMcRecipeEntityList(json.asJsonObject.get("recipesList").asJsonArray)
         )
     }
 
@@ -40,8 +40,15 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
                 jo.get("recipe_name").asJsonObject.get("ru").asString
             ),
             LleftParameter(
-                jo.get("lleftParameter").asJsonObject.get("en").asString,
-                jo.get("lleftParameter").asJsonObject.get("ru").asString
+                if (jo.get("lleftParameter").asJsonObject.get("en") != null)
+                    jo.get("lleftParameter").asJsonObject.get("en").asString
+                else
+                    "",
+
+                if (jo.get("lleftParameter").asJsonObject.get("ru") != null)
+                    jo.get("lleftParameter").asJsonObject.get("ru").asString
+                else
+                    ""
             ),
             jo.get("lleftParameterImage").asString,
             jo.get("rrightParameter").asString,
