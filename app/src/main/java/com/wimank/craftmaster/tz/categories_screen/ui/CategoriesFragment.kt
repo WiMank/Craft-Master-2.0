@@ -13,6 +13,8 @@ import com.wimank.craftmaster.tz.categories_screen.mvp.views.CategoriesView
 import com.wimank.craftmaster.tz.common.ui.BaseFragment
 import javax.inject.Inject
 
+private const val GROUP_KEY = "group_key"
+
 class CategoriesFragment : BaseFragment(), CategoriesView {
 
     @Inject
@@ -23,13 +25,15 @@ class CategoriesFragment : BaseFragment(), CategoriesView {
     fun providePresenter() = mCategoriesPresenter
 
     companion object {
-        fun newInstance(endPoint: String) = CategoriesFragment()
+        fun newInstance(group: String) = CategoriesFragment().apply {
+            arguments?.putString(GROUP_KEY, group)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
+            it.getString(GROUP_KEY)?.let { group -> mCategoriesPresenter.loadMcCategories(group) }
         }
     }
 
@@ -37,6 +41,8 @@ class CategoriesFragment : BaseFragment(), CategoriesView {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_minecraft_categories, container, false)
+        val view = inflater.inflate(R.layout.fragment_minecraft_categories, container, false)
+
+        return view
     }
 }
