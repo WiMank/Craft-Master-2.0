@@ -1,64 +1,34 @@
 package com.wimank.craftmaster.tz.main_screen.ui
 
 import android.os.Bundle
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.common.ui.BaseActivity
-import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
-import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
-import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
-import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
+import com.wimank.craftmaster.tz.categories_screen.ui.CAT_FRAGMENT_TAG
+import com.wimank.craftmaster.tz.categories_screen.ui.CategoriesFragment
 import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
-import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
 
 
-class MainActivity : BaseActivity(), MainView {
-
-    @Inject
-    @InjectPresenter
-    lateinit var mMainPresenter: MainPresenter
-
-    @ProvidePresenter
-    fun provideMainPresenter() = mMainPresenter
-
-    private lateinit var mAdapter: MainGroupAdapter
+class MainActivity : AppCompatActivity(), MainGroupFragment.OnMainFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initView()
+        initViews()
     }
 
-    private fun initView() {
-        refresh.setOnRefreshListener {
-            mMainPresenter.updateData()
+    private fun initViews() {
+        supportFragmentManager.beginTransaction().run {
+            replace(R.id.main_frame, MainGroupFragment())
+            addToBackStack(MAIN_FRAGMENT_TAG)
+            commit()
         }
     }
 
-    override fun showGroupList(list: List<MainGroupEntity>) {
-        if (::mAdapter.isInitialized) {
-            mAdapter.update(ArrayList(list))
-        } else {
-            mAdapter = MainGroupAdapter(ArrayList(list))
-            group_recycler_view.apply {
-                layoutManager = LinearLayoutManagerWrapper(this@MainActivity)
-                adapter = mAdapter
-            }
+    override fun onFragmentInteraction(mainGroupEntity: MainGroupEntity) {
+        supportFragmentManager.beginTransaction().run {
+            replace(R.id.main_frame, CategoriesFragment.newInstance(mainGroupEntity.group))
+            addToBackStack(CAT_FRAGMENT_TAG)
+            commit()
         }
-    }
-
-    override fun showMessage(message: Int) {
-        Snackbar.make(main_ll, message, Snackbar.LENGTH_SHORT).show()
-    }
-
-    override fun showProgress(visibilityFlag: Boolean) {
-        refresh.isRefreshing = visibilityFlag
-    }
-
-    override fun showError(message: Int) {
-        Snackbar.make(main_ll, message, Snackbar.LENGTH_SHORT).show()
     }
 }

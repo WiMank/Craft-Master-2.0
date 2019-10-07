@@ -10,10 +10,12 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.categories_screen.mvp.presenters.CategoriesPresenter
 import com.wimank.craftmaster.tz.categories_screen.mvp.views.CategoriesView
+import com.wimank.craftmaster.tz.categories_screen.room.CategoryEntity
 import com.wimank.craftmaster.tz.common.ui.BaseFragment
 import javax.inject.Inject
 
 private const val GROUP_KEY = "group_key"
+const val CAT_FRAGMENT_TAG = "CategoriesFragment"
 
 class CategoriesFragment : BaseFragment(), CategoriesView {
 
@@ -44,5 +46,9 @@ class CategoriesFragment : BaseFragment(), CategoriesView {
         val view = inflater.inflate(R.layout.fragment_minecraft_categories, container, false)
 
         return view
+    }
+
+    override fun showCategoryList(list: List<CategoryEntity>) {
+
     }
 }

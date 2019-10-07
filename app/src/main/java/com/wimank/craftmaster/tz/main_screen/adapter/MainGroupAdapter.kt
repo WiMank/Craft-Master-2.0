@@ -9,8 +9,14 @@ import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupDiffCallback
 import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 
 
-class MainGroupAdapter(private var mList: ArrayList<MainGroupEntity>) :
-    RecyclerView.Adapter<MainGroupViewHolder>() {
+class MainGroupAdapter(
+    private var mList: ArrayList<MainGroupEntity>,
+    private val mOnItemClickListener: OnItemClickListener
+) : RecyclerView.Adapter<MainGroupViewHolder>() {
+
+    interface OnItemClickListener {
+        fun onItemClick(item: MainGroupEntity)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainGroupViewHolder {
         return MainGroupViewHolder(
@@ -23,7 +29,7 @@ class MainGroupAdapter(private var mList: ArrayList<MainGroupEntity>) :
     }
 
     override fun onBindViewHolder(holder: MainGroupViewHolder, position: Int) {
-        holder.bind(mList[position])
+        holder.bind(mList[position], mOnItemClickListener)
     }
 
     fun update(newList: ArrayList<MainGroupEntity>) {
@@ -34,4 +40,5 @@ class MainGroupAdapter(private var mList: ArrayList<MainGroupEntity>) :
     }
 
     override fun getItemCount() = mList.size
+
 }

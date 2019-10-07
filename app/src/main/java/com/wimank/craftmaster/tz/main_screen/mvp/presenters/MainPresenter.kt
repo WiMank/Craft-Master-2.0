@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.categories_screen.rest.CategoryResponse
@@ -31,6 +30,7 @@ class MainPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        viewState.initViews()
         updateData()
     }
 
@@ -115,7 +115,6 @@ class MainPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.recipe_loading_error)
-                        Log.e("TS", "loadRecipes()", it)
                     })
         )
     }

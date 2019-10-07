@@ -10,15 +10,24 @@ import java.io.File
 
 class MainGroupViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-    fun bind(mainGroupEntity: MainGroupEntity) {
+    fun bind(
+        mainGroupEntity: MainGroupEntity,
+        onItemClickListener: MainGroupAdapter.OnItemClickListener
+    ) {
         view.group_name.text = mainGroupEntity.group
+
         val targetImage = File(
             view.context.getExternalFilesDir(IMAGE_FOLDER_NAME),
             "${mainGroupEntity.groupImage}.png"
         )
+
         GlideApp
             .with(view)
             .load(targetImage)
             .into(view.group_image)
+
+        view.ll_rec.setOnClickListener {
+            onItemClickListener.onItemClick(mainGroupEntity)
+        }
     }
 }

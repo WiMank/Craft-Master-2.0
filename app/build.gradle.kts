@@ -77,7 +77,7 @@ dependencies {
     //Glide
     val glideVer = "4.9.0"
     implementation("com.github.bumptech.glide:glide:$glideVer")
-    implementation ("com.github.bumptech.glide:okhttp3-integration:$glideVer")
+    implementation("com.github.bumptech.glide:okhttp3-integration:$glideVer")
     kapt("com.github.bumptech.glide:compiler:$glideVer")
 
     //Stetho
@@ -86,5 +86,5 @@ dependencies {
     implementation("com.facebook.stetho:stetho-okhttp3:$stethoVer")
 
     //Apache Collections
-    implementation ("org.apache.commons:commons-collections4:4.1")
+    implementation("org.apache.commons:commons-collections4:4.1")
 }

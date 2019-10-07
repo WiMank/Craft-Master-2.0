@@ -1,0 +1,98 @@
+package com.wimank.craftmaster.tz.main_screen.ui
+
+import android.content.Context
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.google.android.material.snackbar.Snackbar
+import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.common.ui.BaseFragment
+import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
+import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
+import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
+import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
+import kotlinx.android.synthetic.main.fragment_main_group.*
+import javax.inject.Inject
+
+const val MAIN_FRAGMENT_TAG = "MainGroupFragment"
+
+class MainGroupFragment : BaseFragment(), MainView {
+
+    @Inject
+    @InjectPresenter
+    lateinit var mMainPresenter: MainPresenter
+
+    @ProvidePresenter
+    fun provideMainPresenter() = mMainPresenter
+
+    private var listenerMain: OnMainFragmentInteractionListener? = null
+    private lateinit var mAdapter: MainGroupAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_main_group, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnMainFragmentInteractionListener)
+            listenerMain = context
+        else
+            throw RuntimeException("$context must implement OnMainFragmentInteractionListener")
+    }
+
+    override fun initViews() {
+        refresh.setOnRefreshListener {
+            mMainPresenter.updateData()
+        }
+    }
+
+    fun itemClick(mainGroupEntity: MainGroupEntity) {
+        listenerMain?.onFragmentInteraction(mainGroupEntity)
+    }
+
+    override fun showGroupList(list: List<MainGroupEntity>) {
+        if (::mAdapter.isInitialized)
+            mAdapter.update(ArrayList(list))
+        else {
+            mAdapter = MainGroupAdapter(ArrayList(list),
+                object : MainGroupAdapter.OnItemClickListener {
+                    override fun onItemClick(item: MainGroupEntity) {
+                        itemClick(item)
+                    }
+                })
+
+            main_group_recycler_view.apply {
+                layoutManager = LinearLayoutManagerWrapper(context)
+                adapter = mAdapter
+            }
+        }
+    }
+
+    override fun showMessage(message: Int) {
+        Snackbar.make(main_fragment_ll, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showProgress(visibilityFlag: Boolean) {
+        refresh.isRefreshing = visibilityFlag
+    }
+
+    override fun showError(message: Int) {
+        Snackbar.make(main_fragment_ll, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    interface OnMainFragmentInteractionListener {
+        fun onFragmentInteraction(mainGroupEntity: MainGroupEntity)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listenerMain = null
+    }
+}
