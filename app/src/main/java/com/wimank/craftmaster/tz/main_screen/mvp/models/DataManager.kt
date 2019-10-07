@@ -66,18 +66,18 @@ class DataManager(
     override fun insertEntity(entity: BaseEntity) {
         when (entity) {
             is MainGroupEntity -> mCraftMasterDataBase.mainGroupDao().insert(entity)
-            is CategoryEntity -> mCraftMasterDataBase.mcCategoryDao().insert(entity)
-            is RecipeEntity -> mCraftMasterDataBase.mcRecipeDao().insert(entity)
-            is DescriptionEntity -> mCraftMasterDataBase.mcDescriptionDao().insert(entity)
+            is CategoryEntity -> mCraftMasterDataBase.categoryDao().insert(entity)
+            is RecipeEntity -> mCraftMasterDataBase.recipeDao().insert(entity)
+            is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().insert(entity)
         }
     }
 
     override fun deleteEntity(entity: BaseEntity) {
         when (entity) {
             is MainGroupEntity -> mCraftMasterDataBase.mainGroupDao().delete(entity)
-            is CategoryEntity -> mCraftMasterDataBase.mcCategoryDao().delete(entity)
-            is RecipeEntity -> mCraftMasterDataBase.mcRecipeDao().delete(entity)
-            is DescriptionEntity -> mCraftMasterDataBase.mcDescriptionDao().delete(entity)
+            is CategoryEntity -> mCraftMasterDataBase.categoryDao().delete(entity)
+            is RecipeEntity -> mCraftMasterDataBase.recipeDao().delete(entity)
+            is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().delete(entity)
         }
     }
 
@@ -102,14 +102,14 @@ class DataManager(
     }
 
     fun getCategoriesFromDb(): Single<List<CategoryEntity>> {
-        return mCraftMasterDataBase.mcCategoryDao().getCategoriesFromDb()
+        return mCraftMasterDataBase.categoryDao().getCategoriesFromDb()
     }
 
     fun getRecipesFromDb(): Single<List<RecipeEntity>> {
-        return mCraftMasterDataBase.mcRecipeDao().getRecipesFromDb()
+        return mCraftMasterDataBase.recipeDao().getRecipesFromDb()
     }
 
     fun getDescriptionFromDb(): Single<List<DescriptionEntity>> {
-        return mCraftMasterDataBase.mcDescriptionDao().getDescriptionFromDb()
+        return mCraftMasterDataBase.descriptionDao().getDescriptionFromDb()
     }
 }

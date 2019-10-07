@@ -7,7 +7,7 @@ import com.wimank.craftmaster.tz.common.mvp.BasePresenter
 
 
 @InjectViewState
-class CategoriesPresenter(private val categoriesManager: CategoriesManager) :
+class CategoriesPresenter(private val mCategoriesManager: CategoriesManager) :
     BasePresenter<CategoriesView>() {
 
     fun loadMcCategories() {

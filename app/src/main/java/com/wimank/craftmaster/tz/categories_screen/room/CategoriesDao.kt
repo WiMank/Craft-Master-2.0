@@ -10,4 +10,5 @@ interface CategoryDao : BaseDao<CategoryEntity> {
 
     @Query("SELECT * FROM categories ORDER BY orderCategories")
     fun getCategoriesFromDb(): Single<List<CategoryEntity>>
+
 }

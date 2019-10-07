@@ -26,7 +26,7 @@ import com.wimank.craftmaster.tz.recipe_screen.room.RecipesDao
 @TypeConverters(Converters::class)
 abstract class CraftMasterDataBase : RoomDatabase() {
     abstract fun mainGroupDao() : MainGroupDao
-    abstract fun mcCategoryDao(): CategoryDao
-    abstract fun mcDescriptionDao(): DescriptionDao
-    abstract fun mcRecipeDao(): RecipesDao
+    abstract fun categoryDao(): CategoryDao
+    abstract fun descriptionDao(): DescriptionDao
+    abstract fun recipeDao(): RecipesDao
 }

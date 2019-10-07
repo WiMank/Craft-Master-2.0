@@ -14,6 +14,9 @@ data class RecipeEntity(
     @SerializedName("recipeAttr")
     var recipeAttr: String,
 
+    @SerializedName("group")
+    var group: String,
+
     @SerializedName("firstSlot")
     var firstSlot: String,
 

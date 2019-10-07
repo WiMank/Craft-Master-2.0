@@ -17,6 +17,9 @@ data class DescriptionEntity(
     @SerializedName("recipeImageName")
     var recipeImageName: String,
 
+    @SerializedName("group")
+    var group: String,
+
     @SerializedName("recipe_name")
     var recipeName: RecipeName,
 
