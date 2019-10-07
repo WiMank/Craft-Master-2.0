@@ -10,7 +10,7 @@ import com.wimank.craftmaster.tz.common.utils.checkImageExist
 import com.wimank.craftmaster.tz.common.utils.writeImage
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupResponse
-import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeApi
+import com.wimank.craftmaster.tz.recipe_screen.rest.McRecipeApi
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeResponse
 import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
 import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
@@ -24,7 +24,7 @@ class DataManager(
     private val mCategoriesApi: CategoriesApi,
     private val mainGroupApi: MainGroupApi,
     private val mImageApi: ImageApi,
-    private val mRecipeApi: RecipeApi,
+    private val mMcRecipeApi: McRecipeApi,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
 
@@ -94,7 +94,7 @@ class DataManager(
     }
 
     fun getRecipes(): Single<RecipeResponse> {
-        return mRecipeApi.getRecipes()
+        return mMcRecipeApi.getRecipes()
     }
 
     fun getFlowableMainGroupFromDb(): Flowable<List<MainGroupEntity>> {

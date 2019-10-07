@@ -31,11 +31,11 @@ class MainPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         updateData()
-        loadMainGroupFromDb()
     }
 
     fun updateData() {
         viewState.showProgress(true)
+        loadMainGroupFromDb()
         if (mNetManager.isInternetOn())
             loadMainGroupList()
         else

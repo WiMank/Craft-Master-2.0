@@ -13,10 +13,7 @@ import com.wimank.craftmaster.tz.categories_screen.mvp.views.CategoriesView
 import com.wimank.craftmaster.tz.common.ui.BaseFragment
 import javax.inject.Inject
 
-private const val ENDPOINT_KEY = "endpoint"
-
-class CategoriesFragment : BaseFragment(),
-    CategoriesView {
+class CategoriesFragment : BaseFragment(), CategoriesView {
 
     @Inject
     @InjectPresenter
@@ -26,12 +23,7 @@ class CategoriesFragment : BaseFragment(),
     fun providePresenter() = mCategoriesPresenter
 
     companion object {
-        fun newInstance(endPoint: String) =
-            CategoriesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ENDPOINT_KEY, endPoint)
-                }
-            }
+        fun newInstance(endPoint: String) = CategoriesFragment()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

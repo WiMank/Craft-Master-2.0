@@ -6,4 +6,7 @@ import com.wimank.craftmaster.tz.common.mvp.BasePresenter
 
 
 @InjectViewState
-class CategoriesPresenter : BasePresenter<CategoriesView>()
+class CategoriesPresenter : BasePresenter<CategoriesView>() {
+
+
+}
