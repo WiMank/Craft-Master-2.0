@@ -3,15 +3,15 @@ package com.wimank.craftmaster.tz.recipe_screen.rest
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.common.rest.Success
+import com.wimank.craftmaster.tz.recipe_screen.room.DescriptionEntity
 import com.wimank.craftmaster.tz.recipe_screen.room.RecipeDeserializer
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.RecipeEntity
 
 @JsonAdapter(RecipeDeserializer::class)
 data class RecipeResponse(
     var success: Success,
-    var descriptionList: List<McDescriptionEntity>,
-    var recipesList: List<McRecipeEntity>
+    var descriptionList: List<DescriptionEntity>,
+    var recipesList: List<RecipeEntity>
 )
 
 data class LleftParameter(

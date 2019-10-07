@@ -3,17 +3,19 @@ package com.wimank.craftmaster.tz.main_screen.mvp.models
 import android.content.Context
 import com.wimank.craftmaster.tz.categories_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.categories_screen.rest.CategoryResponse
+import com.wimank.craftmaster.tz.categories_screen.room.CategoryEntity
 import com.wimank.craftmaster.tz.common.rest.ImageApi
+import com.wimank.craftmaster.tz.common.room.BaseEntity
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.common.room.entities.*
 import com.wimank.craftmaster.tz.common.utils.checkImageExist
 import com.wimank.craftmaster.tz.common.utils.writeImage
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupResponse
-import com.wimank.craftmaster.tz.recipe_screen.rest.McRecipeApi
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeResponse
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
+import com.wimank.craftmaster.tz.recipe_screen.rest.RecipesApi
+import com.wimank.craftmaster.tz.recipe_screen.room.DescriptionEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.RecipeEntity
 import io.reactivex.Flowable
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
@@ -24,7 +26,7 @@ class DataManager(
     private val mCategoriesApi: CategoriesApi,
     private val mainGroupApi: MainGroupApi,
     private val mImageApi: ImageApi,
-    private val mMcRecipeApi: McRecipeApi,
+    private val mRecipesApi: RecipesApi,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
 
@@ -64,24 +66,18 @@ class DataManager(
     override fun insertEntity(entity: BaseEntity) {
         when (entity) {
             is MainGroupEntity -> mCraftMasterDataBase.mainGroupDao().insert(entity)
-            is McCategoryEntity -> mCraftMasterDataBase.mcCategoryDao().insert(entity)
-            is BcCategoryEntity -> mCraftMasterDataBase.bcCategoryDao().insert(entity)
-            is IcCategoryEntity -> mCraftMasterDataBase.icCategoryDao().insert(entity)
-            is FrCategoryEntity -> mCraftMasterDataBase.frCategoryDao().insert(entity)
-            is McRecipeEntity -> mCraftMasterDataBase.mcRecipeDao().insert(entity)
-            is McDescriptionEntity -> mCraftMasterDataBase.mcDescriptionDao().insert(entity)
+            is CategoryEntity -> mCraftMasterDataBase.mcCategoryDao().insert(entity)
+            is RecipeEntity -> mCraftMasterDataBase.mcRecipeDao().insert(entity)
+            is DescriptionEntity -> mCraftMasterDataBase.mcDescriptionDao().insert(entity)
         }
     }
 
     override fun deleteEntity(entity: BaseEntity) {
         when (entity) {
             is MainGroupEntity -> mCraftMasterDataBase.mainGroupDao().delete(entity)
-            is McCategoryEntity -> mCraftMasterDataBase.mcCategoryDao().delete(entity)
-            is BcCategoryEntity -> mCraftMasterDataBase.bcCategoryDao().delete(entity)
-            is IcCategoryEntity -> mCraftMasterDataBase.icCategoryDao().delete(entity)
-            is FrCategoryEntity -> mCraftMasterDataBase.frCategoryDao().delete(entity)
-            is McRecipeEntity -> mCraftMasterDataBase.mcRecipeDao().delete(entity)
-            is McDescriptionEntity -> mCraftMasterDataBase.mcDescriptionDao().delete(entity)
+            is CategoryEntity -> mCraftMasterDataBase.mcCategoryDao().delete(entity)
+            is RecipeEntity -> mCraftMasterDataBase.mcRecipeDao().delete(entity)
+            is DescriptionEntity -> mCraftMasterDataBase.mcDescriptionDao().delete(entity)
         }
     }
 
@@ -89,12 +85,12 @@ class DataManager(
         return mainGroupApi.getMainGroupList()
     }
 
-    fun getMcCategory(): Single<CategoryResponse<McCategoryEntity>> {
+    fun getCategories(): Single<CategoryResponse<CategoryEntity>> {
         return mCategoriesApi.getMcCategory()
     }
 
     fun getRecipes(): Single<RecipeResponse> {
-        return mMcRecipeApi.getRecipes()
+        return mRecipesApi.getRecipes()
     }
 
     fun getFlowableMainGroupFromDb(): Flowable<List<MainGroupEntity>> {
@@ -105,15 +101,15 @@ class DataManager(
         return mCraftMasterDataBase.mainGroupDao().getMainGroupFromDb()
     }
 
-    fun getMcCategoryFromDb(): Single<List<McCategoryEntity>> {
-        return mCraftMasterDataBase.mcCategoryDao().getMcCategoryFromDb()
+    fun getCategoriesFromDb(): Single<List<CategoryEntity>> {
+        return mCraftMasterDataBase.mcCategoryDao().getCategoriesFromDb()
     }
 
-    fun getRecipeFromDb(): Single<List<McRecipeEntity>> {
-        return mCraftMasterDataBase.mcRecipeDao().getRecipeFromDb()
+    fun getRecipesFromDb(): Single<List<RecipeEntity>> {
+        return mCraftMasterDataBase.mcRecipeDao().getRecipesFromDb()
     }
 
-    fun getDescriptionFromDb(): Single<List<McDescriptionEntity>> {
+    fun getDescriptionFromDb(): Single<List<DescriptionEntity>> {
         return mCraftMasterDataBase.mcDescriptionDao().getDescriptionFromDb()
     }
 }

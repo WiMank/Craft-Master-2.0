@@ -1,9 +1,10 @@
-package com.wimank.craftmaster.tz.common.room.entities
+package com.wimank.craftmaster.tz.main_screen.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.wimank.craftmaster.tz.common.room.BaseEntity
 
 
 @Entity(tableName = "main_group")
@@ -16,9 +17,6 @@ data class MainGroupEntity(
     @ColumnInfo(name = "group_image")
     @SerializedName("groupImage")
     var groupImage: String,
-
-    @SerializedName("endpoint")
-    var endpoint: String,
 
     @ColumnInfo(name = "order_group")
     @SerializedName("orderGroup")

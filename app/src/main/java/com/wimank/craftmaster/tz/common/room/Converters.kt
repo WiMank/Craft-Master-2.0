@@ -2,7 +2,7 @@ package com.wimank.craftmaster.tz.common.room
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.wimank.craftmaster.tz.common.room.entities.Category
+import com.wimank.craftmaster.tz.categories_screen.room.Category
 import com.wimank.craftmaster.tz.recipe_screen.rest.DescriptionCraft
 import com.wimank.craftmaster.tz.recipe_screen.rest.LleftParameter
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeName

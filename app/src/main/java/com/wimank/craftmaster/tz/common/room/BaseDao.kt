@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.common.room.dao
+package com.wimank.craftmaster.tz.common.room
 
 import androidx.room.Delete
 import androidx.room.Insert

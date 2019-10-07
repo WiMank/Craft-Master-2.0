@@ -3,24 +3,22 @@ package com.wimank.craftmaster.tz.common.room
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.wimank.craftmaster.tz.common.room.dao.*
-import com.wimank.craftmaster.tz.common.room.entities.*
-import com.wimank.craftmaster.tz.recipe_screen.room.dao.McDescriptionDao
-import com.wimank.craftmaster.tz.recipe_screen.room.dao.McRecipeDao
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
+import com.wimank.craftmaster.tz.categories_screen.room.CategoryDao
+import com.wimank.craftmaster.tz.categories_screen.room.CategoryEntity
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupDao
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.DescriptionDao
+import com.wimank.craftmaster.tz.recipe_screen.room.DescriptionEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.RecipeEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.RecipesDao
 
 
 @Database(
     entities = [
         MainGroupEntity::class,
-        McCategoryEntity::class,
-        IcCategoryEntity::class,
-        BcCategoryEntity::class,
-        FrCategoryEntity::class,
-        McRecipesListEntity::class,
-        McDescriptionEntity::class,
-        McRecipeEntity::class
+        CategoryEntity::class,
+        DescriptionEntity::class,
+        RecipeEntity::class
     ],
     exportSchema = false,
     version = 1
@@ -28,11 +26,7 @@ import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
 @TypeConverters(Converters::class)
 abstract class CraftMasterDataBase : RoomDatabase() {
     abstract fun mainGroupDao() : MainGroupDao
-    abstract fun mcCategoryDao(): McCategoryDao
-    abstract fun bcCategoryDao(): BcCategoryDao
-    abstract fun icCategoryDao(): IcCategoryDao
-    abstract fun frCategoryDao(): FrCategoryDao
-    abstract fun mcRecipesListDao(): McRecipesListDao
-    abstract fun mcDescriptionDao(): McDescriptionDao
-    abstract fun mcRecipeDao(): McRecipeDao
+    abstract fun mcCategoryDao(): CategoryDao
+    abstract fun mcDescriptionDao(): DescriptionDao
+    abstract fun mcRecipeDao(): RecipesDao
 }

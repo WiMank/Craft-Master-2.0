@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.common.room.entities
+package com.wimank.craftmaster.tz.common.room
 
 interface BaseEntity {
     fun getVersion(): Int

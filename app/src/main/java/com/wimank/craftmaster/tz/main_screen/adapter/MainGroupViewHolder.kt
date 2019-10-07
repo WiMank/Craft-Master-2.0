@@ -3,8 +3,8 @@ package com.wimank.craftmaster.tz.main_screen.adapter
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.common.di.GlideApp
-import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.utils.IMAGE_FOLDER_NAME
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 import kotlinx.android.synthetic.main.group_list_item.view.*
 import java.io.File
 

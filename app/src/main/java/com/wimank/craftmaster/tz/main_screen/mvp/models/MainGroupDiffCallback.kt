@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.models
 
 import androidx.recyclerview.widget.DiffUtil
-import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 
 class MainGroupDiffCallback(
     private val newList: List<MainGroupEntity>,
@@ -19,9 +19,8 @@ class MainGroupDiffCallback(
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return oldList[oldItemPosition].orderGroup == newList[newItemPosition].orderGroup
                 &&
-                oldList[oldItemPosition].endpoint == newList[newItemPosition].endpoint
-                &&
                 oldList[oldItemPosition].groupImage == newList[newItemPosition].groupImage
-
+                &&
+                oldList[oldItemPosition].vers == newList[newItemPosition].vers
     }
 }

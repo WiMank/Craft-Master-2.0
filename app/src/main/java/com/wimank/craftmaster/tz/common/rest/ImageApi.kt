@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface ImageApi {
 
-    @GET("/main_group/image/{imageName}")
+    @GET("/image/{imageName}")
     fun downloadImage(@Path("imageName") imageName: String): Call<ResponseBody>
 
 }

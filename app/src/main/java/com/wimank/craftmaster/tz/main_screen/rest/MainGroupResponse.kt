@@ -2,7 +2,7 @@ package com.wimank.craftmaster.tz.main_screen.rest
 
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.common.rest.Success
-import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 
 data class MainGroupResponse(
 

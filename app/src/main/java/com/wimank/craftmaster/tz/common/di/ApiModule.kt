@@ -3,7 +3,7 @@ package com.wimank.craftmaster.tz.common.di
 import com.wimank.craftmaster.tz.categories_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.common.rest.ImageApi
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
-import com.wimank.craftmaster.tz.recipe_screen.rest.McRecipeApi
+import com.wimank.craftmaster.tz.recipe_screen.rest.RecipesApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -32,7 +32,7 @@ class ApiModule {
 
     @Singleton
     @Provides
-    fun provideRecipeApi(retrofit: Retrofit): McRecipeApi {
-        return retrofit.create(McRecipeApi::class.java)
+    fun provideRecipeApi(retrofit: Retrofit): RecipesApi {
+        return retrofit.create(RecipesApi::class.java)
     }
 }

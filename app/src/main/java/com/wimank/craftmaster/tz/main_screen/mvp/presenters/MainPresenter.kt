@@ -1,18 +1,19 @@
 package com.wimank.craftmaster.tz.main_screen.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.categories_screen.rest.CategoryResponse
+import com.wimank.craftmaster.tz.categories_screen.room.CategoryEntity
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
-import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
-import com.wimank.craftmaster.tz.common.room.entities.McCategoryEntity
 import com.wimank.craftmaster.tz.common.utils.NetManager
 import com.wimank.craftmaster.tz.main_screen.mvp.models.DataManager
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
 import com.wimank.craftmaster.tz.main_screen.rest.MainGroupResponse
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeResponse
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.DescriptionEntity
+import com.wimank.craftmaster.tz.recipe_screen.room.RecipeEntity
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
@@ -69,10 +70,10 @@ class MainPresenter(
     private fun loadCategories() {
         unsubscribeOnDestroy(
             Single.zip(
-                mDataManager.getMcCategory(),
-                mDataManager.getMcCategoryFromDb(),
-                BiFunction { serData: CategoryResponse<McCategoryEntity>,
-                             locData: List<McCategoryEntity> ->
+                mDataManager.getCategories(),
+                mDataManager.getCategoriesFromDb(),
+                BiFunction { serData: CategoryResponse<CategoryEntity>,
+                             locData: List<CategoryEntity> ->
                     if (serData.success.isSuccess())
                         mDataManager.containsData(serData.mcCategoryList, locData)
                 })
@@ -95,14 +96,14 @@ class MainPresenter(
         unsubscribeOnDestroy(
             Single.zip(
                 mDataManager.getRecipes(),
-                mDataManager.getRecipeFromDb(),
+                mDataManager.getRecipesFromDb(),
                 mDataManager.getDescriptionFromDb(),
                 Function3 { servRecipes: RecipeResponse,
-                            mcRecipeEntity: List<McRecipeEntity>,
-                            mcDescriptionEntity: List<McDescriptionEntity> ->
+                            recipeEntity: List<RecipeEntity>,
+                            descriptionEntity: List<DescriptionEntity> ->
                     if (servRecipes.success.isSuccess()) {
-                        mDataManager.containsData(servRecipes.recipesList, mcRecipeEntity)
-                        mDataManager.containsData(servRecipes.descriptionList, mcDescriptionEntity)
+                        mDataManager.containsData(servRecipes.recipesList, recipeEntity)
+                        mDataManager.containsData(servRecipes.descriptionList, descriptionEntity)
                     }
                 }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -114,6 +115,7 @@ class MainPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.recipe_loading_error)
+                        Log.e("TS", "loadRecipes()", it)
                     })
         )
     }

@@ -1,12 +1,12 @@
-package com.wimank.craftmaster.tz.recipe_screen.room.entity
+package com.wimank.craftmaster.tz.recipe_screen.room
 
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
-import com.wimank.craftmaster.tz.common.room.entities.BaseEntity
+import com.wimank.craftmaster.tz.common.room.BaseEntity
 
 
-@Entity(tableName = "mc_craft_recipe", primaryKeys = ["recipeAttr", "recipeImageName"])
-data class McRecipeEntity(
+@Entity(tableName = "craft_recipes", primaryKeys = ["recipeAttr", "recipeImageName"])
+data class RecipeEntity(
 
     @SerializedName("recipeImageName")
     var recipeImageName: String,

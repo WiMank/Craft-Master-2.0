@@ -1,8 +1,8 @@
-package com.wimank.craftmaster.tz.common.room.dao
+package com.wimank.craftmaster.tz.main_screen.room
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
+import com.wimank.craftmaster.tz.common.room.BaseDao
 import io.reactivex.Flowable
 import io.reactivex.Single
 

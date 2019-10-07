@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupDiffCallback
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 
 
 class MainGroupAdapter(private var mList: ArrayList<MainGroupEntity>) :

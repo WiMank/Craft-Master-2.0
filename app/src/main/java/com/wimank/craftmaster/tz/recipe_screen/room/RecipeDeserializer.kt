@@ -6,8 +6,6 @@ import com.wimank.craftmaster.tz.recipe_screen.rest.DescriptionCraft
 import com.wimank.craftmaster.tz.recipe_screen.rest.LleftParameter
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeName
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeResponse
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McDescriptionEntity
-import com.wimank.craftmaster.tz.recipe_screen.room.entity.McRecipeEntity
 import java.lang.reflect.Type
 
 class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
@@ -23,16 +21,16 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
         )
     }
 
-    private fun parseMcDescriptionEntityList(jo: JsonArray): List<McDescriptionEntity> {
+    private fun parseMcDescriptionEntityList(jo: JsonArray): List<DescriptionEntity> {
         return jo.map { parseMcDescriptionEntity(it.asJsonObject) }
     }
 
-    private fun parseMcRecipeEntityList(jo: JsonArray): List<McRecipeEntity> {
+    private fun parseMcRecipeEntityList(jo: JsonArray): List<RecipeEntity> {
         return jo.map { parseMcRecipeEntity(it.asJsonObject) }
     }
 
-    private fun parseMcDescriptionEntity(jo: JsonObject): McDescriptionEntity {
-        return McDescriptionEntity(
+    private fun parseMcDescriptionEntity(jo: JsonObject): DescriptionEntity {
+        return DescriptionEntity(
             jo.get("recipeAttr").asString,
             jo.get("recipeImageName").asString,
             RecipeName(
@@ -61,8 +59,8 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
         )
     }
 
-    private fun parseMcRecipeEntity(jo: JsonObject): McRecipeEntity {
-        return McRecipeEntity(
+    private fun parseMcRecipeEntity(jo: JsonObject): RecipeEntity {
+        return RecipeEntity(
             jo.get("recipe").asJsonObject.get("recipeImageName").asString,
             jo.get("recipe").asJsonObject.get("recipeAttr").asString,
             jo.get("recipe").asJsonObject.get("firstSlot").asString,

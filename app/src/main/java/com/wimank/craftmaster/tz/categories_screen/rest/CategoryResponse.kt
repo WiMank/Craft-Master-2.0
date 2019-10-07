@@ -2,7 +2,7 @@ package com.wimank.craftmaster.tz.categories_screen.rest
 
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.common.rest.Success
-import com.wimank.craftmaster.tz.common.room.entities.BaseEntity
+import com.wimank.craftmaster.tz.common.room.BaseEntity
 
 data class CategoryResponse<T : BaseEntity>(
 

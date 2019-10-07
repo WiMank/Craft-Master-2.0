@@ -5,12 +5,12 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.common.room.entities.MainGroupEntity
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
 import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
 import com.wimank.craftmaster.tz.main_screen.adapter.MainGroupAdapter
 import com.wimank.craftmaster.tz.main_screen.mvp.presenters.MainPresenter
 import com.wimank.craftmaster.tz.main_screen.mvp.views.MainView
+import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
