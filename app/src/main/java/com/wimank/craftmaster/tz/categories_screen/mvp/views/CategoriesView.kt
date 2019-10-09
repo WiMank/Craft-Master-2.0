@@ -1,17 +1,23 @@
 package com.wimank.craftmaster.tz.categories_screen.mvp.views
 
+import com.arellomobile.mvp.MvpView
+import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
+import com.arellomobile.mvp.viewstate.strategy.SkipStrategy
+import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.wimank.craftmaster.tz.categories_screen.room.CategoryEntity
-import com.wimank.craftmaster.tz.common.mvp.BaseView
 
-interface CategoriesView : BaseView {
+@StateStrategyType(AddToEndSingleStrategy::class)
+interface CategoriesView : MvpView {
 
     fun initViews()
 
     fun showCategoryList(list: List<CategoryEntity>)
 
-    override fun showMessage(message: Int)
+    @StateStrategyType(SkipStrategy::class)
+    fun showMessage(message: Int)
 
-    override fun showError(message: Int)
+    @StateStrategyType(SkipStrategy::class)
+    fun showError(message: Int)
 
-    override fun showProgress(visibilityFlag: Boolean)
+    fun showProgress(visibilityFlag: Boolean)
 }

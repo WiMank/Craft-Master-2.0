@@ -52,7 +52,8 @@ class CategoriesFragment : BaseFragment(), CategoriesView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.getString(GROUP_KEY)?.let { mCategoriesPresenter.loadCategories(it) }
+        if (savedInstanceState == null)
+            arguments?.getString(GROUP_KEY)?.let { mCategoriesPresenter.loadCategories(it) }
     }
 
     override fun onCreateView(
