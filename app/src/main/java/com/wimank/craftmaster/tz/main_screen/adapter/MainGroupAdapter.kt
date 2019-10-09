@@ -14,14 +14,10 @@ class MainGroupAdapter(
     private val mOnItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<MainGroupViewHolder>() {
 
-    interface OnItemClickListener {
-        fun onItemClick(item: MainGroupEntity)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainGroupViewHolder {
         return MainGroupViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.group_list_item,
+                R.layout.simple_recycler_item,
                 parent,
                 false
             )
@@ -40,5 +36,9 @@ class MainGroupAdapter(
     }
 
     override fun getItemCount() = mList.size
+
+    interface OnItemClickListener {
+        fun onItemClick(item: MainGroupEntity)
+    }
 
 }

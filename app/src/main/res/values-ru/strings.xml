@@ -13,5 +13,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="recipe_loading_completed">Загрузка рецептов завершена</string>
     <string name="recipe_loading_error">Ошибка загрузки рецептов</string>
+    <string name="сategories_successfully_uploaded">Категории успешно загружены</string>
+    <string name="сategories_upload_error">Ошибка загрузки категорий</string>
 
 </resources>

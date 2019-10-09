@@ -6,7 +6,7 @@ import io.reactivex.Single
 
 class CategoriesManager(private val craftMasterDataBase: CraftMasterDataBase) {
 
-    fun getMcCategoriesByGroupName(group: String): Single<List<CategoryEntity>> {
-        return craftMasterDataBase.categoryDao().getMcCategoriesByGroupName(group)
+    fun getCategoriesByGroupName(group: String): Single<List<CategoryEntity>> {
+        return craftMasterDataBase.categoryDao().getCategoriesByGroupName(group)
     }
 }

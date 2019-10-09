@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.common.di.GlideApp
 import com.wimank.craftmaster.tz.common.utils.IMAGE_FOLDER_NAME
 import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
-import kotlinx.android.synthetic.main.group_list_item.view.*
+import kotlinx.android.synthetic.main.simple_recycler_item.view.*
 import java.io.File
 
 class MainGroupViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -14,7 +14,7 @@ class MainGroupViewHolder(private val view: View) : RecyclerView.ViewHolder(view
         mainGroupEntity: MainGroupEntity,
         onItemClickListener: MainGroupAdapter.OnItemClickListener
     ) {
-        view.group_name.text = mainGroupEntity.group
+        view.item_name.text = mainGroupEntity.group
 
         val targetImage = File(
             view.context.getExternalFilesDir(IMAGE_FOLDER_NAME),
@@ -24,7 +24,7 @@ class MainGroupViewHolder(private val view: View) : RecyclerView.ViewHolder(view
         GlideApp
             .with(view)
             .load(targetImage)
-            .into(view.group_image)
+            .into(view.item_image)
 
         view.ll_rec.setOnClickListener {
             onItemClickListener.onItemClick(mainGroupEntity)

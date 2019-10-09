@@ -1,6 +1,7 @@
 package com.wimank.craftmaster.tz.main_screen.ui
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,6 @@ import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 import kotlinx.android.synthetic.main.fragment_main_group.*
 import javax.inject.Inject
 
-const val MAIN_FRAGMENT_TAG = "MainGroupFragment"
 
 class MainGroupFragment : BaseFragment(), MainView {
 
@@ -29,7 +29,7 @@ class MainGroupFragment : BaseFragment(), MainView {
     @ProvidePresenter
     fun provideMainPresenter() = mMainPresenter
 
-    private var listenerMain: OnMainFragmentInteractionListener? = null
+    private var mListenerMain: OnMainFragmentInteractionListener? = null
     private lateinit var mAdapter: MainGroupAdapter
 
     override fun onCreateView(
@@ -42,19 +42,20 @@ class MainGroupFragment : BaseFragment(), MainView {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnMainFragmentInteractionListener)
-            listenerMain = context
+            mListenerMain = context
         else
             throw RuntimeException("$context must implement OnMainFragmentInteractionListener")
     }
 
     override fun initViews() {
+        refresh.setColorSchemeColors(Color.RED)
         refresh.setOnRefreshListener {
             mMainPresenter.updateData()
         }
     }
 
     fun itemClick(mainGroupEntity: MainGroupEntity) {
-        listenerMain?.onFragmentInteraction(mainGroupEntity)
+        mListenerMain?.onFragmentInteraction(mainGroupEntity)
     }
 
     override fun showGroupList(list: List<MainGroupEntity>) {
@@ -93,6 +94,6 @@ class MainGroupFragment : BaseFragment(), MainView {
 
     override fun onDetach() {
         super.onDetach()
-        listenerMain = null
+        mListenerMain = null
     }
 }

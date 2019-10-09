@@ -12,6 +12,6 @@ interface CategoryDao : BaseDao<CategoryEntity> {
     fun getCategoriesFromDb(): Single<List<CategoryEntity>>
 
     @Query("SELECT * FROM categories WHERE `group` =:pGroup ORDER BY orderCategories")
-    fun getMcCategoriesByGroupName(pGroup: String): Single<List<CategoryEntity>>
+    fun getCategoriesByGroupName(pGroup: String): Single<List<CategoryEntity>>
 
 }

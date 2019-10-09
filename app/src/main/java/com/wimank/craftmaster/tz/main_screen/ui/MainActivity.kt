@@ -2,13 +2,16 @@ package com.wimank.craftmaster.tz.main_screen.ui
 
 import android.os.Bundle
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.categories_screen.room.CategoryEntity
 import com.wimank.craftmaster.tz.categories_screen.ui.CAT_FRAGMENT_TAG
 import com.wimank.craftmaster.tz.categories_screen.ui.CategoriesFragment
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
 import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 
 
-class MainActivity : BaseActivity(), MainGroupFragment.OnMainFragmentInteractionListener {
+class MainActivity : BaseActivity(),
+    MainGroupFragment.OnMainFragmentInteractionListener,
+    CategoriesFragment.OnCategoriesFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,16 +23,19 @@ class MainActivity : BaseActivity(), MainGroupFragment.OnMainFragmentInteraction
     private fun initViews() {
         supportFragmentManager.beginTransaction().run {
             replace(R.id.main_frame, MainGroupFragment())
-            addToBackStack(MAIN_FRAGMENT_TAG)
             commit()
         }
     }
 
     override fun onFragmentInteraction(mainGroupEntity: MainGroupEntity) {
         supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, CategoriesFragment.newInstance(mainGroupEntity.group))
+            add(R.id.main_frame, CategoriesFragment.newInstance(mainGroupEntity.group))
             addToBackStack(CAT_FRAGMENT_TAG)
             commit()
         }
+    }
+
+    override fun onFragmentInteraction(categoryEntity: CategoryEntity) {
+
     }
 }
