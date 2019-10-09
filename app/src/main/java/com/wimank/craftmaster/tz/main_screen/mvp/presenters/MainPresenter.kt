@@ -34,6 +34,7 @@ class MainPresenter(
         updateData()
     }
 
+
     fun updateData() {
         viewState.showProgress(true)
         loadMainGroupFromDb()

@@ -2,6 +2,7 @@ package com.wimank.craftmaster.tz.main_screen.di
 
 import android.content.Context
 import com.wimank.craftmaster.tz.categories_screen.rest.CategoriesApi
+import com.wimank.craftmaster.tz.common.di.MainFragmentScope
 import com.wimank.craftmaster.tz.common.rest.ImageApi
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.common.utils.NetManager
@@ -16,7 +17,7 @@ import dagger.Provides
 @Module
 class MainGroupModule {
 
-    @MainScreenScope
+    @MainFragmentScope
     @Provides
     fun provideMainPresenter(
         dataManager: DataManager,
@@ -25,7 +26,7 @@ class MainGroupModule {
         return MainPresenter(dataManager, netManager)
     }
 
-    @MainScreenScope
+    @MainFragmentScope
     @Provides
     fun provideMainGroupManager(
         context: Context,
@@ -36,7 +37,7 @@ class MainGroupModule {
         return MainGroupManager(context, mainGroupApi, imageApi, craftMasterDataBase)
     }
 
-    @MainScreenScope
+    @MainFragmentScope
     @Provides
     fun provideDataManager(
         context: Context,

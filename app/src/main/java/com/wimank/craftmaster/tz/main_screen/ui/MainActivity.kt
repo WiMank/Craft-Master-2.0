@@ -1,19 +1,20 @@
 package com.wimank.craftmaster.tz.main_screen.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.categories_screen.ui.CAT_FRAGMENT_TAG
 import com.wimank.craftmaster.tz.categories_screen.ui.CategoriesFragment
+import com.wimank.craftmaster.tz.common.ui.BaseActivity
 import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 
 
-class MainActivity : AppCompatActivity(), MainGroupFragment.OnMainFragmentInteractionListener {
+class MainActivity : BaseActivity(), MainGroupFragment.OnMainFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initViews()
+        if (savedInstanceState == null)
+            initViews()
     }
 
     private fun initViews() {
