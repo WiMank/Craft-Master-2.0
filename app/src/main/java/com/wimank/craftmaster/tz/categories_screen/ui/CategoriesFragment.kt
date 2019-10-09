@@ -65,7 +65,7 @@ class CategoriesFragment : BaseFragment(), CategoriesView {
 
     override fun initViews() {
         categories_swipe_l.setColorSchemeColors(Color.GREEN)
-        categories_swipe_l.isEnabled = true
+        categories_swipe_l.isEnabled = false
     }
 
     override fun showCategoryList(list: List<CategoryEntity>) {
