@@ -7,7 +7,7 @@ import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 data class MainGroupResponse(
 
     @SerializedName("success")
-    var success: Success,
+    val success: Success,
 
     @SerializedName("groupList")
     val groupList: List<MainGroupEntity>

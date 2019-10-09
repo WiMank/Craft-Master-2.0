@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 class Success(
     @SerializedName("httpStatus")
-    var httpStatus: Int,
+    val httpStatus: Int,
     @SerializedName("message")
-    var message: String
+    val message: String
 ) {
     fun isSuccess(): Boolean {
         return httpStatus == 200

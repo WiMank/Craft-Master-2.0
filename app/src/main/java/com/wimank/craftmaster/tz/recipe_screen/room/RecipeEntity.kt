@@ -9,43 +9,43 @@ import com.wimank.craftmaster.tz.common.room.BaseEntity
 data class RecipeEntity(
 
     @SerializedName("recipeImageName")
-    var recipeImageName: String,
+    val recipeImageName: String,
 
     @SerializedName("recipeAttr")
-    var recipeAttr: String,
+    val recipeAttr: String,
 
     @SerializedName("group")
-    var group: String,
+    val group: String,
 
     @SerializedName("firstSlot")
-    var firstSlot: String,
+    val firstSlot: String,
 
     @SerializedName("secondSlot")
-    var secondSlot: String,
+    val secondSlot: String,
 
     @SerializedName("threeSlot")
-    var threeSlot: String,
+    val threeSlot: String,
 
     @SerializedName("fourthSlot")
-    var fourthSlot: String,
+    val fourthSlot: String,
 
     @SerializedName("fifthSlot")
-    var fifthSlot: String,
+    val fifthSlot: String,
 
     @SerializedName("sixthSlot")
-    var sixthSlot: String,
+    val sixthSlot: String,
 
     @SerializedName("seventhSlot")
-    var seventhSlot: String,
+    val seventhSlot: String,
 
     @SerializedName("eighthSlot")
-    var eighthSlot: String,
+    val eighthSlot: String,
 
     @SerializedName("ninthSlot")
-    var ninthSlot: String,
+    val ninthSlot: String,
 
     @SerializedName("vers")
-    var vers: Int
+    val vers: Int
 ) : BaseEntity {
     override fun getVersion() = vers
     override fun getImage() = recipeImageName

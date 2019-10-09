@@ -12,34 +12,34 @@ import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeName
 data class DescriptionEntity(
 
     @SerializedName("recipeAttr")
-    var recipeAttr: String,
+    val recipeAttr: String,
 
     @SerializedName("recipeImageName")
-    var recipeImageName: String,
+    val recipeImageName: String,
 
     @SerializedName("group")
-    var group: String,
+    val group: String,
 
     @SerializedName("recipe_name")
-    var recipeName: RecipeName,
+    val recipeName: RecipeName,
 
     @SerializedName("lleftParameter")
-    var lleftParameter: LleftParameter,
+    val lleftParameter: LleftParameter,
 
     @SerializedName("lleftParameterImage")
-    var lleftParameterImage: String,
+    val lleftParameterImage: String,
 
     @SerializedName("rrightParameter")
-    var rrightParameter: String,
+    val rrightParameter: String,
 
     @SerializedName("descriptionCraft")
-    var descriptionCraft: DescriptionCraft,
+    val descriptionCraft: DescriptionCraft,
 
     @SerializedName("wikiLink")
-    var wikiLink: String,
+    val wikiLink: String,
 
     @SerializedName("vers")
-    var vers: Int
+    val vers: Int
 
 ) : BaseEntity {
     override fun getVersion() = vers

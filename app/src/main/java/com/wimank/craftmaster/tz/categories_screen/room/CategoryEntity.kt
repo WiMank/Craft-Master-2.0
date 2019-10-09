@@ -8,17 +8,17 @@ import com.wimank.craftmaster.tz.common.room.BaseEntity
 @Entity(tableName = "categories", primaryKeys = ["group", "orderCategories"])
 data class CategoryEntity(
     @SerializedName("group")
-    var group: String,
+    val group: String,
     @SerializedName("orderCategories")
-    var orderCategories: Int,
+    val orderCategories: Int,
     @SerializedName("category")
-    var category: Category,
+    val category: Category,
     @SerializedName("categoryImage")
-    var categoryImage: String,
+    val categoryImage: String,
     @SerializedName("categoryEndpoint")
-    var categoryEndpoint: String,
+    val categoryEndpoint: String,
     @SerializedName("vers")
-    var vers: Int
+    val vers: Int
 ) : BaseEntity {
     override fun getImage(): String = categoryImage
     override fun getVersion(): Int = vers
@@ -26,8 +26,8 @@ data class CategoryEntity(
 
 data class Category(
     @SerializedName("en")
-    var en: String,
+    val en: String,
 
     @SerializedName("ru")
-    var ru: String
+    val ru: String
 )

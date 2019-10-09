@@ -40,5 +40,4 @@ class MainGroupAdapter(
     interface OnItemClickListener {
         fun onItemClick(item: MainGroupEntity)
     }
-
 }

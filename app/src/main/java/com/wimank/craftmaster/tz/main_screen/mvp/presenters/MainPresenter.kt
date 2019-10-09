@@ -34,14 +34,13 @@ class MainPresenter(
         updateData()
     }
 
-
     fun updateData() {
         viewState.showProgress(true)
-        loadMainGroupFromDb()
         if (mNetManager.isInternetOn())
             loadMainGroupList()
         else
             viewState.showMessage(R.string.offline_mode)
+        loadMainGroupFromDb()
     }
 
     private fun loadMainGroupList() {

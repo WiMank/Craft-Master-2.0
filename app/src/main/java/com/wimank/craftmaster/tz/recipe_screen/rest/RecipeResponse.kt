@@ -9,32 +9,32 @@ import com.wimank.craftmaster.tz.recipe_screen.room.RecipeEntity
 
 @JsonAdapter(RecipeDeserializer::class)
 data class RecipeResponse(
-    var success: Success,
-    var descriptionList: List<DescriptionEntity>,
-    var recipesList: List<RecipeEntity>
+    val success: Success,
+    val descriptionList: List<DescriptionEntity>,
+    val recipesList: List<RecipeEntity>
 )
 
 data class LleftParameter(
     @SerializedName("en")
-    var en: String = "",
+    val en: String = "",
 
     @SerializedName("ru")
-    var ru: String = ""
+    val ru: String = ""
 )
 
 data class RecipeName(
     @SerializedName("en")
-    var en: String = "",
+    val en: String = "",
 
     @SerializedName("ru")
-    var ru: String = ""
+    val ru: String = ""
 )
 
 data class DescriptionCraft(
 
     @SerializedName("en")
-    var en: String = "",
+    val en: String = "",
 
     @SerializedName("ru")
-    var ru: String = ""
+    val ru: String = ""
 )

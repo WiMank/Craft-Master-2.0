@@ -12,19 +12,19 @@ data class MainGroupEntity(
 
     @PrimaryKey
     @SerializedName("group")
-    var group: String,
+    val group: String,
 
     @ColumnInfo(name = "group_image")
     @SerializedName("groupImage")
-    var groupImage: String,
+    val groupImage: String,
 
     @ColumnInfo(name = "order_group")
     @SerializedName("orderGroup")
-    var orderGroup: Int,
+    val orderGroup: Int,
 
     @ColumnInfo(name = "vers")
     @SerializedName("vers")
-    var vers: Int
+    val vers: Int
 
 ) : BaseEntity {
     override fun getImage(): String = groupImage
