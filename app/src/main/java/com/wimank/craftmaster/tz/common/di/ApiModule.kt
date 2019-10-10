@@ -1,9 +1,9 @@
 package com.wimank.craftmaster.tz.common.di
 
-import com.wimank.craftmaster.tz.categories_screen.rest.CategoriesApi
+import com.wimank.craftmaster.tz.app.categories_screen.rest.CategoriesApi
+import com.wimank.craftmaster.tz.app.main_screen.rest.MainGroupApi
+import com.wimank.craftmaster.tz.app.recipe_screen.rest.RecipesApi
 import com.wimank.craftmaster.tz.common.rest.ImageApi
-import com.wimank.craftmaster.tz.main_screen.rest.MainGroupApi
-import com.wimank.craftmaster.tz.recipe_screen.rest.RecipesApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

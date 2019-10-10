@@ -4,7 +4,7 @@
     android:id="@+id/main_fragment_ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main_screen.ui.MainGroupFragment">
+    tools:context=".app.main_screen.ui.MainGroupFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh"

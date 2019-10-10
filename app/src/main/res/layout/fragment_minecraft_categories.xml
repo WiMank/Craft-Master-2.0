@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".categories_screen.ui.CategoriesFragment">
+    tools:context=".app.categories_screen.ui.CategoriesFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/categories_swipe_l"
