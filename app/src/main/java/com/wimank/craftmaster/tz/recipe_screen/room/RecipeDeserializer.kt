@@ -14,10 +14,11 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
         typeOfT: Type,
         context: JsonDeserializationContext
     ): RecipeResponse {
+        val recipesList = "recipesList"
         return RecipeResponse(
             parseSuccess(json.asJsonObject.get("success").asJsonObject),
-            parseMcDescriptionEntityList(json.asJsonObject.get("recipesList").asJsonArray),
-            parseMcRecipeEntityList(json.asJsonObject.get("recipesList").asJsonArray)
+            parseMcDescriptionEntityList(json.asJsonObject.get(recipesList).asJsonArray),
+            parseMcRecipeEntityList(json.asJsonObject.get(recipesList).asJsonArray)
         )
     }
 
@@ -30,6 +31,7 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
     }
 
     private fun parseMcDescriptionEntity(jo: JsonObject): DescriptionEntity {
+        val lleftParameter = "lleftParameter"
         return DescriptionEntity(
             jo.get("recipeAttr").asString,
             jo.get("recipeImageName").asString,
@@ -39,13 +41,13 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
                 jo.get("recipe_name").asJsonObject.get("ru").asString
             ),
             LleftParameter(
-                if (jo.get("lleftParameter").asJsonObject.get("en") != null)
-                    jo.get("lleftParameter").asJsonObject.get("en").asString
+                if (jo.get(lleftParameter).asJsonObject.get("en") != null)
+                    jo.get(lleftParameter).asJsonObject.get("en").asString
                 else
                     "",
 
-                if (jo.get("lleftParameter").asJsonObject.get("ru") != null)
-                    jo.get("lleftParameter").asJsonObject.get("ru").asString
+                if (jo.get(lleftParameter).asJsonObject.get("ru") != null)
+                    jo.get(lleftParameter).asJsonObject.get("ru").asString
                 else
                     ""
             ),
@@ -61,20 +63,21 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
     }
 
     private fun parseMcRecipeEntity(jo: JsonObject): RecipeEntity {
+        val recipe = "recipe"
         return RecipeEntity(
-            jo.get("recipe").asJsonObject.get("recipeImageName").asString,
-            jo.get("recipe").asJsonObject.get("recipeAttr").asString,
-            jo.get("recipe").asJsonObject.get("group").asString,
-            jo.get("recipe").asJsonObject.get("firstSlot").asString,
-            jo.get("recipe").asJsonObject.get("secondSlot").asString,
-            jo.get("recipe").asJsonObject.get("threeSlot").asString,
-            jo.get("recipe").asJsonObject.get("fourthSlot").asString,
-            jo.get("recipe").asJsonObject.get("fifthSlot").asString,
-            jo.get("recipe").asJsonObject.get("sixthSlot").asString,
-            jo.get("recipe").asJsonObject.get("seventhSlot").asString,
-            jo.get("recipe").asJsonObject.get("eighthSlot").asString,
-            jo.get("recipe").asJsonObject.get("ninthSlot").asString,
-            jo.get("recipe").asJsonObject.get("vers").asInt
+            jo.get(recipe).asJsonObject.get("recipeImageName").asString,
+            jo.get(recipe).asJsonObject.get("recipeAttr").asString,
+            jo.get(recipe).asJsonObject.get("group").asString,
+            jo.get(recipe).asJsonObject.get("firstSlot").asString,
+            jo.get(recipe).asJsonObject.get("secondSlot").asString,
+            jo.get(recipe).asJsonObject.get("threeSlot").asString,
+            jo.get(recipe).asJsonObject.get("fourthSlot").asString,
+            jo.get(recipe).asJsonObject.get("fifthSlot").asString,
+            jo.get(recipe).asJsonObject.get("sixthSlot").asString,
+            jo.get(recipe).asJsonObject.get("seventhSlot").asString,
+            jo.get(recipe).asJsonObject.get("eighthSlot").asString,
+            jo.get(recipe).asJsonObject.get("ninthSlot").asString,
+            jo.get(recipe).asJsonObject.get("vers").asInt
         )
     }
 
