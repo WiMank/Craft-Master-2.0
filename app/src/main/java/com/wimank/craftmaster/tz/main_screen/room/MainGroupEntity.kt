@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.common.room.BaseEntity
 
-
 @Entity(tableName = "main_group")
 data class MainGroupEntity(
 

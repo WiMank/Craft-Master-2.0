@@ -12,7 +12,6 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
 
-
 class MainGroupManager(
     private val mContext: Context,
     private val mainGroupApi: MainGroupApi,

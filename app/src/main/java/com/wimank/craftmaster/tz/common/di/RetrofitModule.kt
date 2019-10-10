@@ -81,5 +81,4 @@ class RetrofitModule {
             this.level = HttpLoggingInterceptor.Level.BODY
         }
     }
-
 }

@@ -9,7 +9,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
-
 @InjectViewState
 class CategoriesPresenter(private val mCategoriesManager: CategoriesManager) :
     BasePresenter<CategoriesView>() {
@@ -30,7 +29,7 @@ class CategoriesPresenter(private val mCategoriesManager: CategoriesManager) :
                     onSuccess = {
                         viewState.showCategoryList(it)
                         viewState.showProgress(false)
-                        viewState.showMessage(R.string.сategories_successfully_uploaded)
+                        viewState.showMessage(R.string.сategories_successfully_loaded)
                     },
                     onError = {
                         viewState.showProgress(false)

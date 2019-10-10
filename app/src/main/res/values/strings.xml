@@ -13,7 +13,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="recipe_loading_completed">Recipe loading completed</string>
     <string name="recipe_loading_error">Recipes loading error</string>
-    <string name="сategories_successfully_uploaded">Categories successfully loaded</string>
+    <string name="сategories_successfully_loaded">Categories successfully loaded</string>
     <string name="сategories_upload_error">Categories load error</string>
+    <string name="recipes_list_successfully_loaded">Recipes list successfully loaded</string>
+    <string name="recipes_list_loaded_error">Recipes list load error</string>
 
 </resources>

@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 
-
 @Suppress("DEPRECATION")
 class NetManager(private var context: Context) {
     fun isInternetOn(): Boolean {

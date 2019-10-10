@@ -7,7 +7,6 @@ import com.wimank.craftmaster.tz.recipe_screen.rest.DescriptionCraft
 import com.wimank.craftmaster.tz.recipe_screen.rest.LleftParameter
 import com.wimank.craftmaster.tz.recipe_screen.rest.RecipeName
 
-
 @Entity(tableName = "description_craft_recipes", primaryKeys = ["recipeName", "recipeImageName"])
 data class DescriptionEntity(
 

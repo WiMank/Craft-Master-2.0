@@ -25,3 +25,4 @@ class LinearLayoutManagerWrapper : LinearLayoutManager {
         return false
     }
 }
+

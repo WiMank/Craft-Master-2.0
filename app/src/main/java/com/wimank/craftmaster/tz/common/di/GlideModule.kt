@@ -15,7 +15,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import java.io.InputStream
 import java.util.concurrent.TimeUnit
 
-
 @GlideModule
 class GlideModule : AppGlideModule() {
 

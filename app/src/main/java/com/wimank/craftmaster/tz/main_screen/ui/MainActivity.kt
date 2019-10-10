@@ -7,11 +7,14 @@ import com.wimank.craftmaster.tz.categories_screen.ui.CAT_FRAGMENT_TAG
 import com.wimank.craftmaster.tz.categories_screen.ui.CategoriesFragment
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
 import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
-
+import com.wimank.craftmaster.tz.recipes_list.room.RecipesListItem
+import com.wimank.craftmaster.tz.recipes_list.ui.RL_FRAGMENT_TAG
+import com.wimank.craftmaster.tz.recipes_list.ui.RecipesListFragment
 
 class MainActivity : BaseActivity(),
     MainGroupFragment.OnMainFragmentInteractionListener,
-    CategoriesFragment.OnCategoriesFragmentInteractionListener {
+    CategoriesFragment.OnCategoriesFragmentInteractionListener,
+    RecipesListFragment.OnRecipesListFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,14 @@ class MainActivity : BaseActivity(),
     }
 
     override fun onFragmentInteraction(categoryEntity: CategoryEntity) {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_frame, RecipesListFragment.newInstance(categoryEntity.group))
+            addToBackStack(RL_FRAGMENT_TAG)
+            commit()
+        }
+    }
+
+    override fun onFragmentInteraction(item: RecipesListItem) {
 
     }
 }

@@ -4,7 +4,6 @@ import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.common.room.BaseEntity
 
-
 @Entity(tableName = "categories", primaryKeys = ["group", "orderCategories"])
 data class CategoryEntity(
     @SerializedName("group")
