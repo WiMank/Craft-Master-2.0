@@ -21,7 +21,6 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-
 @InjectViewState
 class MainPresenter(
     private val mDataManager: DataManager,

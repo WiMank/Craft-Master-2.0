@@ -19,7 +19,6 @@ import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 import kotlinx.android.synthetic.main.fragment_main_group.*
 import javax.inject.Inject
 
-
 class MainGroupFragment : BaseFragment(), MainView {
 
     @Inject

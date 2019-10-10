@@ -7,7 +7,6 @@ import io.reactivex.disposables.Disposable
 import rx.Subscription
 import rx.subscriptions.CompositeSubscription
 
-
 open class BasePresenter<View : MvpView> : MvpPresenter<View>() {
     private val compositeDisposable = CompositeDisposable()
 

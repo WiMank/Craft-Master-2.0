@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.categories_screen.ui
 
-
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle

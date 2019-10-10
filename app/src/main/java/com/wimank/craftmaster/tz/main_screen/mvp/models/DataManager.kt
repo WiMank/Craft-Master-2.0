@@ -20,7 +20,6 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
 
-
 class DataManager(
     private val mContext: Context,
     private val mCategoriesApi: CategoriesApi,
@@ -37,30 +36,26 @@ class DataManager(
                     serAr,
                     locAr
                 ).sortedWith(compareBy { it.getVersion() })
-            disjunctionArray.forEach {
-                if (locAr.contains(it))
-                    deleteEntity(it)
+            disjunctionArray.forEach { entity ->
+                if (locAr.contains(entity))
+                    deleteEntity(entity)
                 else
-                    downloadImageAndInsertEntity(it)
-            }
-        }
-    }
-
-    private fun downloadImageAndInsertEntity(entity: BaseEntity) {
-        if (!checkImageExist(mContext, entity.getImage())) {
-            with(mImageApi.downloadImage(entity.getImage()).execute()) {
-                if (isSuccessful) {
-                    body()?.byteStream()?.let {
-                        writeImage(
-                            mContext,
-                            it,
-                            entity.getImage()
-                        )
+                    if (!checkImageExist(mContext, entity.getImage())) {
+                        with(mImageApi.downloadImage(entity.getImage()).execute()) {
+                            if (isSuccessful) {
+                                body()?.byteStream()?.let {
+                                    writeImage(
+                                        mContext,
+                                        it,
+                                        entity.getImage()
+                                    )
+                                }
+                            }
+                        }
                     }
-                }
+                insertEntity(entity)
             }
         }
-        insertEntity(entity)
     }
 
     override fun insertEntity(entity: BaseEntity) {

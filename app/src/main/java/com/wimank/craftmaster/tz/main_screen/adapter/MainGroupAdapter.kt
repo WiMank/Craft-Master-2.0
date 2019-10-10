@@ -8,7 +8,6 @@ import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.main_screen.mvp.models.MainGroupDiffCallback
 import com.wimank.craftmaster.tz.main_screen.room.MainGroupEntity
 
-
 class MainGroupAdapter(
     private var mList: ArrayList<MainGroupEntity>,
     private val mOnItemClickListener: OnItemClickListener

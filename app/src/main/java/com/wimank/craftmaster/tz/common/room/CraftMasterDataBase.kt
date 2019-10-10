@@ -12,7 +12,6 @@ import com.wimank.craftmaster.tz.recipe_screen.room.DescriptionEntity
 import com.wimank.craftmaster.tz.recipe_screen.room.RecipeEntity
 import com.wimank.craftmaster.tz.recipe_screen.room.RecipesDao
 
-
 @Database(
     entities = [
         MainGroupEntity::class,

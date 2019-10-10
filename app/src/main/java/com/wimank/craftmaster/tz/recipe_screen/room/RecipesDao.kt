@@ -5,7 +5,6 @@ import androidx.room.Query
 import com.wimank.craftmaster.tz.common.room.BaseDao
 import io.reactivex.Single
 
-
 @Dao
 interface RecipesDao : BaseDao<RecipeEntity> {
 
