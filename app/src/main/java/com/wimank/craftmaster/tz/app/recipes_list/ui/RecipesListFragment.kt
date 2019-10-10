@@ -80,6 +80,10 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
         recipes_list_refresh.isRefreshing = visibilityFlag
     }
 
+    override fun scrollRecyclerView(scrollY: Int) {
+        recipes_list_recycler_view.smoothScrollBy(0, scrollY)
+    }
+
     override fun showRecipesList(list: List<RecipesListItem>) {
         recipes_list_recycler_view.apply {
             layoutManager = LinearLayoutManagerWrapper(context)
@@ -92,13 +96,18 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
         }
     }
 
-    fun itemClick(item: RecipesListItem) {
-        listenerRecipesList?.onFragmentInteraction(item)
+    override fun onPause() {
+        super.onPause()
+        mRecipesListPresenter.saveRecyclerPosition(recipes_list_recycler_view.computeVerticalScrollOffset())
     }
 
     override fun onDetach() {
         super.onDetach()
         listenerRecipesList = null
+    }
+
+    fun itemClick(item: RecipesListItem) {
+        listenerRecipesList?.onFragmentInteraction(item)
     }
 
     interface OnRecipesListFragmentInteractionListener {

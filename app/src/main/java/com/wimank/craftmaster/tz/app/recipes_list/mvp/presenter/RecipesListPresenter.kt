@@ -13,9 +13,16 @@ import io.reactivex.schedulers.Schedulers
 class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) :
     BasePresenter<RecipesListView>() {
 
+    private var recyclerPosition = 0
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         viewState.initViews()
+    }
+
+    override fun attachView(view: RecipesListView?) {
+        super.attachView(view)
+        viewState.scrollRecyclerView(recyclerPosition)
     }
 
     fun loadRecipesList(group: String) {
@@ -35,5 +42,9 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                         viewState.showError(R.string.recipes_list_loaded_error)
                     })
         )
+    }
+
+    fun saveRecyclerPosition(position: Int) {
+        recyclerPosition = position
     }
 }
