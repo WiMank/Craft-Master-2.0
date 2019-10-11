@@ -6,15 +6,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.recipe_screen.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.app.recipe_screen.mvp.views.RecipeView
+import com.wimank.craftmaster.tz.common.ui.BaseFragment
 import javax.inject.Inject
 
-class RecipeFragment : Fragment(), RecipeView {
+private const val RECIPE_FRAGMENT_KEY = "recipe_attr"
+const val RECIPE_FRAGMENT_TAG = "RecipeFragment"
+
+class RecipeFragment : BaseFragment(), RecipeView {
 
     @Inject
     @InjectPresenter
@@ -27,9 +30,10 @@ class RecipeFragment : Fragment(), RecipeView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
+        if (savedInstanceState == null)
+            arguments?.getString(RECIPE_FRAGMENT_KEY)?.let {
+                mRecipePresenter.lodRecipeAndDecription(it)
+            }
     }
 
     override fun onCreateView(
@@ -77,10 +81,10 @@ class RecipeFragment : Fragment(), RecipeView {
     }
 
     companion object {
-        fun newInstance(param1: String) =
+        fun newInstance(recipeAttr: String) =
             RecipeFragment().apply {
                 arguments = Bundle().apply {
-
+                    putString(RECIPE_FRAGMENT_KEY, recipeAttr)
                 }
             }
     }
