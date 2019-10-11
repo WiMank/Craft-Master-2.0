@@ -28,7 +28,7 @@ class RecipeFragment : Fragment() {
     }
 
 
-    fun onButtonPressed(uri: Uri) {
+    fun onItemClick(uri: Uri) {
         listenerRecipe?.onFragmentInteraction(uri)
     }
 
