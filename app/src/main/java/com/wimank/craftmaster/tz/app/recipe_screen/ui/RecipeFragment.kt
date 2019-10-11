@@ -7,9 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.recipe_screen.mvp.presenters.RecipePresenter
+import com.wimank.craftmaster.tz.app.recipe_screen.mvp.views.RecipeView
+import javax.inject.Inject
 
-class RecipeFragment : Fragment() {
+class RecipeFragment : Fragment(), RecipeView {
+
+    @Inject
+    @InjectPresenter
+    lateinit var mRecipePresenter: RecipePresenter
+
+    @ProvidePresenter
+    fun provideRecipePresenter() = mRecipePresenter
 
     private var listenerRecipe: OnRecipeFragmentInteractionListener? = null
 
@@ -27,9 +39,20 @@ class RecipeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_recipe, container, false)
     }
 
+    override fun initViews() {
 
-    fun onItemClick(uri: Uri) {
-        listenerRecipe?.onFragmentInteraction(uri)
+    }
+
+    override fun showMessage(message: Int) {
+
+    }
+
+    override fun showError(message: Int) {
+
+    }
+
+    override fun showProgress(visibilityFlag: Boolean) {
+
     }
 
     override fun onAttach(context: Context) {
@@ -45,6 +68,9 @@ class RecipeFragment : Fragment() {
         listenerRecipe = null
     }
 
+    fun onItemClick(uri: Uri) {
+        listenerRecipe?.onFragmentInteraction(uri)
+    }
 
     interface OnRecipeFragmentInteractionListener {
         fun onFragmentInteraction(uri: Uri)
