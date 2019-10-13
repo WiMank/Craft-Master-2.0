@@ -32,7 +32,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null)
             arguments?.getString(RECIPE_FRAGMENT_KEY)?.let {
-                mRecipePresenter.lodRecipeAndDecription(it)
+                mRecipePresenter.lodRecipeAndDescription(it)
             }
     }
 

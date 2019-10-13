@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 @InjectViewState
 class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter<RecipeView>() {
 
-    fun lodRecipeAndDecription(recipeAttr: String) {
+    fun lodRecipeAndDescription(recipeAttr: String) {
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             mRecipeManager
