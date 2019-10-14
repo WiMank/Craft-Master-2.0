@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.app.main_screen.mvp.models
 
-import android.content.Context
 import com.wimank.craftmaster.tz.app.categories_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.app.categories_screen.rest.CategoryResponse
 import com.wimank.craftmaster.tz.app.categories_screen.room.CategoryEntity
@@ -14,14 +13,13 @@ import com.wimank.craftmaster.tz.app.recipe_screen.room.RecipeEntity
 import com.wimank.craftmaster.tz.common.rest.ImageApi
 import com.wimank.craftmaster.tz.common.room.BaseEntity
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.common.utils.checkImageExist
-import com.wimank.craftmaster.tz.common.utils.writeImage
+import com.wimank.craftmaster.tz.common.utils.ImageUtils
 import io.reactivex.Flowable
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
 
 class DataManager(
-    private val mContext: Context,
+    private val mImageUtils: ImageUtils,
     private val mCategoriesApi: CategoriesApi,
     private val mainGroupApi: MainGroupApi,
     private val mImageApi: ImageApi,
@@ -40,12 +38,11 @@ class DataManager(
                 if (locAr.contains(entity))
                     deleteEntity(entity)
                 else
-                    if (!checkImageExist(mContext, entity.getImage())) {
+                    if (!mImageUtils.checkImageExist(entity.getImage())) {
                         with(mImageApi.downloadImage(entity.getImage()).execute()) {
                             if (isSuccessful) {
                                 body()?.byteStream()?.let {
-                                    writeImage(
-                                        mContext,
+                                    mImageUtils.writeImage(
                                         it,
                                         entity.getImage()
                                     )
