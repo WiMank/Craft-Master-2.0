@@ -7,11 +7,11 @@ import io.reactivex.Single
 
 class RecipeManager(private val craftMasterDataBase: CraftMasterDataBase) {
 
-    fun getDescriptionFromDb(recipeAttr: String): Single<List<DescriptionEntity>> {
+    fun getDescriptionFromDb(recipeAttr: String): Single<DescriptionEntity> {
         return craftMasterDataBase.descriptionDao().getDescriptionByNameFromDb(recipeAttr)
     }
 
-    fun getRecipeFromDb(recipeAttr: String): Single<List<RecipeEntity>> {
+    fun getRecipeFromDb(recipeAttr: String): Single<RecipeEntity> {
         return craftMasterDataBase.recipeDao().getRecipesByNameFromDb(recipeAttr)
     }
 }

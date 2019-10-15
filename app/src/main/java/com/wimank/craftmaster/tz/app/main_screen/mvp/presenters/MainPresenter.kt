@@ -113,7 +113,7 @@ class MainPresenter(
                     },
                     onError = {
                         viewState.showProgress(false)
-                        viewState.showError(R.string.recipe_loading_error)
+                        viewState.showError(R.string.recipes_list_loading_error)
                     })
         )
     }

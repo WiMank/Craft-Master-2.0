@@ -102,22 +102,18 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal">
 
-                <GridView
-                    android:id="@+id/recipe_grid"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
-                    android:layout_marginStart="8dp"
+                <include
+                    android:id="@+id/table_l"
+                    layout="@layout/craft_table_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:gravity="center"
-                    android:horizontalSpacing="2dp"
-                    android:numColumns="3"
-                    android:scrollbars="none"
-                    android:verticalSpacing="2dp"
+                    android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -128,9 +124,9 @@
                     android:layout_height="48dp"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/ic_arrow_recipe"
-                    app:layout_constraintBottom_toBottomOf="@+id/recipe_grid"
-                    app:layout_constraintStart_toEndOf="@+id/recipe_grid"
-                    app:layout_constraintTop_toTopOf="@+id/recipe_grid"
+                    app:layout_constraintBottom_toBottomOf="@+id/table_l"
+                    app:layout_constraintStart_toEndOf="@+id/table_l"
+                    app:layout_constraintTop_toTopOf="@+id/table_l"
                     tools:ignore="ContentDescription" />
 
                 <ImageView

@@ -13,7 +13,7 @@ interface DescriptionDao : BaseDao<DescriptionEntity> {
     fun getDescriptionFromDb(): Single<List<DescriptionEntity>>
 
     @Query("SELECT * FROM description_craft_recipes WHERE recipeAttr =:pRecipeAttr")
-    fun getDescriptionByNameFromDb(pRecipeAttr: String): Single<List<DescriptionEntity>>
+    fun getDescriptionByNameFromDb(pRecipeAttr: String): Single<DescriptionEntity>
 
     @Query("SELECT recipeName, recipeImageName, recipeAttr FROM description_craft_recipes WHERE `group` =:pGroup ORDER BY recipeName ASC")
     fun getRecipesListFromDb(pGroup: String): Single<List<RecipesListItem>>
