@@ -14,8 +14,6 @@ data class CategoryEntity(
     val category: Category,
     @SerializedName("categoryImage")
     val categoryImage: String,
-    @SerializedName("categoryEndpoint")
-    val categoryEndpoint: String,
     @SerializedName("vers")
     val vers: Int
 ) : BaseEntity {

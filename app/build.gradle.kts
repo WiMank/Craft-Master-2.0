@@ -143,4 +143,9 @@ dependencies {
     //Assertion
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVer")
 
+    //Mockk
+    val mockkVersion = "1.9.3.kotlin12"
+    testImplementation("io.mockk:mockk:$mockkVersion")
+    androidTestImplementation("io.mockk:mockk-android:$mockkVersion")
+
 }
