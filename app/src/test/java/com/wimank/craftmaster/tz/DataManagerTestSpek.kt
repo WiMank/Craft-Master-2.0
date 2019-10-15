@@ -1,11 +1,10 @@
 package com.wimank.craftmaster.tz
 
-import com.wimank.craftmaster.tz.app.categories_screen.rest.CategoryResponse
-import com.wimank.craftmaster.tz.app.categories_screen.room.Category
 import com.wimank.craftmaster.tz.app.categories_screen.room.CategoryEntity
 import com.wimank.craftmaster.tz.app.main_screen.mvp.models.DataManager
 import com.wimank.craftmaster.tz.app.main_screen.room.MainGroupEntity
-import com.wimank.craftmaster.tz.common.rest.Success
+import com.wimank.craftmaster.tz.app.recipe_screen.room.DescriptionEntity
+import com.wimank.craftmaster.tz.app.recipe_screen.room.RecipeEntity
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.mockk
@@ -17,8 +16,10 @@ import org.spekframework.spek2.Spek
 object DataManagerTestSpek : Spek({
 
     val dataManager: DataManager = mockk()
-    val mainGroupEntity = MainGroupEntity("Test", "Test", 0, 0)
-
+    val mainGroupEntity = mockk<MainGroupEntity>()
+    val categoryEntity = mockk<List<CategoryEntity>>()
+    val recipeEntity = mockk<List<RecipeEntity>>()
+    val descriptionEntity = mockk<List<DescriptionEntity>>()
 
     beforeGroup {
         MockKAnnotations.init(this, relaxUnitFun = true)
@@ -46,26 +47,34 @@ object DataManagerTestSpek : Spek({
                 .assertResult(listOf(mainGroupEntity))
         }
 
-        test("Test getCategories() method") {
-            val categoryResponse = CategoryResponse(
-                Success(200, "test message"),
-                listOf(
-                    CategoryEntity(
-                        "g",
-                        0,
-                        Category(en = "en", ru = "ru"),
-                        "i",
-                        0
-                    )
-                )
-            )
-            every { dataManager.getCategories() } returns Single.just(categoryResponse)
+        test("Test getCategoriesFromDb() method") {
+            every { dataManager.getCategoriesFromDb() } returns Single.just(categoryEntity)
             dataManager
-                .getCategories()
+                .getCategoriesFromDb()
                 .subscribeOn(Schedulers.trampoline())
                 .observeOn(Schedulers.trampoline())
                 .test()
-                .assertResult(categoryResponse)
+                .assertResult(categoryEntity)
+        }
+
+        test("Test getRecipesFromDb() method") {
+            every { dataManager.getRecipesFromDb() } returns Single.just(recipeEntity)
+            dataManager
+                .getRecipesFromDb()
+                .subscribeOn(Schedulers.trampoline())
+                .observeOn(Schedulers.trampoline())
+                .test()
+                .assertResult(recipeEntity)
+        }
+
+        test("Test getDescriptionFromDb() method") {
+            every { dataManager.getDescriptionFromDb() } returns Single.just(descriptionEntity)
+            dataManager
+                .getDescriptionFromDb()
+                .subscribeOn(Schedulers.trampoline())
+                .observeOn(Schedulers.trampoline())
+                .test()
+                .assertResult(descriptionEntity)
         }
     }
 })

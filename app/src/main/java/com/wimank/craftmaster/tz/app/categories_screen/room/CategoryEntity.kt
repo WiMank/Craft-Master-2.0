@@ -23,8 +23,8 @@ data class CategoryEntity(
 
 data class Category(
     @SerializedName("en")
-    val en: String,
+    val en: String = "",
 
     @SerializedName("ru")
-    val ru: String
+    val ru: String = ""
 )
