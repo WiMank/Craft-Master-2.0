@@ -38,3 +38,19 @@ data class DescriptionCraft(
     @SerializedName("ru")
     val ru: String = ""
 )
+
+data class RrightParameter(
+    @SerializedName("en")
+    val en: String = "",
+
+    @SerializedName("ru")
+    val ru: String = ""
+)
+
+data class RrightParameterText(
+    @SerializedName("en")
+    val en: String = "",
+
+    @SerializedName("ru")
+    val ru: String = ""
+)

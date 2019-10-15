@@ -2,9 +2,7 @@ package com.wimank.craftmaster.tz.app.recipe_screen.room
 
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.DescriptionCraft
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.LleftParameter
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.RecipeName
+import com.wimank.craftmaster.tz.app.recipe_screen.rest.*
 import com.wimank.craftmaster.tz.common.room.BaseEntity
 
 @Entity(tableName = "description_craft_recipes", primaryKeys = ["recipeName", "recipeImageName"])
@@ -29,7 +27,10 @@ data class DescriptionEntity(
     val lleftParameterImage: String,
 
     @SerializedName("rrightParameter")
-    val rrightParameter: String,
+    val rrightParameter: RrightParameter,
+
+    @SerializedName("rrightParameterText")
+    val rrightParameterText: RrightParameterText,
 
     @SerializedName("descriptionCraft")
     val descriptionCraft: DescriptionCraft,

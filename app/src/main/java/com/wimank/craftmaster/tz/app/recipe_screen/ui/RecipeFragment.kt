@@ -15,15 +15,11 @@ import com.wimank.craftmaster.tz.app.recipe_screen.mvp.models.RecipeImages
 import com.wimank.craftmaster.tz.app.recipe_screen.mvp.models.RecipeImages.*
 import com.wimank.craftmaster.tz.app.recipe_screen.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.app.recipe_screen.mvp.views.RecipeView
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.DescriptionCraft
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.LleftParameter
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.RecipeName
 import com.wimank.craftmaster.tz.app.recipe_screen.room.DescriptionEntity
 import com.wimank.craftmaster.tz.app.recipe_screen.room.RecipeEntity
 import com.wimank.craftmaster.tz.common.di.GlideApp
 import com.wimank.craftmaster.tz.common.ui.BaseFragment
 import com.wimank.craftmaster.tz.common.utils.IMAGE_FOLDER_NAME
-import com.wimank.craftmaster.tz.common.utils.getCurrentLocale
 import kotlinx.android.synthetic.main.craft_table_layout.*
 import kotlinx.android.synthetic.main.fragment_recipe.*
 import java.io.File
@@ -33,7 +29,6 @@ private const val RECIPE_FRAGMENT_KEY = "recipe_attr"
 const val RECIPE_FRAGMENT_TAG = "RecipeFragment"
 
 class RecipeFragment : BaseFragment(), RecipeView {
-
     @Inject
     @InjectPresenter
     lateinit var mRecipePresenter: RecipePresenter
@@ -83,15 +78,10 @@ class RecipeFragment : BaseFragment(), RecipeView {
         recipe_refresh.isRefreshing = visibilityFlag
     }
 
-    override fun fillRecipeDesc(entity: DescriptionEntity) {
-        recipe_name.text = localizedName(entity.recipeName)
-        left_parameter.text = localizeLleftParameter(entity.lleftParameter)
-        description_craft.text = localizeDescription(entity.descriptionCraft)
-        right_parameter.text = entity.rrightParameter
-        right_parameter_text.text = entity.rrightParameter
+    override fun fillRecipeImages(entity: DescriptionEntity) {
         setImage(entity.recipeImageName, RECIPE_IMAGE)
-        setImage(entity.lleftParameterImage, LEFT_PARAMETER_IMAGE)
-        setImage(entity.recipeImageName, RESULT_CRAFT_IMAGE)
+        setImage(entity.lleftParameterImage, LEFT_P_IMAGE)
+        setImage(entity.recipeImageName, RESULT_IMAGE)
     }
 
     override fun fillCraftTable(entity: RecipeEntity) {
@@ -106,28 +96,24 @@ class RecipeFragment : BaseFragment(), RecipeView {
         setImage(entity.ninthSlot, NINTH_SLOT)
     }
 
-    private fun localizedName(recipeName: RecipeName): String {
-        return when (context?.let { getCurrentLocale(it).language }) {
-            "ru" -> recipeName.ru
-            "uk" -> recipeName.ru
-            else -> recipeName.en
-        }
+    override fun showLocalizedName(name: String) {
+        recipe_name.text = name
     }
 
-    private fun localizeDescription(descriptionCraft: DescriptionCraft): String {
-        return when (context?.let { getCurrentLocale(it).language }) {
-            "ru" -> descriptionCraft.ru
-            "uk" -> descriptionCraft.ru
-            else -> descriptionCraft.en
-        }
+    override fun showLocalizeDescription(desc: String) {
+        description_craft.text = desc
     }
 
-    private fun localizeLleftParameter(lleftParameter: LleftParameter): String {
-        return when (context?.let { getCurrentLocale(it).language }) {
-            "ru" -> lleftParameter.ru
-            "uk" -> lleftParameter.ru
-            else -> lleftParameter.en
-        }
+    override fun showLocalizeLleftParameter(lleft: String) {
+        left_parameter.text = lleft
+    }
+
+    override fun showLocalizeRrightParameter(rright: String) {
+        right_parameter.text = rright
+    }
+
+    override fun showLocalizeRrightParameterText(rrightText: String) {
+        right_parameter_text.text = rrightText
     }
 
     private fun setImage(imagePath: String, recipeImages: RecipeImages) {
@@ -146,12 +132,8 @@ class RecipeFragment : BaseFragment(), RecipeView {
                 EIGHTH_SLOT -> GlideApp.with(lContext).load(targetImage).into(eighthSlot)
                 NINTH_SLOT -> GlideApp.with(lContext).load(targetImage).into(ninthSlot)
                 RECIPE_IMAGE -> GlideApp.with(lContext).load(targetImage).into(recipe_image)
-                LEFT_PARAMETER_IMAGE -> GlideApp.with(lContext).load(targetImage).into(
-                    image_parameter
-                )
-                RESULT_CRAFT_IMAGE -> GlideApp.with(lContext).load(targetImage).into(
-                    recipe_result_craft
-                )
+                LEFT_P_IMAGE -> GlideApp.with(lContext).load(targetImage).into(image_parameter)
+                RESULT_IMAGE -> GlideApp.with(lContext).load(targetImage).into(recipe_result_craft)
             }
         }
     }

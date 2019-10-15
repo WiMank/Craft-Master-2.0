@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.app.recipe_screen.di
 
+import android.content.Context
 import com.wimank.craftmaster.tz.app.recipe_screen.mvp.models.RecipeManager
 import com.wimank.craftmaster.tz.app.recipe_screen.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
@@ -17,7 +18,10 @@ class RecipeModule {
 
     @RecipeFragmentScope
     @Provides
-    fun provideRecipeManager(craftMasterDataBase: CraftMasterDataBase): RecipeManager {
-        return RecipeManager(craftMasterDataBase)
+    fun provideRecipeManager(
+        context: Context,
+        craftMasterDataBase: CraftMasterDataBase
+    ): RecipeManager {
+        return RecipeManager(context, craftMasterDataBase)
     }
 }

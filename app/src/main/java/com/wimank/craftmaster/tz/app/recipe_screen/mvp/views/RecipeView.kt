@@ -20,8 +20,18 @@ interface RecipeView : MvpView {
 
     fun showProgress(visibilityFlag: Boolean)
 
-    fun fillRecipeDesc(entity: DescriptionEntity)
+    fun fillRecipeImages(entity: DescriptionEntity)
 
     fun fillCraftTable(entity: RecipeEntity)
+
+    fun showLocalizedName(name: String)
+
+    fun showLocalizeDescription(desc: String)
+
+    fun showLocalizeLleftParameter(lleft: String)
+
+    fun showLocalizeRrightParameter(rright: String)
+
+    fun showLocalizeRrightParameterText(rrightText: String)
 
 }
