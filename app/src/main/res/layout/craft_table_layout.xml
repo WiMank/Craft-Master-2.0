@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/table_l"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TableRow android:layout_marginTop="8dp">
+
+        <ImageView
+            android:id="@+id/firstSlot"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/secondSlot"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            tools:ignore="ContentDescription" />
+
+
+        <ImageView
+            android:id="@+id/threeSlot"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            tools:ignore="ContentDescription" />
+
+    </TableRow>
+
+    <TableRow android:layout_marginTop="8dp">
+
+        <ImageView
+            android:id="@+id/fourthSlot"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/fifthSlot"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            tools:ignore="ContentDescription" />
+
+
+        <ImageView
+            android:id="@+id/sixthSlot"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            tools:ignore="ContentDescription" />
+    </TableRow>
+
+    <TableRow android:layout_marginTop="8dp">
+
+        <ImageView
+            android:id="@+id/seventhSlot"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/eighthSlot"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/ninthSlot"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            tools:ignore="ContentDescription" />
+    </TableRow>
+
+</TableLayout>

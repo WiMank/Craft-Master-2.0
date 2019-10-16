@@ -1,5 +1,8 @@
+import de.mannodermaus.gradle.plugins.junit5.junitPlatform
+
 plugins {
     id("com.android.application")
+    id("de.mannodermaus.android-junit5")
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
@@ -14,13 +17,49 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument(
+            "runnerBuilder",
+            "de.mannodermaus.junit5.AndroidJUnit5Builder"
+        )
     }
+
+    sourceSets {
+        this.forEach {
+            it.java.srcDir("src/$it.name/kotlin")
+        }
+    }
+
+    testOptions {
+        junitPlatform {
+            filters {
+                includeEngines("spek2")
+            }
+        }
+
+        unitTests.all(KotlinClosure1<Any, Test>({
+            (this as Test).also { testTask ->
+                testTask.testLogging {
+                    events("passed", "skipped", "failed")
+                }
+            }
+        }, this))
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude("META-INF/LICENSE*")
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -31,6 +70,8 @@ dependencies {
 
     val kotlinVer = "1.3.50"
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVer")
+    testImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVer")
+
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.core:core-ktx:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
@@ -87,4 +128,24 @@ dependencies {
 
     //Apache Collections
     implementation("org.apache.commons:commons-collections4:4.1")
+
+    //JUnit5
+    val junitVersion = "5.5.2"
+    androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.1.0")
+    androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.1.0")
+
+    //Spek
+    val spekVersion = "2.0.8"
+    testImplementation("org.spekframework.spek2:spek-dsl-jvm:$spekVersion")
+    testImplementation("org.spekframework.spek2:spek-runner-junit5:$spekVersion")
+
+    //Assertion
+    testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVer")
+
+    //Mockk
+    val mockkVersion = "1.9.3.kotlin12"
+    testImplementation("io.mockk:mockk:$mockkVersion")
+    androidTestImplementation("io.mockk:mockk-android:$mockkVersion")
+
 }
