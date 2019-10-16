@@ -28,10 +28,12 @@ interface RecipeView : MvpView {
 
     fun showLocalizeDescription(desc: String)
 
-    fun showLocalizeLleftParameter(lleft: String)
+    fun showLocalizeLeftPar(leftP: String)
 
-    fun showLocalizeRrightParameter(rright: String)
+    fun showLocalizeLeftParText(leftPText: String)
 
-    fun showLocalizeRrightParameterText(rrightText: String)
+    fun showLocalizeRightPar(rightP: String)
+
+    fun showLocalizeRightParText(rightPText: String)
 
 }

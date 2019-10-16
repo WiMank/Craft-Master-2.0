@@ -14,7 +14,15 @@ data class RecipeResponse(
     val recipesList: List<RecipeEntity>
 )
 
-data class LleftParameter(
+data class LeftParameter(
+    @SerializedName("en")
+    val en: String = "",
+
+    @SerializedName("ru")
+    val ru: String = ""
+)
+
+data class LeftParameterText(
     @SerializedName("en")
     val en: String = "",
 
@@ -39,7 +47,7 @@ data class DescriptionCraft(
     val ru: String = ""
 )
 
-data class RrightParameter(
+data class RightParameter(
     @SerializedName("en")
     val en: String = "",
 
@@ -47,7 +55,7 @@ data class RrightParameter(
     val ru: String = ""
 )
 
-data class RrightParameterText(
+data class RightParameterText(
     @SerializedName("en")
     val en: String = "",
 

@@ -28,30 +28,38 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
     }
 
     private fun parseMcDescriptionEntity(jo: JsonObject): DescriptionEntity {
-        val lleftParameter = "lleftParameter"
-        val rrightParameter = "rrightParameter"
-        val rrightParameterText = "rrightParameterText"
+        val recipeName = "recipeName"
+        val leftParameter = "leftParameter"
+        val leftParameterText = "leftParameterText"
+        val rightParameter = "rightParameter"
+        val rightParameterText = "rightParameterText"
         val descriptionCraft = "descriptionCraft"
         return DescriptionEntity(
             jo.get("recipeAttr").asString,
             jo.get("recipeImageName").asString,
             jo.get("group").asString,
             RecipeName(
-                jo.get("recipe_name").asJsonObject.get("en").asString,
-                jo.get("recipe_name").asJsonObject.get("ru").asString
+                jo.get(recipeName).asJsonObject.get("en").asString,
+                jo.get(recipeName).asJsonObject.get("ru").asString
             ),
-            LleftParameter(
-                jo.get(lleftParameter).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(lleftParameter).asJsonObject?.get("ru")?.asString ?: ""
+            LeftParameter(
+                jo.get(leftParameter).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(leftParameter).asJsonObject?.get("ru")?.asString ?: ""
             ),
-            jo.get("lleftParameterImage").asString,
-            RrightParameter(
-                jo.get(rrightParameter).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(rrightParameter).asJsonObject?.get("ru")?.asString ?: ""
+            LeftParameterText(
+                jo.get(leftParameterText).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(leftParameterText).asJsonObject?.get("ru")?.asString ?: ""
             ),
-            RrightParameterText(
-                jo.get(rrightParameterText).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(rrightParameterText).asJsonObject?.get("ru")?.asString ?: ""
+
+            jo.get("leftParameterImage").asString,
+
+            RightParameter(
+                jo.get(rightParameter).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(rightParameter).asJsonObject?.get("ru")?.asString ?: ""
+            ),
+            RightParameterText(
+                jo.get(rightParameterText).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(rightParameterText).asJsonObject?.get("ru")?.asString ?: ""
             ),
             DescriptionCraft(
                 jo.get(descriptionCraft).asJsonObject?.get("en")?.asString ?: "",

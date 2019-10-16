@@ -18,13 +18,23 @@ class Converters {
     }
 
     @TypeConverter
-    fun lleftParameterToJson(lleftParameter: LleftParameter): String {
-        return Gson().toJson(lleftParameter)
+    fun lleftParameterToJson(leftParameter: LeftParameter): String {
+        return Gson().toJson(leftParameter)
     }
 
     @TypeConverter
-    fun jsonToLleftParameter(value: String): LleftParameter {
-        return Gson().fromJson(value, LleftParameter::class.java)
+    fun jsonToLleftParameter(value: String): LeftParameter {
+        return Gson().fromJson(value, LeftParameter::class.java)
+    }
+
+    @TypeConverter
+    fun lleftParameterTextToJson(leftParameterText: LeftParameterText): String {
+        return Gson().toJson(leftParameterText)
+    }
+
+    @TypeConverter
+    fun jsonTolleftParameterText(value: String): LeftParameterText {
+        return Gson().fromJson(value, LeftParameterText::class.java)
     }
 
     @TypeConverter
@@ -48,22 +58,22 @@ class Converters {
     }
 
     @TypeConverter
-    fun rightParameterToJson(rrightParameter: RrightParameter): String {
-        return Gson().toJson(rrightParameter)
+    fun rightParameterToJson(rightParameter: RightParameter): String {
+        return Gson().toJson(rightParameter)
     }
 
     @TypeConverter
-    fun jsonToRightParameter(value: String): RrightParameter {
-        return Gson().fromJson(value, RrightParameter::class.java)
+    fun jsonToRightParameter(value: String): RightParameter {
+        return Gson().fromJson(value, RightParameter::class.java)
     }
 
     @TypeConverter
-    fun rightParameterTextToJson(rrightParameterText: RrightParameterText): String {
-        return Gson().toJson(rrightParameterText)
+    fun rightParameterTextToJson(rightParameterText: RightParameterText): String {
+        return Gson().toJson(rightParameterText)
     }
 
     @TypeConverter
-    fun jsonTorightParameterText(value: String): RrightParameterText {
-        return Gson().fromJson(value, RrightParameterText::class.java)
+    fun jsonTorightParameterText(value: String): RightParameterText {
+        return Gson().fromJson(value, RightParameterText::class.java)
     }
 }

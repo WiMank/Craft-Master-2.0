@@ -37,27 +37,35 @@ class RecipeManager(
         }
     }
 
-    fun localizeLleftParameter(lleftParameter: LleftParameter): String {
+    fun localizeLeftPar(leftParameter: LeftParameter): String {
         return when (getCurrentLocale(mContext).language) {
-            "ru" -> lleftParameter.ru
-            "uk" -> lleftParameter.ru
-            else -> lleftParameter.en
+            "ru" -> leftParameter.ru
+            "uk" -> leftParameter.ru
+            else -> leftParameter.en
         }
     }
 
-    fun localizeRrightParameter(rrightParameter: RrightParameter): String {
+    fun localizeLeftParText(leftParameterText: LeftParameterText): String {
         return when (getCurrentLocale(mContext).language) {
-            "ru" -> rrightParameter.ru
-            "uk" -> rrightParameter.ru
-            else -> rrightParameter.en
+            "ru" -> leftParameterText.ru
+            "uk" -> leftParameterText.ru
+            else -> leftParameterText.en
         }
     }
 
-    fun localizeRrightParameterText(rrightParameterText: RrightParameterText): String {
+    fun localizeRightPar(rightParameter: RightParameter): String {
         return when (getCurrentLocale(mContext).language) {
-            "ru" -> rrightParameterText.ru
-            "uk" -> rrightParameterText.ru
-            else -> rrightParameterText.en
+            "ru" -> rightParameter.ru
+            "uk" -> rightParameter.ru
+            else -> rightParameter.en
+        }
+    }
+
+    fun localizeRightParText(rightParameterText: RightParameterText): String {
+        return when (getCurrentLocale(mContext).language) {
+            "ru" -> rightParameterText.ru
+            "uk" -> rightParameterText.ru
+            else -> rightParameterText.en
         }
     }
 }

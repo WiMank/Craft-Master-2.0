@@ -29,6 +29,7 @@ private const val RECIPE_FRAGMENT_KEY = "recipe_attr"
 const val RECIPE_FRAGMENT_TAG = "RecipeFragment"
 
 class RecipeFragment : BaseFragment(), RecipeView {
+
     @Inject
     @InjectPresenter
     lateinit var mRecipePresenter: RecipePresenter
@@ -80,7 +81,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     override fun fillRecipeImages(entity: DescriptionEntity) {
         setImage(entity.recipeImageName, RECIPE_IMAGE)
-        setImage(entity.lleftParameterImage, LEFT_P_IMAGE)
+        setImage(entity.leftParameterImage, LEFT_P_IMAGE)
         setImage(entity.recipeImageName, RESULT_IMAGE)
     }
 
@@ -104,16 +105,20 @@ class RecipeFragment : BaseFragment(), RecipeView {
         description_craft.text = desc
     }
 
-    override fun showLocalizeLleftParameter(lleft: String) {
-        left_parameter.text = lleft
+    override fun showLocalizeLeftPar(leftP: String) {
+        left_parameter.text = leftP
     }
 
-    override fun showLocalizeRrightParameter(rright: String) {
-        right_parameter.text = rright
+    override fun showLocalizeLeftParText(leftPText: String) {
+        left_parameter_text.text = leftPText
     }
 
-    override fun showLocalizeRrightParameterText(rrightText: String) {
-        right_parameter_text.text = rrightText
+    override fun showLocalizeRightPar(rightP: String) {
+        right_parameter.text = rightP
+    }
+
+    override fun showLocalizeRightParText(rightPText: String) {
+        right_parameter_text.text = rightPText
     }
 
     private fun setImage(imagePath: String, recipeImages: RecipeImages) {

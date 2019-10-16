@@ -20,17 +20,20 @@ data class DescriptionEntity(
     @SerializedName("recipe_name")
     val recipeName: RecipeName,
 
-    @SerializedName("lleftParameter")
-    val lleftParameter: LleftParameter,
+    @SerializedName("leftParameter")
+    val leftParameter: LeftParameter,
 
-    @SerializedName("lleftParameterImage")
-    val lleftParameterImage: String,
+    @SerializedName("leftParameterText")
+    val leftParameterText: LeftParameterText,
 
-    @SerializedName("rrightParameter")
-    val rrightParameter: RrightParameter,
+    @SerializedName("leftParameterImage")
+    val leftParameterImage: String,
 
-    @SerializedName("rrightParameterText")
-    val rrightParameterText: RrightParameterText,
+    @SerializedName("rightParameter")
+    val rightParameter: RightParameter,
+
+    @SerializedName("rightParameterText")
+    val rightParameterText: RightParameterText,
 
     @SerializedName("descriptionCraft")
     val descriptionCraft: DescriptionCraft,
