@@ -1,10 +1,7 @@
 package com.wimank.craftmaster.tz.app.recipe_screen.room
 
 import com.google.gson.*
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.DescriptionCraft
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.LleftParameter
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.RecipeName
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.RecipeResponse
+import com.wimank.craftmaster.tz.app.recipe_screen.rest.*
 import com.wimank.craftmaster.tz.common.rest.Success
 import java.lang.reflect.Type
 
@@ -32,6 +29,9 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
 
     private fun parseMcDescriptionEntity(jo: JsonObject): DescriptionEntity {
         val lleftParameter = "lleftParameter"
+        val rrightParameter = "rrightParameter"
+        val rrightParameterText = "rrightParameterText"
+        val descriptionCraft = "descriptionCraft"
         return DescriptionEntity(
             jo.get("recipeAttr").asString,
             jo.get("recipeImageName").asString,
@@ -41,21 +41,21 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
                 jo.get("recipe_name").asJsonObject.get("ru").asString
             ),
             LleftParameter(
-                if (jo.get(lleftParameter).asJsonObject.get("en") != null)
-                    jo.get(lleftParameter).asJsonObject.get("en").asString
-                else
-                    "",
-
-                if (jo.get(lleftParameter).asJsonObject.get("ru") != null)
-                    jo.get(lleftParameter).asJsonObject.get("ru").asString
-                else
-                    ""
+                jo.get(lleftParameter).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(lleftParameter).asJsonObject?.get("ru")?.asString ?: ""
             ),
             jo.get("lleftParameterImage").asString,
-            jo.get("rrightParameter").asString,
+            RrightParameter(
+                jo.get(rrightParameter).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(rrightParameter).asJsonObject?.get("ru")?.asString ?: ""
+            ),
+            RrightParameterText(
+                jo.get(rrightParameterText).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(rrightParameterText).asJsonObject?.get("ru")?.asString ?: ""
+            ),
             DescriptionCraft(
-                jo.get("descriptionCraft").asJsonObject.get("en").asString,
-                jo.get("descriptionCraft").asJsonObject.get("ru").asString
+                jo.get(descriptionCraft).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(descriptionCraft).asJsonObject?.get("ru")?.asString ?: ""
             ),
             jo.get("wikiLink").asString,
             jo.get("vers").asInt

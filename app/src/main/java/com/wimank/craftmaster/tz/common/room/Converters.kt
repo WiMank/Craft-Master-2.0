@@ -3,9 +3,7 @@ package com.wimank.craftmaster.tz.common.room
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.wimank.craftmaster.tz.app.categories_screen.room.Category
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.DescriptionCraft
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.LleftParameter
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.RecipeName
+import com.wimank.craftmaster.tz.app.recipe_screen.rest.*
 
 class Converters {
 
@@ -47,5 +45,25 @@ class Converters {
     @TypeConverter
     fun jsonToDescriptionCraft(value: String): DescriptionCraft {
         return Gson().fromJson(value, DescriptionCraft::class.java)
+    }
+
+    @TypeConverter
+    fun rightParameterToJson(rrightParameter: RrightParameter): String {
+        return Gson().toJson(rrightParameter)
+    }
+
+    @TypeConverter
+    fun jsonToRightParameter(value: String): RrightParameter {
+        return Gson().fromJson(value, RrightParameter::class.java)
+    }
+
+    @TypeConverter
+    fun rightParameterTextToJson(rrightParameterText: RrightParameterText): String {
+        return Gson().toJson(rrightParameterText)
+    }
+
+    @TypeConverter
+    fun jsonTorightParameterText(value: String): RrightParameterText {
+        return Gson().fromJson(value, RrightParameterText::class.java)
     }
 }
