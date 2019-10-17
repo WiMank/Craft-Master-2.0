@@ -126,19 +126,20 @@ class RecipeFragment : BaseFragment(), RecipeView {
         if (lContext != null) {
             val targetImage =
                 File(lContext.getExternalFilesDir(IMAGE_FOLDER_NAME), "${imagePath}.png")
+            val glideApp = GlideApp.with(lContext).load(targetImage)
             when (recipeImages) {
-                FIRST_SLOT -> GlideApp.with(lContext).load(targetImage).into(firstSlot)
-                SECOND_SLOT -> GlideApp.with(lContext).load(targetImage).into(secondSlot)
-                THREE_SLOT -> GlideApp.with(lContext).load(targetImage).into(threeSlot)
-                FOURTH_SLOTH -> GlideApp.with(lContext).load(targetImage).into(fourthSlot)
-                FIFTH_SLOT -> GlideApp.with(lContext).load(targetImage).into(fifthSlot)
-                SIXT_SLOT -> GlideApp.with(lContext).load(targetImage).into(sixthSlot)
-                SEVEN_SLOT -> GlideApp.with(lContext).load(targetImage).into(seventhSlot)
-                EIGHTH_SLOT -> GlideApp.with(lContext).load(targetImage).into(eighthSlot)
-                NINTH_SLOT -> GlideApp.with(lContext).load(targetImage).into(ninthSlot)
-                RECIPE_IMAGE -> GlideApp.with(lContext).load(targetImage).into(recipe_image)
-                LEFT_P_IMAGE -> GlideApp.with(lContext).load(targetImage).into(image_parameter)
-                RESULT_IMAGE -> GlideApp.with(lContext).load(targetImage).into(recipe_result_craft)
+                FIRST_SLOT -> glideApp.into(firstSlot)
+                SECOND_SLOT -> glideApp.into(secondSlot)
+                THREE_SLOT -> glideApp.into(threeSlot)
+                FOURTH_SLOTH -> glideApp.into(fourthSlot)
+                FIFTH_SLOT -> glideApp.into(fifthSlot)
+                SIXT_SLOT -> glideApp.into(sixthSlot)
+                SEVEN_SLOT -> glideApp.into(seventhSlot)
+                EIGHTH_SLOT -> glideApp.into(eighthSlot)
+                NINTH_SLOT -> glideApp.into(ninthSlot)
+                RECIPE_IMAGE -> glideApp.into(recipe_image)
+                LEFT_P_IMAGE -> glideApp.into(image_parameter)
+                RESULT_IMAGE -> glideApp.into(recipe_result_craft)
             }
         }
     }
