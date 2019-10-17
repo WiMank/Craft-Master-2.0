@@ -7,7 +7,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.wimank.craftmaster.tz.app.main_screen.room.MainGroupEntity
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface MainView : MvpView {
+interface MainFragmentView : MvpView {
 
     fun initViews()
 

@@ -6,7 +6,7 @@ import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.categories_screen.rest.CategoryResponse
 import com.wimank.craftmaster.tz.app.categories_screen.room.CategoryEntity
 import com.wimank.craftmaster.tz.app.main_screen.mvp.models.DataManager
-import com.wimank.craftmaster.tz.app.main_screen.mvp.views.MainView
+import com.wimank.craftmaster.tz.app.main_screen.mvp.views.MainFragmentView
 import com.wimank.craftmaster.tz.app.main_screen.rest.MainGroupResponse
 import com.wimank.craftmaster.tz.app.main_screen.room.MainGroupEntity
 import com.wimank.craftmaster.tz.app.recipe_screen.rest.RecipeResponse
@@ -23,10 +23,10 @@ import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 @InjectViewState
-class MainPresenter(
+class MainFragmentPresenter(
     private val mDataManager: DataManager,
     private val mNetManager: NetManager
-) : BasePresenter<MainView>() {
+) : BasePresenter<MainFragmentView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()

@@ -11,22 +11,22 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.main_screen.adapter.MainGroupAdapter
-import com.wimank.craftmaster.tz.app.main_screen.mvp.presenters.MainPresenter
-import com.wimank.craftmaster.tz.app.main_screen.mvp.views.MainView
+import com.wimank.craftmaster.tz.app.main_screen.mvp.presenters.MainFragmentPresenter
+import com.wimank.craftmaster.tz.app.main_screen.mvp.views.MainFragmentView
 import com.wimank.craftmaster.tz.app.main_screen.room.MainGroupEntity
 import com.wimank.craftmaster.tz.common.ui.BaseFragment
 import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
 import kotlinx.android.synthetic.main.fragment_main_group.*
 import javax.inject.Inject
 
-class MainGroupFragment : BaseFragment(), MainView {
+class MainGroupFragment : BaseFragment(), MainFragmentView {
 
     @Inject
     @InjectPresenter
-    lateinit var mMainPresenter: MainPresenter
+    lateinit var mMainFragmentPresenter: MainFragmentPresenter
 
     @ProvidePresenter
-    fun provideMainPresenter() = mMainPresenter
+    fun provideMainPresenter() = mMainFragmentPresenter
 
     private var mListenerMain: OnMainFragClickListener? = null
     private lateinit var mAdapter: MainGroupAdapter
@@ -49,7 +49,7 @@ class MainGroupFragment : BaseFragment(), MainView {
     override fun initViews() {
         refresh.setColorSchemeColors(Color.RED)
         refresh.setOnRefreshListener {
-            mMainPresenter.updateData()
+            mMainFragmentPresenter.updateData()
         }
     }
 

@@ -3,7 +3,7 @@ package com.wimank.craftmaster.tz.app.main_screen.di
 import android.content.Context
 import com.wimank.craftmaster.tz.app.categories_screen.rest.CategoriesApi
 import com.wimank.craftmaster.tz.app.main_screen.mvp.models.DataManager
-import com.wimank.craftmaster.tz.app.main_screen.mvp.presenters.MainPresenter
+import com.wimank.craftmaster.tz.app.main_screen.mvp.presenters.MainFragmentPresenter
 import com.wimank.craftmaster.tz.app.main_screen.rest.MainGroupApi
 import com.wimank.craftmaster.tz.app.recipe_screen.rest.RecipesApi
 import com.wimank.craftmaster.tz.common.rest.ImageApi
@@ -21,8 +21,8 @@ class MainGroupModule {
     fun provideMainPresenter(
         dataManager: DataManager,
         netManager: NetManager
-    ): MainPresenter {
-        return MainPresenter(dataManager, netManager)
+    ): MainFragmentPresenter {
+        return MainFragmentPresenter(dataManager, netManager)
     }
 
     @MainGroupFragmentScope
