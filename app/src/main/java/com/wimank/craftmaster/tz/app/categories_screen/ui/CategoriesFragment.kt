@@ -31,7 +31,7 @@ class CategoriesFragment : BaseFragment(), CategoriesView {
     @ProvidePresenter
     fun providePresenter() = mCategoriesPresenter
 
-    private var mListenerCategories: OnCategoriesFragmentInteractionListener? = null
+    private var mListenerCategories: OnCategoriesFragmentClickListener? = null
 
     companion object {
         fun newInstance(group: String) = CategoriesFragment().apply {
@@ -43,10 +43,10 @@ class CategoriesFragment : BaseFragment(), CategoriesView {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnCategoriesFragmentInteractionListener)
+        if (context is OnCategoriesFragmentClickListener)
             mListenerCategories = context
         else
-            throw RuntimeException("$context must implement OnMainFragmentInteractionListener")
+            throw RuntimeException("$context must implement OnCategoriesFragmentClickListener")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,7 +80,7 @@ class CategoriesFragment : BaseFragment(), CategoriesView {
     }
 
     fun itemClick(categoryEntity: CategoryEntity) {
-        mListenerCategories?.onFragmentInteraction(categoryEntity)
+        mListenerCategories?.onCategoriesFragmentClick(categoryEntity)
     }
 
     override fun showMessage(message: Int) {
@@ -95,8 +95,8 @@ class CategoriesFragment : BaseFragment(), CategoriesView {
         categories_swipe_l.isRefreshing = visibilityFlag
     }
 
-    interface OnCategoriesFragmentInteractionListener {
-        fun onFragmentInteraction(categoryEntity: CategoryEntity)
+    interface OnCategoriesFragmentClickListener {
+        fun onCategoriesFragmentClick(categoryEntity: CategoryEntity)
     }
 
     override fun onDetach() {

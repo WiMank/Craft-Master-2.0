@@ -28,7 +28,7 @@ class MainGroupFragment : BaseFragment(), MainView {
     @ProvidePresenter
     fun provideMainPresenter() = mMainPresenter
 
-    private var mListenerMain: OnMainFragmentInteractionListener? = null
+    private var mListenerMain: OnMainFragClickListener? = null
     private lateinit var mAdapter: MainGroupAdapter
 
     override fun onCreateView(
@@ -40,10 +40,10 @@ class MainGroupFragment : BaseFragment(), MainView {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnMainFragmentInteractionListener)
+        if (context is OnMainFragClickListener)
             mListenerMain = context
         else
-            throw RuntimeException("$context must implement OnMainFragmentInteractionListener")
+            throw RuntimeException("$context must implement OnMainFragClickListener")
     }
 
     override fun initViews() {
@@ -54,7 +54,7 @@ class MainGroupFragment : BaseFragment(), MainView {
     }
 
     fun itemClick(mainGroupEntity: MainGroupEntity) {
-        mListenerMain?.onFragmentInteraction(mainGroupEntity)
+        mListenerMain?.onMainFragmentClick(mainGroupEntity)
     }
 
     override fun showGroupList(list: List<MainGroupEntity>) {
@@ -87,8 +87,8 @@ class MainGroupFragment : BaseFragment(), MainView {
         Snackbar.make(main_fragment_ll, message, Snackbar.LENGTH_SHORT).show()
     }
 
-    interface OnMainFragmentInteractionListener {
-        fun onFragmentInteraction(mainGroupEntity: MainGroupEntity)
+    interface OnMainFragClickListener {
+        fun onMainFragmentClick(mainGroupEntity: MainGroupEntity)
     }
 
     override fun onDetach() {

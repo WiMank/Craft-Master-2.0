@@ -37,14 +37,14 @@ class RecipeFragment : BaseFragment(), RecipeView {
     @ProvidePresenter
     fun provideRecipePresenter() = mRecipePresenter
 
-    private var listenerRecipe: OnRecipeFragmentInteractionListener? = null
+    private var listenerRecipe: OnRecipeFragmentClickListener? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnRecipeFragmentInteractionListener)
+        if (context is OnRecipeFragmentClickListener)
             listenerRecipe = context
         else
-            throw RuntimeException("$context must implement OnRecipeFragmentInteractionListener")
+            throw RuntimeException("$context must implement OnRecipeFragmentClickListener")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -150,11 +150,11 @@ class RecipeFragment : BaseFragment(), RecipeView {
     }
 
     fun onItemClick(uri: Uri) {
-        listenerRecipe?.onFragmentInteraction(uri)
+        listenerRecipe?.onRecipeFragmentClick(uri)
     }
 
-    interface OnRecipeFragmentInteractionListener {
-        fun onFragmentInteraction(uri: Uri)
+    interface OnRecipeFragmentClickListener {
+        fun onRecipeFragmentClick(uri: Uri)
     }
 
     companion object {

@@ -31,16 +31,7 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
     @ProvidePresenter
     fun providePresenter() = mRecipesListPresenter
 
-    private var listenerRecipesList: OnRecipesListFragmentInteractionListener? = null
-
-    companion object {
-        fun newInstance(recipesList: String) =
-            RecipesListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(RL_KEY, recipesList)
-                }
-            }
-    }
+    private var listenerRecipesList: OnRecipesListFragmentClickListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,10 +48,10 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnRecipesListFragmentInteractionListener)
+        if (context is OnRecipesListFragmentClickListener)
             listenerRecipesList = context
         else
-            throw RuntimeException("$context must implement OnRecipesListFragmentInteractionListener")
+            throw RuntimeException("$context must implement OnRecipesListFragmentClickListener")
     }
 
     override fun initViews() {
@@ -107,10 +98,19 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
     }
 
     fun itemClick(item: RecipesListItem) {
-        listenerRecipesList?.onFragmentInteraction(item)
+        listenerRecipesList?.onRecipesListFragmentClick(item)
     }
 
-    interface OnRecipesListFragmentInteractionListener {
-        fun onFragmentInteraction(item: RecipesListItem)
+    companion object {
+        fun newInstance(recipesList: String) =
+            RecipesListFragment().apply {
+                arguments = Bundle().apply {
+                    putString(RL_KEY, recipesList)
+                }
+            }
+    }
+
+    interface OnRecipesListFragmentClickListener {
+        fun onRecipesListFragmentClick(item: RecipesListItem)
     }
 }

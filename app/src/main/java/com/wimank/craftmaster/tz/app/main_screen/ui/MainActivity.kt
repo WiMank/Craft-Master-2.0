@@ -2,6 +2,7 @@ package com.wimank.craftmaster.tz.app.main_screen.ui
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.categories_screen.room.CategoryEntity
 import com.wimank.craftmaster.tz.app.categories_screen.ui.CAT_FRAGMENT_TAG
@@ -15,10 +16,10 @@ import com.wimank.craftmaster.tz.app.recipes_list.ui.RecipesListFragment
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
 
 class MainActivity : BaseActivity(),
-    MainGroupFragment.OnMainFragmentInteractionListener,
-    CategoriesFragment.OnCategoriesFragmentInteractionListener,
-    RecipesListFragment.OnRecipesListFragmentInteractionListener,
-    RecipeFragment.OnRecipeFragmentInteractionListener {
+    MainGroupFragment.OnMainFragClickListener,
+    CategoriesFragment.OnCategoriesFragmentClickListener,
+    RecipesListFragment.OnRecipesListFragmentClickListener,
+    RecipeFragment.OnRecipeFragmentClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,7 @@ class MainActivity : BaseActivity(),
         }
     }
 
-    override fun onFragmentInteraction(mainGroupEntity: MainGroupEntity) {
+    override fun onMainFragmentClick(mainGroupEntity: MainGroupEntity) {
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, CategoriesFragment.newInstance(mainGroupEntity.group))
             addToBackStack(CAT_FRAGMENT_TAG)
@@ -42,7 +43,8 @@ class MainActivity : BaseActivity(),
         }
     }
 
-    override fun onFragmentInteraction(categoryEntity: CategoryEntity) {
+    override fun onCategoriesFragmentClick(categoryEntity: CategoryEntity) {
+        Log.d("TESTTTT", "categoryEntity: ${categoryEntity.category}")
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, RecipesListFragment.newInstance(categoryEntity.group))
             addToBackStack(RL_FRAGMENT_TAG)
@@ -50,7 +52,7 @@ class MainActivity : BaseActivity(),
         }
     }
 
-    override fun onFragmentInteraction(item: RecipesListItem) {
+    override fun onRecipesListFragmentClick(item: RecipesListItem) {
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, RecipeFragment.newInstance(item.recipeAttr))
             addToBackStack(RECIPE_FRAGMENT_TAG)
@@ -58,7 +60,7 @@ class MainActivity : BaseActivity(),
         }
     }
 
-    override fun onFragmentInteraction(uri: Uri) {
+    override fun onRecipeFragmentClick(uri: Uri) {
 
     }
 }
