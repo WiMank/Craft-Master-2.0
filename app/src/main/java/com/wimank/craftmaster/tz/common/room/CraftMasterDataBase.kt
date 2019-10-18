@@ -3,29 +3,25 @@ package com.wimank.craftmaster.tz.common.room
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.wimank.craftmaster.tz.app.room.dao.CategoryDao
-import com.wimank.craftmaster.tz.app.room.dao.DescriptionDao
-import com.wimank.craftmaster.tz.app.room.dao.MainGroupDao
-import com.wimank.craftmaster.tz.app.room.dao.RecipesDao
-import com.wimank.craftmaster.tz.app.room.entitys.CategoryEntity
-import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entitys.MainGroupEntity
-import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
+import com.wimank.craftmaster.tz.app.room.dao.*
+import com.wimank.craftmaster.tz.app.room.entitys.*
 
 @Database(
     entities = [
         MainGroupEntity::class,
         CategoryEntity::class,
         DescriptionEntity::class,
-        RecipeEntity::class
+        RecipeEntity::class,
+        MobsEntity::class
     ],
     exportSchema = false,
     version = 1
 )
-@TypeConverters(Converters::class)
+@TypeConverters(Converter::class)
 abstract class CraftMasterDataBase : RoomDatabase() {
     abstract fun mainGroupDao() : MainGroupDao
     abstract fun categoryDao(): CategoryDao
     abstract fun descriptionDao(): DescriptionDao
     abstract fun recipeDao(): RecipesDao
+    abstract fun mobsDao(): MobsDao
 }

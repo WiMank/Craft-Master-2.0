@@ -4,8 +4,11 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.wimank.craftmaster.tz.app.rest.*
 import com.wimank.craftmaster.tz.app.room.entitys.Category
+import com.wimank.craftmaster.tz.app.room.entitys.DescriptionMob
+import com.wimank.craftmaster.tz.app.room.entitys.MobName
+import com.wimank.craftmaster.tz.app.room.entitys.TypeMob
 
-class Converters {
+class Converter {
 
     @TypeConverter
     fun categoryToJson(category: Category): String {
@@ -18,22 +21,22 @@ class Converters {
     }
 
     @TypeConverter
-    fun lleftParameterToJson(leftParameter: LeftParameter): String {
+    fun leftParameterToJson(leftParameter: LeftParameter): String {
         return Gson().toJson(leftParameter)
     }
 
     @TypeConverter
-    fun jsonToLleftParameter(value: String): LeftParameter {
+    fun jsonToLeftParameter(value: String): LeftParameter {
         return Gson().fromJson(value, LeftParameter::class.java)
     }
 
     @TypeConverter
-    fun lleftParameterTextToJson(leftParameterText: LeftParameterText): String {
+    fun leftParameterTextToJson(leftParameterText: LeftParameterText): String {
         return Gson().toJson(leftParameterText)
     }
 
     @TypeConverter
-    fun jsonTolleftParameterText(value: String): LeftParameterText {
+    fun jsonToLeftParameterText(value: String): LeftParameterText {
         return Gson().fromJson(value, LeftParameterText::class.java)
     }
 
@@ -73,7 +76,37 @@ class Converters {
     }
 
     @TypeConverter
-    fun jsonTorightParameterText(value: String): RightParameterText {
+    fun jsonToRightParameterText(value: String): RightParameterText {
         return Gson().fromJson(value, RightParameterText::class.java)
+    }
+
+    @TypeConverter
+    fun jsonToMobName(value: String): MobName {
+        return Gson().fromJson(value, MobName::class.java)
+    }
+
+    @TypeConverter
+    fun mobNameToJson(mobName: MobName): String {
+        return Gson().toJson(mobName)
+    }
+
+    @TypeConverter
+    fun jsonToTypeMob(value: String): TypeMob {
+        return Gson().fromJson(value, TypeMob::class.java)
+    }
+
+    @TypeConverter
+    fun typeMobToJson(typeMob: TypeMob): String {
+        return Gson().toJson(typeMob)
+    }
+
+    @TypeConverter
+    fun jsonDescriptionMob(value: String): DescriptionMob {
+        return Gson().fromJson(value, DescriptionMob::class.java)
+    }
+
+    @TypeConverter
+    fun descriptionMobToJson(descriptionMob: DescriptionMob): String {
+        return Gson().toJson(descriptionMob)
     }
 }
