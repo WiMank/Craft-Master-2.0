@@ -2,8 +2,8 @@ package com.wimank.craftmaster.tz.common.room
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.wimank.craftmaster.tz.app.categories_screen.room.Category
-import com.wimank.craftmaster.tz.app.recipe_screen.rest.*
+import com.wimank.craftmaster.tz.app.rest.*
+import com.wimank.craftmaster.tz.app.room.entitys.Category
 
 class Converters {
 
