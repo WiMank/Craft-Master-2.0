@@ -20,4 +20,3 @@ abstract class BaseFragment : MvpAppCompatFragment(), HasAndroidInjector {
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
 }
-

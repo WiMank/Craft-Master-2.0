@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.common.ui.BaseFragment
 
-class MobsFragment : Fragment() {
+class MobsFragment : BaseFragment() {
     private var listenerMobs: OnMobsFragmentClickListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
