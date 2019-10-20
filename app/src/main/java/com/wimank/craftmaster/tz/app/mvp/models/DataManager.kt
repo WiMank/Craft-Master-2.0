@@ -1,10 +1,7 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
-import com.wimank.craftmaster.tz.app.rest.api.CategoriesApi
 import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
-import com.wimank.craftmaster.tz.app.rest.responses.CategoryResponse
 import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
-import com.wimank.craftmaster.tz.app.room.entitys.CategoryEntity
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import com.wimank.craftmaster.tz.common.rest.ImageApi
@@ -16,7 +13,6 @@ import org.apache.commons.collections4.CollectionUtils
 
 class DataManager(
     private val mImageUtils: ImageUtils,
-    private val mCategoriesApi: CategoriesApi,
     private val mImageApi: ImageApi,
     private val mRecipesApi: RecipesApi,
     private val mCraftMasterDataBase: CraftMasterDataBase
@@ -52,7 +48,6 @@ class DataManager(
 
     override fun insertEntity(entity: BaseEntity) {
         when (entity) {
-            is CategoryEntity -> mCraftMasterDataBase.categoryDao().insert(entity)
             is RecipeEntity -> mCraftMasterDataBase.recipeDao().insert(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().insert(entity)
         }
@@ -60,22 +55,13 @@ class DataManager(
 
     override fun deleteEntity(entity: BaseEntity) {
         when (entity) {
-            is CategoryEntity -> mCraftMasterDataBase.categoryDao().delete(entity)
             is RecipeEntity -> mCraftMasterDataBase.recipeDao().delete(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().delete(entity)
         }
     }
 
-    fun getCategories(): Single<CategoryResponse<CategoryEntity>> {
-        return mCategoriesApi.getMcCategory()
-    }
-
     fun getRecipes(): Single<RecipeResponse> {
         return mRecipesApi.getRecipes()
-    }
-
-    fun getCategoriesFromDb(): Single<List<CategoryEntity>> {
-        return mCraftMasterDataBase.categoryDao().getCategoriesFromDb()
     }
 
     fun getRecipesFromDb(): Single<List<RecipeEntity>> {

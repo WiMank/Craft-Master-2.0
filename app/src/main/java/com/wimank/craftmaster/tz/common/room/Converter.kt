@@ -3,22 +3,11 @@ package com.wimank.craftmaster.tz.common.room
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.wimank.craftmaster.tz.app.rest.responses.*
-import com.wimank.craftmaster.tz.app.room.entitys.Category
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionMob
 import com.wimank.craftmaster.tz.app.room.entitys.MobName
 import com.wimank.craftmaster.tz.app.room.entitys.TypeMob
 
 class Converter {
-
-    @TypeConverter
-    fun categoryToJson(category: Category): String {
-        return Gson().toJson(category)
-    }
-
-    @TypeConverter
-    fun jsonToCategory(value: String): Category {
-        return Gson().fromJson(value, Category::class.java)
-    }
 
     @TypeConverter
     fun leftParameterToJson(leftParameter: LeftParameter): String {

@@ -10,13 +10,11 @@ import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.presenters.MainActivityPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
-import com.wimank.craftmaster.tz.app.room.entitys.CategoryEntity
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainActivityView,
-    CategoriesFragment.OnCategoriesFragmentClickListener,
     RecipesListFragment.OnRecipesListFragmentClickListener,
     RecipeFragment.OnRecipeFragmentClickListener {
 
@@ -51,14 +49,6 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showProgress(visibilityFlag: Boolean) {
         main_refresh.isRefreshing = visibilityFlag
-    }
-
-    override fun onCategoriesFragmentClick(categoryEntity: CategoryEntity) {
-        supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipesListFragment.newInstance(categoryEntity.group))
-            addToBackStack(RL_FRAGMENT_TAG)
-            commit()
-        }
     }
 
     override fun onRecipesListFragmentClick(item: RecipesListItem) {

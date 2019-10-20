@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.common.di
 
-import com.wimank.craftmaster.tz.app.rest.api.CategoriesApi
 import com.wimank.craftmaster.tz.app.rest.api.MobsApi
 import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
 import com.wimank.craftmaster.tz.common.rest.ImageApi
@@ -11,12 +10,6 @@ import javax.inject.Singleton
 
 @Module
 class ApiModule {
-
-    @Singleton
-    @Provides
-    fun provideCategoriesApi(retrofit: Retrofit): CategoriesApi {
-        return retrofit.create(CategoriesApi::class.java)
-    }
 
     @Singleton
     @Provides
