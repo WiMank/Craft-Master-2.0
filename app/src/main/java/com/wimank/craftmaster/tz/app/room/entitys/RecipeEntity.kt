@@ -13,9 +13,6 @@ data class RecipeEntity(
     @SerializedName("recipeAttr")
     val recipeAttr: String,
 
-    @SerializedName("group")
-    val group: String,
-
     @SerializedName("firstSlot")
     val firstSlot: String,
 

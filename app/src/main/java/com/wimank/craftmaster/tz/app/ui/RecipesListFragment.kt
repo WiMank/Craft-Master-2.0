@@ -19,9 +19,7 @@ import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
 import kotlinx.android.synthetic.main.fragment_recipes_list.*
 import javax.inject.Inject
 
-private const val RL_KEY_GROUP = "rl_key_group"
-private const val RL_KEY_CATEGORY = "rl_key_category"
-const val RL_FRAGMENT_TAG = "RecipesListFragment"
+private const val RL_KEY_MODIFICATION = "rl_key_modification"
 
 class RecipesListFragment : BaseFragment(),
     RecipesListView {
@@ -38,7 +36,11 @@ class RecipesListFragment : BaseFragment(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null)
-            arguments?.getString(RL_KEY_GROUP)?.let { mRecipesListPresenter.loadRecipesList(it) }
+            arguments?.getString(RL_KEY_MODIFICATION)?.let {
+                mRecipesListPresenter.loadRecipesList(
+                    it
+                )
+            }
     }
 
     override fun onCreateView(
@@ -105,10 +107,10 @@ class RecipesListFragment : BaseFragment(),
     }
 
     companion object {
-        fun newInstance(group: String) =
+        fun newInstance(modification: String) =
             RecipesListFragment().apply {
                 arguments = Bundle().apply {
-                    putString(RL_KEY_GROUP, group)
+                    putString(RL_KEY_MODIFICATION, modification)
                 }
             }
     }

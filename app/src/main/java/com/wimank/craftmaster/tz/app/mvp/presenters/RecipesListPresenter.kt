@@ -25,10 +25,10 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
         viewState.scrollRecyclerView(recyclerPosition)
     }
 
-    fun loadRecipesList(group: String) {
+    fun loadRecipesList(modification: String) {
         unsubscribeOnDestroy(
             mRecipesListManager
-                .getRecipesList(group)
+                .getRecipesList(modification)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(

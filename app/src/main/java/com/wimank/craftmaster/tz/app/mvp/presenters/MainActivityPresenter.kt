@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
@@ -58,6 +59,7 @@ class MainActivityPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.recipes_list_loading_error)
+                        Log.e("TESTTT", "loadRecipes()", it)
                     })
         )
     }

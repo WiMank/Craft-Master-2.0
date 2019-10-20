@@ -14,8 +14,8 @@ data class DescriptionEntity(
     @SerializedName("recipeImageName")
     val recipeImageName: String,
 
-    @SerializedName("group")
-    val group: String,
+    @SerializedName("modification")
+    val modification: String,
 
     @SerializedName("recipe_name")
     val recipeName: RecipeName,

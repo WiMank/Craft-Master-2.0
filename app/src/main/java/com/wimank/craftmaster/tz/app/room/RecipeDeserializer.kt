@@ -39,7 +39,7 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
         return DescriptionEntity(
             jo.get("recipeAttr").asString,
             jo.get("recipeImageName").asString,
-            jo.get("group").asString,
+            jo.get("modification").asString,
             RecipeName(
                 jo.get(recipeName).asJsonObject.get("en").asString,
                 jo.get(recipeName).asJsonObject.get("ru").asString
@@ -77,7 +77,6 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
         return RecipeEntity(
             jo.get(recipe).asJsonObject.get("recipeImageName").asString,
             jo.get(recipe).asJsonObject.get("recipeAttr").asString,
-            jo.get(recipe).asJsonObject.get("group").asString,
             jo.get(recipe).asJsonObject.get("firstSlot").asString,
             jo.get(recipe).asJsonObject.get("secondSlot").asString,
             jo.get(recipe).asJsonObject.get("threeSlot").asString,
