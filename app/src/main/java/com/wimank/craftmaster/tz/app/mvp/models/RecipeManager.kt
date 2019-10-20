@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
 import android.content.Context
-import com.wimank.craftmaster.tz.app.rest.*
+import com.wimank.craftmaster.tz.app.rest.responses.*
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase

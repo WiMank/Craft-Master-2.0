@@ -6,16 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".app.ui.MainGroupFragment">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_group_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

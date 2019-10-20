@@ -1,5 +1,6 @@
-package com.wimank.craftmaster.tz.app.rest
+package com.wimank.craftmaster.tz.app.rest.api
 
+import com.wimank.craftmaster.tz.app.rest.responses.CategoryResponse
 import com.wimank.craftmaster.tz.app.room.entitys.CategoryEntity
 import io.reactivex.Single
 import retrofit2.http.GET

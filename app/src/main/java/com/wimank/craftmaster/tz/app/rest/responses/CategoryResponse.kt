@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.app.rest
+package com.wimank.craftmaster.tz.app.rest.responses
 
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.common.rest.Success

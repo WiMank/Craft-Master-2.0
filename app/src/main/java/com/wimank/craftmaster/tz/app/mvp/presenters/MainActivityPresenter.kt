@@ -1,34 +1,92 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
 import com.arellomobile.mvp.InjectViewState
+import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.mvp.models.DataManager
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
-import com.wimank.craftmaster.tz.app.room.entitys.Category
+import com.wimank.craftmaster.tz.app.rest.responses.CategoryResponse
+import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
 import com.wimank.craftmaster.tz.app.room.entitys.CategoryEntity
+import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import com.wimank.craftmaster.tz.common.mvp.BasePresenter
+import com.wimank.craftmaster.tz.common.utils.NetManager
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.BiFunction
+import io.reactivex.functions.Function3
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 
 @InjectViewState
-class MainActivityPresenter : BasePresenter<MainActivityView>() {
+class MainActivityPresenter(
+    private val mDataManager: DataManager,
+    private val mNetManager: NetManager
+) : BasePresenter<MainActivityView>() {
 
-    fun checkCategoryAndGroup(categoryEntity: CategoryEntity) {
-        when (categoryEntity.category) {
-            Category(
-                en = "Blocks and Items",
-                ru = "Блоки и предметы"
-            ) -> viewState.openBlocksandItemsCategory(categoryEntity)
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        viewState.initViews()
+        updateData()
+    }
 
-            Category(en = "Biomes", ru = "Биомы") -> viewState.openBiomesCategory()
+    fun updateData() {
+        viewState.showProgress(true)
+        if (mNetManager.isInternetOn())
+            loadCategories()
+        else
+            viewState.showMessage(R.string.offline_mode)
+    }
 
-            Category(en = "Mobs", ru = "Мобы") -> viewState.openMobsCategory()
+    private fun loadCategories() {
+        unsubscribeOnDestroy(
+            Single.zip(
+                mDataManager.getCategories(),
+                mDataManager.getCategoriesFromDb(),
+                BiFunction { serData: CategoryResponse<CategoryEntity>,
+                             locData: List<CategoryEntity> ->
+                    if (serData.success.isSuccess())
+                        mDataManager.containsData(serData.mcCategoryList, locData)
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showMessage(R.string.categories_successfully_uploaded)
+                        viewState.showProgress(true)
+                        loadRecipes()
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.categories_list_load_error)
+                    })
+        )
+    }
 
-            Category(
-                en = "Achievements",
-                ru = "Достижения"
-            ) -> viewState.openAchievementsCategory(
-                categoryEntity
-            )
-            Category(en = "Potions", ru = "Зелья") -> viewState.openPotionsCategory()
-
-            Category(en = "Comands", ru = "Команды") -> viewState.openComandsCategory()
-        }
+    private fun loadRecipes() {
+        unsubscribeOnDestroy(
+            Single.zip(
+                mDataManager.getRecipes(),
+                mDataManager.getRecipesFromDb(),
+                mDataManager.getDescriptionFromDb(),
+                Function3 { servRecipes: RecipeResponse,
+                            recipeEntity: List<RecipeEntity>,
+                            descriptionEntity: List<DescriptionEntity> ->
+                    if (servRecipes.success.isSuccess()) {
+                        mDataManager.containsData(servRecipes.recipesList, recipeEntity)
+                        mDataManager.containsData(servRecipes.descriptionList, descriptionEntity)
+                    }
+                }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showMessage(R.string.recipe_loading_completed)
+                        viewState.showProgress(false)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.recipes_list_loading_error)
+                    })
+        )
     }
 }

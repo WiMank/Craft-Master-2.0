@@ -2,22 +2,20 @@ package com.wimank.craftmaster.tz.app.mvp.views
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
+import com.arellomobile.mvp.viewstate.strategy.SkipStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import com.wimank.craftmaster.tz.app.room.entitys.CategoryEntity
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface MainActivityView : MvpView {
 
-    fun openBlocksandItemsCategory(categoryEntity: CategoryEntity)
+    fun initViews()
 
-    fun openMobsCategory()
+    @StateStrategyType(SkipStrategy::class)
+    fun showMessage(message: Int)
 
-    fun openBiomesCategory()
+    @StateStrategyType(SkipStrategy::class)
+    fun showError(message: Int)
 
-    fun openAchievementsCategory(categoryEntity: CategoryEntity)
-
-    fun openPotionsCategory()
-
-    fun openComandsCategory()
+    fun showProgress(visibilityFlag: Boolean)
 
 }

@@ -1,8 +1,8 @@
 package com.wimank.craftmaster.tz.common.di
 
-import com.wimank.craftmaster.tz.app.rest.CategoriesApi
-import com.wimank.craftmaster.tz.app.rest.MainGroupApi
-import com.wimank.craftmaster.tz.app.rest.RecipesApi
+import com.wimank.craftmaster.tz.app.rest.api.CategoriesApi
+import com.wimank.craftmaster.tz.app.rest.api.MobsApi
+import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
 import com.wimank.craftmaster.tz.common.rest.ImageApi
 import dagger.Module
 import dagger.Provides
@@ -11,12 +11,6 @@ import javax.inject.Singleton
 
 @Module
 class ApiModule {
-
-    @Singleton
-    @Provides
-    fun provideMainGroupApi(retrofit: Retrofit): MainGroupApi {
-        return retrofit.create(MainGroupApi::class.java)
-    }
 
     @Singleton
     @Provides
@@ -34,5 +28,11 @@ class ApiModule {
     @Provides
     fun provideRecipeApi(retrofit: Retrofit): RecipesApi {
         return retrofit.create(RecipesApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideMobsApi(retrofit: Retrofit): MobsApi {
+        return retrofit.create(MobsApi::class.java)
     }
 }

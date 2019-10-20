@@ -3,7 +3,7 @@ package com.wimank.craftmaster.tz.app.adapters
 import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.wimank.craftmaster.tz.app.rest.RecipeName
+import com.wimank.craftmaster.tz.app.rest.responses.RecipeName
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
 import com.wimank.craftmaster.tz.common.di.GlideApp
 import com.wimank.craftmaster.tz.common.utils.IMAGE_FOLDER_NAME

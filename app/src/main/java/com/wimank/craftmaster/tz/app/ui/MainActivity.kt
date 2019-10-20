@@ -1,24 +1,31 @@
 package com.wimank.craftmaster.tz.app.ui
 
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.presenters.MainActivityPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
 import com.wimank.craftmaster.tz.app.room.entitys.CategoryEntity
-import com.wimank.craftmaster.tz.app.room.entitys.MainGroupEntity
 import com.wimank.craftmaster.tz.common.ui.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainActivityView,
-    MainGroupFragment.OnMainFragClickListener,
     CategoriesFragment.OnCategoriesFragmentClickListener,
     RecipesListFragment.OnRecipesListFragmentClickListener,
     RecipeFragment.OnRecipeFragmentClickListener {
 
+    @Inject
     @InjectPresenter
     lateinit var mMainActivityPresenter: MainActivityPresenter
+
+    @ProvidePresenter
+    fun providePresenter() = mMainActivityPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,51 +34,31 @@ class MainActivity : BaseActivity(), MainActivityView,
             initViews()
     }
 
-    private fun initViews() {
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, MainGroupFragment())
-            commit()
+    override fun initViews() {
+        main_refresh.setColorSchemeColors(Color.RED)
+        main_refresh.setOnRefreshListener {
+            mMainActivityPresenter.updateData()
         }
     }
 
-    override fun onMainFragmentClick(mainGroupEntity: MainGroupEntity) {
-        supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, CategoriesFragment.newInstance(mainGroupEntity.group))
-            addToBackStack(CAT_FRAGMENT_TAG)
-            commit()
-        }
+    override fun showMessage(message: Int) {
+        Snackbar.make(main_ll, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showError(message: Int) {
+        Snackbar.make(main_ll, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showProgress(visibilityFlag: Boolean) {
+        main_refresh.isRefreshing = visibilityFlag
     }
 
     override fun onCategoriesFragmentClick(categoryEntity: CategoryEntity) {
-        mMainActivityPresenter.checkCategoryAndGroup(categoryEntity)
-    }
-
-    override fun openBlocksandItemsCategory(categoryEntity: CategoryEntity) {
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, RecipesListFragment.newInstance(categoryEntity.group))
             addToBackStack(RL_FRAGMENT_TAG)
             commit()
         }
-    }
-
-    override fun openMobsCategory() {
-
-    }
-
-    override fun openBiomesCategory() {
-
-    }
-
-    override fun openAchievementsCategory(categoryEntity: CategoryEntity) {
-
-    }
-
-    override fun openPotionsCategory() {
-
-    }
-
-    override fun openComandsCategory() {
-
     }
 
     override fun onRecipesListFragmentClick(item: RecipesListItem) {
@@ -85,4 +72,5 @@ class MainActivity : BaseActivity(), MainActivityView,
     override fun onRecipeFragmentClick(uri: Uri) {
 
     }
+
 }
