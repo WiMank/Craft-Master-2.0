@@ -7,7 +7,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.app.mvp.common.Sections
 import com.wimank.craftmaster.tz.app.mvp.presenters.MainActivityPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
@@ -31,17 +30,16 @@ class MainActivity : BaseActivity(), MainActivityView,
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null)
-            initViews()
+            supportFragmentManager.beginTransaction().run {
+                replace(R.id.main_frame, SectionFragment())
+                commit()
+            }
     }
 
     override fun initViews() {
         main_refresh.setColorSchemeColors(Color.RED)
         main_refresh.setOnRefreshListener {
             mMainActivityPresenter.updateData()
-        }
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, SectionFragment())
-            commit()
         }
     }
 
@@ -57,13 +55,17 @@ class MainActivity : BaseActivity(), MainActivityView,
         main_refresh.isRefreshing = visibilityFlag
     }
 
-    override fun cardViewClick(sections: Sections) {
-
+    override fun cardViewClick(section: String) {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_frame, RecipesListFragment.newInstance(section))
+            addToBackStack(RL_KEY_MODIFICATION)
+            commit()
+        }
     }
 
-    override fun onRecipesListFragmentClick(item: RecipesListItem) {
+    override fun onRecipesListFragmentClick(recipesListItem: RecipesListItem) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipeFragment.newInstance(item.recipeAttr))
+            add(R.id.main_frame, RecipeFragment.newInstance(recipesListItem))
             addToBackStack(RECIPE_FRAGMENT_TAG)
             commit()
         }

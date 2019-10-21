@@ -1,7 +1,6 @@
 package com.wimank.craftmaster.tz.app.di
 
 import com.facebook.stetho.Stetho
-import com.wimank.craftmaster.tz.common.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 

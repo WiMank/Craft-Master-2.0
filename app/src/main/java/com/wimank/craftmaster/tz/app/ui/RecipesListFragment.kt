@@ -19,7 +19,7 @@ import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_recipes_list.*
 import javax.inject.Inject
 
-private const val RL_KEY_MODIFICATION = "rl_key_modification"
+const val RL_KEY_MODIFICATION = "rl_key_modification"
 
 class RecipesListFragment : BaseFragment(),
     RecipesListView {
@@ -37,9 +37,7 @@ class RecipesListFragment : BaseFragment(),
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null)
             arguments?.getString(RL_KEY_MODIFICATION)?.let {
-                mRecipesListPresenter.loadRecipesList(
-                    it
-                )
+                mRecipesListPresenter.chooseModification(it)
             }
     }
 
@@ -103,20 +101,20 @@ class RecipesListFragment : BaseFragment(),
         listenerRecipesList = null
     }
 
-    fun itemClick(item: RecipesListItem) {
-        listenerRecipesList?.onRecipesListFragmentClick(item)
+    fun itemClick(recipesListItem: RecipesListItem) {
+        listenerRecipesList?.onRecipesListFragmentClick(recipesListItem)
     }
 
     companion object {
-        fun newInstance(modification: String) =
+        fun newInstance(section: String) =
             RecipesListFragment().apply {
                 arguments = Bundle().apply {
-                    putString(RL_KEY_MODIFICATION, modification)
+                    putString(RL_KEY_MODIFICATION, section)
                 }
             }
     }
 
     interface OnRecipesListFragmentClickListener {
-        fun onRecipesListFragmentClick(item: RecipesListItem)
+        fun onRecipesListFragmentClick(recipesListItem: RecipesListItem)
     }
 }

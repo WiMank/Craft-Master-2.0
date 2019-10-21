@@ -2,6 +2,10 @@ package com.wimank.craftmaster.tz.app.mvp.presenters
 
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.mvp.common.BC_VALUE
+import com.wimank.craftmaster.tz.app.mvp.common.FR_VALUE
+import com.wimank.craftmaster.tz.app.mvp.common.IC_VALUE
+import com.wimank.craftmaster.tz.app.mvp.common.MC_VALUE
 import com.wimank.craftmaster.tz.app.mvp.models.RecipesListManager
 import com.wimank.craftmaster.tz.app.mvp.views.RecipesListView
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -24,10 +28,25 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
         viewState.scrollRecyclerView(recyclerPosition)
     }
 
-    fun loadRecipesList(modification: String) {
+    fun chooseModification(section: String) {
+        when (section) {
+            MC_VALUE -> loadRecipesList()
+
+            IC_VALUE -> {
+            }
+
+            BC_VALUE -> {
+            }
+
+            FR_VALUE -> {
+            }
+        }
+    }
+
+    private fun loadRecipesList() {
         unsubscribeOnDestroy(
             mRecipesListManager
-                .getRecipesList(modification)
+                .getRecipesList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(

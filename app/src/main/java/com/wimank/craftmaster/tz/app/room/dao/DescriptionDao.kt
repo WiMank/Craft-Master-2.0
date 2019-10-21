@@ -15,7 +15,7 @@ interface DescriptionDao : BaseDao<DescriptionEntity> {
     @Query("SELECT * FROM description_craft_recipes WHERE recipeAttr =:pRecipeAttr")
     fun getDescriptionByNameFromDb(pRecipeAttr: String): Single<DescriptionEntity>
 
-    @Query("SELECT recipeName, recipeImageName, recipeAttr FROM description_craft_recipes ORDER BY recipeName ASC")
+    @Query("SELECT recipeName, recipeImageName, recipeAttr, modification FROM description_craft_recipes ORDER BY recipeName ASC")
     fun getRecipesListFromDb(): Single<List<RecipesListItem>>
 
 }

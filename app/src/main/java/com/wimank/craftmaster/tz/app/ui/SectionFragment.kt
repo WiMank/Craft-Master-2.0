@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.app.mvp.common.Sections
-import com.wimank.craftmaster.tz.app.mvp.common.Sections.*
-import kotlinx.android.synthetic.main.fragment_section.*
+import com.wimank.craftmaster.tz.app.mvp.common.BC_VALUE
+import com.wimank.craftmaster.tz.app.mvp.common.FR_VALUE
+import com.wimank.craftmaster.tz.app.mvp.common.IC_VALUE
+import com.wimank.craftmaster.tz.app.mvp.common.MC_VALUE
+import kotlinx.android.synthetic.main.fragment_section.view.*
 
 class SectionFragment : Fragment() {
 
@@ -20,15 +22,15 @@ class SectionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_section, container, false)
-        minecraft.setOnClickListener { itemClick(MINECRAFT) }
-        industrial_craft.setOnClickListener { itemClick(INDUSTRIAL_CRAFT) }
-        build_craft.setOnClickListener { itemClick(BUILD_CRAFT) }
-        forestry.setOnClickListener { itemClick(FORESTRY) }
+        view.minecraft.setOnClickListener { itemClick(MC_VALUE) }
+        view.industrial_craft.setOnClickListener { itemClick(IC_VALUE) }
+        view.build_craft.setOnClickListener { itemClick(BC_VALUE) }
+        view.forestry.setOnClickListener { itemClick(FR_VALUE) }
         return view
     }
 
-    private fun itemClick(sections: Sections) {
-        listenerSection?.cardViewClick(sections)
+    private fun itemClick(section: String) {
+        listenerSection?.cardViewClick(section)
     }
 
     override fun onAttach(context: Context) {
@@ -45,6 +47,6 @@ class SectionFragment : Fragment() {
     }
 
     interface OnSectionFragmentClickListener {
-        fun cardViewClick(sections: Sections)
+        fun cardViewClick(section: String)
     }
 }

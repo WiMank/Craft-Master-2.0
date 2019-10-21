@@ -11,15 +11,16 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.di.modules.GlideApp
 import com.wimank.craftmaster.tz.app.mvp.common.IMAGE_FOLDER_NAME
 import com.wimank.craftmaster.tz.app.mvp.common.RecipeImages
 import com.wimank.craftmaster.tz.app.mvp.common.RecipeImages.*
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.app.mvp.views.RecipeView
+import com.wimank.craftmaster.tz.app.room.RecipesListItem
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
-import com.wimank.craftmaster.tz.common.di.GlideApp
 import kotlinx.android.synthetic.main.craft_table_layout.*
 import kotlinx.android.synthetic.main.fragment_recipe.*
 import java.io.File
@@ -50,8 +51,8 @@ class RecipeFragment : BaseFragment(), RecipeView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null)
-            arguments!!.getString(RECIPE_FRAGMENT_KEY)!!.let {
-                mRecipePresenter.lodRecipeAndDescription(it)
+            arguments?.getParcelable<RecipesListItem>(RECIPE_FRAGMENT_KEY)?.let {
+                mRecipePresenter.chooseRecipeModification(it)
             }
     }
 
@@ -158,10 +159,10 @@ class RecipeFragment : BaseFragment(), RecipeView {
     }
 
     companion object {
-        fun newInstance(recipeAttr: String) =
+        fun newInstance(recipesListItem: RecipesListItem) =
             RecipeFragment().apply {
                 arguments = Bundle().apply {
-                    putString(RECIPE_FRAGMENT_KEY, recipeAttr)
+                    putParcelable(RECIPE_FRAGMENT_KEY, recipesListItem)
                 }
             }
     }
