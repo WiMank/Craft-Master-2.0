@@ -19,5 +19,7 @@
     <string name="recipes_list_loaded_error">Recipes list load error</string>
     <string name="recipe_loading_error">Recipe loading error</string>
     <string name="recipe_successfully_loaded">Recipe successfully loaded</string>
+    <string name="mobs_successfully_loaded">Mobs successfully loaded</string>
+    <string name="mobs_error_loaded">Mobs load error</string>
 
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context
 import com.wimank.craftmaster.tz.app.di.scopes.MainActivityScope
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.MainActivityPresenter
+import com.wimank.craftmaster.tz.app.rest.api.MobsApi
 import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
 import com.wimank.craftmaster.tz.common.rest.ImageApi
 import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
@@ -33,12 +34,14 @@ class MainActivityModule {
         imageUtils: ImageUtils,
         imageApi: ImageApi,
         recipesApi: RecipesApi,
+        mobsApi: MobsApi,
         craftMasterDataBase: CraftMasterDataBase
     ): DataManager {
         return DataManager(
             imageUtils,
             imageApi,
             recipesApi,
+            mobsApi,
             craftMasterDataBase
         )
     }

@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
+import com.wimank.craftmaster.tz.app.rest.api.MobsApi
 import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
-import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import com.wimank.craftmaster.tz.common.rest.ImageApi
@@ -15,6 +15,7 @@ class DataManager(
     private val mImageUtils: ImageUtils,
     private val mImageApi: ImageApi,
     private val mRecipesApi: RecipesApi,
+    private val mMobsApi: MobsApi,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
 
@@ -60,9 +61,7 @@ class DataManager(
         }
     }
 
-    fun getRecipes(): Single<RecipeResponse> {
-        return mRecipesApi.getRecipes()
-    }
+    fun getRecipes() = mRecipesApi.getRecipes()
 
     fun getRecipesFromDb(): Single<List<RecipeEntity>> {
         return mCraftMasterDataBase.recipeDao().getRecipesFromDb()
@@ -71,4 +70,9 @@ class DataManager(
     fun getDescriptionFromDb(): Single<List<DescriptionEntity>> {
         return mCraftMasterDataBase.descriptionDao().getDescriptionFromDb()
     }
+
+    fun getMobs() = mMobsApi.getMobs()
+
+    fun getMobsFromDb() = mCraftMasterDataBase.mobsDao().getMobs()
+
 }
