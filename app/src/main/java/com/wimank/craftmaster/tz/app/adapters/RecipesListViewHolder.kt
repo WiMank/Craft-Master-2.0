@@ -17,7 +17,7 @@ class RecipesListViewHolder(private val view: View) : RecyclerView.ViewHolder(vi
         recipesListItem: RecipesListItem,
         onItemClickListener: RecipesListAdapter.OnItemClickListener
     ) {
-        view.item_name.text = recipesListItem.recipeName?.let { localizedName(view.context, it) }
+        view.item_name.text = localizedName(view.context, recipesListItem.recipeName)
         val targetImage = File(
             view.context.getExternalFilesDir(IMAGE_FOLDER_NAME),
             "${recipesListItem.recipeImageName}.png"
@@ -33,7 +33,7 @@ class RecipesListViewHolder(private val view: View) : RecyclerView.ViewHolder(vi
         }
     }
 
-    private fun localizedName(context: Context, recipeName: RecipeName): String? {
+    private fun localizedName(context: Context, recipeName: RecipeName): String {
         return when (getCurrentLocale(context).language) {
             "ru" -> recipeName.ru
             "uk" -> recipeName.ru

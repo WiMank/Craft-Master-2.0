@@ -12,6 +12,8 @@ interface RecipeView : MvpView {
 
     fun initViews()
 
+    fun initTableListeners(entity: RecipeEntity)
+
     @StateStrategyType(SkipStrategy::class)
     fun showMessage(message: Int)
 

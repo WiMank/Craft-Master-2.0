@@ -1,7 +1,5 @@
 package com.wimank.craftmaster.tz.app.rest.responses
 
-import android.os.Parcel
-import android.os.Parcelable
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.room.RecipeDeserializer
@@ -33,35 +31,11 @@ data class LeftParameterText(
 
 data class RecipeName(
     @SerializedName("en")
-    val en: String? = "",
+    val en: String = "",
 
     @SerializedName("ru")
-    val ru: String? = ""
-) : Parcelable {
-    constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString()
-    )
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(en)
-        parcel.writeString(ru)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<RecipeName> {
-        override fun createFromParcel(parcel: Parcel): RecipeName {
-            return RecipeName(parcel)
-        }
-
-        override fun newArray(size: Int): Array<RecipeName?> {
-            return arrayOfNulls(size)
-        }
-    }
-}
+    val ru: String = ""
+)
 
 data class DescriptionCraft(
 

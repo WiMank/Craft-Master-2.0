@@ -23,9 +23,9 @@ class RecipeManager(
 
     fun localizedName(recipeName: RecipeName): String {
         return when (getCurrentLocale(mContext).language) {
-            "ru" -> recipeName.ru ?: ""
-            "uk" -> recipeName.ru ?: ""
-            else -> recipeName.en ?: ""
+            "ru" -> recipeName.ru
+            "uk" -> recipeName.ru
+            else -> recipeName.en
         }
     }
 

@@ -30,23 +30,17 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
 
     fun chooseModification(section: String) {
         when (section) {
-            MC_VALUE -> loadRecipesList()
-
-            IC_VALUE -> {
-            }
-
-            BC_VALUE -> {
-            }
-
-            FR_VALUE -> {
-            }
+            MC_VALUE -> loadRecipesList(MC_VALUE)
+            IC_VALUE -> loadRecipesList(IC_VALUE)
+            BC_VALUE -> loadRecipesList(BC_VALUE)
+            FR_VALUE -> loadRecipesList(FR_VALUE)
         }
     }
 
-    private fun loadRecipesList() {
+    private fun loadRecipesList(modification: String) {
         unsubscribeOnDestroy(
             mRecipesListManager
-                .getRecipesList()
+                .getRecipesList(modification)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(

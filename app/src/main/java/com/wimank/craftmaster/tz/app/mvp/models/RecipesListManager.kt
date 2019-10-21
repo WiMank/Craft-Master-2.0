@@ -6,7 +6,7 @@ import io.reactivex.Single
 
 class RecipesListManager(private val craftMasterDataBase: CraftMasterDataBase) {
 
-    fun getRecipesList(): Single<List<RecipesListItem>> {
-        return craftMasterDataBase.descriptionDao().getRecipesListFromDb()
+    fun getRecipesList(modification: String): Single<List<RecipesListItem>> {
+        return craftMasterDataBase.descriptionDao().getRecipesListFromDb(modification)
     }
 }

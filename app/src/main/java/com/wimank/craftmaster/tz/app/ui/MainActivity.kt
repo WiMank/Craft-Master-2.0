@@ -1,7 +1,6 @@
 package com.wimank.craftmaster.tz.app.ui
 
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -65,13 +64,17 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun onRecipesListFragmentClick(recipesListItem: RecipesListItem) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipeFragment.newInstance(recipesListItem))
+            add(R.id.main_frame, RecipeFragment.newInstance(recipesListItem.recipeAttr))
             addToBackStack(RECIPE_FRAGMENT_TAG)
             commit()
         }
     }
 
-    override fun onRecipeFragmentClick(uri: Uri) {
-
+    override fun onRecipeFragmentClick(recipeAttr: String) {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_frame, RecipeFragment.newInstance(recipeAttr))
+            addToBackStack(RECIPE_FRAGMENT_TAG)
+            commit()
+        }
     }
 }

@@ -2,7 +2,6 @@ package com.wimank.craftmaster.tz.app.ui
 
 import android.content.Context
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +16,6 @@ import com.wimank.craftmaster.tz.app.mvp.common.RecipeImages
 import com.wimank.craftmaster.tz.app.mvp.common.RecipeImages.*
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.app.mvp.views.RecipeView
-import com.wimank.craftmaster.tz.app.room.RecipesListItem
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
@@ -51,8 +49,8 @@ class RecipeFragment : BaseFragment(), RecipeView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null)
-            arguments?.getParcelable<RecipesListItem>(RECIPE_FRAGMENT_KEY)?.let {
-                mRecipePresenter.chooseRecipeModification(it)
+            arguments?.getString(RECIPE_FRAGMENT_KEY)?.let {
+                mRecipePresenter.lodRecipeAndDescription(it)
             }
     }
 
@@ -66,6 +64,18 @@ class RecipeFragment : BaseFragment(), RecipeView {
     override fun initViews() {
         recipe_refresh.setColorSchemeColors(Color.CYAN)
         recipe_refresh.isEnabled = false
+    }
+
+    override fun initTableListeners(entity: RecipeEntity) {
+        firstSlot.setOnClickListener { onTableItemClick(entity.firstSlot) }
+        secondSlot.setOnClickListener { onTableItemClick(entity.secondSlot) }
+        threeSlot.setOnClickListener { onTableItemClick(entity.threeSlot) }
+        fourthSlot.setOnClickListener { onTableItemClick(entity.fourthSlot) }
+        fifthSlot.setOnClickListener { onTableItemClick(entity.fifthSlot) }
+        sixthSlot.setOnClickListener { onTableItemClick(entity.sixthSlot) }
+        seventhSlot.setOnClickListener { onTableItemClick(entity.seventhSlot) }
+        eighthSlot.setOnClickListener { onTableItemClick(entity.eighthSlot) }
+        ninthSlot.setOnClickListener { onTableItemClick(entity.ninthSlot) }
     }
 
     override fun showMessage(message: Int) {
@@ -150,19 +160,19 @@ class RecipeFragment : BaseFragment(), RecipeView {
         listenerRecipe = null
     }
 
-    fun onItemClick(uri: Uri) {
-        listenerRecipe?.onRecipeFragmentClick(uri)
+    private fun onTableItemClick(recipeAttr: String) {
+        listenerRecipe?.onRecipeFragmentClick(recipeAttr)
     }
 
     interface OnRecipeFragmentClickListener {
-        fun onRecipeFragmentClick(uri: Uri)
+        fun onRecipeFragmentClick(recipeAttr: String)
     }
 
     companion object {
-        fun newInstance(recipesListItem: RecipesListItem) =
+        fun newInstance(recipeAttr: String) =
             RecipeFragment().apply {
                 arguments = Bundle().apply {
-                    putParcelable(RECIPE_FRAGMENT_KEY, recipesListItem)
+                    putString(RECIPE_FRAGMENT_KEY, recipeAttr)
                 }
             }
     }
