@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.wimank.craftmaster.tz.common.room.BaseEntity
 
 @Entity(tableName = "mobs")
 data class MobsEntity(
@@ -24,7 +25,6 @@ data class MobsEntity(
     @ColumnInfo(name = "experience")
     @SerializedName("experience")
     val experience: String,
-
 
     @ColumnInfo(name = "type_mob")
     @SerializedName("typeMob")
@@ -68,8 +68,16 @@ data class MobsEntity(
 
     @ColumnInfo(name = "drop_six")
     @SerializedName("dropSix")
-    val dropSix: String
-)
+    val dropSix: String,
+
+    @ColumnInfo(name = "vers")
+    @SerializedName("vers")
+    val vers: Int
+
+) : BaseEntity {
+    override fun getVersion() = vers
+    override fun getImage() = mobIcon
+}
 
 data class MobName(
     @SerializedName("en")
