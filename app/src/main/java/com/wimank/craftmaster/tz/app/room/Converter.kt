@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.common.room
+package com.wimank.craftmaster.tz.app.room
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

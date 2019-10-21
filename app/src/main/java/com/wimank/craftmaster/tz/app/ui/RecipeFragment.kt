@@ -11,15 +11,15 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.app.mvp.models.RecipeImages
-import com.wimank.craftmaster.tz.app.mvp.models.RecipeImages.*
+import com.wimank.craftmaster.tz.app.mvp.common.IMAGE_FOLDER_NAME
+import com.wimank.craftmaster.tz.app.mvp.common.RecipeImages
+import com.wimank.craftmaster.tz.app.mvp.common.RecipeImages.*
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.app.mvp.views.RecipeView
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
+import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import com.wimank.craftmaster.tz.common.di.GlideApp
-import com.wimank.craftmaster.tz.common.ui.BaseFragment
-import com.wimank.craftmaster.tz.common.utils.IMAGE_FOLDER_NAME
 import kotlinx.android.synthetic.main.craft_table_layout.*
 import kotlinx.android.synthetic.main.fragment_recipe.*
 import java.io.File
@@ -91,7 +91,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
         setImage(entity.threeSlot, THREE_SLOT)
         setImage(entity.fourthSlot, FOURTH_SLOTH)
         setImage(entity.fifthSlot, FIFTH_SLOT)
-        setImage(entity.sixthSlot, SIXT_SLOT)
+        setImage(entity.sixthSlot, SIXTH_SLOT)
         setImage(entity.seventhSlot, SEVEN_SLOT)
         setImage(entity.eighthSlot, EIGHTH_SLOT)
         setImage(entity.ninthSlot, NINTH_SLOT)
@@ -133,7 +133,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
                 THREE_SLOT -> glideApp.into(threeSlot)
                 FOURTH_SLOTH -> glideApp.into(fourthSlot)
                 FIFTH_SLOT -> glideApp.into(fifthSlot)
-                SIXT_SLOT -> glideApp.into(sixthSlot)
+                SIXTH_SLOT -> glideApp.into(sixthSlot)
                 SEVEN_SLOT -> glideApp.into(seventhSlot)
                 EIGHTH_SLOT -> glideApp.into(eighthSlot)
                 NINTH_SLOT -> glideApp.into(ninthSlot)

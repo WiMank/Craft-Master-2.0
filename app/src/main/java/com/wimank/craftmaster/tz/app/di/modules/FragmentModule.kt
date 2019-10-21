@@ -1,7 +1,5 @@
-package com.wimank.craftmaster.tz.common.di
+package com.wimank.craftmaster.tz.app.di.modules
 
-import com.wimank.craftmaster.tz.app.di.modules.RecipeModule
-import com.wimank.craftmaster.tz.app.di.modules.RecipesListModule
 import com.wimank.craftmaster.tz.app.di.scopes.RecipeFragmentScope
 import com.wimank.craftmaster.tz.app.di.scopes.RecipesListFragmentScope
 import com.wimank.craftmaster.tz.app.ui.RecipeFragment

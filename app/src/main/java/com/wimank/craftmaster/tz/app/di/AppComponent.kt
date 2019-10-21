@@ -1,6 +1,7 @@
-package com.wimank.craftmaster.tz.common.di
+package com.wimank.craftmaster.tz.app.di
 
 import android.content.Context
+import com.wimank.craftmaster.tz.app.di.modules.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

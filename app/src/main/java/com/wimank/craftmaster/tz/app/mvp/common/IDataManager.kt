@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.app.mvp.models
+package com.wimank.craftmaster.tz.app.mvp.common
 
 interface IDataManager<in T> {
 

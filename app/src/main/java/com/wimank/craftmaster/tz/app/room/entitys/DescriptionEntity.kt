@@ -3,7 +3,6 @@ package com.wimank.craftmaster.tz.app.room.entitys
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.rest.responses.*
-import com.wimank.craftmaster.tz.common.room.BaseEntity
 
 @Entity(tableName = "description_craft_recipes", primaryKeys = ["recipeName", "recipeImageName"])
 data class DescriptionEntity(

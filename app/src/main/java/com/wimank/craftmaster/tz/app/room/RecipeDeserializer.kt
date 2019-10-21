@@ -4,7 +4,6 @@ import com.google.gson.*
 import com.wimank.craftmaster.tz.app.rest.responses.*
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
-import com.wimank.craftmaster.tz.common.rest.Success
 import java.lang.reflect.Type
 
 class RecipeDeserializer : JsonDeserializer<RecipeResponse> {

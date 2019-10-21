@@ -3,11 +3,11 @@ package com.wimank.craftmaster.tz.app.adapters
 import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.wimank.craftmaster.tz.app.mvp.common.IMAGE_FOLDER_NAME
 import com.wimank.craftmaster.tz.app.rest.responses.RecipeName
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
+import com.wimank.craftmaster.tz.app.utils.getCurrentLocale
 import com.wimank.craftmaster.tz.common.di.GlideApp
-import com.wimank.craftmaster.tz.common.utils.IMAGE_FOLDER_NAME
-import com.wimank.craftmaster.tz.common.utils.getCurrentLocale
 import kotlinx.android.synthetic.main.simple_recycler_item.view.*
 import java.io.File
 

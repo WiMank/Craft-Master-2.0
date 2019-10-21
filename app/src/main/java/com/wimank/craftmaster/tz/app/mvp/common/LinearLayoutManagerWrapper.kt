@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.common.utils
+package com.wimank.craftmaster.tz.app.mvp.common
 
 import android.content.Context
 import android.util.AttributeSet

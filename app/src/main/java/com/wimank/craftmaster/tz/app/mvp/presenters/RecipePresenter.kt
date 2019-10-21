@@ -4,7 +4,6 @@ import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.models.RecipeManager
 import com.wimank.craftmaster.tz.app.mvp.views.RecipeView
-import com.wimank.craftmaster.tz.common.mvp.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.rxkotlin.zipWith

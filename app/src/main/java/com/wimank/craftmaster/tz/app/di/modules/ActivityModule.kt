@@ -1,6 +1,5 @@
-package com.wimank.craftmaster.tz.common.di
+package com.wimank.craftmaster.tz.app.di.modules
 
-import com.wimank.craftmaster.tz.app.di.modules.MainActivityModule
 import com.wimank.craftmaster.tz.app.di.scopes.MainActivityScope
 import com.wimank.craftmaster.tz.app.ui.MainActivity
 import dagger.Module

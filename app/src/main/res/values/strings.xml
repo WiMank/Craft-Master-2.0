@@ -21,5 +21,9 @@
     <string name="recipe_successfully_loaded">Recipe successfully loaded</string>
     <string name="mobs_successfully_loaded">Mobs successfully loaded</string>
     <string name="mobs_error_loaded">Mobs load error</string>
+    <string name="minecraft">Minecraft</string>
+    <string name="industrial_craft">Industrial Craft</string>
+    <string name="build_craft">Build Craft</string>
+    <string name="forestry">Forestry</string>
 
 </resources>

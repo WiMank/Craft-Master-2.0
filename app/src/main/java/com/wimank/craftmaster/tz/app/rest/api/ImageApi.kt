@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.common.rest
+package com.wimank.craftmaster.tz.app.rest.api
 
 import okhttp3.ResponseBody
 import retrofit2.Call

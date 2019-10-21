@@ -1,8 +1,8 @@
-package com.wimank.craftmaster.tz.common.di
+package com.wimank.craftmaster.tz.app.di.modules
 
 import android.content.Context
 import androidx.room.Room
-import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
+import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

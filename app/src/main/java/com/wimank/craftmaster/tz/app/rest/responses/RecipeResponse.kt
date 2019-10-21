@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.room.RecipeDeserializer
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
-import com.wimank.craftmaster.tz.common.rest.Success
 
 @JsonAdapter(RecipeDeserializer::class)
 data class RecipeResponse(

@@ -1,8 +1,8 @@
-package com.wimank.craftmaster.tz.common.di
+package com.wimank.craftmaster.tz.app.di.modules
 
+import com.wimank.craftmaster.tz.app.rest.api.ImageApi
 import com.wimank.craftmaster.tz.app.rest.api.MobsApi
 import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
-import com.wimank.craftmaster.tz.common.rest.ImageApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

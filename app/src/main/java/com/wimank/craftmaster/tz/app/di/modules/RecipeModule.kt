@@ -4,7 +4,7 @@ import android.content.Context
 import com.wimank.craftmaster.tz.app.di.scopes.RecipeFragmentScope
 import com.wimank.craftmaster.tz.app.mvp.models.RecipeManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipePresenter
-import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
+import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import dagger.Module
 import dagger.Provides
 

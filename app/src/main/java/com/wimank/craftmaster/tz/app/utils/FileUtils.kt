@@ -1,8 +1,9 @@
-package com.wimank.craftmaster.tz.common.utils
+package com.wimank.craftmaster.tz.app.utils
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import com.wimank.craftmaster.tz.app.mvp.common.IMAGE_FOLDER_NAME
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream

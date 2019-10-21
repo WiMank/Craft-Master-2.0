@@ -11,11 +11,11 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.adapters.RecipesListAdapter
+import com.wimank.craftmaster.tz.app.mvp.common.LinearLayoutManagerWrapper
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipesListPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.RecipesListView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
-import com.wimank.craftmaster.tz.common.ui.BaseFragment
-import com.wimank.craftmaster.tz.common.utils.LinearLayoutManagerWrapper
+import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_recipes_list.*
 import javax.inject.Inject
 
@@ -81,7 +81,8 @@ class RecipesListFragment : BaseFragment(),
 
     override fun showRecipesList(list: List<RecipesListItem>) {
         recipes_list_recycler_view.apply {
-            layoutManager = LinearLayoutManagerWrapper(context)
+            layoutManager =
+                LinearLayoutManagerWrapper(context)
             adapter = RecipesListAdapter(list,
                 object :
                     RecipesListAdapter.OnItemClickListener {

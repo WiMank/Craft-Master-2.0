@@ -7,16 +7,18 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.mvp.common.Sections
 import com.wimank.craftmaster.tz.app.mvp.presenters.MainActivityPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
-import com.wimank.craftmaster.tz.common.ui.BaseActivity
+import com.wimank.craftmaster.tz.app.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainActivityView,
     RecipesListFragment.OnRecipesListFragmentClickListener,
-    RecipeFragment.OnRecipeFragmentClickListener {
+    RecipeFragment.OnRecipeFragmentClickListener,
+    SectionFragment.OnSectionFragmentClickListener {
 
     @Inject
     @InjectPresenter
@@ -37,6 +39,10 @@ class MainActivity : BaseActivity(), MainActivityView,
         main_refresh.setOnRefreshListener {
             mMainActivityPresenter.updateData()
         }
+        supportFragmentManager.beginTransaction().run {
+            replace(R.id.main_frame, SectionFragment())
+            commit()
+        }
     }
 
     override fun showMessage(message: Int) {
@@ -51,6 +57,10 @@ class MainActivity : BaseActivity(), MainActivityView,
         main_refresh.isRefreshing = visibilityFlag
     }
 
+    override fun cardViewClick(sections: Sections) {
+
+    }
+
     override fun onRecipesListFragmentClick(item: RecipesListItem) {
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, RecipeFragment.newInstance(item.recipeAttr))
@@ -62,5 +72,4 @@ class MainActivity : BaseActivity(), MainActivityView,
     override fun onRecipeFragmentClick(uri: Uri) {
 
     }
-
 }

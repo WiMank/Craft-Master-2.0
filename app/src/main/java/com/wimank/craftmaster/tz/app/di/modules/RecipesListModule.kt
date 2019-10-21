@@ -3,7 +3,7 @@ package com.wimank.craftmaster.tz.app.di.modules
 import com.wimank.craftmaster.tz.app.di.scopes.RecipesListFragmentScope
 import com.wimank.craftmaster.tz.app.mvp.models.RecipesListManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipesListPresenter
-import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
+import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import dagger.Module
 import dagger.Provides
 

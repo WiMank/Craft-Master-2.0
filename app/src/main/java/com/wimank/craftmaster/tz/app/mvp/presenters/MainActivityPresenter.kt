@@ -3,14 +3,13 @@ package com.wimank.craftmaster.tz.app.mvp.presenters
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
+import com.wimank.craftmaster.tz.app.mvp.models.NetManager
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
 import com.wimank.craftmaster.tz.app.rest.responses.MobsResponse
 import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.MobsEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
-import com.wimank.craftmaster.tz.common.mvp.BasePresenter
-import com.wimank.craftmaster.tz.common.utils.NetManager
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction

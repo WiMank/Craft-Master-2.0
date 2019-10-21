@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.common.di
+package com.wimank.craftmaster.tz.app.di.modules
 
 import android.content.Context
 import com.bumptech.glide.BuildConfig

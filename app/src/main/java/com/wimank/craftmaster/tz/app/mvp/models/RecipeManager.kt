@@ -2,10 +2,10 @@ package com.wimank.craftmaster.tz.app.mvp.models
 
 import android.content.Context
 import com.wimank.craftmaster.tz.app.rest.responses.*
+import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
-import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.common.utils.getCurrentLocale
+import com.wimank.craftmaster.tz.app.utils.getCurrentLocale
 import io.reactivex.Single
 
 class RecipeManager(

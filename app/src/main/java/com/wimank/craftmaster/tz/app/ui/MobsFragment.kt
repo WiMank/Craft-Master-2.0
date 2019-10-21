@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.common.ui.BaseFragment
+import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 
 class MobsFragment : BaseFragment() {
     private var listenerMobs: OnMobsFragmentClickListener? = null

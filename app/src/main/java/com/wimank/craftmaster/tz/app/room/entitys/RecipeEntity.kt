@@ -2,7 +2,6 @@ package com.wimank.craftmaster.tz.app.room.entitys
 
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
-import com.wimank.craftmaster.tz.common.room.BaseEntity
 
 @Entity(tableName = "craft_recipes", primaryKeys = ["recipeAttr", "recipeImageName"])
 data class RecipeEntity(

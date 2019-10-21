@@ -1,13 +1,14 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
+import com.wimank.craftmaster.tz.app.mvp.common.IDataManager
+import com.wimank.craftmaster.tz.app.rest.api.ImageApi
 import com.wimank.craftmaster.tz.app.rest.api.MobsApi
 import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
+import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
+import com.wimank.craftmaster.tz.app.room.entitys.BaseEntity
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
-import com.wimank.craftmaster.tz.common.rest.ImageApi
-import com.wimank.craftmaster.tz.common.room.BaseEntity
-import com.wimank.craftmaster.tz.common.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.common.utils.ImageUtils
+import com.wimank.craftmaster.tz.app.utils.ImageUtils
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
 

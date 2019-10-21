@@ -1,12 +1,11 @@
-package com.wimank.craftmaster.tz.common.di
+package com.wimank.craftmaster.tz.app.di.modules
 
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.FieldNamingPolicy
-import com.google.gson.FieldNamingStrategy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.wimank.craftmaster.tz.common.utils.BASE_URL
+import com.wimank.craftmaster.tz.app.mvp.common.BASE_URL
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache

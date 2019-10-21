@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.common.room.BaseDao
 import io.reactivex.Single
 
 @Dao

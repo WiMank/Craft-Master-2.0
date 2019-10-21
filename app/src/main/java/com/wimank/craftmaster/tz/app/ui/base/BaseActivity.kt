@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.common.ui
+package com.wimank.craftmaster.tz.app.ui.base
 
 import android.os.Bundle
 import com.arellomobile.mvp.MvpAppCompatActivity
