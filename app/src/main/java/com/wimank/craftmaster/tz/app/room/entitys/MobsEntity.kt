@@ -96,7 +96,10 @@ data class TypeMob(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) : LocalizedType {
+    override fun getEnLocalization() = en
+    override fun getRuLocalization() = ru
+}
 
 data class DescriptionMob(
     @SerializedName("en")
@@ -104,4 +107,7 @@ data class DescriptionMob(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) : LocalizedType {
+    override fun getEnLocalization() = en
+    override fun getRuLocalization() = ru
+}

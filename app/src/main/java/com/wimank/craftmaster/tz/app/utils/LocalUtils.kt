@@ -2,6 +2,7 @@ package com.wimank.craftmaster.tz.app.utils
 
 import android.content.Context
 import android.os.Build
+import com.wimank.craftmaster.tz.app.room.LocalizedType
 import java.util.*
 
 fun getCurrentLocale(context: Context): Locale {
@@ -10,5 +11,13 @@ fun getCurrentLocale(context: Context): Locale {
     } else {
         @Suppress("DEPRECATION")
         context.resources.configuration.locale
+    }
+}
+
+fun localizeString(context: Context, localizedType: LocalizedType): String {
+    return when (getCurrentLocale(context).language) {
+        "ru" -> localizedType.getRuLocalization()
+        "uk" -> localizedType.getRuLocalization()
+        else -> localizedType.getEnLocalization()
     }
 }

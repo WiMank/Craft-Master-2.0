@@ -21,8 +21,7 @@ import javax.inject.Inject
 
 const val RL_KEY_MODIFICATION = "rl_key_modification"
 
-class RecipesListFragment : BaseFragment(),
-    RecipesListView {
+class RecipesListFragment : BaseFragment(), RecipesListView {
 
     @Inject
     @InjectPresenter

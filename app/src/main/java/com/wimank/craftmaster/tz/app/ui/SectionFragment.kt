@@ -39,6 +39,7 @@ class SectionFragment : Fragment() {
             throw RuntimeException("$context must implement OnSectionFragmentClickListener")
     }
 
+
     override fun onDetach() {
         super.onDetach()
         listenerSection = null

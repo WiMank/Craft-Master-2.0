@@ -33,4 +33,5 @@
     <string name="attack_strength">Сила атаки</string>
     <string name="mobs">Mobs</string>
 
+    <string name="mob_load_error">Ошибка загрузки моба</string>
 </resources>

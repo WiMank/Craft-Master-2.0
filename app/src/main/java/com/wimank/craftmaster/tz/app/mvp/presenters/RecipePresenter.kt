@@ -32,12 +32,12 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                         viewState.showError(R.string.recipe_successfully_loaded)
                         viewState.fillRecipeImages(it.first)
                         viewState.fillCraftTable(it.second)
-                        viewState.showLocalizedName(mRecipeManager.localizedName(it.first.recipeName))
-                        viewState.showLocalizeDescription(mRecipeManager.localizeDescription(it.first.descriptionCraft))
-                        viewState.showLocalizeLeftPar(mRecipeManager.localizeLeftPar(it.first.leftParameter))
-                        viewState.showLocalizeLeftParText(mRecipeManager.localizeLeftParText(it.first.leftParameterText))
-                        viewState.showLocalizeRightPar(mRecipeManager.localizeRightPar(it.first.rightParameter))
-                        viewState.showLocalizeRightParText(mRecipeManager.localizeRightParText(it.first.rightParameterText))
+                        viewState.showLocalizedName(mRecipeManager.localizeString(it.first.recipeName))
+                        viewState.showLocalizeDescription(mRecipeManager.localizeString(it.first.descriptionCraft))
+                        viewState.showLocalizeLeftPar(mRecipeManager.localizeString(it.first.leftParameter))
+                        viewState.showLocalizeLeftParText(mRecipeManager.localizeString(it.first.leftParameterText))
+                        viewState.showLocalizeRightPar(mRecipeManager.localizeString(it.first.rightParameter))
+                        viewState.showLocalizeRightParText(mRecipeManager.localizeString(it.first.rightParameterText))
                     },
                     onError = {
                         viewState.showProgress(false)

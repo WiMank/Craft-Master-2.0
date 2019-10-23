@@ -20,7 +20,10 @@ data class LeftParameter(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) : LocalizedType {
+    override fun getEnLocalization() = en
+    override fun getRuLocalization() = ru
+}
 
 data class LeftParameterText(
     @SerializedName("en")
@@ -28,7 +31,10 @@ data class LeftParameterText(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) : LocalizedType {
+    override fun getEnLocalization() = en
+    override fun getRuLocalization() = ru
+}
 
 data class RecipeName(
     @SerializedName("en")
@@ -48,7 +54,10 @@ data class DescriptionCraft(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) : LocalizedType {
+    override fun getEnLocalization() = en
+    override fun getRuLocalization() = ru
+}
 
 data class RightParameter(
     @SerializedName("en")
@@ -56,7 +65,10 @@ data class RightParameter(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) : LocalizedType {
+    override fun getEnLocalization() = en
+    override fun getRuLocalization() = ru
+}
 
 data class RightParameterText(
     @SerializedName("en")
@@ -64,4 +76,7 @@ data class RightParameterText(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) : LocalizedType {
+    override fun getEnLocalization() = en
+    override fun getRuLocalization() = ru
+}

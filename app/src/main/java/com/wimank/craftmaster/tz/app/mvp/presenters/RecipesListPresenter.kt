@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.*
@@ -42,6 +41,16 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
         unsubscribeOnDestroy(
             mRecipesListManager
                 .getRecipesList(modification)
+                .flatMap {
+                    Single.just((it.map { item ->
+                        RecipesListItem(
+                            item.recipeName,
+                            item.recipeImageName,
+                            item.recipeAttr,
+                            modification
+                        )
+                    }))
+                }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
@@ -66,7 +75,8 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                         RecipesListItem(
                             item.mobName,
                             item.mobIcon,
-                            ""
+                            item.mobIcon,
+                            MOBS_VALUE
                         )
                     }))
                 }
@@ -74,7 +84,6 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-                        Log.d("TESTsss", "loadMobsList() ${it.size}")
                         viewState.showList(it)
                         viewState.showProgress(false)
                         viewState.showMessage(R.string.mobs_successfully_loaded)
@@ -82,7 +91,6 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.mobs_error_loaded)
-                        Log.e("TESTsss", "loadMobsList()", it)
                     })
         )
     }

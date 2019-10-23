@@ -33,4 +33,6 @@
     <string name="attack_strength">Attack Strength</string>
     <string name="mobs">Mobs</string>
 
+    <string name="mob_load_error">Mob load error</string>
+
 </resources>

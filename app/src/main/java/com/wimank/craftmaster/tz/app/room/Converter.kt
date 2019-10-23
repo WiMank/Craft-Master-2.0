@@ -99,13 +99,13 @@ class Converter {
         return Gson().toJson(descriptionMob)
     }
 
-    @TypeConverter
-    fun jsonLocalizedType(value: String): LocalizedType {
-        return Gson().fromJson(value, LocalizedType::class.java)
-    }
+    /*@TypeConverter
+     fun jsonLocalizedType(value: String): LocalizedType {
+         return Gson().fromJson(value, LocalizedType::class.java)
+     }
 
-    @TypeConverter
-    fun localizedTypeToJson(localizedType: LocalizedType): String {
-        return Gson().toJson(localizedType)
-    }
+     @TypeConverter
+     fun localizedTypeToJson(localizedType: LocalizedType): String {
+         return Gson().toJson(localizedType)
+     }*/
 }

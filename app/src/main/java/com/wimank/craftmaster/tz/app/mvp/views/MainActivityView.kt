@@ -18,4 +18,8 @@ interface MainActivityView : MvpView {
 
     fun showProgress(visibilityFlag: Boolean)
 
+    fun showBlockAndItemsSection(item: String)
+
+    fun showMobsSection(item: String)
+
 }

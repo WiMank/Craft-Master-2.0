@@ -10,4 +10,7 @@ interface MobsDao : BaseDao<MobsEntity> {
 
     @Query("SELECT * FROM mobs ORDER BY mob_name ASC")
     fun getMobs(): Single<List<MobsEntity>>
+
+    @Query("SELECT * FROM mobs WHERE mob_icon =:pMob")
+    fun getMob(pMob: String): Single<MobsEntity>
 }

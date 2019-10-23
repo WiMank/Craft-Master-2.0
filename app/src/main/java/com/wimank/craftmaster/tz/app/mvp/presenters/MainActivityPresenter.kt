@@ -1,8 +1,8 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.mvp.common.*
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
 import com.wimank.craftmaster.tz.app.mvp.models.NetManager
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
@@ -36,6 +36,16 @@ class MainActivityPresenter(
             loadRecipes()
         else
             viewState.showMessage(R.string.offline_mode)
+    }
+
+    fun choseSection(section: String, item: String) {
+        when (section) {
+            MC_VALUE -> viewState.showBlockAndItemsSection(item)
+            IC_VALUE -> viewState.showBlockAndItemsSection(item)
+            BC_VALUE -> viewState.showBlockAndItemsSection(item)
+            FR_VALUE -> viewState.showBlockAndItemsSection(item)
+            MOBS_VALUE -> viewState.showMobsSection(item)
+        }
     }
 
     private fun loadRecipes() {
@@ -86,7 +96,6 @@ class MainActivityPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.mobs_error_loaded)
-                        Log.e("TESTsss", "loadMobs()", it)
                     })
         )
     }

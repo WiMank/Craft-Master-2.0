@@ -16,7 +16,8 @@ import javax.inject.Inject
 class MainActivity : BaseActivity(), MainActivityView,
     RecipesListFragment.OnRecipesListFragmentClickListener,
     RecipeFragment.OnRecipeFragmentClickListener,
-    SectionFragment.OnSectionFragmentClickListener {
+    SectionFragment.OnSectionFragmentClickListener,
+    MobFragment.OnMobsFragmentClickListener {
 
     @Inject
     @InjectPresenter
@@ -54,6 +55,11 @@ class MainActivity : BaseActivity(), MainActivityView,
         main_refresh.isRefreshing = visibilityFlag
     }
 
+    fun switchSwipeRefresh(flag: Boolean) {
+        main_refresh.isEnabled = flag
+        main_refresh.isRefreshing = flag
+    }
+
     override fun cardViewClick(section: String) {
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, RecipesListFragment.newInstance(section))
@@ -63,17 +69,33 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
     override fun onRecipesListFragmentClick(recipesListItem: RecipesListItem) {
-        supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipeFragment.newInstance(recipesListItem.attr))
-            addToBackStack(RECIPE_FRAGMENT_TAG)
-            commit()
-        }
+        mMainActivityPresenter.choseSection(recipesListItem.section, recipesListItem.attr)
     }
 
     override fun onRecipeFragmentClick(recipeAttr: String) {
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, RecipeFragment.newInstance(recipeAttr))
             addToBackStack(RECIPE_FRAGMENT_TAG)
+            commit()
+        }
+    }
+
+    override fun modDropClickListener(item: String) {
+        showBlockAndItemsSection(item)
+    }
+
+    override fun showBlockAndItemsSection(item: String) {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_frame, RecipeFragment.newInstance(item))
+            addToBackStack(RECIPE_FRAGMENT_TAG)
+            commit()
+        }
+    }
+
+    override fun showMobsSection(item: String) {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_frame, MobFragment.newInstance(item))
+            addToBackStack(MOB_FRAGMENT_TAG)
             commit()
         }
     }
