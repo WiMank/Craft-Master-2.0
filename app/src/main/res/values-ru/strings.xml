@@ -19,5 +19,19 @@
     <string name="recipes_list_loaded_error">Ошибка загрузки списка рецептов</string>
     <string name="recipe_loading_error">Ошибка загрузки рецепта</string>
     <string name="recipe_successfully_loaded">Рецепт успешно загружен</string>
+    <string name="mobs_successfully_loaded">Мобы успешно загружены</string>
+    <string name="mobs_error_loaded">Ошибка загрузки мобов</string>
+    <string name="minecraft">Minecraft</string>
+    <string name="industrial_craft">Industrial Craft</string>
+    <string name="build_craft">Build Craft</string>
+    <string name="forestry">Forestry</string>
 
+    <string name="easy">Легкая</string>
+    <string name="normal">Нормальная</string>
+    <string name="hard">Тяжелая</string>
+    <string name="drop">Дроп</string>
+    <string name="attack_strength">Сила атаки</string>
+    <string name="mobs">Mobs</string>
+
+    <string name="mob_load_error">Ошибка загрузки моба</string>
 </resources>
