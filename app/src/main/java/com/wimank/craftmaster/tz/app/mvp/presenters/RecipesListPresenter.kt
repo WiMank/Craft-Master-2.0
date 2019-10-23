@@ -1,13 +1,13 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.app.mvp.common.BC_VALUE
-import com.wimank.craftmaster.tz.app.mvp.common.FR_VALUE
-import com.wimank.craftmaster.tz.app.mvp.common.IC_VALUE
-import com.wimank.craftmaster.tz.app.mvp.common.MC_VALUE
+import com.wimank.craftmaster.tz.app.mvp.common.*
 import com.wimank.craftmaster.tz.app.mvp.models.RecipesListManager
 import com.wimank.craftmaster.tz.app.mvp.views.RecipesListView
+import com.wimank.craftmaster.tz.app.room.RecipesListItem
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -34,6 +34,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
             IC_VALUE -> loadRecipesList(IC_VALUE)
             BC_VALUE -> loadRecipesList(BC_VALUE)
             FR_VALUE -> loadRecipesList(FR_VALUE)
+            MOBS_VALUE -> loadMobsList()
         }
     }
 
@@ -45,13 +46,43 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-                        viewState.showRecipesList(it)
+                        viewState.showList(it)
                         viewState.showProgress(false)
                         viewState.showMessage(R.string.recipes_list_successfully_loaded)
                     },
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.recipes_list_loaded_error)
+                    })
+        )
+    }
+
+    private fun loadMobsList() {
+        unsubscribeOnDestroy(
+            mRecipesListManager
+                .getMobsList()
+                .flatMap {
+                    Single.just((it.map { item ->
+                        RecipesListItem(
+                            item.mobName,
+                            item.mobIcon,
+                            ""
+                        )
+                    }))
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        Log.d("TESTsss", "loadMobsList() ${it.size}")
+                        viewState.showList(it)
+                        viewState.showProgress(false)
+                        viewState.showMessage(R.string.mobs_successfully_loaded)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.mobs_error_loaded)
+                        Log.e("TESTsss", "loadMobsList()", it)
                     })
         )
     }

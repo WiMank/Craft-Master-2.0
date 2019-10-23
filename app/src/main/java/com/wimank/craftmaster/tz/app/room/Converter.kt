@@ -98,4 +98,14 @@ class Converter {
     fun descriptionMobToJson(descriptionMob: DescriptionMob): String {
         return Gson().toJson(descriptionMob)
     }
+
+    @TypeConverter
+    fun jsonLocalizedType(value: String): LocalizedType {
+        return Gson().fromJson(value, LocalizedType::class.java)
+    }
+
+    @TypeConverter
+    fun localizedTypeToJson(localizedType: LocalizedType): String {
+        return Gson().toJson(localizedType)
+    }
 }

@@ -77,7 +77,7 @@ class RecipesListFragment : BaseFragment(),
         recipes_list_recycler_view.smoothScrollBy(0, scrollY)
     }
 
-    override fun showRecipesList(list: List<RecipesListItem>) {
+    override fun showList(list: List<RecipesListItem>) {
         recipes_list_recycler_view.apply {
             layoutManager =
                 LinearLayoutManagerWrapper(context)

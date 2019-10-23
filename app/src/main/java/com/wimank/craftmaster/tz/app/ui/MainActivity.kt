@@ -64,7 +64,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun onRecipesListFragmentClick(recipesListItem: RecipesListItem) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipeFragment.newInstance(recipesListItem.recipeAttr))
+            add(R.id.main_frame, RecipeFragment.newInstance(recipesListItem.attr))
             addToBackStack(RECIPE_FRAGMENT_TAG)
             commit()
         }

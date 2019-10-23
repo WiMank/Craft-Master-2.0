@@ -26,4 +26,11 @@
     <string name="build_craft">Build Craft</string>
     <string name="forestry">Forestry</string>
 
+    <string name="easy">Легкая</string>
+    <string name="normal">Нормальная</string>
+    <string name="hard">Тяжелая</string>
+    <string name="drop">Дроп</string>
+    <string name="attack_strength">Сила атаки</string>
+    <string name="mobs">Mobs</string>
+
 </resources>

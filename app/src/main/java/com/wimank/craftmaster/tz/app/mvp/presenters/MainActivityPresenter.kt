@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
@@ -85,6 +86,7 @@ class MainActivityPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.mobs_error_loaded)
+                        Log.e("TESTsss", "loadMobs()", it)
                     })
         )
     }

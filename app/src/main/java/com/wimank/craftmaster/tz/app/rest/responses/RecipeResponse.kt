@@ -2,6 +2,7 @@ package com.wimank.craftmaster.tz.app.rest.responses
 
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
+import com.wimank.craftmaster.tz.app.room.LocalizedType
 import com.wimank.craftmaster.tz.app.room.RecipeDeserializer
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
@@ -35,7 +36,10 @@ data class RecipeName(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) : LocalizedType {
+    override fun getEnLocalization() = en
+    override fun getRuLocalization() = ru
+}
 
 data class DescriptionCraft(
 

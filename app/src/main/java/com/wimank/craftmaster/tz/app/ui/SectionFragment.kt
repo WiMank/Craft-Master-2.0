@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.app.mvp.common.BC_VALUE
-import com.wimank.craftmaster.tz.app.mvp.common.FR_VALUE
-import com.wimank.craftmaster.tz.app.mvp.common.IC_VALUE
-import com.wimank.craftmaster.tz.app.mvp.common.MC_VALUE
+import com.wimank.craftmaster.tz.app.mvp.common.*
 import kotlinx.android.synthetic.main.fragment_section.view.*
 
 class SectionFragment : Fragment() {
@@ -26,6 +23,7 @@ class SectionFragment : Fragment() {
         view.industrial_craft.setOnClickListener { itemClick(IC_VALUE) }
         view.build_craft.setOnClickListener { itemClick(BC_VALUE) }
         view.forestry.setOnClickListener { itemClick(FR_VALUE) }
+        view.mobs.setOnClickListener { itemClick(MOBS_VALUE) }
         return view
     }
 

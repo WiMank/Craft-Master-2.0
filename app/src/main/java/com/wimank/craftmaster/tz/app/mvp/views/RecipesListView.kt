@@ -19,7 +19,7 @@ interface RecipesListView : MvpView {
 
     fun showProgress(visibilityFlag: Boolean)
 
-    fun showRecipesList(list: List<RecipesListItem>)
+    fun showList(list: List<RecipesListItem>)
 
     fun scrollRecyclerView(scrollY: Int)
 

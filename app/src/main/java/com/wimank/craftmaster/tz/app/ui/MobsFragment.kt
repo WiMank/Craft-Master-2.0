@@ -6,10 +6,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.mvp.presenters.MobsPresenter
+import com.wimank.craftmaster.tz.app.mvp.views.MobsView
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
+import javax.inject.Inject
 
-class MobsFragment : BaseFragment() {
+class MobsFragment : BaseFragment(), MobsView {
+
+    @Inject
+    @InjectPresenter
+    lateinit var mMobsPresenter: MobsPresenter
+
+    @ProvidePresenter
+    fun providePresenter() = mMobsPresenter
+
     private var listenerMobs: OnMobsFragmentClickListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +39,7 @@ class MobsFragment : BaseFragment() {
     }
 
     fun itemClick(uri: Uri) {
-        listenerMobs?.onFragmentInteraction(uri)
+        listenerMobs?.modDropClickListener(uri)
     }
 
     override fun onAttach(context: Context) {
@@ -44,7 +57,7 @@ class MobsFragment : BaseFragment() {
     }
 
     interface OnMobsFragmentClickListener {
-        fun onFragmentInteraction(uri: Uri)
+        fun modDropClickListener(uri: Uri)
     }
 
     companion object {

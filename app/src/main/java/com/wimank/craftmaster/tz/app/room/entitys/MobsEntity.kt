@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.wimank.craftmaster.tz.app.room.LocalizedType
 
 @Entity(tableName = "mobs")
 data class MobsEntity(
@@ -14,7 +15,7 @@ data class MobsEntity(
     val mobIcon: String,
 
     @ColumnInfo(name = "mob_name")
-    @SerializedName("mob_name")
+    @SerializedName("mobName")
     val mobName: MobName,
 
     @ColumnInfo(name = "health")
@@ -84,7 +85,10 @@ data class MobName(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) : LocalizedType {
+    override fun getEnLocalization() = en
+    override fun getRuLocalization() = ru
+}
 
 data class TypeMob(
     @SerializedName("en")

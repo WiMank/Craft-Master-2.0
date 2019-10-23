@@ -7,6 +7,7 @@ import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.app.room.entitys.BaseEntity
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entitys.MobsEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import com.wimank.craftmaster.tz.app.utils.ImageUtils
 import io.reactivex.Single
@@ -23,35 +24,38 @@ class DataManager(
     override fun containsData(serAr: List<BaseEntity>, locAr: List<BaseEntity>) {
         if (serAr.isNotEmpty()) {
             val disjunctionArray =
-                CollectionUtils.disjunction(
-                    serAr,
-                    locAr
-                ).sortedWith(compareBy { it.getVersion() })
+                CollectionUtils.disjunction(serAr, locAr)
+                    .sortedWith(compareBy { it.getVersion() })
             disjunctionArray.forEach { entity ->
                 if (locAr.contains(entity))
                     deleteEntity(entity)
                 else
-                    if (!mImageUtils.checkImageExist(entity.getImage())) {
-                        with(mImageApi.downloadImage(entity.getImage()).execute()) {
-                            if (isSuccessful) {
-                                body()?.byteStream()?.let {
-                                    mImageUtils.writeImage(
-                                        it,
-                                        entity.getImage()
-                                    )
-                                }
-                            }
-                        }
-                    }
-                insertEntity(entity)
+                    downloadImageAndInsertEntity(entity)
             }
         }
+    }
+
+    private fun downloadImageAndInsertEntity(entity: BaseEntity) {
+        if (!mImageUtils.checkImageExist(entity.getImage())) {
+            with(mImageApi.downloadImage(entity.getImage()).execute()) {
+                if (isSuccessful) {
+                    body()?.byteStream()?.let {
+                        mImageUtils.writeImage(
+                            it,
+                            entity.getImage()
+                        )
+                    }
+                }
+            }
+        }
+        insertEntity(entity)
     }
 
     override fun insertEntity(entity: BaseEntity) {
         when (entity) {
             is RecipeEntity -> mCraftMasterDataBase.recipeDao().insert(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().insert(entity)
+            is MobsEntity -> mCraftMasterDataBase.mobsDao().insert(entity)
         }
     }
 
@@ -59,6 +63,7 @@ class DataManager(
         when (entity) {
             is RecipeEntity -> mCraftMasterDataBase.recipeDao().delete(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().delete(entity)
+            is MobsEntity -> mCraftMasterDataBase.mobsDao().delete(entity)
         }
     }
 

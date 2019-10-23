@@ -1,7 +1,9 @@
 package com.wimank.craftmaster.tz.app.di.modules
 
+import com.wimank.craftmaster.tz.app.di.scopes.MobsFragmentScope
 import com.wimank.craftmaster.tz.app.di.scopes.RecipeFragmentScope
 import com.wimank.craftmaster.tz.app.di.scopes.RecipesListFragmentScope
+import com.wimank.craftmaster.tz.app.ui.MobsFragment
 import com.wimank.craftmaster.tz.app.ui.RecipeFragment
 import com.wimank.craftmaster.tz.app.ui.RecipesListFragment
 import dagger.Module
@@ -18,4 +20,7 @@ interface FragmentModule {
     @ContributesAndroidInjector(modules = [RecipeModule::class])
     fun contributesRecipesFragment(): RecipeFragment
 
+    @MobsFragmentScope
+    @ContributesAndroidInjector(modules = [MobsModule::class])
+    fun contributesMobsFragment(): MobsFragment
 }

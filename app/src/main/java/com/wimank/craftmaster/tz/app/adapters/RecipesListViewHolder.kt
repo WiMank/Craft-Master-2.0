@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.app.di.modules.GlideApp
 import com.wimank.craftmaster.tz.app.mvp.common.IMAGE_FOLDER_NAME
-import com.wimank.craftmaster.tz.app.rest.responses.RecipeName
+import com.wimank.craftmaster.tz.app.room.LocalizedType
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
 import com.wimank.craftmaster.tz.app.utils.getCurrentLocale
 import kotlinx.android.synthetic.main.simple_recycler_item.view.*
@@ -17,10 +17,10 @@ class RecipesListViewHolder(private val view: View) : RecyclerView.ViewHolder(vi
         recipesListItem: RecipesListItem,
         onItemClickListener: RecipesListAdapter.OnItemClickListener
     ) {
-        view.item_name.text = localizedName(view.context, recipesListItem.recipeName)
+        view.item_name.text = localizedName(view.context, recipesListItem.name)
         val targetImage = File(
             view.context.getExternalFilesDir(IMAGE_FOLDER_NAME),
-            "${recipesListItem.recipeImageName}.png"
+            "${recipesListItem.imageName}.png"
         )
 
         GlideApp
@@ -33,11 +33,11 @@ class RecipesListViewHolder(private val view: View) : RecyclerView.ViewHolder(vi
         }
     }
 
-    private fun localizedName(context: Context, recipeName: RecipeName): String {
+    private fun localizedName(context: Context, name: LocalizedType): String {
         return when (getCurrentLocale(context).language) {
-            "ru" -> recipeName.ru
-            "uk" -> recipeName.ru
-            else -> recipeName.en
+            "ru" -> name.getRuLocalization()
+            "uk" -> name.getRuLocalization()
+            else -> name.getEnLocalization()
         }
     }
 }

@@ -10,5 +10,4 @@ interface MobsDao : BaseDao<MobsEntity> {
 
     @Query("SELECT * FROM mobs ORDER BY mob_name ASC")
     fun getMobs(): Single<List<MobsEntity>>
-
 }
