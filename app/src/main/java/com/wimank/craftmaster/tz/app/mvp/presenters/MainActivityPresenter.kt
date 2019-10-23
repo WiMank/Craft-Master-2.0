@@ -26,11 +26,10 @@ class MainActivityPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        viewState.initViews()
         updateData()
     }
 
-    fun updateData() {
+    private fun updateData() {
         viewState.showProgress(true)
         if (mNetManager.isInternetOn())
             loadRecipes()
