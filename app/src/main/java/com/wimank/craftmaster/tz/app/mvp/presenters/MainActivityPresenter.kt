@@ -31,7 +31,7 @@ class MainActivityPresenter(
 
     private fun updateData() {
         viewState.showProgress(true)
-        if (mNetManager.isInternetOn())
+        if (mNetManager.isConnectedToNetwork())
             loadRecipes()
         else
             viewState.showMessage(R.string.offline_mode)
