@@ -148,4 +148,6 @@ dependencies {
     testImplementation("io.mockk:mockk:$mockkVersion")
     androidTestImplementation("io.mockk:mockk-android:$mockkVersion")
 
+    //LeakCanary
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.0-beta-3")
 }
