@@ -8,8 +8,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface MainActivityView : MvpView {
 
-    fun initViews()
-
     @StateStrategyType(SkipStrategy::class)
     fun showMessage(message: Int)
 

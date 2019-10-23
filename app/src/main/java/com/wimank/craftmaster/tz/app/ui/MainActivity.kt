@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.app.ui
 
-import android.graphics.Color
 import android.os.Bundle
+import androidx.core.view.isVisible
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
@@ -36,13 +36,6 @@ class MainActivity : BaseActivity(), MainActivityView,
             }
     }
 
-    override fun initViews() {
-        main_refresh.setColorSchemeColors(Color.RED)
-        main_refresh.setOnRefreshListener {
-            mMainActivityPresenter.updateData()
-        }
-    }
-
     override fun showMessage(message: Int) {
         Snackbar.make(main_ll, message, Snackbar.LENGTH_SHORT).show()
     }
@@ -52,12 +45,7 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
     override fun showProgress(visibilityFlag: Boolean) {
-        main_refresh.isRefreshing = visibilityFlag
-    }
-
-    fun switchSwipeRefresh(flag: Boolean) {
-        main_refresh.isEnabled = flag
-        main_refresh.isRefreshing = flag
+        progressBar.isVisible = visibilityFlag
     }
 
     override fun cardViewClick(section: String) {
