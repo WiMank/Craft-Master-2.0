@@ -1,8 +1,8 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
 import android.content.Context
+import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.app.room.LocalizedType
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import com.wimank.craftmaster.tz.app.utils.getCurrentLocale
@@ -23,9 +23,9 @@ class RecipeManager(
 
     fun localizeString(localizedType: LocalizedType): String {
         return when (getCurrentLocale(mContext).language) {
-            "ru" -> localizedType.getRuLocalization()
-            "uk" -> localizedType.getRuLocalization()
-            else -> localizedType.getEnLocalization()
+            "ru" -> localizedType.ru
+            "uk" -> localizedType.ru
+            else -> localizedType.en
         }
     }
 }

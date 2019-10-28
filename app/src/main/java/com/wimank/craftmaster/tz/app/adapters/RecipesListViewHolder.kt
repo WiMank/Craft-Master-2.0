@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.app.di.modules.GlideApp
 import com.wimank.craftmaster.tz.app.mvp.common.IMAGE_FOLDER_NAME
-import com.wimank.craftmaster.tz.app.room.LocalizedType
+import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
 import com.wimank.craftmaster.tz.app.utils.getCurrentLocale
 import kotlinx.android.synthetic.main.simple_recycler_item.view.*
@@ -35,9 +35,9 @@ class RecipesListViewHolder(private val view: View) : RecyclerView.ViewHolder(vi
 
     private fun localizedName(context: Context, name: LocalizedType): String {
         return when (getCurrentLocale(context).language) {
-            "ru" -> name.getRuLocalization()
-            "uk" -> name.getRuLocalization()
-            else -> name.getEnLocalization()
+            "ru" -> name.ru
+            "uk" -> name.ru
+            else -> name.en
         }
     }
 }

@@ -1,8 +1,11 @@
 package com.wimank.craftmaster.tz.app.room
 
 import com.google.gson.*
-import com.wimank.craftmaster.tz.app.rest.responses.*
+import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
+import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
+import com.wimank.craftmaster.tz.app.rest.responses.Success
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entitys.ManufacturingDevicesEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import java.lang.reflect.Type
 
@@ -16,7 +19,8 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
         return RecipeResponse(
             parseSuccess(json.asJsonObject.get("success").asJsonObject),
             parseMcDescriptionEntityList(json.asJsonObject.get(recipesList).asJsonArray),
-            parseMcRecipeEntityList(json.asJsonObject.get(recipesList).asJsonArray)
+            parseRecipesEntityList(json.asJsonObject.get(recipesList).asJsonArray),
+            parseManuDevicesList(json.asJsonObject.get(recipesList).asJsonArray)
         )
     }
 
@@ -24,9 +28,15 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
         return jo.map { parseMcDescriptionEntity(it.asJsonObject) }
     }
 
-    private fun parseMcRecipeEntityList(jo: JsonArray): List<RecipeEntity> {
-        return jo.map { parseMcRecipeEntity(it.asJsonObject) }
+    private fun parseRecipesEntityList(jo: JsonArray): List<RecipeEntity> {
+        return jo.map { parseRecipesEntity(it.asJsonObject) }
     }
+
+    private fun parseManuDevicesList(jo: JsonArray): List<ManufacturingDevicesEntity> {
+        return jo.map { parseManuDevicesEntity(it.asJsonObject) }
+    }
+
+
 
     private fun parseMcDescriptionEntity(jo: JsonObject): DescriptionEntity {
         val recipeName = "recipeName"
@@ -39,30 +49,30 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
             jo.get("recipeAttr").asString,
             jo.get("recipeImageName").asString,
             jo.get("modification").asString,
-            RecipeName(
+            LocalizedType(
                 jo.get(recipeName).asJsonObject.get("en").asString,
                 jo.get(recipeName).asJsonObject.get("ru").asString
             ),
-            LeftParameter(
+            LocalizedType(
                 jo.get(leftParameter).asJsonObject?.get("en")?.asString ?: "",
                 jo.get(leftParameter).asJsonObject?.get("ru")?.asString ?: ""
             ),
-            LeftParameterText(
+            LocalizedType(
                 jo.get(leftParameterText).asJsonObject?.get("en")?.asString ?: "",
                 jo.get(leftParameterText).asJsonObject?.get("ru")?.asString ?: ""
             ),
 
             jo.get("leftParameterImage").asString,
 
-            RightParameter(
+            LocalizedType(
                 jo.get(rightParameter).asJsonObject?.get("en")?.asString ?: "",
                 jo.get(rightParameter).asJsonObject?.get("ru")?.asString ?: ""
             ),
-            RightParameterText(
+            LocalizedType(
                 jo.get(rightParameterText).asJsonObject?.get("en")?.asString ?: "",
                 jo.get(rightParameterText).asJsonObject?.get("ru")?.asString ?: ""
             ),
-            DescriptionCraft(
+            LocalizedType(
                 jo.get(descriptionCraft).asJsonObject?.get("en")?.asString ?: "",
                 jo.get(descriptionCraft).asJsonObject?.get("ru")?.asString ?: ""
             ),
@@ -71,7 +81,7 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
         )
     }
 
-    private fun parseMcRecipeEntity(jo: JsonObject): RecipeEntity {
+    private fun parseRecipesEntity(jo: JsonObject): RecipeEntity {
         val recipe = "recipe"
         return RecipeEntity(
             jo.get(recipe).asJsonObject.get("recipeImageName").asString,
@@ -86,6 +96,26 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
             jo.get(recipe).asJsonObject.get("eighthSlot").asString,
             jo.get(recipe).asJsonObject.get("ninthSlot").asString,
             jo.get(recipe).asJsonObject.get("vers").asInt
+        )
+    }
+
+    private fun parseManuDevicesEntity(jo: JsonObject): ManufacturingDevicesEntity {
+        val manufacturingDevice = "manufacturingDevice"
+        return ManufacturingDevicesEntity(
+            jo.get(manufacturingDevice).asJsonObject.get("recipeAttr").asString,
+            jo.get(manufacturingDevice).asJsonObject.get("recipeImageName").asString,
+            jo.get(manufacturingDevice).asJsonObject.get("furnace").asString,
+            jo.get(manufacturingDevice).asJsonObject.get("extractor").asString,
+            jo.get(manufacturingDevice).asJsonObject.get("crusher").asString,
+            jo.get(manufacturingDevice).asJsonObject.get("compressor").asString,
+            jo.get(manufacturingDevice).asJsonObject.get("recycler").asString,
+            jo.get(manufacturingDevice).asJsonObject.get("assemblyTable").asString,
+            LocalizedType(
+                jo.get(manufacturingDevice).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(manufacturingDevice).asJsonObject?.get("ru")?.asString ?: ""
+            ),
+            jo.get(manufacturingDevice).asJsonObject.get("machine").asString,
+            jo.get(manufacturingDevice).asJsonObject.get("vers").asInt
         )
     }
 

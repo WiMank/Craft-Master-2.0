@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import com.wimank.craftmaster.tz.app.room.LocalizedType
+import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 
 @Entity(tableName = "mobs")
 data class MobsEntity(
@@ -16,7 +16,7 @@ data class MobsEntity(
 
     @ColumnInfo(name = "mob_name")
     @SerializedName("mobName")
-    val mobName: MobName,
+    val mobName: LocalizedType,
 
     @ColumnInfo(name = "health")
     @SerializedName("health")
@@ -28,11 +28,11 @@ data class MobsEntity(
 
     @ColumnInfo(name = "type_mob")
     @SerializedName("typeMob")
-    val typeMob: TypeMob,
+    val typeMob: LocalizedType,
 
     @ColumnInfo(name = "description")
     @SerializedName("description")
-    val description: DescriptionMob,
+    val description: LocalizedType,
 
     @ColumnInfo(name = "easy_attack")
     @SerializedName("easyAttack")
@@ -77,37 +77,4 @@ data class MobsEntity(
 ) : BaseEntity {
     override fun getVersion() = vers
     override fun getImage() = mobIcon
-}
-
-data class MobName(
-    @SerializedName("en")
-    val en: String = "",
-
-    @SerializedName("ru")
-    val ru: String = ""
-) : LocalizedType {
-    override fun getEnLocalization() = en
-    override fun getRuLocalization() = ru
-}
-
-data class TypeMob(
-    @SerializedName("en")
-    val en: String = "",
-
-    @SerializedName("ru")
-    val ru: String = ""
-) : LocalizedType {
-    override fun getEnLocalization() = en
-    override fun getRuLocalization() = ru
-}
-
-data class DescriptionMob(
-    @SerializedName("en")
-    val en: String = "",
-
-    @SerializedName("ru")
-    val ru: String = ""
-) : LocalizedType {
-    override fun getEnLocalization() = en
-    override fun getRuLocalization() = ru
 }

@@ -2,7 +2,7 @@ package com.wimank.craftmaster.tz.app.room.entitys
 
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
-import com.wimank.craftmaster.tz.app.rest.responses.*
+import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 
 @Entity(tableName = "description_craft_recipes", primaryKeys = ["recipeName", "recipeImageName"])
 data class DescriptionEntity(
@@ -17,25 +17,25 @@ data class DescriptionEntity(
     val modification: String,
 
     @SerializedName("recipe_name")
-    val recipeName: RecipeName,
+    val recipeName: LocalizedType,
 
     @SerializedName("leftParameter")
-    val leftParameter: LeftParameter,
+    val leftParameter: LocalizedType,
 
     @SerializedName("leftParameterText")
-    val leftParameterText: LeftParameterText,
+    val leftParameterText: LocalizedType,
 
     @SerializedName("leftParameterImage")
     val leftParameterImage: String,
 
     @SerializedName("rightParameter")
-    val rightParameter: RightParameter,
+    val rightParameter: LocalizedType,
 
     @SerializedName("rightParameterText")
-    val rightParameterText: RightParameterText,
+    val rightParameterText: LocalizedType,
 
     @SerializedName("descriptionCraft")
-    val descriptionCraft: DescriptionCraft,
+    val descriptionCraft: LocalizedType,
 
     @SerializedName("wikiLink")
     val wikiLink: String,
