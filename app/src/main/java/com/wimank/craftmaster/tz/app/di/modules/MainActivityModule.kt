@@ -6,6 +6,7 @@ import com.wimank.craftmaster.tz.app.mvp.models.DataManager
 import com.wimank.craftmaster.tz.app.mvp.models.NetManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.MainActivityPresenter
 import com.wimank.craftmaster.tz.app.rest.api.ImageApi
+import com.wimank.craftmaster.tz.app.rest.api.ManufacturingDevicesApi
 import com.wimank.craftmaster.tz.app.rest.api.MobsApi
 import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
@@ -35,6 +36,7 @@ class MainActivityModule {
         imageApi: ImageApi,
         recipesApi: RecipesApi,
         mobsApi: MobsApi,
+        manufacturingDevicesApi: ManufacturingDevicesApi,
         craftMasterDataBase: CraftMasterDataBase
     ): DataManager {
         return DataManager(
@@ -42,6 +44,7 @@ class MainActivityModule {
             imageApi,
             recipesApi,
             mobsApi,
+            manufacturingDevicesApi,
             craftMasterDataBase
         )
     }

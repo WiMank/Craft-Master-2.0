@@ -2,13 +2,11 @@ package com.wimank.craftmaster.tz.app.mvp.models
 
 import com.wimank.craftmaster.tz.app.mvp.common.IDataManager
 import com.wimank.craftmaster.tz.app.rest.api.ImageApi
+import com.wimank.craftmaster.tz.app.rest.api.ManufacturingDevicesApi
 import com.wimank.craftmaster.tz.app.rest.api.MobsApi
 import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.app.room.entitys.BaseEntity
-import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entitys.MobsEntity
-import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
+import com.wimank.craftmaster.tz.app.room.entitys.*
 import com.wimank.craftmaster.tz.app.utils.ImageUtils
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
@@ -18,6 +16,7 @@ class DataManager(
     private val mImageApi: ImageApi,
     private val mRecipesApi: RecipesApi,
     private val mMobsApi: MobsApi,
+    private val mManufacturingDevicesApi: ManufacturingDevicesApi,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
 
@@ -56,6 +55,9 @@ class DataManager(
             is RecipeEntity -> mCraftMasterDataBase.recipeDao().insert(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().insert(entity)
             is MobsEntity -> mCraftMasterDataBase.mobsDao().insert(entity)
+            is ManufacturingDevicesEntity -> mCraftMasterDataBase.manufacturingDevicesDao().insert(
+                entity
+            )
         }
     }
 
@@ -64,6 +66,9 @@ class DataManager(
             is RecipeEntity -> mCraftMasterDataBase.recipeDao().delete(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().delete(entity)
             is MobsEntity -> mCraftMasterDataBase.mobsDao().delete(entity)
+            is ManufacturingDevicesEntity -> mCraftMasterDataBase.manufacturingDevicesDao().delete(
+                entity
+            )
         }
     }
 
@@ -80,5 +85,10 @@ class DataManager(
     fun getMobs() = mMobsApi.getMobs()
 
     fun getMobsFromDb() = mCraftMasterDataBase.mobsDao().getMobs()
+
+    fun getManufacturingDevices() = mManufacturingDevicesApi.getManufacturingDevices()
+
+    fun getManufacturingDevicesDaoFromDb() =
+        mCraftMasterDataBase.manufacturingDevicesDao().getManufacturingDevices()
 
 }

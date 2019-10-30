@@ -7,9 +7,11 @@ import com.wimank.craftmaster.tz.app.mvp.common.*
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
 import com.wimank.craftmaster.tz.app.mvp.models.NetManager
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
+import com.wimank.craftmaster.tz.app.rest.responses.ManufacturingDResponse
 import com.wimank.craftmaster.tz.app.rest.responses.MobsResponse
 import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entitys.ManufacturingDevicesEntity
 import com.wimank.craftmaster.tz.app.room.entitys.MobsEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import io.reactivex.Single
@@ -98,6 +100,26 @@ class MainActivityPresenter(
                         viewState.showProgress(false)
                         viewState.showError(R.string.mobs_error_loaded)
                     })
+        )
+    }
+
+    private fun loadMnDevices() {
+        viewState.showProgress(true)
+        unsubscribeOnDestroy(
+            Single.zip(
+                mDataManager.getManufacturingDevices(),
+                mDataManager.getManufacturingDevicesDaoFromDb(),
+                BiFunction { manufacturingResponse: ManufacturingDResponse,
+                             mbDvList: List<ManufacturingDevicesEntity> ->
+
+                }).subscribeBy(
+                onSuccess = {
+                    viewState.showProgress(false)
+                },
+                onError = {
+                    viewState.showProgress(false)
+                })
+
         )
     }
 }
