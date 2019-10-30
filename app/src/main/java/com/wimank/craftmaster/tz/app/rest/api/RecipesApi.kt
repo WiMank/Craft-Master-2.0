@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface RecipesApi {
 
-    @GET("/recipes/minecraft/recipe_craft")
+    @GET("/recipes")
     fun getRecipes(): Single<RecipeResponse>
 
 }

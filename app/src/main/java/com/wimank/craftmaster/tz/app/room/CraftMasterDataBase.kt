@@ -7,6 +7,7 @@ import com.wimank.craftmaster.tz.app.room.dao.DescriptionDao
 import com.wimank.craftmaster.tz.app.room.dao.MobsDao
 import com.wimank.craftmaster.tz.app.room.dao.RecipesDao
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entitys.ManufacturingDevicesEntity
 import com.wimank.craftmaster.tz.app.room.entitys.MobsEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 
@@ -14,7 +15,8 @@ import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
     entities = [
         DescriptionEntity::class,
         RecipeEntity::class,
-        MobsEntity::class
+        MobsEntity::class,
+        ManufacturingDevicesEntity::class
     ],
     exportSchema = false,
     version = 1
