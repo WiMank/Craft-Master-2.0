@@ -1,9 +1,6 @@
-package com.wimank.craftmaster.tz.app.room
+package com.wimank.craftmaster.tz.app.rest.responses
 
 import com.google.gson.*
-import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
-import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
-import com.wimank.craftmaster.tz.app.rest.responses.Success
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import java.lang.reflect.Type
@@ -76,8 +73,8 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
     private fun parseRecipesEntity(jo: JsonObject): RecipeEntity {
         val recipe = "recipe"
         return RecipeEntity(
-            jo.get(recipe).asJsonObject.get("recipeImageName").asString,
             jo.get(recipe).asJsonObject.get("recipeAttr").asString,
+            jo.get(recipe).asJsonObject.get("recipeImageName").asString,
             jo.get(recipe).asJsonObject.get("firstSlot").asString,
             jo.get(recipe).asJsonObject.get("secondSlot").asString,
             jo.get(recipe).asJsonObject.get("threeSlot").asString,

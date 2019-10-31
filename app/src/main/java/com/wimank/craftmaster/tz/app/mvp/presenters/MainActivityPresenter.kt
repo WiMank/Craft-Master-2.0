@@ -63,7 +63,8 @@ class MainActivityPresenter(
                         mDataManager.containsData(servRecipes.recipesList, recipeEntity)
                         mDataManager.containsData(servRecipes.descriptionList, descriptionEntity)
                     }
-                }).subscribeOn(Schedulers.io())
+                })
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
@@ -74,7 +75,7 @@ class MainActivityPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.recipes_list_loading_error)
-                        Log.e("TERE", "loadRecipes()", it)
+                        Log.e("TYU", "loadRecipes()", it)
                     })
         )
     }
@@ -89,16 +90,19 @@ class MainActivityPresenter(
                              mobsDbList: List<MobsEntity> ->
                     if (mobsResponse.success.isSuccess())
                         mDataManager.containsData(mobsResponse.mobsLost, mobsDbList)
-                }).subscribeOn(Schedulers.io())
+                })
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
                         viewState.showMessage(R.string.mobs_successfully_loaded)
                         viewState.showProgress(false)
+                        loadMnDevices()
                     },
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.mobs_error_loaded)
+                        Log.e("TYU", "loadMobs()", it)
                     })
         )
     }
@@ -111,15 +115,21 @@ class MainActivityPresenter(
                 mDataManager.getManufacturingDevicesDaoFromDb(),
                 BiFunction { manufacturingResponse: ManufacturingDResponse,
                              mbDvList: List<ManufacturingDevicesEntity> ->
-
-                }).subscribeBy(
+                    if (manufacturingResponse.success.isSuccess())
+                        mDataManager.containsData(manufacturingResponse.devices, mbDvList)
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
                 onSuccess = {
                     viewState.showProgress(false)
+                    viewState.showMessage(R.string.devices_load_successfully)
                 },
                 onError = {
                     viewState.showProgress(false)
+                    viewState.showMessage(R.string.devices_load_error)
+                    Log.e("TYU", "loadMnDevices()", it)
                 })
-
         )
     }
 }

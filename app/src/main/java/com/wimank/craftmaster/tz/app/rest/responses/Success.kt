@@ -8,7 +8,5 @@ class Success(
     @SerializedName("message")
     val message: String
 ) {
-    fun isSuccess(): Boolean {
-        return httpStatus == 200
-    }
+    fun isSuccess() = httpStatus == 200
 }

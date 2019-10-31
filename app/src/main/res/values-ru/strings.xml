@@ -34,4 +34,8 @@
     <string name="mobs">Mobs</string>
 
     <string name="mob_load_error">Ошибка загрузки моба</string>
+
+    <string name="devices_load_successfully">Устройства успешно загружены</string>
+    <string name="devices_load_error">Ошибка загрузки устройств</string>
+
 </resources>
