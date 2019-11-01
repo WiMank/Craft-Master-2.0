@@ -38,11 +38,34 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                         viewState.showLocalizeLeftParText(mRecipeManager.localizeString(it.first.leftParameterText))
                         viewState.showLocalizeRightPar(mRecipeManager.localizeString(it.first.rightParameter))
                         viewState.showLocalizeRightParText(mRecipeManager.localizeString(it.first.rightParameterText))
+                        loadDevices(recipeAttr)
                     },
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.recipe_loading_error)
                     })
         )
+    }
+
+    private fun loadDevices(recipeAttr: String) {
+        unsubscribeOnDestroy(
+            mRecipeManager
+                .getDeviceFromDb(recipeAttr)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        // if (mRecipeManager.getDeviceName(it).isNotEmpty())
+                        //    viewState.showDevice(mRecipeManager.getDeviceName(it))
+
+                        with(mRecipeManager.getMachine(it)) {
+                            if (nameNotEmpty() || imageNotEmpty())
+                                viewState.showMachine(this)
+                        }
+                    },
+                    onError = {
+
+                    }
+                ))
     }
 }

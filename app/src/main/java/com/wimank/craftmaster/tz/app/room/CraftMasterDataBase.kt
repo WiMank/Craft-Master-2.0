@@ -4,11 +4,11 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.wimank.craftmaster.tz.app.room.dao.DescriptionDao
-import com.wimank.craftmaster.tz.app.room.dao.ManufacturingDevicesDao
+import com.wimank.craftmaster.tz.app.room.dao.DevicesDao
 import com.wimank.craftmaster.tz.app.room.dao.MobsDao
 import com.wimank.craftmaster.tz.app.room.dao.RecipesDao
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entitys.ManufacturingDevicesEntity
+import com.wimank.craftmaster.tz.app.room.entitys.DeviceEntity
 import com.wimank.craftmaster.tz.app.room.entitys.MobsEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 
@@ -17,7 +17,7 @@ import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
         DescriptionEntity::class,
         RecipeEntity::class,
         MobsEntity::class,
-        ManufacturingDevicesEntity::class
+        DeviceEntity::class
     ],
     exportSchema = false,
     version = 1
@@ -27,5 +27,5 @@ abstract class CraftMasterDataBase : RoomDatabase() {
     abstract fun descriptionDao(): DescriptionDao
     abstract fun recipeDao(): RecipesDao
     abstract fun mobsDao(): MobsDao
-    abstract fun manufacturingDevicesDao(): ManufacturingDevicesDao
+    abstract fun devicesDao(): DevicesDao
 }

@@ -14,6 +14,7 @@ import com.wimank.craftmaster.tz.app.di.modules.GlideApp
 import com.wimank.craftmaster.tz.app.mvp.common.IMAGE_FOLDER_NAME
 import com.wimank.craftmaster.tz.app.mvp.common.RecipeImages
 import com.wimank.craftmaster.tz.app.mvp.common.RecipeImages.*
+import com.wimank.craftmaster.tz.app.mvp.models.Machine
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.app.mvp.views.RecipeView
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
@@ -28,6 +29,14 @@ private const val RECIPE_FRAGMENT_KEY = "recipe_attr"
 const val RECIPE_FRAGMENT_TAG = "RecipeFragment"
 
 class RecipeFragment : BaseFragment(), RecipeView {
+
+    override fun showMachine(machine: Machine) {
+
+    }
+
+    override fun showDevice(device: String) {
+
+    }
 
     @Inject
     @InjectPresenter

@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.app.rest.responses
 
 import com.google.gson.*
-import com.wimank.craftmaster.tz.app.room.entitys.ManufacturingDevicesEntity
+import com.wimank.craftmaster.tz.app.room.entitys.DeviceEntity
 import java.lang.reflect.Type
 
 class DevicesDeserializer : JsonDeserializer<ManufacturingDResponse> {
@@ -16,14 +16,14 @@ class DevicesDeserializer : JsonDeserializer<ManufacturingDResponse> {
         )
     }
 
-    private fun parseDevices(jo: JsonArray): List<ManufacturingDevicesEntity> {
+    private fun parseDevices(jo: JsonArray): List<DeviceEntity> {
         return jo.map { parseManufacturingDevicesEntity(it.asJsonObject) }
     }
 
-    private fun parseManufacturingDevicesEntity(jo: JsonObject): ManufacturingDevicesEntity {
+    private fun parseManufacturingDevicesEntity(jo: JsonObject): DeviceEntity {
         val machineName = "machineName"
         val recipePrimaryKey = "recipePrimaryKey"
-        return ManufacturingDevicesEntity(
+        return DeviceEntity(
             jo.get(recipePrimaryKey).asJsonObject.get("recipeAttr").asString,
             jo.get(recipePrimaryKey).asJsonObject.get("recipeImageName").asString,
             jo.get("furnace").asString,

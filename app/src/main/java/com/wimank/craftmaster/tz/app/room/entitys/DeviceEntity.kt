@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 
 @Entity(tableName = "manufacturing_devices", primaryKeys = ["recipeAttr", "recipeImageName"])
-data class ManufacturingDevicesEntity(
+data class DeviceEntity(
 
     @SerializedName("recipeImageName")
     val recipeImageName: String,

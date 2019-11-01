@@ -55,7 +55,7 @@ class DataManager(
             is RecipeEntity -> mCraftMasterDataBase.recipeDao().insert(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().insert(entity)
             is MobsEntity -> mCraftMasterDataBase.mobsDao().insert(entity)
-            is ManufacturingDevicesEntity -> mCraftMasterDataBase.manufacturingDevicesDao().insert(
+            is DeviceEntity -> mCraftMasterDataBase.devicesDao().insert(
                 entity
             )
         }
@@ -66,7 +66,7 @@ class DataManager(
             is RecipeEntity -> mCraftMasterDataBase.recipeDao().delete(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().delete(entity)
             is MobsEntity -> mCraftMasterDataBase.mobsDao().delete(entity)
-            is ManufacturingDevicesEntity -> mCraftMasterDataBase.manufacturingDevicesDao().delete(
+            is DeviceEntity -> mCraftMasterDataBase.devicesDao().delete(
                 entity
             )
         }
@@ -89,6 +89,6 @@ class DataManager(
     fun getManufacturingDevices() = mManufacturingDevicesApi.getManufacturingDevices()
 
     fun getManufacturingDevicesDaoFromDb() =
-        mCraftMasterDataBase.manufacturingDevicesDao().getManufacturingDevices()
+        mCraftMasterDataBase.devicesDao().getDevices()
 
 }

@@ -4,6 +4,7 @@ import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import com.wimank.craftmaster.tz.app.mvp.models.Machine
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 
@@ -37,5 +38,9 @@ interface RecipeView : MvpView {
     fun showLocalizeRightPar(rightP: String)
 
     fun showLocalizeRightParText(rightPText: String)
+
+    fun showDevice(device: String)
+
+    fun showMachine(machine: Machine)
 
 }

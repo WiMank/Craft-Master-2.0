@@ -11,7 +11,7 @@ import com.wimank.craftmaster.tz.app.rest.responses.ManufacturingDResponse
 import com.wimank.craftmaster.tz.app.rest.responses.MobsResponse
 import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entitys.ManufacturingDevicesEntity
+import com.wimank.craftmaster.tz.app.room.entitys.DeviceEntity
 import com.wimank.craftmaster.tz.app.room.entitys.MobsEntity
 import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
 import io.reactivex.Single
@@ -114,7 +114,7 @@ class MainActivityPresenter(
                 mDataManager.getManufacturingDevices(),
                 mDataManager.getManufacturingDevicesDaoFromDb(),
                 BiFunction { manufacturingResponse: ManufacturingDResponse,
-                             mbDvList: List<ManufacturingDevicesEntity> ->
+                             mbDvList: List<DeviceEntity> ->
                     if (manufacturingResponse.success.isSuccess())
                         mDataManager.containsData(manufacturingResponse.devices, mbDvList)
                 })
