@@ -44,7 +44,6 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.recipe_loading_error)
-                        Log.e("YUI", "lodRecipeAndDescription()", it)
                     })
         )
     }
