@@ -23,38 +23,44 @@ class DevicesDeserializer : JsonDeserializer<DevicesResponse> {
     private fun parseManufacturingDevicesEntity(jo: JsonObject): DeviceEntity {
         val machineName = "machineName"
         val recipePrimaryKey = "recipePrimaryKey"
+        val furnace = "furnace"
+        val extractor = "extractor"
+        val crusher = "crusher"
+        val compressor = "compressor"
+        val recycler = "recycler"
+        val assemblyTable = "assemblyTable"
         return DeviceEntity(
             jo.get(recipePrimaryKey).asJsonObject.get("recipeAttr").asString,
             jo.get(recipePrimaryKey).asJsonObject.get("recipeImageName").asString,
             LocalizedType(
-                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+                jo.get(furnace).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(furnace).asJsonObject?.get("ru")?.asString ?: ""
             ),
             LocalizedType(
-                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+                jo.get(extractor).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(extractor).asJsonObject?.get("ru")?.asString ?: ""
             ),
             LocalizedType(
-                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+                jo.get(crusher).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(crusher).asJsonObject?.get("ru")?.asString ?: ""
             ),
             LocalizedType(
-                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+                jo.get(compressor).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(compressor).asJsonObject?.get("ru")?.asString ?: ""
             ),
             LocalizedType(
-                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+                jo.get(recycler).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(recycler).asJsonObject?.get("ru")?.asString ?: ""
             ),
             LocalizedType(
-                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
-            ),
-            LocalizedType(
-                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
-                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+                jo.get(assemblyTable).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(assemblyTable).asJsonObject?.get("ru")?.asString ?: ""
             ),
             jo.get("machine").asString,
+            LocalizedType(
+                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+            ),
             jo.get("vers").asInt
         )
     }

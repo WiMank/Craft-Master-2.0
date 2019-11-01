@@ -8,11 +8,11 @@ import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 @Entity(tableName = "manufacturing_devices", primaryKeys = ["recipeAttr", "recipeImageName"])
 data class DeviceEntity(
 
-    @SerializedName("recipeImageName")
-    val recipeImageName: String,
-
     @SerializedName("recipeAttr")
     val recipeAttr: String,
+
+    @SerializedName("recipeImageName")
+    val recipeImageName: String,
 
     @SerializedName("furnace")
     val furnace: LocalizedType,
@@ -33,12 +33,12 @@ data class DeviceEntity(
     @ColumnInfo(name = "assembly_table")
     val assemblyTable: LocalizedType,
 
+    @SerializedName("machine")
+    val machine: String,
+
     @SerializedName("machineName")
     @ColumnInfo(name = "machine_name")
     val machineName: LocalizedType,
-
-    @SerializedName("machine")
-    val machine: String,
 
     @SerializedName("vers")
     val vers: Int
