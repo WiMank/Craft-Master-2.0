@@ -4,13 +4,13 @@ import com.google.gson.*
 import com.wimank.craftmaster.tz.app.room.entitys.DeviceEntity
 import java.lang.reflect.Type
 
-class DevicesDeserializer : JsonDeserializer<ManufacturingDResponse> {
+class DevicesDeserializer : JsonDeserializer<DevicesResponse> {
     override fun deserialize(
         json: JsonElement,
         typeOfT: Type,
         context: JsonDeserializationContext
-    ): ManufacturingDResponse {
-        return ManufacturingDResponse(
+    ): DevicesResponse {
+        return DevicesResponse(
             parseSuccess(json.asJsonObject.get("success").asJsonObject),
             parseDevices(json.asJsonObject.get("manufacturingDevicesList").asJsonArray)
         )
@@ -26,12 +26,30 @@ class DevicesDeserializer : JsonDeserializer<ManufacturingDResponse> {
         return DeviceEntity(
             jo.get(recipePrimaryKey).asJsonObject.get("recipeAttr").asString,
             jo.get(recipePrimaryKey).asJsonObject.get("recipeImageName").asString,
-            jo.get("furnace").asString,
-            jo.get("extractor").asString,
-            jo.get("crusher").asString,
-            jo.get("compressor").asString,
-            jo.get("recycler").asString,
-            jo.get("assemblyTable").asString,
+            LocalizedType(
+                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+            ),
+            LocalizedType(
+                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+            ),
+            LocalizedType(
+                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+            ),
+            LocalizedType(
+                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+            ),
+            LocalizedType(
+                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+            ),
+            LocalizedType(
+                jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
+                jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""
+            ),
             LocalizedType(
                 jo.get(machineName).asJsonObject?.get("en")?.asString ?: "",
                 jo.get(machineName).asJsonObject?.get("ru")?.asString ?: ""

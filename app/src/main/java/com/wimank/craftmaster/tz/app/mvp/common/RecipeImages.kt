@@ -12,5 +12,6 @@ enum class RecipeImages {
     NINTH_SLOT,
     RECIPE_IMAGE,
     LEFT_P_IMAGE,
-    RESULT_IMAGE
+    RESULT_IMAGE,
+    MACHINE_IMAGE
 }

@@ -38,4 +38,6 @@
     <string name="devices_load_successfully">Devices  successfully loaded</string>
     <string name="devices_load_error">Devices load error</string>
 
+    <string name="recipe_craft_text">Recipe Craft</string>
+
 </resources>

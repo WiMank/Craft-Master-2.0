@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.room.entitys.DeviceEntity
 
 @JsonAdapter(DevicesDeserializer::class)
-data class ManufacturingDResponse(
+data class DevicesResponse(
 
     @SerializedName("success")
     val success: Success,

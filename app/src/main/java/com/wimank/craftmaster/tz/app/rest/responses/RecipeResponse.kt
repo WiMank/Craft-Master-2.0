@@ -18,4 +18,6 @@ data class LocalizedType(
 
     @SerializedName("ru")
     val ru: String = ""
-)
+) {
+    fun stringIsNotEmpty() = en.isNotEmpty() && ru.isNotEmpty()
+}

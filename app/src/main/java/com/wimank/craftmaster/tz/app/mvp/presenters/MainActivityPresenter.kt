@@ -1,13 +1,12 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.*
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
 import com.wimank.craftmaster.tz.app.mvp.models.NetManager
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
-import com.wimank.craftmaster.tz.app.rest.responses.ManufacturingDResponse
+import com.wimank.craftmaster.tz.app.rest.responses.DevicesResponse
 import com.wimank.craftmaster.tz.app.rest.responses.MobsResponse
 import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
 import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
@@ -75,7 +74,6 @@ class MainActivityPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.recipes_list_loading_error)
-                        Log.e("TYU", "loadRecipes()", it)
                     })
         )
     }
@@ -102,7 +100,6 @@ class MainActivityPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.mobs_error_loaded)
-                        Log.e("TYU", "loadMobs()", it)
                     })
         )
     }
@@ -113,7 +110,7 @@ class MainActivityPresenter(
             Single.zip(
                 mDataManager.getManufacturingDevices(),
                 mDataManager.getManufacturingDevicesDaoFromDb(),
-                BiFunction { manufacturingResponse: ManufacturingDResponse,
+                BiFunction { manufacturingResponse: DevicesResponse,
                              mbDvList: List<DeviceEntity> ->
                     if (manufacturingResponse.success.isSuccess())
                         mDataManager.containsData(manufacturingResponse.devices, mbDvList)
@@ -128,7 +125,6 @@ class MainActivityPresenter(
                 onError = {
                     viewState.showProgress(false)
                     viewState.showMessage(R.string.devices_load_error)
-                    Log.e("TYU", "loadMnDevices()", it)
                 })
         )
     }

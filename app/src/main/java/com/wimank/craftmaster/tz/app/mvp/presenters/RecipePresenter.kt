@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.models.RecipeManager
@@ -43,6 +44,7 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.recipe_loading_error)
+                        Log.e("YUI", "lodRecipeAndDescription()", it)
                     })
         )
     }
@@ -55,16 +57,22 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-                        // if (mRecipeManager.getDeviceName(it).isNotEmpty())
-                        //    viewState.showDevice(mRecipeManager.getDeviceName(it))
+                        viewState.showProgress(false)
+                        viewState.showMessage(R.string.devices_load_successfully)
 
+                        with(mRecipeManager.getDeviceName(it)) {
+                            if (mRecipeManager.getDeviceName(it).isNotEmpty())
+                                viewState.showDevice(this)
+                        }
                         with(mRecipeManager.getMachine(it)) {
                             if (nameNotEmpty() || imageNotEmpty())
                                 viewState.showMachine(this)
                         }
                     },
                     onError = {
-
+                        viewState.showProgress(false)
+                        viewState.showMessage(R.string.devices_load_error)
+                        Log.e("YUI", "loadDevices()", it)
                     }
                 ))
     }

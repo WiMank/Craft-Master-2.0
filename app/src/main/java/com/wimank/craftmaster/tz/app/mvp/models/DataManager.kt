@@ -1,8 +1,8 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
 import com.wimank.craftmaster.tz.app.mvp.common.IDataManager
+import com.wimank.craftmaster.tz.app.rest.api.DevicesApi
 import com.wimank.craftmaster.tz.app.rest.api.ImageApi
-import com.wimank.craftmaster.tz.app.rest.api.ManufacturingDevicesApi
 import com.wimank.craftmaster.tz.app.rest.api.MobsApi
 import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
@@ -16,7 +16,7 @@ class DataManager(
     private val mImageApi: ImageApi,
     private val mRecipesApi: RecipesApi,
     private val mMobsApi: MobsApi,
-    private val mManufacturingDevicesApi: ManufacturingDevicesApi,
+    private val mDevicesApi: DevicesApi,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
 
@@ -86,7 +86,7 @@ class DataManager(
 
     fun getMobsFromDb() = mCraftMasterDataBase.mobsDao().getMobs()
 
-    fun getManufacturingDevices() = mManufacturingDevicesApi.getManufacturingDevices()
+    fun getManufacturingDevices() = mDevicesApi.getDevices()
 
     fun getManufacturingDevicesDaoFromDb() =
         mCraftMasterDataBase.devicesDao().getDevices()

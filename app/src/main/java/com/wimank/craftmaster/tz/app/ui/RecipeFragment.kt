@@ -30,14 +30,6 @@ const val RECIPE_FRAGMENT_TAG = "RecipeFragment"
 
 class RecipeFragment : BaseFragment(), RecipeView {
 
-    override fun showMachine(machine: Machine) {
-
-    }
-
-    override fun showDevice(device: String) {
-
-    }
-
     @Inject
     @InjectPresenter
     lateinit var mRecipePresenter: RecipePresenter
@@ -141,6 +133,16 @@ class RecipeFragment : BaseFragment(), RecipeView {
         right_parameter_text.text = rightPText
     }
 
+    override fun showMachine(machine: Machine) {
+        machine_name.text = machine.name
+        setImage(machine.image, MACHINE_IMAGE)
+        machine_cl.visibility = View.VISIBLE
+    }
+
+    override fun showDevice(device: String) {
+        recipe_text.text = device
+    }
+
     private fun setImage(imagePath: String, recipeImages: RecipeImages) {
         val lContext: Context? = context
         if (lContext != null) {
@@ -160,6 +162,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
                 RECIPE_IMAGE -> glideApp.into(recipe_image)
                 LEFT_P_IMAGE -> glideApp.into(image_parameter)
                 RESULT_IMAGE -> glideApp.into(recipe_result_craft)
+                MACHINE_IMAGE -> glideApp.into(machine_image)
             }
         }
     }

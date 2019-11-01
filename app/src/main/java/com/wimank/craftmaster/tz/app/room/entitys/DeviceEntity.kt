@@ -15,23 +15,23 @@ data class DeviceEntity(
     val recipeAttr: String,
 
     @SerializedName("furnace")
-    val furnace: String,
+    val furnace: LocalizedType,
 
     @SerializedName("extractor")
-    val extractor: String,
+    val extractor: LocalizedType,
 
     @SerializedName("crusher")
-    val crusher: String,
+    val crusher: LocalizedType,
 
     @SerializedName("compressor")
-    val compressor: String,
+    val compressor: LocalizedType,
 
     @SerializedName("recycler")
-    val recycler: String,
+    val recycler: LocalizedType,
 
     @SerializedName("assemblyTable")
     @ColumnInfo(name = "assembly_table")
-    val assemblyTable: String,
+    val assemblyTable: LocalizedType,
 
     @SerializedName("machineName")
     @ColumnInfo(name = "machine_name")
@@ -45,5 +45,5 @@ data class DeviceEntity(
 
 ) : BaseEntity {
     override fun getVersion() = vers
-    override fun getImage() = recipeImageName
+    override fun getImage() = machine
 }
