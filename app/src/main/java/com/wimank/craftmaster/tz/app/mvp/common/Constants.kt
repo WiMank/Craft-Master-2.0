@@ -10,6 +10,6 @@ const val IC_VALUE = "Industrial Craft"
 
 const val BC_VALUE = "Build Craft"
 
-const val FR_VALUE = "Forestry Craft"
+const val FR_VALUE = "Forestry"
 
 const val MOBS_VALUE = "Mobs"
