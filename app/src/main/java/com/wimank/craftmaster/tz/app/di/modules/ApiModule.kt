@@ -1,9 +1,6 @@
 package com.wimank.craftmaster.tz.app.di.modules
 
-import com.wimank.craftmaster.tz.app.rest.api.DevicesApi
-import com.wimank.craftmaster.tz.app.rest.api.ImageApi
-import com.wimank.craftmaster.tz.app.rest.api.MobsApi
-import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
+import com.wimank.craftmaster.tz.app.rest.api.*
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -32,7 +29,13 @@ class ApiModule {
 
     @Singleton
     @Provides
-    fun provideManufacturingDevicesApi(retrofit: Retrofit): DevicesApi {
+    fun provideDevicesApi(retrofit: Retrofit): DevicesApi {
         return retrofit.create(DevicesApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideAchievementsApi(retrofit: Retrofit): AchievementsApi {
+        return retrofit.create(AchievementsApi::class.java)
     }
 }

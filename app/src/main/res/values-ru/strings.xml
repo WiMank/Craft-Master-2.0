@@ -25,6 +25,8 @@
     <string name="industrial_craft">Industrial Craft</string>
     <string name="build_craft">Build Craft</string>
     <string name="forestry">Forestry</string>
+    <string name="achievements_successfully_loaded">Ачивки успешно загружены</string>
+    <string name="achievements_successfully_error_loaded">Ошибка загрузки ачивок</string>
 
     <string name="easy">Легкая</string>
     <string name="normal">Нормальная</string>

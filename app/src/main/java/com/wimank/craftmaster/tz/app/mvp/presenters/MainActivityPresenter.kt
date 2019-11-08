@@ -6,13 +6,11 @@ import com.wimank.craftmaster.tz.app.mvp.common.*
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
 import com.wimank.craftmaster.tz.app.mvp.models.NetManager
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
+import com.wimank.craftmaster.tz.app.rest.responses.AchievementResponse
 import com.wimank.craftmaster.tz.app.rest.responses.DevicesResponse
 import com.wimank.craftmaster.tz.app.rest.responses.MobsResponse
 import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
-import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entitys.DeviceEntity
-import com.wimank.craftmaster.tz.app.room.entitys.MobsEntity
-import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
+import com.wimank.craftmaster.tz.app.room.entitys.*
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
@@ -119,13 +117,39 @@ class MainActivityPresenter(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                 onSuccess = {
+                    loadAcAchievements()
                     viewState.showProgress(false)
                     viewState.showMessage(R.string.devices_load_successfully)
                 },
                 onError = {
                     viewState.showProgress(false)
-                    viewState.showMessage(R.string.devices_load_error)
+                    viewState.showError(R.string.devices_load_error)
                 })
+        )
+    }
+
+    private fun loadAcAchievements() {
+        viewState.showProgress(true)
+        unsubscribeOnDestroy(
+            Single.zip(
+                mDataManager.getAchievements(),
+                mDataManager.getAchievementsFromDb(),
+                BiFunction { response: AchievementResponse,
+                             locList: List<AchievementEntity> ->
+                    if (response.success.isSuccess())
+                        mDataManager.containsData(response.list, locList)
+                }
+            ).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showProgress(false)
+                        viewState.showMessage(R.string.achievements_successfully_loaded)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.achievements_successfully_error_loaded)
+                    })
         )
     }
 }

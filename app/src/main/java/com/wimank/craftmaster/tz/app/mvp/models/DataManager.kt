@@ -1,10 +1,7 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
 import com.wimank.craftmaster.tz.app.mvp.common.IDataManager
-import com.wimank.craftmaster.tz.app.rest.api.DevicesApi
-import com.wimank.craftmaster.tz.app.rest.api.ImageApi
-import com.wimank.craftmaster.tz.app.rest.api.MobsApi
-import com.wimank.craftmaster.tz.app.rest.api.RecipesApi
+import com.wimank.craftmaster.tz.app.rest.api.*
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.app.room.entitys.*
 import com.wimank.craftmaster.tz.app.utils.ImageUtils
@@ -17,6 +14,7 @@ class DataManager(
     private val mRecipesApi: RecipesApi,
     private val mMobsApi: MobsApi,
     private val mDevicesApi: DevicesApi,
+    private val mAchievementsApi: AchievementsApi,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
 
@@ -90,5 +88,11 @@ class DataManager(
 
     fun getManufacturingDevicesDaoFromDb() =
         mCraftMasterDataBase.devicesDao().getDevices()
+
+    fun getAchievements() = mAchievementsApi.getAchievements()
+
+    fun getAchievementsFromDb(): Single<List<AchievementEntity>> {
+        return mCraftMasterDataBase.achievementDao().getAllAchievements()
+    }
 
 }

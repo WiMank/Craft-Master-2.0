@@ -1,8 +1,10 @@
 package com.wimank.craftmaster.tz.app.di.modules
 
+import com.wimank.craftmaster.tz.app.di.scopes.AchievementsScope
 import com.wimank.craftmaster.tz.app.di.scopes.MobsFragmentScope
 import com.wimank.craftmaster.tz.app.di.scopes.RecipeFragmentScope
 import com.wimank.craftmaster.tz.app.di.scopes.RecipesListFragmentScope
+import com.wimank.craftmaster.tz.app.ui.AchievementsFragment
 import com.wimank.craftmaster.tz.app.ui.MobFragment
 import com.wimank.craftmaster.tz.app.ui.RecipeFragment
 import com.wimank.craftmaster.tz.app.ui.RecipesListFragment
@@ -23,4 +25,8 @@ interface FragmentModule {
     @MobsFragmentScope
     @ContributesAndroidInjector(modules = [MobsModule::class])
     fun contributesMobsFragment(): MobFragment
+
+    @AchievementsScope
+    @ContributesAndroidInjector(modules = [AchievementModule::class])
+    fun contributesAchievementsFragment(): AchievementsFragment
 }
