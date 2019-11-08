@@ -49,6 +49,10 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
     override fun cardViewClick(section: String) {
+        mMainActivityPresenter.chooseCardViewSection(section)
+    }
+
+    override fun showRecipesListFragment(section: String) {
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, RecipesListFragment.newInstance(section))
             addToBackStack(RL_KEY_MODIFICATION)
@@ -56,12 +60,16 @@ class MainActivity : BaseActivity(), MainActivityView,
         }
     }
 
-    override fun alternativeCardViewClick(section: String) {
-
+    override fun showAchievementsSection() {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_frame, AchievementsFragment())
+            addToBackStack(ACHIEVEMENTS_FR)
+            commit()
+        }
     }
 
     override fun onRecipesListFragmentClick(recipesListItem: RecipesListItem) {
-        mMainActivityPresenter.choseSection(recipesListItem.section, recipesListItem.attr)
+        mMainActivityPresenter.choseListSection(recipesListItem.section, recipesListItem.attr)
     }
 
     override fun onRecipeFragmentClick(recipeAttr: String) {
@@ -88,14 +96,6 @@ class MainActivity : BaseActivity(), MainActivityView,
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, MobFragment.newInstance(item))
             addToBackStack(MOB_FRAGMENT_TAG)
-            commit()
-        }
-    }
-
-    override fun showAchievementsSection(mod: String) {
-        supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, AchievementsFragment.newInstance(mod))
-            addToBackStack(ACHIEVEMENTS_FR)
             commit()
         }
     }

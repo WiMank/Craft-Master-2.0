@@ -37,13 +37,20 @@ class MainActivityPresenter(
             viewState.showMessage(R.string.offline_mode)
     }
 
-    fun choseSection(section: String, item: String) {
+    fun choseListSection(section: String, item: String) {
         when (section) {
             MC_VALUE -> viewState.showBlockAndItemsSection(item)
             IC_VALUE -> viewState.showBlockAndItemsSection(item)
             BC_VALUE -> viewState.showBlockAndItemsSection(item)
             FR_VALUE -> viewState.showBlockAndItemsSection(item)
             MOBS_VALUE -> viewState.showMobsSection(item)
+        }
+    }
+
+    fun chooseCardViewSection(section: String) {
+        when (section) {
+            ACHIEVEMENTS_VALUE -> viewState.showAchievementsSection()
+            else -> viewState.showRecipesListFragment(section)
         }
     }
 

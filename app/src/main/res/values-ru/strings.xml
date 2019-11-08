@@ -21,6 +21,7 @@
     <string name="recipe_successfully_loaded">Рецепт успешно загружен</string>
     <string name="mobs_successfully_loaded">Мобы успешно загружены</string>
     <string name="mobs_error_loaded">Ошибка загрузки мобов</string>
+    <string name="achievement_load_error">Ошибка загрузки ачивки</string>
     <string name="minecraft">Minecraft</string>
     <string name="industrial_craft">Industrial Craft</string>
     <string name="build_craft">Build Craft</string>

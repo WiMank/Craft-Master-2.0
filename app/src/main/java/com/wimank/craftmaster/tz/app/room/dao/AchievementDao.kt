@@ -8,10 +8,7 @@ import io.reactivex.Single
 @Dao
 interface AchievementDao : BaseDao<AchievementEntity> {
 
-    @Query("SELECT * FROM achievements WHERE ach_modification = :achModification ORDER BY ach_name")
-    fun getAchievementsByName(achModification: String): Single<List<AchievementEntity>>
-
-    @Query("SELECT * FROM achievements")
+    @Query("SELECT * FROM achievements ORDER BY ach_modification DESC")
     fun getAllAchievements(): Single<List<AchievementEntity>>
 
 }

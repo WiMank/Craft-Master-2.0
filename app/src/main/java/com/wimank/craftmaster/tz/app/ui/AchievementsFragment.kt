@@ -6,19 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.adapters.AchievementsAdapter
+import com.wimank.craftmaster.tz.app.mvp.common.LinearLayoutManagerWrapper
 import com.wimank.craftmaster.tz.app.mvp.presenters.AchievementsPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.AchievementView
 import com.wimank.craftmaster.tz.app.room.entitys.AchievementEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_achievements.*
 import javax.inject.Inject
 
-private const val ACH_PARAM = "Minecraft"
 const val ACHIEVEMENTS_FR = "AchievementsFragment"
 
 class AchievementsFragment : BaseFragment(), AchievementView {
-
-    private var modification: String? = null
 
     @Inject
     @InjectPresenter
@@ -26,13 +27,6 @@ class AchievementsFragment : BaseFragment(), AchievementView {
 
     @ProvidePresenter
     fun providePresenter() = mAchievementsPresenter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            modification = it.getString(ACH_PARAM)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,15 +36,13 @@ class AchievementsFragment : BaseFragment(), AchievementView {
     }
 
     override fun showAchievements(list: List<AchievementEntity>) {
-
+        achiv_recycler.apply {
+            layoutManager = LinearLayoutManagerWrapper(context)
+            adapter = AchievementsAdapter(list)
+        }
     }
 
-    companion object {
-        fun newInstance(achievement: String) =
-            AchievementsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ACH_PARAM, achievement)
-                }
-            }
+    override fun showError(message: Int) {
+        Snackbar.make(achiv_ll, message, Snackbar.LENGTH_SHORT).show()
     }
 }

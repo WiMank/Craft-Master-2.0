@@ -48,6 +48,5 @@ class SectionFragment : Fragment() {
 
     interface OnSectionFragmentClickListener {
         fun cardViewClick(section: String)
-        fun alternativeCardViewClick(section: String)
     }
 }

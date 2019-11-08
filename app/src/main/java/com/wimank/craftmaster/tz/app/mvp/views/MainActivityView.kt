@@ -16,10 +16,12 @@ interface MainActivityView : MvpView {
 
     fun showProgress(visibilityFlag: Boolean)
 
+    fun showRecipesListFragment(section: String)
+
     fun showBlockAndItemsSection(item: String)
 
     fun showMobsSection(item: String)
 
-    fun showAchievementsSection(mod: String)
+    fun showAchievementsSection()
 
 }

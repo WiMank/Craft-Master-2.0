@@ -18,7 +18,9 @@ class AchievementModule {
 
     @Provides
     @AchievementsScope
-    fun provideAchievementsManager(craftMasterDataBase: CraftMasterDataBase): AchievementsManager {
+    fun provideAchievementsManager(
+        craftMasterDataBase: CraftMasterDataBase
+    ): AchievementsManager {
         return AchievementsManager(craftMasterDataBase)
     }
 }
