@@ -13,3 +13,5 @@ const val BC_VALUE = "Build Craft"
 const val FR_VALUE = "Forestry"
 
 const val MOBS_VALUE = "Mobs"
+
+const val ACHIEVEMENTS_VALUE = "Achievements"

@@ -24,6 +24,7 @@ class SectionFragment : Fragment() {
         view.build_craft.setOnClickListener { itemClick(BC_VALUE) }
         view.forestry.setOnClickListener { itemClick(FR_VALUE) }
         view.mobs.setOnClickListener { itemClick(MOBS_VALUE) }
+        view.achievements.setOnClickListener { itemClick(ACHIEVEMENTS_VALUE) }
         return view
     }
 
@@ -47,5 +48,6 @@ class SectionFragment : Fragment() {
 
     interface OnSectionFragmentClickListener {
         fun cardViewClick(section: String)
+        fun alternativeCardViewClick(section: String)
     }
 }

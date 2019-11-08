@@ -27,19 +27,16 @@
     <string name="industrial_craft">Industrial Craft</string>
     <string name="build_craft">Build Craft</string>
     <string name="forestry">Forestry</string>
-
     <string name="easy">Easy</string>
     <string name="normal">Normal</string>
     <string name="hard">Hard</string>
     <string name="drop">Drop</string>
     <string name="attack_strength">Attack Strength</string>
     <string name="mobs">Mobs</string>
-
+    <string name="achievements">Achievements</string>
     <string name="mob_load_error">Mob load error</string>
-
     <string name="devices_load_successfully">Devices  successfully loaded</string>
     <string name="devices_load_error">Devices load error</string>
-
     <string name="recipe_craft_text">Recipe Craft</string>
 
 </resources>

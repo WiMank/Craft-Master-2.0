@@ -27,20 +27,16 @@
     <string name="forestry">Forestry</string>
     <string name="achievements_successfully_loaded">Ачивки успешно загружены</string>
     <string name="achievements_successfully_error_loaded">Ошибка загрузки ачивок</string>
-
     <string name="easy">Легкая</string>
     <string name="normal">Нормальная</string>
     <string name="hard">Тяжелая</string>
     <string name="drop">Дроп</string>
     <string name="attack_strength">Сила атаки</string>
-    <string name="mobs">Mobs</string>
-
+    <string name="mobs">Мобы</string>
+    <string name="achievements">Достижения</string>
     <string name="mob_load_error">Ошибка загрузки моба</string>
-
     <string name="devices_load_successfully">Устройства успешно загружены</string>
     <string name="devices_load_error">Ошибка загрузки устройств</string>
-
     <string name="recipe_craft_text">Рецепт Крафта</string>
-
 
 </resources>

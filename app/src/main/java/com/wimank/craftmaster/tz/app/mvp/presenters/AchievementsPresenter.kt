@@ -7,3 +7,4 @@ import com.wimank.craftmaster.tz.app.mvp.views.AchievementView
 @InjectViewState
 class AchievementsPresenter(val mAchievementsManager: AchievementsManager) :
     BasePresenter<AchievementView>()
+

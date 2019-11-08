@@ -20,4 +20,6 @@ interface MainActivityView : MvpView {
 
     fun showMobsSection(item: String)
 
+    fun showAchievementsSection(mod: String)
+
 }

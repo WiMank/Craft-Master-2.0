@@ -56,6 +56,10 @@ class MainActivity : BaseActivity(), MainActivityView,
         }
     }
 
+    override fun alternativeCardViewClick(section: String) {
+
+    }
+
     override fun onRecipesListFragmentClick(recipesListItem: RecipesListItem) {
         mMainActivityPresenter.choseSection(recipesListItem.section, recipesListItem.attr)
     }
@@ -84,6 +88,14 @@ class MainActivity : BaseActivity(), MainActivityView,
         supportFragmentManager.beginTransaction().run {
             add(R.id.main_frame, MobFragment.newInstance(item))
             addToBackStack(MOB_FRAGMENT_TAG)
+            commit()
+        }
+    }
+
+    override fun showAchievementsSection(mod: String) {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_frame, AchievementsFragment.newInstance(mod))
+            addToBackStack(ACHIEVEMENTS_FR)
             commit()
         }
     }
