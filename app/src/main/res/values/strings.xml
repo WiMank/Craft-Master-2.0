@@ -41,6 +41,8 @@
     <string name="recipe_craft_text">Recipe Craft</string>
     <string name="biomes_load_successfully">Biomes successfully loaded</string>
     <string name="biomes_load_error">Biomes load error</string>
+    <string name="biome_load_error">Biom loading error</string>
     <string name="biomes">Biomes</string>
+    <string name="temperature">Temperature</string>
 
 </resources>

@@ -41,5 +41,7 @@
     <string name="recipe_craft_text">Рецепт Крафта</string>
     <string name="biomes_load_successfully">Биомы успешно загружены</string>
     <string name="biomes_load_error">Ошибка загрузки биомов</string>
+    <string name="biome_load_error">Ошибка загрузки биома</string>
     <string name="biomes">Биомы</string>
+    <string name="temperature">Температура</string>
 </resources>

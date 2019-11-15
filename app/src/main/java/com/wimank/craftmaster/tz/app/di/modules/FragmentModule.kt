@@ -1,13 +1,7 @@
 package com.wimank.craftmaster.tz.app.di.modules
 
-import com.wimank.craftmaster.tz.app.di.scopes.AchievementsScope
-import com.wimank.craftmaster.tz.app.di.scopes.MobsFragmentScope
-import com.wimank.craftmaster.tz.app.di.scopes.RecipeFragmentScope
-import com.wimank.craftmaster.tz.app.di.scopes.RecipesListFragmentScope
-import com.wimank.craftmaster.tz.app.ui.AchievementsFragment
-import com.wimank.craftmaster.tz.app.ui.MobFragment
-import com.wimank.craftmaster.tz.app.ui.RecipeFragment
-import com.wimank.craftmaster.tz.app.ui.RecipesListFragment
+import com.wimank.craftmaster.tz.app.di.scopes.*
+import com.wimank.craftmaster.tz.app.ui.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -29,4 +23,8 @@ interface FragmentModule {
     @AchievementsScope
     @ContributesAndroidInjector(modules = [AchievementModule::class])
     fun contributesAchievementsFragment(): AchievementsFragment
+
+    @BiomesScope
+    @ContributesAndroidInjector(modules = [BiomesModule::class])
+    fun contributesBiomeFragment(): BiomeFragment
 }
