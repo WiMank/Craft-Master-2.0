@@ -38,4 +38,10 @@ class ApiModule {
     fun provideAchievementsApi(retrofit: Retrofit): AchievementsApi {
         return retrofit.create(AchievementsApi::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideBiomesApi(retrofit: Retrofit): BiomesApi {
+        return retrofit.create(BiomesApi::class.java)
+    }
 }

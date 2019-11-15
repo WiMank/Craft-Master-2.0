@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.R
-import com.wimank.craftmaster.tz.app.room.entitys.AchievementEntity
+import com.wimank.craftmaster.tz.app.room.entity.AchievementEntity
 
 class AchievementsAdapter(
     private var mList: List<AchievementEntity>

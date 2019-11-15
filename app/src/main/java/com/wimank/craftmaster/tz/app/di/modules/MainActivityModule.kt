@@ -35,6 +35,7 @@ class MainActivityModule {
         mobsApi: MobsApi,
         devicesApi: DevicesApi,
         achievementsApi: AchievementsApi,
+        biomesApi: BiomesApi,
         craftMasterDataBase: CraftMasterDataBase
     ): DataManager {
         return DataManager(
@@ -44,6 +45,7 @@ class MainActivityModule {
             mobsApi,
             devicesApi,
             achievementsApi,
+            biomesApi,
             craftMasterDataBase
         )
     }

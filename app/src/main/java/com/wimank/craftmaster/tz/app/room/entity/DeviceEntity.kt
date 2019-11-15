@@ -1,4 +1,4 @@
-package com.wimank.craftmaster.tz.app.room.entitys
+package com.wimank.craftmaster.tz.app.room.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

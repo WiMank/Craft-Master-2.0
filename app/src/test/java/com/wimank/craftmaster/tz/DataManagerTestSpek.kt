@@ -1,9 +1,9 @@
 package com.wimank.craftmaster.tz
 
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
-import com.wimank.craftmaster.tz.app.room.entitys.CategoryEntity
-import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
+import com.wimank.craftmaster.tz.app.room.entity.CategoryEntity
+import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entity.RecipeEntity
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.mockk

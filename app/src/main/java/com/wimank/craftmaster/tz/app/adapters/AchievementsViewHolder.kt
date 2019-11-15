@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.app.di.modules.GlideApp
 import com.wimank.craftmaster.tz.app.mvp.common.IMAGE_FOLDER_NAME
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
-import com.wimank.craftmaster.tz.app.room.entitys.AchievementEntity
+import com.wimank.craftmaster.tz.app.room.entity.AchievementEntity
 import com.wimank.craftmaster.tz.app.utils.getCurrentLocale
 import kotlinx.android.synthetic.main.achiv_item.view.*
 import java.io.File

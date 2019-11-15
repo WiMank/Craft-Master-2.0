@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.app.rest.responses
 
 import com.google.gson.*
-import com.wimank.craftmaster.tz.app.room.entitys.DeviceEntity
+import com.wimank.craftmaster.tz.app.room.entity.DeviceEntity
 import java.lang.reflect.Type
 
 class DevicesDeserializer : JsonDeserializer<DevicesResponse> {

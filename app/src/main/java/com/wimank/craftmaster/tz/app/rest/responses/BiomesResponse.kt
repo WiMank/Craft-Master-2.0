@@ -1,13 +1,12 @@
 package com.wimank.craftmaster.tz.app.rest.responses
 
 import com.google.gson.annotations.SerializedName
-import com.wimank.craftmaster.tz.app.room.entity.MobsEntity
+import com.wimank.craftmaster.tz.app.room.entity.BiomesEntity
 
-data class MobsResponse(
-
+data class BiomesResponse(
     @SerializedName("success")
     val success: Success,
 
-    @SerializedName("mobsListEntity")
-    val mobsLost: List<MobsEntity>
+    @SerializedName("biomesList")
+    val biomesList: List<BiomesEntity>
 )

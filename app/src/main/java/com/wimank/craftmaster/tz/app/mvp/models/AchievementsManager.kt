@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.app.room.entitys.AchievementEntity
+import com.wimank.craftmaster.tz.app.room.entity.AchievementEntity
 import io.reactivex.Single
 
 class AchievementsManager(

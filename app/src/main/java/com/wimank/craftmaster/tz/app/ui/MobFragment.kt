@@ -15,7 +15,7 @@ import com.wimank.craftmaster.tz.app.mvp.common.MobImages
 import com.wimank.craftmaster.tz.app.mvp.common.MobImages.*
 import com.wimank.craftmaster.tz.app.mvp.presenters.MobsPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.MobsView
-import com.wimank.craftmaster.tz.app.room.entitys.MobsEntity
+import com.wimank.craftmaster.tz.app.room.entity.MobsEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_mobs.*
 import java.io.File

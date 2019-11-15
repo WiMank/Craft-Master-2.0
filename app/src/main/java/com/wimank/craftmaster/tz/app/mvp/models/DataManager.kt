@@ -3,7 +3,7 @@ package com.wimank.craftmaster.tz.app.mvp.models
 import com.wimank.craftmaster.tz.app.mvp.common.IDataManager
 import com.wimank.craftmaster.tz.app.rest.api.*
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.app.room.entitys.*
+import com.wimank.craftmaster.tz.app.room.entity.*
 import com.wimank.craftmaster.tz.app.utils.ImageUtils
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
@@ -15,6 +15,7 @@ class DataManager(
     private val mMobsApi: MobsApi,
     private val mDevicesApi: DevicesApi,
     private val mAchievementsApi: AchievementsApi,
+    private val mBiomesApi: BiomesApi,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
 

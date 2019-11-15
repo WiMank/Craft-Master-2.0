@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.app.rest.responses
 
 import com.google.gson.annotations.SerializedName
-import com.wimank.craftmaster.tz.app.room.entitys.AchievementEntity
+import com.wimank.craftmaster.tz.app.room.entity.AchievementEntity
 
 data class AchievementResponse(
     @SerializedName("success")

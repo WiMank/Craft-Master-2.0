@@ -12,7 +12,7 @@ import com.wimank.craftmaster.tz.app.adapters.AchievementsAdapter
 import com.wimank.craftmaster.tz.app.mvp.common.LinearLayoutManagerWrapper
 import com.wimank.craftmaster.tz.app.mvp.presenters.AchievementsPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.AchievementView
-import com.wimank.craftmaster.tz.app.room.entitys.AchievementEntity
+import com.wimank.craftmaster.tz.app.room.entity.AchievementEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_achievements.*
 import javax.inject.Inject

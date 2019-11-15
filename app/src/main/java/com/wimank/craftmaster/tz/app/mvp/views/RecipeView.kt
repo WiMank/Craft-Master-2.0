@@ -5,8 +5,8 @@ import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.wimank.craftmaster.tz.app.mvp.models.Machine
-import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
+import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entity.RecipeEntity
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface RecipeView : MvpView {

@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.wimank.craftmaster.tz.app.room.dao.*
-import com.wimank.craftmaster.tz.app.room.entitys.*
+import com.wimank.craftmaster.tz.app.room.entity.*
 
 @Database(
     entities = [
@@ -12,7 +12,8 @@ import com.wimank.craftmaster.tz.app.room.entitys.*
         RecipeEntity::class,
         MobsEntity::class,
         DeviceEntity::class,
-        AchievementEntity::class
+        AchievementEntity::class,
+        BiomesEntity::class
     ],
     exportSchema = false,
     version = 1
@@ -24,4 +25,5 @@ abstract class CraftMasterDataBase : RoomDatabase() {
     abstract fun mobsDao(): MobsDao
     abstract fun devicesDao(): DevicesDao
     abstract fun achievementDao(): AchievementDao
+    abstract fun biomesDao(): BiomesDao
 }

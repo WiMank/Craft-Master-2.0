@@ -1,8 +1,8 @@
 package com.wimank.craftmaster.tz.app.rest.responses
 
 import com.google.gson.*
-import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
+import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entity.RecipeEntity
 import java.lang.reflect.Type
 
 class RecipeDeserializer : JsonDeserializer<RecipeResponse> {

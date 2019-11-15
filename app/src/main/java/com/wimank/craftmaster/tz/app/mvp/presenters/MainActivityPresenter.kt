@@ -10,7 +10,7 @@ import com.wimank.craftmaster.tz.app.rest.responses.AchievementResponse
 import com.wimank.craftmaster.tz.app.rest.responses.DevicesResponse
 import com.wimank.craftmaster.tz.app.rest.responses.MobsResponse
 import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
-import com.wimank.craftmaster.tz.app.room.entitys.*
+import com.wimank.craftmaster.tz.app.room.entity.*
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction

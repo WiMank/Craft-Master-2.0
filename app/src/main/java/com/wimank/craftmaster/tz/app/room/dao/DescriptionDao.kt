@@ -2,7 +2,7 @@ package com.wimank.craftmaster.tz.app.room.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
 import io.reactivex.Single
 
 @Dao

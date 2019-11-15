@@ -2,7 +2,7 @@ package com.wimank.craftmaster.tz.app.rest.responses
 
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
-import com.wimank.craftmaster.tz.app.room.entitys.DeviceEntity
+import com.wimank.craftmaster.tz.app.room.entity.DeviceEntity
 
 @JsonAdapter(DevicesDeserializer::class)
 data class DevicesResponse(

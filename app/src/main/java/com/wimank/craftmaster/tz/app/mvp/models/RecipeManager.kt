@@ -4,9 +4,9 @@ import android.content.Context
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.app.room.entitys.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entitys.DeviceEntity
-import com.wimank.craftmaster.tz.app.room.entitys.RecipeEntity
+import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entity.DeviceEntity
+import com.wimank.craftmaster.tz.app.room.entity.RecipeEntity
 import com.wimank.craftmaster.tz.app.utils.getCurrentLocale
 import io.reactivex.Maybe
 import io.reactivex.Single
