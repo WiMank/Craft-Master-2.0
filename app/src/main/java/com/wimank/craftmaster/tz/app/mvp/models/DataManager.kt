@@ -56,6 +56,7 @@ class DataManager(
             is MobsEntity -> mCraftMasterDataBase.mobsDao().insert(entity)
             is DeviceEntity -> mCraftMasterDataBase.devicesDao().insert(entity)
             is AchievementEntity -> mCraftMasterDataBase.achievementDao().insert(entity)
+            is BiomesEntity -> mCraftMasterDataBase.biomesDao().insert(entity)
         }
     }
 
@@ -66,6 +67,7 @@ class DataManager(
             is MobsEntity -> mCraftMasterDataBase.mobsDao().delete(entity)
             is DeviceEntity -> mCraftMasterDataBase.devicesDao().delete(entity)
             is AchievementEntity -> mCraftMasterDataBase.achievementDao().delete(entity)
+            is BiomesEntity -> mCraftMasterDataBase.biomesDao().delete(entity)
         }
     }
 
@@ -92,6 +94,12 @@ class DataManager(
 
     fun getAchievementsFromDb(): Single<List<AchievementEntity>> {
         return mCraftMasterDataBase.achievementDao().getAllAchievements()
+    }
+
+    fun getBiomes() = mBiomesApi.getBiomes()
+
+    fun getBiomesFromDb(): Single<List<BiomesEntity>> {
+        return mCraftMasterDataBase.biomesDao().getAllBiomes()
     }
 
 }

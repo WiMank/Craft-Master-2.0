@@ -39,5 +39,6 @@
     <string name="devices_load_successfully">Устройства успешно загружены</string>
     <string name="devices_load_error">Ошибка загрузки устройств</string>
     <string name="recipe_craft_text">Рецепт Крафта</string>
-
+    <string name="biomes_load_successfully">Биомы успешно загружены</string>
+    <string name="biomes_load_error">Ошибка загрузки биомов</string>
 </resources>

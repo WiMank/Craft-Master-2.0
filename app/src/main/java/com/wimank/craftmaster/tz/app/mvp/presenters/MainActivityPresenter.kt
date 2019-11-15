@@ -6,10 +6,7 @@ import com.wimank.craftmaster.tz.app.mvp.common.*
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
 import com.wimank.craftmaster.tz.app.mvp.models.NetManager
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
-import com.wimank.craftmaster.tz.app.rest.responses.AchievementResponse
-import com.wimank.craftmaster.tz.app.rest.responses.DevicesResponse
-import com.wimank.craftmaster.tz.app.rest.responses.MobsResponse
-import com.wimank.craftmaster.tz.app.rest.responses.RecipeResponse
+import com.wimank.craftmaster.tz.app.rest.responses.*
 import com.wimank.craftmaster.tz.app.room.entity.*
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -152,6 +149,7 @@ class MainActivityPresenter(
                     onSuccess = {
                         viewState.showProgress(false)
                         viewState.showMessage(R.string.achievements_successfully_loaded)
+                        loadBiomes()
                     },
                     onError = {
                         viewState.showProgress(false)
@@ -159,4 +157,29 @@ class MainActivityPresenter(
                     })
         )
     }
+
+    private fun loadBiomes() {
+        viewState.showProgress(true)
+        unsubscribeOnDestroy(
+            Single.zip(
+                mDataManager.getBiomes(),
+                mDataManager.getBiomesFromDb(),
+                BiFunction { response: BiomesResponse, locList: List<BiomesEntity> ->
+                    if (response.success.isSuccess())
+                        mDataManager.containsData(response.biomesList, locList)
+                }
+            ).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showProgress(false)
+                        viewState.showMessage(R.string.biomes_load_successfully)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.biomes_load_error)
+                    }
+                ))
+    }
+
 }

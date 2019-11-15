@@ -36,8 +36,10 @@
     <string name="mobs">Mobs</string>
     <string name="achievements">Achievements</string>
     <string name="mob_load_error">Mob load error</string>
-    <string name="devices_load_successfully">Devices  successfully loaded</string>
+    <string name="devices_load_successfully">Devices successfully loaded</string>
     <string name="devices_load_error">Devices load error</string>
     <string name="recipe_craft_text">Recipe Craft</string>
+    <string name="biomes_load_successfully">Biomes successfully loaded</string>
+    <string name="biomes_load_error">Biomes load error</string>
 
 </resources>
