@@ -41,14 +41,15 @@ class MainActivityPresenter(
             BC_VALUE -> viewState.showBlockAndItemsSection(item)
             FR_VALUE -> viewState.showBlockAndItemsSection(item)
             MOBS_VALUE -> viewState.showMobsSection(item)
+            BIOMES_VALUE -> viewState.showBiomesSection(item)
         }
     }
 
     fun chooseCardViewSection(section: String) {
-        when (section) {
-            ACHIEVEMENTS_VALUE -> viewState.showAchievementsSection()
-            else -> viewState.showRecipesListFragment(section)
-        }
+        if (section == ACHIEVEMENTS_VALUE)
+            viewState.showAchievementsSection()
+        else
+            viewState.showRecipesListFragment(section)
     }
 
     private fun loadRecipes() {

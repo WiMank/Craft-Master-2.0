@@ -14,4 +14,6 @@ const val FR_VALUE = "Forestry"
 
 const val MOBS_VALUE = "Mobs"
 
+const val BIOMES_VALUE = "Biomes"
+
 const val ACHIEVEMENTS_VALUE = "Achievements"

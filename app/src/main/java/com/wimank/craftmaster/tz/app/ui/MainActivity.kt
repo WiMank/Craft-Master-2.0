@@ -92,9 +92,17 @@ class MainActivity : BaseActivity(), MainActivityView,
         }
     }
 
-    override fun showMobsSection(item: String) {
+    override fun showMobsSection(mob: String) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, MobFragment.newInstance(item))
+            add(R.id.main_frame, MobFragment.newInstance(mob))
+            addToBackStack(MOB_FRAGMENT_TAG)
+            commit()
+        }
+    }
+
+    override fun showBiomesSection(biome: String) {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_frame, BiomeFragment.newInstance(biome))
             addToBackStack(MOB_FRAGMENT_TAG)
             commit()
         }

@@ -99,7 +99,7 @@ class DataManager(
     fun getBiomes() = mBiomesApi.getBiomes()
 
     fun getBiomesFromDb(): Single<List<BiomesEntity>> {
-        return mCraftMasterDataBase.biomesDao().getAllBiomes()
+        return mCraftMasterDataBase.biomesDao().getBiomes()
     }
 
 }

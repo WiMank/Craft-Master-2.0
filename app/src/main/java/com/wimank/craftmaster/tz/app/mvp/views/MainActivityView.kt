@@ -20,8 +20,10 @@ interface MainActivityView : MvpView {
 
     fun showBlockAndItemsSection(item: String)
 
-    fun showMobsSection(item: String)
+    fun showMobsSection(mob: String)
 
     fun showAchievementsSection()
+
+    fun showBiomesSection(biome: String)
 
 }

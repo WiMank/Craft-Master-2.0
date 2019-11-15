@@ -25,6 +25,7 @@ class SectionFragment : Fragment() {
         view.forestry.setOnClickListener { itemClick(FR_VALUE) }
         view.mobs.setOnClickListener { itemClick(MOBS_VALUE) }
         view.achievements.setOnClickListener { itemClick(ACHIEVEMENTS_VALUE) }
+        view.biomes.setOnClickListener { itemClick(BIOMES_VALUE) }
         return view
     }
 
