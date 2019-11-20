@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.app.di.modules
 
-import android.content.Context
 import com.wimank.craftmaster.tz.app.di.scopes.RecipeFragmentScope
+import com.wimank.craftmaster.tz.app.mvp.models.LocaleManager
 import com.wimank.craftmaster.tz.app.mvp.models.RecipeManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
@@ -20,9 +20,9 @@ class RecipeModule {
     @RecipeFragmentScope
     @Provides
     fun provideRecipeManager(
-        context: Context,
+        localeManager: LocaleManager,
         craftMasterDataBase: CraftMasterDataBase
     ): RecipeManager {
-        return RecipeManager(context, craftMasterDataBase)
+        return RecipeManager(localeManager, craftMasterDataBase)
     }
 }

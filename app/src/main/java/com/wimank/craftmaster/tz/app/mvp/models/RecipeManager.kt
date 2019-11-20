@@ -1,18 +1,16 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
-import android.content.Context
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entity.DeviceEntity
 import com.wimank.craftmaster.tz.app.room.entity.RecipeEntity
-import com.wimank.craftmaster.tz.app.utils.getCurrentLocale
 import io.reactivex.Maybe
 import io.reactivex.Single
 
 class RecipeManager(
-    private val mContext: Context,
+    private val mLocaleManager: LocaleManager,
     private val craftMasterDataBase: CraftMasterDataBase
 ) {
 
@@ -36,7 +34,7 @@ class RecipeManager(
             deviceEntity.recycler.stringIsNotEmpty() -> localizeString(deviceEntity.recycler)
             deviceEntity.compressor.stringIsNotEmpty() -> localizeString(deviceEntity.compressor)
             deviceEntity.machineName.stringIsNotEmpty() -> localizeString(deviceEntity.machineName)
-            else -> mContext.getString(R.string.recipe_craft_text)
+            else -> mLocaleManager.getContext().getString(R.string.recipe_craft_text)
         }
     }
 
@@ -45,10 +43,6 @@ class RecipeManager(
     }
 
     fun localizeString(localizedType: LocalizedType): String {
-        return when (getCurrentLocale(mContext).language) {
-            "ru" -> localizedType.ru
-            "uk" -> localizedType.ru
-            else -> localizedType.en
-        }
+        return mLocaleManager.localizeString(localizedType)
     }
 }

@@ -23,4 +23,6 @@ class LocaleManager(private val mContext: Context) {
             mContext.resources.configuration.locale
         }
     }
+
+    fun getContext() = mContext
 }
