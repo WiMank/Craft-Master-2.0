@@ -16,6 +16,8 @@ class DataManager(
     private val mDevicesApi: DevicesApi,
     private val mAchievementsApi: AchievementsApi,
     private val mBiomesApi: BiomesApi,
+    private val mBrewingApi: BrewingApi,
+    private val mLocaleManager: LocaleManager,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
 
@@ -35,6 +37,10 @@ class DataManager(
 
     private fun downloadImageAndInsertEntity(entity: BaseEntity) {
         if (!mImageUtils.checkImageExist(entity.getImage())) {
+            if (entity is BrewingEntity) {
+                downloadBrewingImage(entity)
+                return
+            }
             with(mImageApi.downloadImage(entity.getImage()).execute()) {
                 if (isSuccessful) {
                     body()?.byteStream()?.let {
@@ -47,6 +53,22 @@ class DataManager(
             }
         }
         insertEntity(entity)
+    }
+
+    private fun downloadBrewingImage(entity: BrewingEntity) {
+        with(
+            mBrewingApi.downloadBrewingImage(mLocaleManager.getCurrentLocale().language)
+                .execute()
+        ) {
+            if (isSuccessful) {
+                body()?.byteStream()?.let {
+                    mImageUtils.writeImage(
+                        it,
+                        entity.getImage()
+                    )
+                }
+            }
+        }
     }
 
     override fun insertEntity(entity: BaseEntity) {
@@ -104,4 +126,9 @@ class DataManager(
         return mCraftMasterDataBase.biomesDao().getBiomes()
     }
 
+    fun getBrewing() = mBrewingApi.getVersBrewingImages()
+
+    fun getBrewingFromDb(): Single<List<BrewingEntity>> {
+        return mCraftMasterDataBase.brewingDao().getBrewingVersions()
+    }
 }

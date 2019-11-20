@@ -3,6 +3,7 @@ package com.wimank.craftmaster.tz.app.di.modules
 import android.content.Context
 import com.wimank.craftmaster.tz.app.di.scopes.MainActivityScope
 import com.wimank.craftmaster.tz.app.mvp.models.DataManager
+import com.wimank.craftmaster.tz.app.mvp.models.LocaleManager
 import com.wimank.craftmaster.tz.app.mvp.models.NetManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.MainActivityPresenter
 import com.wimank.craftmaster.tz.app.rest.api.*
@@ -36,6 +37,8 @@ class MainActivityModule {
         devicesApi: DevicesApi,
         achievementsApi: AchievementsApi,
         biomesApi: BiomesApi,
+        brewingApi: BrewingApi,
+        localeManager: LocaleManager,
         craftMasterDataBase: CraftMasterDataBase
     ): DataManager {
         return DataManager(
@@ -46,6 +49,8 @@ class MainActivityModule {
             devicesApi,
             achievementsApi,
             biomesApi,
+            brewingApi,
+            localeManager,
             craftMasterDataBase
         )
     }

@@ -9,5 +9,5 @@ data class BrewingResponse(
     val success: Success,
 
     @SerializedName("images")
-    val images: List<BrewingEntity>
+    val brewingImage: List<BrewingEntity>
 )

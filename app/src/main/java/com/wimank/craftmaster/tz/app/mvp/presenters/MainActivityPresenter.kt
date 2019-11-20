@@ -175,6 +175,7 @@ class MainActivityPresenter(
                     onSuccess = {
                         viewState.showProgress(false)
                         viewState.showMessage(R.string.biomes_load_successfully)
+                        loadBrewing()
                     },
                     onError = {
                         viewState.showProgress(false)
@@ -183,4 +184,27 @@ class MainActivityPresenter(
                 ))
     }
 
+    private fun loadBrewing() {
+        viewState.showProgress(true)
+        unsubscribeOnDestroy(
+            Single.zip(
+                mDataManager.getBrewing(),
+                mDataManager.getBrewingFromDb(),
+                BiFunction { response: BrewingResponse, locList: List<BrewingEntity> ->
+                    if (response.success.isSuccess())
+                        mDataManager.containsData(response.brewingImage, locList)
+                }
+            ).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showProgress(false)
+
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+
+                    }
+                ))
+    }
 }

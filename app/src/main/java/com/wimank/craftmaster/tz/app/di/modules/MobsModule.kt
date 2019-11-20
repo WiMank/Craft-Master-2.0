@@ -1,7 +1,7 @@
 package com.wimank.craftmaster.tz.app.di.modules
 
-import android.content.Context
 import com.wimank.craftmaster.tz.app.di.scopes.MobsFragmentScope
+import com.wimank.craftmaster.tz.app.mvp.models.LocaleManager
 import com.wimank.craftmaster.tz.app.mvp.models.MobsManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.MobsPresenter
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
@@ -20,9 +20,9 @@ class MobsModule {
     @Provides
     @MobsFragmentScope
     fun provideMobsManager(
-        context: Context,
+        LocaleManager: LocaleManager,
         craftMasterDataBase: CraftMasterDataBase
     ): MobsManager {
-        return MobsManager(context, craftMasterDataBase)
+        return MobsManager(LocaleManager, craftMasterDataBase)
     }
 }
