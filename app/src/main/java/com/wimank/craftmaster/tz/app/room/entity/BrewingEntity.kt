@@ -14,4 +14,8 @@ data class BrewingEntity(
 
     @ColumnInfo(name = "vers")
     val vers: Int
-)
+) : BaseEntity {
+    override fun getVersion() = vers
+
+    override fun getImage() = brewingImage
+}

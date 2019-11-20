@@ -6,17 +6,13 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Path
 
 interface BrewingApi {
 
     @GET("/brewing")
     fun getVersBrewingImages(): Single<BrewingResponse>
 
-    @GET("/brewing/{imageName}")
-    fun downloadBrewingImage(
-        @Path("imageName") imageName: String,
-        @Header("accept-language") language: String
-    ): Call<ResponseBody>
+    @GET("/brewing/image")
+    fun downloadBrewingImage(@Header("accept-language") language: String): Call<ResponseBody>
 
 }

@@ -57,6 +57,7 @@ class DataManager(
             is DeviceEntity -> mCraftMasterDataBase.devicesDao().insert(entity)
             is AchievementEntity -> mCraftMasterDataBase.achievementDao().insert(entity)
             is BiomesEntity -> mCraftMasterDataBase.biomesDao().insert(entity)
+            is BrewingEntity -> mCraftMasterDataBase.brewingDao().insert(entity)
         }
     }
 
@@ -68,6 +69,7 @@ class DataManager(
             is DeviceEntity -> mCraftMasterDataBase.devicesDao().delete(entity)
             is AchievementEntity -> mCraftMasterDataBase.achievementDao().delete(entity)
             is BiomesEntity -> mCraftMasterDataBase.biomesDao().delete(entity)
+            is BrewingEntity -> mCraftMasterDataBase.brewingDao().delete(entity)
         }
     }
 
