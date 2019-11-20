@@ -44,4 +44,10 @@ class ApiModule {
     fun provideBiomesApi(retrofit: Retrofit): BiomesApi {
         return retrofit.create(BiomesApi::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideBrewingApi(retrofit: Retrofit): BrewingApi {
+        return retrofit.create(BrewingApi::class.java)
+    }
 }
