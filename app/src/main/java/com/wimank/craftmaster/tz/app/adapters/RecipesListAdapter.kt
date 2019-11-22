@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.mvp.models.LocaleManager
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
 
 class RecipesListAdapter(
     private var mList: List<RecipesListItem>,
-    private val mOnItemClickListener: OnItemClickListener
+    private val mOnItemClickListener: OnItemClickListener,
+    private val mLocaleManager: LocaleManager
 ) : RecyclerView.Adapter<RecipesListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipesListViewHolder {
@@ -22,7 +24,7 @@ class RecipesListAdapter(
     }
 
     override fun onBindViewHolder(holder: RecipesListViewHolder, position: Int) {
-        holder.bind(mList[position], mOnItemClickListener)
+        holder.bind(mList[position], mOnItemClickListener, mLocaleManager)
     }
 
     override fun getItemCount() = mList.size

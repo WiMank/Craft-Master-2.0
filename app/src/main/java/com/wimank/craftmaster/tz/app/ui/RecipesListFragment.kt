@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.adapters.RecipesListAdapter
 import com.wimank.craftmaster.tz.app.mvp.common.LinearLayoutManagerWrapper
+import com.wimank.craftmaster.tz.app.mvp.models.LocaleManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipesListPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.RecipesListView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
@@ -29,6 +30,9 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
 
     @ProvidePresenter
     fun providePresenter() = mRecipesListPresenter
+
+    @Inject
+    lateinit var mLocaleManager: LocaleManager
 
     private var listenerRecipesList: OnRecipesListFragmentClickListener? = null
 
@@ -86,7 +90,8 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
                     override fun onItemClick(item: RecipesListItem) {
                         itemClick(item)
                     }
-                })
+                }, mLocaleManager
+            )
         }
     }
 

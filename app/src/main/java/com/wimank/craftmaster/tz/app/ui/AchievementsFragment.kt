@@ -10,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.adapters.AchievementsAdapter
 import com.wimank.craftmaster.tz.app.mvp.common.LinearLayoutManagerWrapper
+import com.wimank.craftmaster.tz.app.mvp.models.LocaleManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.AchievementsPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.AchievementView
 import com.wimank.craftmaster.tz.app.room.entity.AchievementEntity
@@ -28,6 +29,9 @@ class AchievementsFragment : BaseFragment(), AchievementView {
     @ProvidePresenter
     fun providePresenter() = mAchievementsPresenter
 
+    @Inject
+    lateinit var mLocaleManager: LocaleManager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +42,7 @@ class AchievementsFragment : BaseFragment(), AchievementView {
     override fun showAchievements(list: List<AchievementEntity>) {
         achiv_recycler.apply {
             layoutManager = LinearLayoutManagerWrapper(context)
-            adapter = AchievementsAdapter(list)
+            adapter = AchievementsAdapter(list, mLocaleManager)
         }
     }
 
