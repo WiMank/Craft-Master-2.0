@@ -26,6 +26,7 @@ class SectionFragment : Fragment() {
         view.mobs.setOnClickListener { itemClick(MOBS_VALUE) }
         view.achievements.setOnClickListener { itemClick(ACHIEVEMENTS_VALUE) }
         view.biomes.setOnClickListener { itemClick(BIOMES_VALUE) }
+        view.brewing.setOnClickListener { itemClick(BREWING_VALUE) }
         return view
     }
 
@@ -40,7 +41,6 @@ class SectionFragment : Fragment() {
         else
             throw RuntimeException("$context must implement OnSectionFragmentClickListener")
     }
-
 
     override fun onDetach() {
         super.onDetach()

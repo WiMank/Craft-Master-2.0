@@ -46,10 +46,11 @@ class MainActivityPresenter(
     }
 
     fun chooseCardViewSection(section: String) {
-        if (section == ACHIEVEMENTS_VALUE)
-            viewState.showAchievementsSection()
-        else
-            viewState.showRecipesListFragment(section)
+        when (section) {
+            ACHIEVEMENTS_VALUE -> viewState.showAchievementsSection()
+            BREWING_VALUE -> viewState.showBrewingSection()
+            else -> viewState.showRecipesListFragment(section)
+        }
     }
 
     private fun loadRecipes() {
@@ -199,11 +200,11 @@ class MainActivityPresenter(
                 .subscribeBy(
                     onSuccess = {
                         viewState.showProgress(false)
-
+                        viewState.showMessage(R.string.brewing_load_successfully)
                     },
                     onError = {
                         viewState.showProgress(false)
-
+                        viewState.showError(R.string.brewing_load_error)
                     }
                 ))
     }

@@ -17,3 +17,5 @@ const val MOBS_VALUE = "Mobs"
 const val BIOMES_VALUE = "Biomes"
 
 const val ACHIEVEMENTS_VALUE = "Achievements"
+
+const val BREWING_VALUE = "Brewing"

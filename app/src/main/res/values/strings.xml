@@ -44,5 +44,8 @@
     <string name="biome_load_error">Biom loading error</string>
     <string name="biomes">Biomes</string>
     <string name="temperature">Temperature</string>
+    <string name="brewing">Brewing</string>
+    <string name="brewing_load_error">Brewing load error</string>
+    <string name="brewing_load_successfully">Brewing successfully loaded</string>
 
 </resources>

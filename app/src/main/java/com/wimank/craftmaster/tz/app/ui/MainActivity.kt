@@ -68,6 +68,14 @@ class MainActivity : BaseActivity(), MainActivityView,
         }
     }
 
+    override fun showBrewingSection() {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_frame, BrewingFragment())
+            addToBackStack(BREWING_FR)
+            commit()
+        }
+    }
+
     override fun onRecipesListFragmentClick(recipesListItem: RecipesListItem) {
         mMainActivityPresenter.choseListSection(recipesListItem.section, recipesListItem.attr)
     }

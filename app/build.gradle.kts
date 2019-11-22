@@ -150,4 +150,7 @@ dependencies {
 
     //LeakCanary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.0-beta-3")
+
+    //TouchImageView
+    implementation("com.github.MikeOrtiz:TouchImageView:2.2.0")
 }

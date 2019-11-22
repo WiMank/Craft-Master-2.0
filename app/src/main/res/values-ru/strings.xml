@@ -44,4 +44,8 @@
     <string name="biome_load_error">Ошибка загрузки биома</string>
     <string name="biomes">Биомы</string>
     <string name="temperature">Температура</string>
+    <string name="brewing">Зельеварение</string>
+    <string name="brewing_load_error">Зельеварение ошибка загрузки</string>
+    <string name="brewing_load_successfully">Зельеварение успешно загружено</string>
+
 </resources>

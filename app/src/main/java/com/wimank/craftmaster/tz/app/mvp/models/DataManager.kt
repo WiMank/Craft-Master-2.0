@@ -57,8 +57,9 @@ class DataManager(
 
     private fun downloadBrewingImage(entity: BrewingEntity) {
         with(
-            mBrewingApi.downloadBrewingImage(mLocaleManager.getCurrentLocale().language)
-                .execute()
+            mBrewingApi.downloadBrewingImage(
+                mLocaleManager.getCurrentLocale().language
+            ).execute()
         ) {
             if (isSuccessful) {
                 body()?.byteStream()?.let {

@@ -24,6 +24,8 @@ interface MainActivityView : MvpView {
 
     fun showAchievementsSection()
 
+    fun showBrewingSection()
+
     fun showBiomesSection(biome: String)
 
 }

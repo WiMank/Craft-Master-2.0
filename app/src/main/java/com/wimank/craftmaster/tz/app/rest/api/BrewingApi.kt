@@ -13,6 +13,6 @@ interface BrewingApi {
     fun getVersBrewingImages(): Single<BrewingResponse>
 
     @GET("/brewing/image")
-    fun downloadBrewingImage(@Header("accept-language") language: String): Call<ResponseBody>
+    fun downloadBrewingImage(@Header("Accept-Language") language: String): Call<ResponseBody>
 
 }
