@@ -45,4 +45,12 @@ class RecipeManager(
     fun localizeString(localizedType: LocalizedType): String {
         return mLocaleManager.localizeString(localizedType)
     }
+
+    fun checkFavorite(recipeAttr: String): Single<Boolean> {
+        return craftMasterDataBase.descriptionDao().checkFavorite(recipeAttr)
+    }
+
+    fun updateFavorite(recipeAttr: String, favorite: Boolean) {
+        craftMasterDataBase.descriptionDao().updateFavorite(recipeAttr, favorite)
+    }
 }

@@ -43,4 +43,8 @@ interface RecipeView : MvpView {
 
     fun showMachine(machine: Machine)
 
+    fun favoriteItem(favoriteImage: Int)
+
+    fun setRecipeAttr(attr: String)
+
 }

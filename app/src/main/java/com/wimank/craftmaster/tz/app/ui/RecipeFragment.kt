@@ -3,9 +3,8 @@ package com.wimank.craftmaster.tz.app.ui
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.core.content.ContextCompat
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
@@ -39,6 +38,10 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     private var mListenerRecipe: OnRecipeFragmentClickListener? = null
 
+    private lateinit var mFavoriteItem: MenuItem
+
+    private lateinit var mRecipeAttr: String
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnRecipeFragmentClickListener)
@@ -49,6 +52,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         if (savedInstanceState == null)
             arguments?.getString(RECIPE_FRAGMENT_KEY)?.let {
                 mRecipePresenter.lodRecipeAndDescription(it)
@@ -60,6 +64,19 @@ class RecipeFragment : BaseFragment(), RecipeView {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_recipe, container, false)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.favorite_menu, menu)
+        mFavoriteItem = menu.findItem(R.id.favorite)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.favorite -> mRecipePresenter.addOrDeleteFavorite(mRecipeAttr)
+        }
+        return true
     }
 
     override fun initViews() {
@@ -165,6 +182,15 @@ class RecipeFragment : BaseFragment(), RecipeView {
                 MACHINE_IMAGE -> glideApp.into(machine_image)
             }
         }
+    }
+
+    override fun favoriteItem(favoriteImage: Int) {
+        if (::mFavoriteItem.isInitialized)
+            mFavoriteItem.icon = context?.let { ContextCompat.getDrawable(it, favoriteImage) }
+    }
+
+    override fun setRecipeAttr(attr: String) {
+        mRecipeAttr = attr
     }
 
     override fun onDetach() {

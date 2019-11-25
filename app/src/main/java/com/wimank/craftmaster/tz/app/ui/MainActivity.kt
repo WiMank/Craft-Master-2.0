@@ -63,7 +63,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showAchievementsSection() {
         supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, AchievementsFragment())
+            add(R.id.main_frame, AchievementsFragment())
             addToBackStack(ACHIEVEMENTS_FR)
             commit()
         }
@@ -71,7 +71,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showBrewingSection() {
         supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, BrewingFragment())
+            add(R.id.main_frame, BrewingFragment())
             addToBackStack(BREWING_FR)
             commit()
         }
@@ -83,7 +83,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun onRecipeFragmentClick(recipeAttr: String) {
         supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, RecipeFragment.newInstance(recipeAttr))
+            add(R.id.main_frame, RecipeFragment.newInstance(recipeAttr))
             addToBackStack(RECIPE_FRAGMENT_TAG)
             commit()
         }
@@ -95,7 +95,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showBlockAndItemsSection(item: String) {
         supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, RecipeFragment.newInstance(item))
+            add(R.id.main_frame, RecipeFragment.newInstance(item))
             addToBackStack(RECIPE_FRAGMENT_TAG)
             commit()
         }
@@ -103,7 +103,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showMobsSection(mob: String) {
         supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, MobFragment.newInstance(mob))
+            add(R.id.main_frame, MobFragment.newInstance(mob))
             addToBackStack(MOB_FRAGMENT_TAG)
             commit()
         }
@@ -111,7 +111,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showBiomesSection(biome: String) {
         supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, BiomeFragment.newInstance(biome))
+            add(R.id.main_frame, BiomeFragment.newInstance(biome))
             addToBackStack(MOB_FRAGMENT_TAG)
             commit()
         }

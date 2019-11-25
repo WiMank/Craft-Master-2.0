@@ -47,5 +47,9 @@
     <string name="brewing">Зельеварение</string>
     <string name="brewing_load_error">Зельеварение ошибка загрузки</string>
     <string name="brewing_load_successfully">Зельеварение успешно загружено</string>
+    <string name="add_to_favorites">Добавить в избранное</string>
+    <string name="added_to_favorites">Добавлено в избранное</string>
+    <string name="removed_from_favorites">Удалено из избранного</string>
+    <string name="operation_error">Ошибка в операции</string>
 
 </resources>
