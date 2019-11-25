@@ -2,9 +2,7 @@ package com.wimank.craftmaster.tz.app.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.*
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
@@ -34,12 +32,29 @@ class SectionFragment : BaseFragment() {
         listenerSection?.cardViewClick(section)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.favorite_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.favorite_list -> listenerSection?.showFavoritesFragment()
+        }
+        return true
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnSectionFragmentClickListener)
             listenerSection = context
         else
             throw RuntimeException("$context must implement OnSectionFragmentClickListener")
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onDetach() {
@@ -54,5 +69,7 @@ class SectionFragment : BaseFragment() {
 
     interface OnSectionFragmentClickListener {
         fun cardViewClick(section: String)
+        fun showFavoritesFragment()
     }
+
 }

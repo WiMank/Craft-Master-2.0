@@ -214,4 +214,5 @@ class RecipeFragment : BaseFragment(), RecipeView {
                 }
             }
     }
+
 }

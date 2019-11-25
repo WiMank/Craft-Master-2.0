@@ -51,5 +51,6 @@
     <string name="added_to_favorites">Добавлено в избранное</string>
     <string name="removed_from_favorites">Удалено из избранного</string>
     <string name="operation_error">Ошибка в операции</string>
+    <string name="favorites_list">Список избранного</string>
 
 </resources>

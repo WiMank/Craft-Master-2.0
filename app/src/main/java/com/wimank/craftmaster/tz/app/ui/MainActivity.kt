@@ -53,6 +53,10 @@ class MainActivity : BaseActivity(), MainActivityView,
         mMainActivityPresenter.chooseCardViewSection(section)
     }
 
+    override fun showFavoritesFragment() {
+
+    }
+
     override fun showRecipesListFragment(section: String) {
         supportFragmentManager.beginTransaction().run {
             replace(R.id.main_frame, RecipesListFragment.newInstance(section))
@@ -120,4 +124,5 @@ class MainActivity : BaseActivity(), MainActivityView,
     override fun setToolbarTitle(title: String) {
         setTitle(title)
     }
+
 }
