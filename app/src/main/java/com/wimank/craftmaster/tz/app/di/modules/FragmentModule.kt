@@ -27,4 +27,9 @@ interface FragmentModule {
     @BiomesScope
     @ContributesAndroidInjector(modules = [BiomesModule::class])
     fun contributesBiomeFragment(): BiomeFragment
+
+    @SectionScope
+    @ContributesAndroidInjector
+    fun contributesSectionFragment(): SectionFragment
+
 }

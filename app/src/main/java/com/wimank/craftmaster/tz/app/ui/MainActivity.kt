@@ -10,6 +10,7 @@ import com.wimank.craftmaster.tz.app.mvp.presenters.MainActivityPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
 import com.wimank.craftmaster.tz.app.ui.base.BaseActivity
+import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -17,7 +18,7 @@ class MainActivity : BaseActivity(), MainActivityView,
     RecipesListFragment.OnRecipesListFragmentClickListener,
     RecipeFragment.OnRecipeFragmentClickListener,
     SectionFragment.OnSectionFragmentClickListener,
-    MobFragment.OnMobsFragmentClickListener {
+    MobFragment.OnMobsFragmentClickListener, BaseFragment.TitleListener {
 
     @Inject
     @InjectPresenter
@@ -54,7 +55,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showRecipesListFragment(section: String) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipesListFragment.newInstance(section))
+            replace(R.id.main_frame, RecipesListFragment.newInstance(section))
             addToBackStack(RL_KEY_MODIFICATION)
             commit()
         }
@@ -62,7 +63,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showAchievementsSection() {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, AchievementsFragment())
+            replace(R.id.main_frame, AchievementsFragment())
             addToBackStack(ACHIEVEMENTS_FR)
             commit()
         }
@@ -70,7 +71,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showBrewingSection() {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, BrewingFragment())
+            replace(R.id.main_frame, BrewingFragment())
             addToBackStack(BREWING_FR)
             commit()
         }
@@ -82,7 +83,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun onRecipeFragmentClick(recipeAttr: String) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipeFragment.newInstance(recipeAttr))
+            replace(R.id.main_frame, RecipeFragment.newInstance(recipeAttr))
             addToBackStack(RECIPE_FRAGMENT_TAG)
             commit()
         }
@@ -94,7 +95,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showBlockAndItemsSection(item: String) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipeFragment.newInstance(item))
+            replace(R.id.main_frame, RecipeFragment.newInstance(item))
             addToBackStack(RECIPE_FRAGMENT_TAG)
             commit()
         }
@@ -102,7 +103,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showMobsSection(mob: String) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, MobFragment.newInstance(mob))
+            replace(R.id.main_frame, MobFragment.newInstance(mob))
             addToBackStack(MOB_FRAGMENT_TAG)
             commit()
         }
@@ -110,9 +111,13 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showBiomesSection(biome: String) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, BiomeFragment.newInstance(biome))
+            replace(R.id.main_frame, BiomeFragment.newInstance(biome))
             addToBackStack(MOB_FRAGMENT_TAG)
             commit()
         }
+    }
+
+    override fun setToolbarTitle(title: String) {
+        setTitle(title)
     }
 }

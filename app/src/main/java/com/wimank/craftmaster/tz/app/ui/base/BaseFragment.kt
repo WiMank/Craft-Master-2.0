@@ -13,10 +13,23 @@ abstract class BaseFragment : MvpAppCompatFragment(), HasAndroidInjector {
     @Inject
     internal lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
+    internal var toolbarListener: TitleListener? = null
+
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
+        if (context is TitleListener)
+            toolbarListener = context
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
+    override fun onDetach() {
+        super.onDetach()
+        toolbarListener = null
+    }
+
+    interface TitleListener {
+        fun setToolbarTitle(title: String)
+    }
 }

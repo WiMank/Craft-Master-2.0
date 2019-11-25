@@ -80,6 +80,10 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
         recipes_list_recycler_view.smoothScrollBy(0, scrollY)
     }
 
+    override fun optionalTitleSetting(titleMod: String) {
+        toolbarListener?.setToolbarTitle(titleMod)
+    }
+
     override fun showList(list: List<RecipesListItem>) {
         recipes_list_recycler_view.apply {
             layoutManager =

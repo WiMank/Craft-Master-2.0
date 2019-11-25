@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.*
+import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_section.view.*
 
-class SectionFragment : Fragment() {
+class SectionFragment : BaseFragment() {
 
     private var listenerSection: OnSectionFragmentClickListener? = null
 
@@ -45,6 +45,11 @@ class SectionFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         listenerSection = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        toolbarListener?.setToolbarTitle(getString(R.string.app_name))
     }
 
     interface OnSectionFragmentClickListener {

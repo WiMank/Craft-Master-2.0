@@ -39,6 +39,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
     }
 
     private fun loadRecipesList(modification: String) {
+        viewState.optionalTitleSetting(modification)
         unsubscribeOnDestroy(
             mRecipesListManager
                 .getRecipesList(modification)
@@ -68,6 +69,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
     }
 
     private fun loadMobsList() {
+        viewState.optionalTitleSetting(MOBS_VALUE)
         unsubscribeOnDestroy(
             mRecipesListManager
                 .getMobsList()
@@ -97,6 +99,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
     }
 
     private fun loadBiomesList() {
+        viewState.optionalTitleSetting(BIOMES_VALUE)
         unsubscribeOnDestroy(
             mRecipesListManager
                 .getBiomesList()

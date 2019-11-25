@@ -1,6 +1,7 @@
 package com.wimank.craftmaster.tz.app.room.entity
 
 import androidx.room.Entity
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 
@@ -41,7 +42,10 @@ data class DescriptionEntity(
     val wikiLink: String,
 
     @SerializedName("vers")
-    val vers: Int
+    val vers: Int,
+
+    @Expose
+    val favorite: Boolean = false
 
 ) : BaseEntity {
     override fun getVersion() = vers

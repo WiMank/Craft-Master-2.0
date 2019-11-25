@@ -37,12 +37,12 @@ class RecipeFragment : BaseFragment(), RecipeView {
     @ProvidePresenter
     fun provideRecipePresenter() = mRecipePresenter
 
-    private var listenerRecipe: OnRecipeFragmentClickListener? = null
+    private var mListenerRecipe: OnRecipeFragmentClickListener? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnRecipeFragmentClickListener)
-            listenerRecipe = context
+            mListenerRecipe = context
         else
             throw RuntimeException("$context must implement OnRecipeFragmentClickListener")
     }
@@ -110,7 +110,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
     }
 
     override fun showLocalizedName(name: String) {
-        recipe_name.text = name
+        toolbarListener?.setToolbarTitle(name)
     }
 
     override fun showLocalizeDescription(desc: String) {
@@ -169,11 +169,11 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     override fun onDetach() {
         super.onDetach()
-        listenerRecipe = null
+        mListenerRecipe = null
     }
 
     private fun onTableItemClick(recipeAttr: String) {
-        listenerRecipe?.onRecipeFragmentClick(recipeAttr)
+        mListenerRecipe?.onRecipeFragmentClick(recipeAttr)
     }
 
     interface OnRecipeFragmentClickListener {
