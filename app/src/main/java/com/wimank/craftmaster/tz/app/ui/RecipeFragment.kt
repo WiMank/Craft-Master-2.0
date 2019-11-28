@@ -67,10 +67,10 @@ class RecipeFragment : BaseFragment(), RecipeView {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
         inflater.inflate(R.menu.favorite_menu, menu)
         mFavoriteItem = menu.findItem(R.id.favorite)
-        mRecipeAttr?.let { mRecipePresenter.setFavoriteImage(it) }
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -192,6 +192,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     override fun setRecipeAttr(attr: String) {
         mRecipeAttr = attr
+        mRecipeAttr?.let { mRecipePresenter.setFavoriteImage(it) }
     }
 
     override fun onDetach() {

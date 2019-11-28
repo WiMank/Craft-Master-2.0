@@ -84,7 +84,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun onRecipeFragmentClick(recipeAttr: String) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipeFragment.newInstance(recipeAttr))
+            replace(R.id.main_frame, RecipeFragment.newInstance(recipeAttr))
             addToBackStack(RECIPE_FRAGMENT_TAG)
             commit()
         }
@@ -96,7 +96,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showBlockAndItemsSection(item: String) {
         supportFragmentManager.beginTransaction().run {
-            add(R.id.main_frame, RecipeFragment.newInstance(item))
+            replace(R.id.main_frame, RecipeFragment.newInstance(item))
             addToBackStack(RECIPE_FRAGMENT_TAG)
             commit()
         }
