@@ -44,8 +44,8 @@ data class DescriptionEntity(
     @SerializedName("vers")
     val vers: Int,
 
-    @Expose
-    val favorite: Boolean = false
+    @Expose(serialize = false)
+    val favorite: Boolean
 
 ) : BaseEntity {
     override fun getVersion() = vers

@@ -53,9 +53,6 @@ class MainActivity : BaseActivity(), MainActivityView,
         mMainActivityPresenter.chooseCardViewSection(section)
     }
 
-    override fun showFavoritesFragment() {
-
-    }
 
     override fun showRecipesListFragment(section: String) {
         supportFragmentManager.beginTransaction().run {

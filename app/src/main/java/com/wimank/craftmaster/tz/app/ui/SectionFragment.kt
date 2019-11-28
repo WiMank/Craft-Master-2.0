@@ -33,13 +33,13 @@ class SectionFragment : BaseFragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.favorite_menu, menu)
+        inflater.inflate(R.menu.section_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.favorite_list -> listenerSection?.showFavoritesFragment()
+            R.id.favorite_list -> listenerSection?.cardViewClick(FAVORITES_VALUE)
         }
         return true
     }
@@ -69,7 +69,6 @@ class SectionFragment : BaseFragment() {
 
     interface OnSectionFragmentClickListener {
         fun cardViewClick(section: String)
-        fun showFavoritesFragment()
     }
 
 }

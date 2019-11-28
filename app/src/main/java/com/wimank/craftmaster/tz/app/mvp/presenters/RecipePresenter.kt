@@ -40,7 +40,6 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                         viewState.showLocalizeRightPar(mRecipeManager.localizeString(it.first.rightParameter))
                         viewState.showLocalizeRightParText(mRecipeManager.localizeString(it.first.rightParameterText))
                         viewState.setRecipeAttr(it.first.recipeAttr)
-                        setFavoriteImage(it.first.favorite)
                         loadDevices(recipeAttr)
                     },
                     onError = {
@@ -100,10 +99,10 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                     onSuccess = {
                         if (!favorite) {
                             viewState.showMessage(R.string.added_to_favorites)
-                            setFavoriteImage(true)
+                            switchFavoriteImage(true)
                         } else {
                             viewState.showMessage(R.string.removed_from_favorites)
-                            setFavoriteImage(false)
+                            switchFavoriteImage(false)
                         }
                     },
                     onError = {
@@ -112,10 +111,23 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
         )
     }
 
-    private fun setFavoriteImage(value: Boolean) {
+    fun setFavoriteImage(recipeAttr: String) {
+        unsubscribeOnDestroy(
+            mRecipeManager.checkFavorite(recipeAttr)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        switchFavoriteImage(it)
+                    }
+                ))
+    }
+
+    private fun switchFavoriteImage(value: Boolean) {
         if (value)
             viewState.favoriteItem(R.drawable.ic_favorite_true_24px)
         else
             viewState.favoriteItem(R.drawable.ic_favorite_false_24px)
     }
+
 }

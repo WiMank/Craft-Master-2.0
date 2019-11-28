@@ -23,4 +23,7 @@ interface DescriptionDao : BaseDao<DescriptionEntity> {
     @Query("UPDATE description_craft_recipes SET favorite =:pFavorite WHERE recipeAttr =:pRecipeAttr")
     fun updateFavorite(pRecipeAttr: String, pFavorite: Boolean)
 
+    @Query("SELECT * FROM description_craft_recipes WHERE favorite = 1 ORDER BY recipeName ASC")
+    fun getFavoritesList(): Single<List<DescriptionEntity>>
+
 }

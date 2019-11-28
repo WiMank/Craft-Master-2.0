@@ -66,7 +66,8 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
                 jo.get(descriptionCraft).asJsonObject?.get("ru")?.asString ?: ""
             ),
             jo.get("wikiLink").asString,
-            jo.get("vers").asInt
+            jo.get("vers").asInt,
+            false
         )
     }
 

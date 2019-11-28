@@ -40,7 +40,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     private lateinit var mFavoriteItem: MenuItem
 
-    private lateinit var mRecipeAttr: String
+    private var mRecipeAttr: String? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -69,12 +69,13 @@ class RecipeFragment : BaseFragment(), RecipeView {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.favorite_menu, menu)
         mFavoriteItem = menu.findItem(R.id.favorite)
+        mRecipeAttr?.let { mRecipePresenter.setFavoriteImage(it) }
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.favorite -> mRecipePresenter.addOrDeleteFavorite(mRecipeAttr)
+            R.id.favorite -> mRecipeAttr?.let { mRecipePresenter.addOrDeleteFavorite(it) }
         }
         return true
     }

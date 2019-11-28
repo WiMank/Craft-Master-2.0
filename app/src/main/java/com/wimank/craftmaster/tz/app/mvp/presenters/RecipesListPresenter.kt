@@ -33,6 +33,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
             IC_VALUE -> loadRecipesList(IC_VALUE)
             BC_VALUE -> loadRecipesList(BC_VALUE)
             FR_VALUE -> loadRecipesList(FR_VALUE)
+            FAVORITES_VALUE -> loadRecipesList(FAVORITES_VALUE)
             MOBS_VALUE -> loadMobsList()
             BIOMES_VALUE -> loadBiomesList()
         }
