@@ -37,7 +37,7 @@ jobs:
         run:  chmod +x gradlew
 
       - name: Build debug APK with Fastlane
-        run:  bundle exec fastlane assemble_debug
+        run:  bundle exec fastlane build_debug
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1
