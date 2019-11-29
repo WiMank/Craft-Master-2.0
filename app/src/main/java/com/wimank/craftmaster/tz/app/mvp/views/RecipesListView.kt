@@ -21,8 +21,6 @@ interface RecipesListView : MvpView {
 
     fun showList(list: List<RecipesListItem>)
 
-    fun scrollRecyclerView(scrollY: Int)
-
     fun optionalTitleSetting(titleMod: String)
 
 }

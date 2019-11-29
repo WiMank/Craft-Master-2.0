@@ -15,16 +15,9 @@ import io.reactivex.schedulers.Schedulers
 class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) :
     BasePresenter<RecipesListView>() {
 
-    private var recyclerPosition = 0
-
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         viewState.initViews()
-    }
-
-    override fun attachView(view: RecipesListView?) {
-        super.attachView(view)
-        viewState.scrollRecyclerView(recyclerPosition)
     }
 
     fun chooseModification(section: String) {
@@ -129,7 +122,4 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
         )
     }
 
-    fun saveRecyclerPosition(position: Int) {
-        recyclerPosition = position
-    }
 }

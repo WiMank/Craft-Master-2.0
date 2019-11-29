@@ -6,18 +6,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.adapters.RecipesListAdapter
-import com.wimank.craftmaster.tz.app.mvp.common.LinearLayoutManagerWrapper
 import com.wimank.craftmaster.tz.app.mvp.models.LocaleManager
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipesListPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.RecipesListView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_recipes_list.*
+import kotlinx.android.synthetic.main.fragment_recipes_list.view.*
 import javax.inject.Inject
 
 const val RL_KEY_MODIFICATION = "rl_key_modification"
@@ -34,7 +36,9 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
     @Inject
     lateinit var mLocaleManager: LocaleManager
 
-    private var listenerRecipesList: OnRecipesListFragmentClickListener? = null
+    private var mListenerRecipesList: OnRecipesListFragmentClickListener? = null
+
+    private lateinit var mRecycler: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,13 +52,16 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_recipes_list, container, false)
+        return inflater.inflate(R.layout.fragment_recipes_list, container, false).apply {
+            mRecycler = this.recipes_list_recycler_view
+            mRecycler.layoutManager = LinearLayoutManager(context)
+        }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnRecipesListFragmentClickListener)
-            listenerRecipesList = context
+            mListenerRecipesList = context
         else
             throw RuntimeException("$context must implement OnRecipesListFragmentClickListener")
     }
@@ -76,18 +83,12 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
         recipes_list_refresh.isRefreshing = visibilityFlag
     }
 
-    override fun scrollRecyclerView(scrollY: Int) {
-        recipes_list_recycler_view.smoothScrollBy(0, scrollY)
-    }
-
     override fun optionalTitleSetting(titleMod: String) {
         toolbarListener?.setToolbarTitle(titleMod)
     }
 
     override fun showList(list: List<RecipesListItem>) {
-        recipes_list_recycler_view.apply {
-            layoutManager =
-                LinearLayoutManagerWrapper(context)
+        mRecycler.apply {
             adapter = RecipesListAdapter(list,
                 object :
                     RecipesListAdapter.OnItemClickListener {
@@ -99,18 +100,13 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        mRecipesListPresenter.saveRecyclerPosition(recipes_list_recycler_view.computeVerticalScrollOffset())
-    }
-
     override fun onDetach() {
         super.onDetach()
-        listenerRecipesList = null
+        mListenerRecipesList = null
     }
 
     fun itemClick(recipesListItem: RecipesListItem) {
-        listenerRecipesList?.onRecipesListFragmentClick(recipesListItem)
+        mListenerRecipesList?.onRecipesListFragmentClick(recipesListItem)
     }
 
     companion object {
