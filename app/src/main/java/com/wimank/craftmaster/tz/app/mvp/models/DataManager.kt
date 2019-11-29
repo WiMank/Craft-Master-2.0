@@ -24,8 +24,8 @@ class DataManager(
     override fun containsData(serAr: List<BaseEntity>, locAr: List<BaseEntity>) {
         if (serAr.isNotEmpty()) {
             val disjunctionArray =
-                CollectionUtils.disjunction(serAr, locAr)
-                    .sortedWith(compareBy { it.getVersion() })
+                CollectionUtils.disjunction(serAr, locAr).sortedWith(compareBy { it.getVersion() })
+
             disjunctionArray.forEach { entity ->
                 if (locAr.contains(entity))
                     deleteEntity(entity)
@@ -74,8 +74,8 @@ class DataManager(
 
     override fun insertEntity(entity: BaseEntity) {
         when (entity) {
-            is RecipeEntity -> mCraftMasterDataBase.recipeDao().insert(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().insert(entity)
+            is RecipeEntity -> mCraftMasterDataBase.recipeDao().insert(entity)
             is MobsEntity -> mCraftMasterDataBase.mobsDao().insert(entity)
             is DeviceEntity -> mCraftMasterDataBase.devicesDao().insert(entity)
             is AchievementEntity -> mCraftMasterDataBase.achievementDao().insert(entity)
@@ -86,8 +86,8 @@ class DataManager(
 
     override fun deleteEntity(entity: BaseEntity) {
         when (entity) {
-            is RecipeEntity -> mCraftMasterDataBase.recipeDao().delete(entity)
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().delete(entity)
+            is RecipeEntity -> mCraftMasterDataBase.recipeDao().delete(entity)
             is MobsEntity -> mCraftMasterDataBase.mobsDao().delete(entity)
             is DeviceEntity -> mCraftMasterDataBase.devicesDao().delete(entity)
             is AchievementEntity -> mCraftMasterDataBase.achievementDao().delete(entity)

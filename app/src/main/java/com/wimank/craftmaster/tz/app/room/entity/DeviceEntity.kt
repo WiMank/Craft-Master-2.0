@@ -5,7 +5,17 @@ import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 
-@Entity(tableName = "manufacturing_devices", primaryKeys = ["recipeAttr", "recipeImageName"])
+@Entity(
+    tableName = "manufacturing_devices",
+    primaryKeys = ["recipeAttr", "recipeImageName"],
+    foreignKeys = [
+        androidx.room.ForeignKey(
+            entity = DescriptionEntity::class,
+            parentColumns = ["recipeAttr", "recipeImageName"],
+            childColumns = ["recipeAttr", "recipeImageName"],
+            onDelete = androidx.room.ForeignKey.CASCADE
+        )]
+)
 data class DeviceEntity(
 
     @SerializedName("recipeAttr")

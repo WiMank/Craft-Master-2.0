@@ -1,16 +1,28 @@
 package com.wimank.craftmaster.tz.app.room.entity
 
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "craft_recipes", primaryKeys = ["recipeAttr", "recipeImageName"])
+@Entity(
+    tableName = "craft_recipes",
+    primaryKeys = ["recipeAttr", "recipeImageName"],
+    foreignKeys = [
+        ForeignKey(
+            entity = DescriptionEntity::class,
+            parentColumns = ["recipeAttr", "recipeImageName"],
+            childColumns = ["recipeAttr", "recipeImageName"],
+            onDelete = CASCADE
+        )]
+)
 data class RecipeEntity(
-
-    @SerializedName("recipeImageName")
-    val recipeImageName: String,
 
     @SerializedName("recipeAttr")
     val recipeAttr: String,
+
+    @SerializedName("recipeImageName")
+    val recipeImageName: String,
 
     @SerializedName("firstSlot")
     val firstSlot: String,

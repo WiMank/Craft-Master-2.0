@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 
-@Entity(tableName = "description_craft_recipes", primaryKeys = ["recipeName", "recipeImageName"])
+@Entity(tableName = "description_craft_recipes", primaryKeys = ["recipeAttr", "recipeImageName"])
 data class DescriptionEntity(
 
     @SerializedName("recipeAttr")

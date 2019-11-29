@@ -58,14 +58,14 @@ class MainActivityPresenter(
         unsubscribeOnDestroy(
             Single.zip(
                 mDataManager.getRecipes(),
-                mDataManager.getRecipesFromDb(),
                 mDataManager.getDescriptionFromDb(),
+                mDataManager.getRecipesFromDb(),
                 Function3 { servRecipes: RecipeResponse,
-                            recipeEntity: List<RecipeEntity>,
-                            descriptionEntity: List<DescriptionEntity> ->
+                            descriptionList: List<DescriptionEntity>,
+                            recipeList: List<RecipeEntity> ->
                     if (servRecipes.success.isSuccess()) {
-                        mDataManager.containsData(servRecipes.recipesList, recipeEntity)
-                        mDataManager.containsData(servRecipes.descriptionList, descriptionEntity)
+                        mDataManager.containsData(servRecipes.descriptionList, descriptionList)
+                        mDataManager.containsData(servRecipes.recipesList, recipeList)
                     }
                 })
                 .subscribeOn(Schedulers.io())
