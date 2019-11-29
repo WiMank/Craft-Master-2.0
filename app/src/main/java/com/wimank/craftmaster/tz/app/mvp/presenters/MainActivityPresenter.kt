@@ -30,8 +30,10 @@ class MainActivityPresenter(
         viewState.showProgress(true)
         if (mNetManager.isConnectedToNetwork())
             loadRecipes()
-        else
+        else {
             viewState.showMessage(R.string.offline_mode)
+            viewState.showProgress(false)
+        }
     }
 
     fun choseListSection(section: String, item: String) {

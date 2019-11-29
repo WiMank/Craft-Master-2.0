@@ -1,9 +1,11 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.models.RecipeManager
 import com.wimank.craftmaster.tz.app.mvp.views.RecipeView
+import com.wimank.craftmaster.tz.app.room.entity.FavoritesEntity
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -39,7 +41,7 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                         viewState.showLocalizeLeftParText(mRecipeManager.localizeString(it.first.leftParameterText))
                         viewState.showLocalizeRightPar(mRecipeManager.localizeString(it.first.rightParameter))
                         viewState.showLocalizeRightParText(mRecipeManager.localizeString(it.first.rightParameterText))
-                        viewState.setRecipeAttr(it.first.recipeAttr)
+                        viewState.setRecipeAttr(it.first)
                         loadDevices(recipeAttr)
                     },
                     onError = {
@@ -77,48 +79,18 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                 ))
     }
 
-    fun addOrDeleteFavorite(recipeAttr: String) {
+    fun addToFavorite(favoritesEntity: FavoritesEntity) {
         unsubscribeOnDestroy(
-            mRecipeManager.checkFavorite(recipeAttr)
-                .subscribeOn(Schedulers.io())
+            Single.fromCallable {
+                mRecipeManager.addToFavorites(favoritesEntity)
+            }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-                        updateFavorite(recipeAttr, it)
-                    },
-                    onError = { viewState.showError(R.string.operation_error) }
-                ))
-    }
-
-    private fun updateFavorite(recipeAttr: String, favorite: Boolean) {
-        unsubscribeOnDestroy(
-            Single.fromCallable { mRecipeManager.updateFavorite(recipeAttr, !favorite) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                    onSuccess = {
-                        if (!favorite) {
-                            viewState.showMessage(R.string.added_to_favorites)
-                            switchFavoriteImage(true)
-                        } else {
-                            viewState.showMessage(R.string.removed_from_favorites)
-                            switchFavoriteImage(false)
-                        }
+                        Log.d("FAVORITES", "onSuccess addToFavorite")
                     },
                     onError = {
-                        viewState.showError(R.string.operation_error)
-                    })
-        )
-    }
-
-    fun setFavoriteImage(recipeAttr: String) {
-        unsubscribeOnDestroy(
-            mRecipeManager.checkFavorite(recipeAttr)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                    onSuccess = {
-                        switchFavoriteImage(it)
+                        Log.d("FAVORITES", "onError addToFavorite")
                     }
                 ))
     }

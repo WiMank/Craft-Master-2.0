@@ -17,6 +17,7 @@ import com.wimank.craftmaster.tz.app.mvp.models.Machine
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.app.mvp.views.RecipeView
 import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
+import com.wimank.craftmaster.tz.app.room.entity.FavoritesEntity
 import com.wimank.craftmaster.tz.app.room.entity.RecipeEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.craft_table_layout.*
@@ -40,7 +41,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     private lateinit var mFavoriteItem: MenuItem
 
-    private var mRecipeAttr: String? = null
+    private var mDescriptionEntity: DescriptionEntity? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -75,7 +76,15 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.favorite -> mRecipeAttr?.let { mRecipePresenter.addOrDeleteFavorite(it) }
+            R.id.favorite -> mDescriptionEntity?.let {
+                mRecipePresenter.addToFavorite(
+                    FavoritesEntity(
+                        it.recipeAttr,
+                        it.recipeName,
+                        it.recipeImageName
+                    )
+                )
+            }
         }
         return true
     }
@@ -190,9 +199,9 @@ class RecipeFragment : BaseFragment(), RecipeView {
             mFavoriteItem.icon = context?.let { ContextCompat.getDrawable(it, favoriteImage) }
     }
 
-    override fun setRecipeAttr(attr: String) {
-        mRecipeAttr = attr
-        mRecipeAttr?.let { mRecipePresenter.setFavoriteImage(it) }
+    override fun setRecipeAttr(descriptionEntity: DescriptionEntity) {
+        mDescriptionEntity = descriptionEntity
+        //  mRecipeAttr?.let { mRecipePresenter.setFavoriteImage(it) }
     }
 
     override fun onDetach() {

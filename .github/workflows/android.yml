@@ -39,6 +39,7 @@ jobs:
       - name: Build debug APK with Fastlane
         run:  bundle exec fastlane build_debug
 
+
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:

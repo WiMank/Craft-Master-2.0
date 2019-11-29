@@ -45,6 +45,6 @@ interface RecipeView : MvpView {
 
     fun favoriteItem(favoriteImage: Int)
 
-    fun setRecipeAttr(attr: String)
+    fun setRecipeAttr(descriptionEntity: DescriptionEntity)
 
 }

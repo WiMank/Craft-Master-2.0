@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.*
@@ -26,7 +27,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
             IC_VALUE -> loadRecipesList(IC_VALUE)
             BC_VALUE -> loadRecipesList(BC_VALUE)
             FR_VALUE -> loadRecipesList(FR_VALUE)
-            FAVORITES_VALUE -> loadRecipesList(FAVORITES_VALUE)
+            FAVORITES_VALUE -> loadFavoriteList()
             MOBS_VALUE -> loadMobsList()
             BIOMES_VALUE -> loadBiomesList()
         }
@@ -120,6 +121,35 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                         viewState.showError(R.string.biomes_load_successfully)
                     })
         )
+    }
+
+    private fun loadFavoriteList() {
+        viewState.optionalTitleSetting(FAVORITES_VALUE)
+        unsubscribeOnDestroy(
+            mRecipesListManager.getFavoritesList()
+                .flatMap {
+                    Single.just((it.map { item ->
+                        RecipesListItem(
+                            item.recipeName,
+                            item.recipeImageName,
+                            item.fRecipeAttr,
+                            FAVORITES_VALUE
+                        )
+                    }))
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showList(it)
+                        viewState.showProgress(false)
+                        Log.d("FAVORITES", "loadFavoriteList() onSuccess")
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        Log.e("FAVORITES", "loadFavoriteList() onError", it)
+                    }
+                ))
     }
 
 }
