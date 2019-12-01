@@ -42,7 +42,6 @@ class MainActivityPresenter(
             IC_VALUE -> viewState.showBlockAndItemsSection(item)
             BC_VALUE -> viewState.showBlockAndItemsSection(item)
             FR_VALUE -> viewState.showBlockAndItemsSection(item)
-            FAVORITES_VALUE -> viewState.showBlockAndItemsSection(item)
             MOBS_VALUE -> viewState.showMobsSection(item)
             BIOMES_VALUE -> viewState.showBiomesSection(item)
         }
@@ -52,6 +51,7 @@ class MainActivityPresenter(
         when (section) {
             ACHIEVEMENTS_VALUE -> viewState.showAchievementsSection()
             BREWING_VALUE -> viewState.showBrewingSection()
+            FAVORITES_VALUE -> viewState.showFavoriteSection()
             else -> viewState.showRecipesListFragment(section)
         }
     }

@@ -34,4 +34,7 @@ interface MainActivityView : MvpView {
     @StateStrategyType(SkipStrategy::class)
     fun showBiomesSection(biome: String)
 
+    @StateStrategyType(SkipStrategy::class)
+    fun showFavoriteSection()
+
 }

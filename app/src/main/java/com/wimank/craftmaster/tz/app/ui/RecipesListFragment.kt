@@ -53,8 +53,9 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_recipes_list, container, false).apply {
-            mRecycler = this.recipes_list_recycler_view
-            mRecycler.layoutManager = LinearLayoutManager(context)
+            mRecycler = this.recipes_list_recycler_view.apply {
+                layoutManager = LinearLayoutManager(context)
+            }
         }
     }
 
@@ -121,4 +122,5 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
     interface OnRecipesListFragmentClickListener {
         fun onRecipesListFragmentClick(recipesListItem: RecipesListItem)
     }
+
 }

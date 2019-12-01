@@ -9,6 +9,7 @@ import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.presenters.MainActivityPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
+import com.wimank.craftmaster.tz.app.room.entity.FavoriteEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseActivity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,7 +19,9 @@ class MainActivity : BaseActivity(), MainActivityView,
     RecipesListFragment.OnRecipesListFragmentClickListener,
     RecipeFragment.OnRecipeFragmentClickListener,
     SectionFragment.OnSectionFragmentClickListener,
-    MobFragment.OnMobsFragmentClickListener, BaseFragment.TitleListener {
+    MobFragment.OnMobsFragmentClickListener,
+    BaseFragment.TitleListener,
+    FavoriteFragment.OnItemFavClickListener {
 
     @Inject
     @InjectPresenter
@@ -118,8 +121,20 @@ class MainActivity : BaseActivity(), MainActivityView,
         }
     }
 
+    override fun showFavoriteSection() {
+        supportFragmentManager.beginTransaction().run {
+            replace(R.id.main_frame, FavoriteFragment())
+            addToBackStack(FAV_FRAGMENT_TAG)
+            commit()
+        }
+    }
+
     override fun setToolbarTitle(title: String) {
         setTitle(title)
+    }
+
+    override fun onFavItemClick(favoriteEntity: FavoriteEntity) {
+        showBlockAndItemsSection(favoriteEntity.fRecipeAttr)
     }
 
 }
