@@ -50,4 +50,14 @@ class RecipeManager(
     fun addToFavorites(favoritesEntity: FavoritesEntity) {
         craftMasterDataBase.favoritesDao().insert(favoritesEntity)
     }
+
+    fun deleteFromFavorites(favoritesEntity: FavoritesEntity) {
+        craftMasterDataBase.favoritesDao().delete(favoritesEntity)
+    }
+
+    fun checkFavorite(recipeAttr: String): Boolean {
+        return with(craftMasterDataBase.favoritesDao().checkFavorite(recipeAttr)) {
+            this?.fRecipeAttr == recipeAttr
+        }
+    }
 }

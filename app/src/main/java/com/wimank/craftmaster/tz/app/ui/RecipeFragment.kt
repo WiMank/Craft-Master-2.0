@@ -77,7 +77,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.favorite -> mDescriptionEntity?.let {
-                mRecipePresenter.addToFavorite(
+                mRecipePresenter.addOrDelete(
                     FavoritesEntity(
                         it.recipeAttr,
                         it.recipeName,
@@ -201,7 +201,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     override fun setRecipeAttr(descriptionEntity: DescriptionEntity) {
         mDescriptionEntity = descriptionEntity
-        //  mRecipeAttr?.let { mRecipePresenter.setFavoriteImage(it) }
+        mDescriptionEntity?.let { mRecipePresenter.checkFavorite(it.recipeAttr) }
     }
 
     override fun onDetach() {

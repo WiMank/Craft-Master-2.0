@@ -11,4 +11,7 @@ interface FavoritesDao : BaseDao<FavoritesEntity> {
     @Query("SELECT * FROM favorites")
     fun getFavoritesList(): Single<List<FavoritesEntity>>
 
+    @Query("SELECT * FROM favorites WHERE fRecipeAttr =:recipeAttr")
+    fun checkFavorite(recipeAttr: String): FavoritesEntity?
+
 }
