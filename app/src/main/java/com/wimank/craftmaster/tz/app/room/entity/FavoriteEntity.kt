@@ -15,7 +15,7 @@ import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
         onDelete = CASCADE
     )]
 )
-data class FavoritesEntity(
+data class FavoriteEntity(
 
     val fRecipeAttr: String,
 

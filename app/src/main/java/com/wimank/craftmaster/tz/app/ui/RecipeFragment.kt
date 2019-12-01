@@ -17,7 +17,7 @@ import com.wimank.craftmaster.tz.app.mvp.models.Machine
 import com.wimank.craftmaster.tz.app.mvp.presenters.RecipePresenter
 import com.wimank.craftmaster.tz.app.mvp.views.RecipeView
 import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entity.FavoritesEntity
+import com.wimank.craftmaster.tz.app.room.entity.FavoriteEntity
 import com.wimank.craftmaster.tz.app.room.entity.RecipeEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.craft_table_layout.*
@@ -78,7 +78,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
         when (item.itemId) {
             R.id.favorite -> mDescriptionEntity?.let {
                 mRecipePresenter.addOrDelete(
-                    FavoritesEntity(
+                    FavoriteEntity(
                         it.recipeAttr,
                         it.recipeName,
                         it.recipeImageName

@@ -3,12 +3,12 @@ package com.wimank.craftmaster.tz.app.room
 import androidx.room.Embedded
 import androidx.room.Relation
 import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entity.FavoritesEntity
+import com.wimank.craftmaster.tz.app.room.entity.FavoriteEntity
 
 data class DescWithFavorites(
 
     @Embedded
-    val favoritesEntity: FavoritesEntity,
+    val favoriteEntity: FavoriteEntity,
 
     @Relation(
         parentColumn = "fRecipeAttr",

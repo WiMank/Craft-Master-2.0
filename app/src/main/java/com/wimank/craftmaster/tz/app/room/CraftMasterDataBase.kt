@@ -15,7 +15,7 @@ import com.wimank.craftmaster.tz.app.room.entity.*
         AchievementEntity::class,
         BiomesEntity::class,
         BrewingEntity::class,
-        FavoritesEntity::class
+        FavoriteEntity::class
     ],
     exportSchema = false,
     version = 1

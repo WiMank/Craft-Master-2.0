@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.*
@@ -27,7 +26,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
             IC_VALUE -> loadRecipesList(IC_VALUE)
             BC_VALUE -> loadRecipesList(BC_VALUE)
             FR_VALUE -> loadRecipesList(FR_VALUE)
-            FAVORITES_VALUE -> loadFavoriteList()
+            // FAVORITES_VALUE -> loadFavoriteList()
             MOBS_VALUE -> loadMobsList()
             BIOMES_VALUE -> loadBiomesList()
         }
@@ -54,7 +53,6 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                     onSuccess = {
                         viewState.showList(it)
                         viewState.showProgress(false)
-                        viewState.showMessage(R.string.recipes_list_successfully_loaded)
                     },
                     onError = {
                         viewState.showProgress(false)
@@ -84,7 +82,6 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                     onSuccess = {
                         viewState.showList(it)
                         viewState.showProgress(false)
-                        viewState.showMessage(R.string.mobs_successfully_loaded)
                     },
                     onError = {
                         viewState.showProgress(false)
@@ -114,7 +111,6 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                     onSuccess = {
                         viewState.showList(it)
                         viewState.showProgress(false)
-                        viewState.showMessage(R.string.biomes_load_successfully)
                     },
                     onError = {
                         viewState.showProgress(false)
@@ -123,7 +119,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
         )
     }
 
-    private fun loadFavoriteList() {
+    /*private fun loadFavoriteList() {
         viewState.optionalTitleSetting(FAVORITES_VALUE)
         unsubscribeOnDestroy(
             mRecipesListManager.getFavoritesList()
@@ -143,13 +139,11 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                     onSuccess = {
                         viewState.showList(it)
                         viewState.showProgress(false)
-                        Log.d("FAVORITES", "loadFavoriteList() onSuccess")
                     },
                     onError = {
                         viewState.showProgress(false)
-                        Log.e("FAVORITES", "loadFavoriteList() onError", it)
                     }
                 ))
-    }
+    }*/
 
 }

@@ -5,7 +5,7 @@ import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
 import com.wimank.craftmaster.tz.app.room.entity.DeviceEntity
-import com.wimank.craftmaster.tz.app.room.entity.FavoritesEntity
+import com.wimank.craftmaster.tz.app.room.entity.FavoriteEntity
 import com.wimank.craftmaster.tz.app.room.entity.RecipeEntity
 import io.reactivex.Maybe
 import io.reactivex.Single
@@ -47,12 +47,12 @@ class RecipeManager(
         return mLocaleManager.localizeString(localizedType)
     }
 
-    fun addToFavorites(favoritesEntity: FavoritesEntity) {
-        craftMasterDataBase.favoritesDao().insert(favoritesEntity)
+    fun addToFavorites(favoriteEntity: FavoriteEntity) {
+        craftMasterDataBase.favoritesDao().insert(favoriteEntity)
     }
 
-    fun deleteFromFavorites(favoritesEntity: FavoritesEntity) {
-        craftMasterDataBase.favoritesDao().delete(favoritesEntity)
+    fun deleteFromFavorites(favoriteEntity: FavoriteEntity) {
+        craftMasterDataBase.favoritesDao().delete(favoriteEntity)
     }
 
     fun checkFavorite(recipeAttr: String): Boolean {

@@ -32,4 +32,8 @@ interface FragmentModule {
     @ContributesAndroidInjector
     fun contributesSectionFragment(): SectionFragment
 
+    @FavoriteScope
+    @ContributesAndroidInjector(modules = [FavoriteModule::class])
+    fun contributesFavoriteFragment(): FavoriteFragment
+
 }

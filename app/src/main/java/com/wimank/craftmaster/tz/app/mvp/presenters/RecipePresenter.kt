@@ -4,7 +4,7 @@ import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.models.RecipeManager
 import com.wimank.craftmaster.tz.app.mvp.views.RecipeView
-import com.wimank.craftmaster.tz.app.room.entity.FavoritesEntity
+import com.wimank.craftmaster.tz.app.room.entity.FavoriteEntity
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -58,7 +58,6 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                 .subscribeBy(
                     onSuccess = {
                         viewState.showProgress(false)
-                        viewState.showMessage(R.string.devices_load_successfully)
 
                         with(mRecipeManager.getDeviceName(it)) {
                             if (mRecipeManager.getDeviceName(it).isNotEmpty())
@@ -77,30 +76,30 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                 ))
     }
 
-    fun addOrDelete(favoritesEntity: FavoritesEntity) {
+    fun addOrDelete(favoriteEntity: FavoriteEntity) {
         unsubscribeOnDestroy(
-            Single.fromCallable { mRecipeManager.checkFavorite(favoritesEntity.fRecipeAttr) }
+            Single.fromCallable { mRecipeManager.checkFavorite(favoriteEntity.fRecipeAttr) }
                 .subscribeOn(Schedulers.io())
                 .subscribeBy {
                     if (!it)
-                        addToFavorite(favoritesEntity)
+                        addToFavorite(favoriteEntity)
                     else
-                        deleteFromFavorites(favoritesEntity)
+                        deleteFromFavorites(favoriteEntity)
                 })
     }
 
-    private fun addToFavorite(favoritesEntity: FavoritesEntity) {
+    private fun addToFavorite(favoriteEntity: FavoriteEntity) {
         unsubscribeOnDestroy(
-            Single.fromCallable { mRecipeManager.addToFavorites(favoritesEntity) }
+            Single.fromCallable { mRecipeManager.addToFavorites(favoriteEntity) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy { switchFavoriteImage(true) })
     }
 
-    private fun deleteFromFavorites(favoritesEntity: FavoritesEntity) {
+    private fun deleteFromFavorites(favoriteEntity: FavoriteEntity) {
         unsubscribeOnDestroy(
             Single.fromCallable {
-                mRecipeManager.deleteFromFavorites(favoritesEntity)
+                mRecipeManager.deleteFromFavorites(favoriteEntity)
             }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy { switchFavoriteImage(false) })
