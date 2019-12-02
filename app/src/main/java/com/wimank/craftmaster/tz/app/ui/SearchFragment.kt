@@ -6,21 +6,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.wimank.craftmaster.tz.R
+import com.wimank.craftmaster.tz.app.mvp.presenters.SearchPresenter
+import com.wimank.craftmaster.tz.app.mvp.views.SearchView
+import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
+import javax.inject.Inject
 
-class SearchFragment : Fragment() {
+class SearchFragment : BaseFragment(), SearchView {
+
+    @Inject
+    @InjectPresenter
+    lateinit var mSearchPresenter: SearchPresenter
+
+    @ProvidePresenter
+    fun providePresenter() = mSearchPresenter
+
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-        val a = listOf<String>("gg", "fthfgh", "fghfgh")
-
-
 
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
@@ -45,5 +53,4 @@ class SearchFragment : Fragment() {
     interface OnFragmentInteractionListener {
         fun onFragmentInteraction(uri: Uri)
     }
-
 }
