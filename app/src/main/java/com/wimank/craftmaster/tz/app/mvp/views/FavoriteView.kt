@@ -10,14 +10,14 @@ import com.wimank.craftmaster.tz.app.room.entity.FavoriteEntity
 interface FavoriteView : MvpView {
 
     @StateStrategyType(SkipStrategy::class)
-    fun showMessage(message: Int)
-
-    @StateStrategyType(SkipStrategy::class)
     fun showError(message: Int)
 
     fun showProgress(visibilityFlag: Boolean)
 
     fun showList(list: List<FavoriteEntity>)
+
+    @StateStrategyType(SkipStrategy::class)
+    fun updateList(list: List<FavoriteEntity>)
 
     fun optionalTitleSetting(titleMod: String)
 }

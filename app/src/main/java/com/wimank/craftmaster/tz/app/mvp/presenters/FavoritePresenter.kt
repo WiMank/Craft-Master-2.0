@@ -1,6 +1,7 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
 import com.arellomobile.mvp.InjectViewState
+import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.FAVORITES_VALUE
 import com.wimank.craftmaster.tz.app.mvp.models.FavoriteManager
 import com.wimank.craftmaster.tz.app.mvp.views.FavoriteView
@@ -30,7 +31,27 @@ class FavoritePresenter(private val mFavoriteManager: FavoriteManager) :
                     },
                     onError = {
                         viewState.showProgress(false)
+                        viewState.showError(R.string.favorites_list_err)
                     }
                 ))
     }
+
+    fun updateFavoriteList() {
+        viewState.optionalTitleSetting(FAVORITES_VALUE)
+        unsubscribeOnDestroy(
+            mFavoriteManager.getFavoritesList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.updateList(it)
+                        viewState.showProgress(false)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.favorites_list_err)
+                    }
+                ))
+    }
+
 }

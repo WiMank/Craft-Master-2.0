@@ -52,5 +52,7 @@
     <string name="removed_from_favorites">Удалено из избранного</string>
     <string name="operation_error">Ошибка в операции</string>
     <string name="favorites_list">Список избранного</string>
+    <string name="favorites_list_err">Ошибка загрузки списка избранного</string>
+
 
 </resources>

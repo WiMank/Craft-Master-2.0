@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.google.android.material.snackbar.Snackbar
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.adapters.FavoriteAdapter
 import com.wimank.craftmaster.tz.app.mvp.models.LocaleManager
@@ -16,6 +17,7 @@ import com.wimank.craftmaster.tz.app.mvp.presenters.FavoritePresenter
 import com.wimank.craftmaster.tz.app.mvp.views.FavoriteView
 import com.wimank.craftmaster.tz.app.room.entity.FavoriteEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.fragment_favorite.view.*
 import javax.inject.Inject
 
@@ -35,15 +37,25 @@ class FavoriteFragment : BaseFragment(), FavoriteView {
 
     private var mListener: OnItemFavClickListener? = null
 
-    lateinit var mFavRecycler: RecyclerView
+    private lateinit var mFavRecycler: RecyclerView
+
+    private lateinit var mFavoriteAdapter: FavoriteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        mFavoriteAdapter = FavoriteAdapter(listOf(), object : FavoriteAdapter.OnItemClickListener {
+            override fun onItemClick(item: FavoriteEntity) {
+                onFavItemPressed(item)
+            }
+        }, mLocaleManager)
+
         return inflater.inflate(R.layout.fragment_favorite, container, false).apply {
             mFavRecycler = this.fav_recycler.apply {
                 layoutManager = LinearLayoutManager(context)
+                adapter = mFavoriteAdapter
             }
         }
     }
@@ -65,12 +77,13 @@ class FavoriteFragment : BaseFragment(), FavoriteView {
         mListener = null
     }
 
-    override fun showMessage(message: Int) {
-
+    override fun onResume() {
+        super.onResume()
+        mFavoritePresenter.updateFavoriteList()
     }
 
     override fun showError(message: Int) {
-
+        Snackbar.make(fr_l, message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun showProgress(visibilityFlag: Boolean) {
@@ -78,19 +91,16 @@ class FavoriteFragment : BaseFragment(), FavoriteView {
     }
 
     override fun showList(list: List<FavoriteEntity>) {
-        mFavRecycler.apply {
-            adapter = FavoriteAdapter(list, object : FavoriteAdapter.OnItemClickListener {
-                override fun onItemClick(item: FavoriteEntity) {
-                    onFavItemPressed(item)
-                }
-            }, mLocaleManager)
-        }
+        mFavoriteAdapter.setData(list)
+    }
+
+    override fun updateList(list: List<FavoriteEntity>) {
+        mFavoriteAdapter.updateList(list)
     }
 
     override fun optionalTitleSetting(titleMod: String) {
         toolbarListener?.setToolbarTitle(titleMod)
     }
-
 
     interface OnItemFavClickListener {
         fun onFavItemClick(favoriteEntity: FavoriteEntity)
