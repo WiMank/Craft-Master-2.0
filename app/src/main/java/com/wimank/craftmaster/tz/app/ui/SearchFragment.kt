@@ -11,6 +11,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.presenters.SearchPresenter
 import com.wimank.craftmaster.tz.app.mvp.views.SearchView
+import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
 import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import javax.inject.Inject
 
@@ -52,5 +53,9 @@ class SearchFragment : BaseFragment(), SearchView {
 
     interface OnFragmentInteractionListener {
         fun onFragmentInteraction(uri: Uri)
+    }
+
+    override fun showList(list: List<DescriptionEntity>) {
+
     }
 }
