@@ -3,9 +3,8 @@ package com.wimank.craftmaster.tz.app.ui
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -42,6 +41,7 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         if (savedInstanceState == null)
             arguments?.getString(RL_KEY_MODIFICATION)?.let {
                 mRecipesListPresenter.chooseModification(it)
@@ -65,6 +65,31 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
             mListenerRecipesList = context
         else
             throw RuntimeException("$context must implement OnRecipesListFragmentClickListener")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu, menu)
+
+        val item = menu.findItem(R.id.search_view)
+        val searchView = item.actionView as SearchView
+        searchView.isIconified = false
+
+        searchView.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                if (newText.isBlank()) {
+
+                }
+                return true
+            }
+        })
+
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun initViews() {
