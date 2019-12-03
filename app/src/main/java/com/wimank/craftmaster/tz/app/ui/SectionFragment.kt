@@ -40,6 +40,7 @@ class SectionFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.favorite_list -> listenerSection?.cardViewClick(FAVORITES_VALUE)
+            R.id.search -> listenerSection?.cardViewClick(SEARCH_VALUE)
         }
         return true
     }

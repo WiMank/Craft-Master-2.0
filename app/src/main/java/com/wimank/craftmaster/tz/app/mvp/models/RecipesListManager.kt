@@ -20,4 +20,8 @@ class RecipesListManager(private val craftMasterDataBase: CraftMasterDataBase) {
         return craftMasterDataBase.biomesDao().getBiomes()
     }
 
+    fun getAllRecipes(): Single<List<DescriptionEntity>> {
+        return craftMasterDataBase.descriptionDao().getAllRecipesListFromDb()
+    }
+
 }

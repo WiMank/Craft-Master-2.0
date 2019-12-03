@@ -28,6 +28,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
             FR_VALUE -> loadRecipesList(FR_VALUE)
             MOBS_VALUE -> loadMobsList()
             BIOMES_VALUE -> loadBiomesList()
+            SEARCH_VALUE -> loadAllList()
         }
     }
 
@@ -114,6 +115,34 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.biomes_load_successfully)
+                    })
+        )
+    }
+
+    private fun loadAllList() {
+        viewState.optionalTitleSetting(SEARCH_VALUE)
+        unsubscribeOnDestroy(
+            mRecipesListManager
+                .getAllRecipes()
+                .flatMap {
+                    Single.just((it.map { item ->
+                        RecipesListItem(
+                            item.recipeName,
+                            item.recipeImageName,
+                            item.recipeAttr,
+                            SEARCH_VALUE
+                        )
+                    }))
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showList(it)
+                        viewState.showProgress(false)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
                     })
         )
     }

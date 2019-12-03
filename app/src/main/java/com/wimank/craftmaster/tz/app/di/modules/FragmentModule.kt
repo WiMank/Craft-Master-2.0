@@ -36,8 +36,4 @@ interface FragmentModule {
     @ContributesAndroidInjector(modules = [FavoriteModule::class])
     fun contributesFavoriteFragment(): FavoriteFragment
 
-    @SearchScope
-    @ContributesAndroidInjector(modules = [SearchModule::class])
-    fun contributesSearchFragment(): SearchFragment
-
 }

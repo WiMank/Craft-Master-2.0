@@ -42,6 +42,7 @@ class MainActivityPresenter(
             IC_VALUE -> viewState.showBlockAndItemsSection(item)
             BC_VALUE -> viewState.showBlockAndItemsSection(item)
             FR_VALUE -> viewState.showBlockAndItemsSection(item)
+            SEARCH_VALUE -> viewState.showBlockAndItemsSection(item)
             MOBS_VALUE -> viewState.showMobsSection(item)
             BIOMES_VALUE -> viewState.showBiomesSection(item)
         }

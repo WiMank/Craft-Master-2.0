@@ -21,3 +21,5 @@ const val BIOMES_VALUE = "Biomes"
 const val ACHIEVEMENTS_VALUE = "Achievements"
 
 const val BREWING_VALUE = "Brewing"
+
+const val SEARCH_VALUE = "Search"
