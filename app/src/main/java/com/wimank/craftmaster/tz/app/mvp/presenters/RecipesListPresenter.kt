@@ -6,6 +6,7 @@ import com.wimank.craftmaster.tz.app.mvp.common.*
 import com.wimank.craftmaster.tz.app.mvp.models.RecipesListManager
 import com.wimank.craftmaster.tz.app.mvp.views.RecipesListView
 import com.wimank.craftmaster.tz.app.room.RecipesListItem
+import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -20,16 +21,39 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
         viewState.initViews()
     }
 
-    fun chooseModification(section: String) {
+    fun chooseModification(section: String, isIconified: Boolean) {
         when (section) {
-            MC_VALUE -> loadRecipesList(MC_VALUE)
-            IC_VALUE -> loadRecipesList(IC_VALUE)
-            BC_VALUE -> loadRecipesList(BC_VALUE)
-            FR_VALUE -> loadRecipesList(FR_VALUE)
-            MOBS_VALUE -> loadMobsList()
-            BIOMES_VALUE -> loadBiomesList()
-            SEARCH_VALUE -> loadAllList()
+            MC_VALUE -> {
+                loadRecipesList(MC_VALUE)
+                viewState.setModVar(MC_VALUE)
+            }
+            IC_VALUE -> {
+                loadRecipesList(IC_VALUE)
+                viewState.setModVar(IC_VALUE)
+
+            }
+            BC_VALUE -> {
+                loadRecipesList(BC_VALUE)
+                viewState.setModVar(BC_VALUE)
+            }
+            FR_VALUE -> {
+                loadRecipesList(FR_VALUE)
+                viewState.setModVar(FR_VALUE)
+            }
+            MOBS_VALUE -> {
+                loadMobsList()
+                viewState.setModVar(MOBS_VALUE)
+            }
+            BIOMES_VALUE -> {
+                loadBiomesList()
+                viewState.setModVar(BIOMES_VALUE)
+            }
+            SEARCH_VALUE -> {
+                loadSearchList(true, SEARCH_VALUE)
+                viewState.setModVar(SEARCH_VALUE)
+            }
         }
+        viewState.setIconifiedVar(isIconified)
     }
 
     private fun loadRecipesList(modification: String) {
@@ -119,11 +143,11 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
         )
     }
 
-    private fun loadAllList() {
+    fun loadSearchList(all: Boolean, modification: String, searchString: String = "") {
         viewState.optionalTitleSetting(SEARCH_VALUE)
         unsubscribeOnDestroy(
             mRecipesListManager
-                .getAllRecipes()
+                .getAllRecipes(modification)
                 .flatMap {
                     Single.just((it.map { item ->
                         RecipesListItem(
@@ -138,13 +162,39 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-                        viewState.showList(it)
+
+                        if (all) viewState.showList(it) else filter(it, searchString)
+
                         viewState.showProgress(false)
                     },
                     onError = {
                         viewState.showProgress(false)
                     })
         )
+    }
+
+    private fun filter(targetList: List<RecipesListItem>, searchString: String) {
+        viewState.setTextSearch(searchString)
+        viewState.showProgress(true)
+        unsubscribeOnDestroy(
+            Observable.fromIterable(targetList)
+                .filter { target ->
+                    target.name.en.contains(searchString, true)
+                            || target.name.ru.contains(searchString, true)
+                }
+                .flatMap { t -> Observable.just(t) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .toList()
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showList(it)
+                        viewState.showProgress(false)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                    }
+                ))
     }
 
 }

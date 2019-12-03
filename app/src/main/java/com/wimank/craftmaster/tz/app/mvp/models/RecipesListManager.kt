@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
+import com.wimank.craftmaster.tz.app.mvp.common.SEARCH_VALUE
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.app.room.entity.BiomesEntity
 import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
@@ -20,8 +21,11 @@ class RecipesListManager(private val craftMasterDataBase: CraftMasterDataBase) {
         return craftMasterDataBase.biomesDao().getBiomes()
     }
 
-    fun getAllRecipes(): Single<List<DescriptionEntity>> {
-        return craftMasterDataBase.descriptionDao().getAllRecipesListFromDb()
+    fun getAllRecipes(modification: String): Single<List<DescriptionEntity>> {
+        return if (modification == SEARCH_VALUE)
+            craftMasterDataBase.descriptionDao().getAllRecipesListFromDb()
+        else
+            craftMasterDataBase.descriptionDao().getRecipesListFromDb(modification)
     }
 
 }

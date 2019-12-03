@@ -53,6 +53,7 @@ class MainActivityPresenter(
             ACHIEVEMENTS_VALUE -> viewState.showAchievementsSection()
             BREWING_VALUE -> viewState.showBrewingSection()
             FAVORITES_VALUE -> viewState.showFavoriteSection()
+            SEARCH_VALUE -> viewState.showRecipesListFragment(section, false)
             else -> viewState.showRecipesListFragment(section)
         }
     }

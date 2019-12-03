@@ -23,4 +23,10 @@ interface RecipesListView : MvpView {
 
     fun optionalTitleSetting(titleMod: String)
 
+    fun setModVar(mod: String)
+
+    fun setIconifiedVar(isIconified: Boolean)
+
+    fun setTextSearch(text: String)
+
 }

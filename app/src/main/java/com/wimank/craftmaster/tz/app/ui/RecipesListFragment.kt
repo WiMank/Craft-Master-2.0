@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_recipes_list.view.*
 import javax.inject.Inject
 
 const val RL_KEY_MODIFICATION = "rl_key_modification"
+const val ICONIFIED_SV = "iconifiedSV"
 
 class RecipesListFragment : BaseFragment(), RecipesListView {
 
@@ -39,12 +40,20 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
 
     private lateinit var mRecycler: RecyclerView
 
+    private var mIsIconified: Boolean = true
+
+    private lateinit var mModification: String
+
+    private var mTextSearch: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         if (savedInstanceState == null)
-            arguments?.getString(RL_KEY_MODIFICATION)?.let {
-                mRecipesListPresenter.chooseModification(it)
+            arguments?.apply {
+                getString(RL_KEY_MODIFICATION)?.let {
+                    mRecipesListPresenter.chooseModification(it, getBoolean(ICONIFIED_SV))
+                }
             }
     }
 
@@ -72,23 +81,26 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
 
         val item = menu.findItem(R.id.search_view)
         val searchView = item.actionView as SearchView
-        searchView.isIconified = false
+        searchView.isIconified = mIsIconified
+
+        if (mTextSearch.isNotEmpty())
+            searchView.setQuery(mTextSearch, false)
 
         searchView.setOnQueryTextListener(object :
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-
                 return true
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                if (newText.isBlank()) {
+                if (newText.isEmpty())
+                    mRecipesListPresenter.loadSearchList(true, mModification)
+                else
+                    mRecipesListPresenter.loadSearchList(false, mModification, newText)
 
-                }
                 return true
             }
         })
-
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -111,6 +123,18 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
 
     override fun optionalTitleSetting(titleMod: String) {
         toolbarListener?.setToolbarTitle(titleMod)
+    }
+
+    override fun setModVar(mod: String) {
+        mModification = mod
+    }
+
+    override fun setIconifiedVar(isIconified: Boolean) {
+        mIsIconified = isIconified
+    }
+
+    override fun setTextSearch(text: String) {
+        mTextSearch = text
     }
 
     override fun showList(list: List<RecipesListItem>) {
@@ -136,10 +160,11 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
     }
 
     companion object {
-        fun newInstance(section: String) =
+        fun newInstance(section: String, iconifiedSV: Boolean) =
             RecipesListFragment().apply {
                 arguments = Bundle().apply {
                     putString(RL_KEY_MODIFICATION, section)
+                    putBoolean(ICONIFIED_SV, iconifiedSV)
                 }
             }
     }

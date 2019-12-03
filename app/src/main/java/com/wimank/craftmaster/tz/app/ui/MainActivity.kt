@@ -57,9 +57,9 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
 
-    override fun showRecipesListFragment(section: String) {
+    override fun showRecipesListFragment(section: String, iconifiedSV: Boolean) {
         supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, RecipesListFragment.newInstance(section))
+            replace(R.id.main_frame, RecipesListFragment.newInstance(section, iconifiedSV))
             addToBackStack(RL_KEY_MODIFICATION)
             commit()
         }
