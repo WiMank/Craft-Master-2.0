@@ -3,9 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/wiki"
+        android:icon="@drawable/ic_link_24px"
+        android:orderInCategory="0"
+        android:title="@string/look_at_the_wikipedia"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/favorite"
         android:icon="@drawable/ic_favorite_false_24px"
-        android:orderInCategory="250"
+        android:orderInCategory="1"
         android:title="@string/add_to_favorites"
         app:showAsAction="ifRoom" />
 

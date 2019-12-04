@@ -1,7 +1,9 @@
 package com.wimank.craftmaster.tz.app.ui
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.core.content.ContextCompat
@@ -24,6 +26,7 @@ import kotlinx.android.synthetic.main.craft_table_layout.*
 import kotlinx.android.synthetic.main.fragment_recipe.*
 import java.io.File
 import javax.inject.Inject
+
 
 private const val RECIPE_FRAGMENT_KEY = "recipe_attr"
 const val RECIPE_FRAGMENT_TAG = "RecipeFragment"
@@ -84,6 +87,12 @@ class RecipeFragment : BaseFragment(), RecipeView {
                         it.recipeImageName
                     )
                 )
+            }
+            R.id.wiki -> {
+                Intent(Intent.ACTION_VIEW).run {
+                    data = Uri.parse(mDescriptionEntity?.wikiLink ?: "")
+                    startActivity(this)
+                }
             }
         }
         return true

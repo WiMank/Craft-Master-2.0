@@ -54,5 +54,6 @@
     <string name="favorites_list">Favorites List</string>
     <string name="favorites_list_err">Error loading the favorite list</string>
     <string name="search">Search</string>
+    <string name="look_at_the_wikipedia">Look at the wikipedia</string>
 
 </resources>

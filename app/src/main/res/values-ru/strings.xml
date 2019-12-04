@@ -54,6 +54,7 @@
     <string name="favorites_list">Список избранного</string>
     <string name="favorites_list_err">Ошибка загрузки списка избранного</string>
     <string name="search">Поиск</string>
+    <string name="look_at_the_wikipedia">Посмотреть в википедии</string>
 
 
 </resources>
