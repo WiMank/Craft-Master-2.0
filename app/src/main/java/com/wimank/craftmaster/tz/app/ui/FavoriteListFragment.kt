@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.fragment_favorite.view.*
 import javax.inject.Inject
 
-class FavoriteFragment : BaseFragment(), FavoriteView {
+class FavoriteListFragment : BaseFragment(), FavoriteView {
 
     @Inject
     @InjectPresenter

@@ -34,6 +34,6 @@ interface FragmentModule {
 
     @FavoriteScope
     @ContributesAndroidInjector(modules = [FavoriteModule::class])
-    fun contributesFavoriteFragment(): FavoriteFragment
+    fun contributesFavoriteFragment(): FavoriteListFragment
 
 }

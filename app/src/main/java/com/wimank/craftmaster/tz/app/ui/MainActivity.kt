@@ -23,7 +23,7 @@ class MainActivity : BaseActivity(), MainActivityView,
     SectionFragment.OnSectionFragmentClickListener,
     MobFragment.OnMobsFragmentClickListener,
     BaseFragment.TitleListener,
-    FavoriteFragment.OnItemFavClickListener {
+    FavoriteListFragment.OnItemFavClickListener {
 
     @Inject
     @InjectPresenter
@@ -103,7 +103,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showRecipeSectionFromFav(item: String) {
         mNavController.navigate(
-            R.id.action_favoriteFragment_to_recipeFragment,
+            R.id.action_favoriteListFragment_to_recipeFragment,
             Bundle().apply {
                 putString(RECIPE_FRAGMENT_KEY, item)
             }
