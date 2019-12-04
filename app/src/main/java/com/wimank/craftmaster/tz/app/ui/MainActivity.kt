@@ -82,7 +82,9 @@ class MainActivity : BaseActivity(), MainActivityView,
     override fun onRecipeFragmentClick(recipeAttr: String) {
         mNavController.navigate(
             R.id.action_recipeFragment_self,
-            Bundle().apply { putString(RECIPE_FRAGMENT_KEY, recipeAttr) }
+            Bundle().apply {
+                putString(RECIPE_FRAGMENT_KEY, recipeAttr)
+            }
         )
     }
 
@@ -93,21 +95,27 @@ class MainActivity : BaseActivity(), MainActivityView,
     override fun showBlockAndItemsSection(item: String) {
         mNavController.navigate(
             R.id.action_favoriteFragment_to_recipeFragment,
-            Bundle().apply { putString(RECIPE_FRAGMENT_KEY, item) }
+            Bundle().apply {
+                putString(RECIPE_FRAGMENT_KEY, item)
+            }
         )
     }
 
     override fun showMobsSection(mob: String) {
         mNavController.navigate(
             R.id.action_recipesListFragment_to_mobFragment,
-            Bundle().apply { putString(MOB_FRAGMENT_KEY, mob) }
+            Bundle().apply {
+                putString(MOB_FRAGMENT_KEY, mob)
+            }
         )
     }
 
     override fun showBiomesSection(biome: String) {
         mNavController.navigate(
             R.id.action_recipesListFragment_to_biomeFragment,
-            Bundle().apply { putString(BIOME_KEY, biome) }
+            Bundle().apply {
+                putString(BIOME_KEY, biome)
+            }
         )
     }
 
