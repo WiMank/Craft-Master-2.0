@@ -154,4 +154,9 @@ dependencies {
 
     //TouchImageView
     implementation("com.github.MikeOrtiz:TouchImageView:2.2.0")
+
+    //Navigation
+    val navVersion = "2.1.0"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 }

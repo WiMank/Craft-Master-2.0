@@ -2,6 +2,7 @@ package com.wimank.craftmaster.tz.app.room.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey.CASCADE
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 
@@ -13,7 +14,8 @@ import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
             entity = DescriptionEntity::class,
             parentColumns = ["recipeAttr", "recipeImageName"],
             childColumns = ["recipeAttr", "recipeImageName"],
-            onDelete = androidx.room.ForeignKey.CASCADE
+            onDelete = CASCADE,
+            onUpdate = CASCADE
         )]
 )
 data class DeviceEntity(

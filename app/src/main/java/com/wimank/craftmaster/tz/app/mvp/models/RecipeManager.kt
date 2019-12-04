@@ -35,7 +35,7 @@ class RecipeManager(
             deviceEntity.recycler.stringIsNotEmpty() -> localizeString(deviceEntity.recycler)
             deviceEntity.compressor.stringIsNotEmpty() -> localizeString(deviceEntity.compressor)
             deviceEntity.machineName.stringIsNotEmpty() -> localizeString(deviceEntity.machineName)
-            else -> mLocaleManager.getContext().getString(R.string.recipe_craft_text)
+            else -> mLocaleManager.getString(R.string.recipe_craft_text)
         }
     }
 
@@ -59,5 +59,19 @@ class RecipeManager(
         return with(craftMasterDataBase.favoritesDao().checkFavorite(recipeAttr)) {
             this?.fRecipeAttr == recipeAttr
         }
+    }
+
+    fun getString(value: Int) = mLocaleManager.getString(value)
+
+    fun checkCraftTableFilling(recipeEntity: RecipeEntity): Boolean {
+        return recipeEntity.firstSlot.isEmpty() &&
+                recipeEntity.secondSlot.isEmpty() &&
+                recipeEntity.threeSlot.isEmpty() &&
+                recipeEntity.fourthSlot.isEmpty() &&
+                recipeEntity.fifthSlot.isEmpty() &&
+                recipeEntity.sixthSlot.isEmpty() &&
+                recipeEntity.seventhSlot.isEmpty() &&
+                recipeEntity.eighthSlot.isEmpty() &&
+                recipeEntity.ninthSlot.isEmpty()
     }
 }

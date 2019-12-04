@@ -166,16 +166,6 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
         mListenerRecipesList?.onRecipesListFragmentClick(recipesListItem)
     }
 
-    companion object {
-        fun newInstance(section: String, iconifiedSV: Boolean) =
-            RecipesListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(RL_KEY_MODIFICATION, section)
-                    putBoolean(ICONIFIED_SV, iconifiedSV)
-                }
-            }
-    }
-
     interface OnRecipesListFragmentClickListener {
         fun onRecipesListFragmentClick(recipesListItem: RecipesListItem)
     }

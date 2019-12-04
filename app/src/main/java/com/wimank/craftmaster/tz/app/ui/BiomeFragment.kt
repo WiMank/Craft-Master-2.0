@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_mobs.*
 import java.io.File
 import javax.inject.Inject
 
-private const val BIOME_KEY = "biome_key"
+const val BIOME_KEY = "biome_key"
 
 class BiomeFragment : BaseFragment(), BiomesView {
 
@@ -76,13 +76,4 @@ class BiomeFragment : BaseFragment(), BiomesView {
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(biome: String) =
-            BiomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(BIOME_KEY, biome)
-                }
-            }
-    }
 }

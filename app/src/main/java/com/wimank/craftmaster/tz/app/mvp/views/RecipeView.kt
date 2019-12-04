@@ -47,4 +47,6 @@ interface RecipeView : MvpView {
 
     fun setRecipeAttr(descriptionEntity: DescriptionEntity)
 
+    fun hideCraftTable()
+
 }

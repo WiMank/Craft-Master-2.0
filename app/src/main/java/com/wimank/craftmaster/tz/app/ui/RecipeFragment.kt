@@ -1,7 +1,9 @@
 package com.wimank.craftmaster.tz.app.ui
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.core.content.ContextCompat
@@ -25,8 +27,7 @@ import kotlinx.android.synthetic.main.fragment_recipe.*
 import java.io.File
 import javax.inject.Inject
 
-private const val RECIPE_FRAGMENT_KEY = "recipe_attr"
-const val RECIPE_FRAGMENT_TAG = "RecipeFragment"
+const val RECIPE_FRAGMENT_KEY = "recipe_attr"
 
 class RecipeFragment : BaseFragment(), RecipeView {
 
@@ -84,6 +85,12 @@ class RecipeFragment : BaseFragment(), RecipeView {
                         it.recipeImageName
                     )
                 )
+            }
+            R.id.wiki -> {
+                Intent(Intent.ACTION_VIEW).run {
+                    data = Uri.parse(mDescriptionEntity?.wikiLink ?: "")
+                    startActivity(this)
+                }
             }
         }
         return true
@@ -204,6 +211,10 @@ class RecipeFragment : BaseFragment(), RecipeView {
         mDescriptionEntity?.let { mRecipePresenter.checkFavorite(it.recipeAttr) }
     }
 
+    override fun hideCraftTable() {
+        craft_table_cc.visibility = View.GONE
+    }
+
     override fun onDetach() {
         super.onDetach()
         mListenerRecipe = null
@@ -215,15 +226,6 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     interface OnRecipeFragmentClickListener {
         fun onRecipeFragmentClick(recipeAttr: String)
-    }
-
-    companion object {
-        fun newInstance(recipeAttr: String) =
-            RecipeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(RECIPE_FRAGMENT_KEY, recipeAttr)
-                }
-            }
     }
 
 }

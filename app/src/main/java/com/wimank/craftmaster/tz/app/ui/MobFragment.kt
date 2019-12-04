@@ -21,8 +21,7 @@ import kotlinx.android.synthetic.main.fragment_mobs.*
 import java.io.File
 import javax.inject.Inject
 
-private const val MOB_FRAGMENT_KEY = "mob_key"
-const val MOB_FRAGMENT_TAG = "MobFragment"
+const val MOB_FRAGMENT_KEY = "mob_key"
 
 class MobFragment : BaseFragment(), MobsView {
 
@@ -127,12 +126,4 @@ class MobFragment : BaseFragment(), MobsView {
         fun modDropClickListener(item: String)
     }
 
-    companion object {
-        fun newInstance(mob: String) =
-            MobFragment().apply {
-                arguments = Bundle().apply {
-                    putString(MOB_FRAGMENT_KEY, mob)
-                }
-            }
-    }
 }

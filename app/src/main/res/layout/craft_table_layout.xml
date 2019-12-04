@@ -5,48 +5,56 @@
     android:id="@+id/table_l"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/frame_grid"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <TableRow android:layout_marginTop="8dp">
+    <TableRow android:layout_marginTop="4dp">
 
         <ImageView
             android:id="@+id/firstSlot"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:background="@color/white"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/secondSlot"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
+            android:background="@color/white"
             tools:ignore="ContentDescription" />
-
 
         <ImageView
             android:id="@+id/threeSlot"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="@color/white"
             tools:ignore="ContentDescription" />
 
     </TableRow>
 
-    <TableRow android:layout_marginTop="8dp">
+    <TableRow android:layout_marginTop="4dp">
 
         <ImageView
             android:id="@+id/fourthSlot"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:background="@color/white"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/fifthSlot"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
+            android:background="@color/white"
             tools:ignore="ContentDescription" />
 
 
@@ -54,30 +62,40 @@
             android:id="@+id/sixthSlot"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="@color/white"
             tools:ignore="ContentDescription" />
     </TableRow>
 
-    <TableRow android:layout_marginTop="8dp">
+    <TableRow android:layout_marginTop="4dp">
 
         <ImageView
             android:id="@+id/seventhSlot"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/white"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/eighthSlot"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/white"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/ninthSlot"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/white"
             tools:ignore="ContentDescription" />
     </TableRow>
 
