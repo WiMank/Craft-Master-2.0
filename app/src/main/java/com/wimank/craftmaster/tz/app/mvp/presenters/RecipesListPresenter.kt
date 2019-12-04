@@ -188,7 +188,7 @@ class RecipesListPresenter(private val mRecipesListManager: RecipesListManager) 
                 .toList()
                 .subscribeBy(
                     onSuccess = {
-                        viewState.showList(it)
+                        viewState.updateList(it)
                         viewState.showProgress(false)
                     },
                     onError = {

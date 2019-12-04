@@ -46,6 +46,8 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
 
     private var mTextSearch: String = ""
 
+    private lateinit var mSearchAdapter: RecipesListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -61,9 +63,19 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        mSearchAdapter = RecipesListAdapter(
+            listOf(), object : RecipesListAdapter.OnItemClickListener {
+                override fun onItemClick(item: RecipesListItem) {
+                    itemClick(item)
+                }
+            }, mLocaleManager
+        )
+
         return inflater.inflate(R.layout.fragment_recipes_list, container, false).apply {
             mRecycler = this.recipes_list_recycler_view.apply {
                 layoutManager = LinearLayoutManager(context)
+                adapter = mSearchAdapter
             }
         }
     }
@@ -138,16 +150,11 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
     }
 
     override fun showList(list: List<RecipesListItem>) {
-        mRecycler.apply {
-            adapter = RecipesListAdapter(list,
-                object :
-                    RecipesListAdapter.OnItemClickListener {
-                    override fun onItemClick(item: RecipesListItem) {
-                        itemClick(item)
-                    }
-                }, mLocaleManager
-            )
-        }
+        mSearchAdapter.setData(list)
+    }
+
+    override fun updateList(list: List<RecipesListItem>) {
+        mSearchAdapter.updateList(list)
     }
 
     override fun onDetach() {

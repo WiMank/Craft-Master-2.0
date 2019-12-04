@@ -2,6 +2,7 @@ package com.wimank.craftmaster.tz.app.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.models.LocaleManager
@@ -28,6 +29,19 @@ class RecipesListAdapter(
     }
 
     override fun getItemCount() = mList.size
+
+
+    fun updateList(newList: List<RecipesListItem>) {
+        with(DiffUtil.calculateDiff(SearchDiffUtil(mList, newList), true)) {
+            mList = newList
+            dispatchUpdatesTo(this@RecipesListAdapter)
+        }
+    }
+
+    fun setData(dataList: List<RecipesListItem>) {
+        mList = dataList
+        this.notifyDataSetChanged()
+    }
 
     interface OnItemClickListener {
         fun onItemClick(item: RecipesListItem)

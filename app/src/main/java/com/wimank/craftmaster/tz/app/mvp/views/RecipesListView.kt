@@ -21,6 +21,8 @@ interface RecipesListView : MvpView {
 
     fun showList(list: List<RecipesListItem>)
 
+    fun updateList(list: List<RecipesListItem>)
+
     fun optionalTitleSetting(titleMod: String)
 
     fun setModVar(mod: String)
@@ -28,5 +30,4 @@ interface RecipesListView : MvpView {
     fun setIconifiedVar(isIconified: Boolean)
 
     fun setTextSearch(text: String)
-
 }
