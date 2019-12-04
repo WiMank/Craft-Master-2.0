@@ -18,8 +18,6 @@ import com.wimank.craftmaster.tz.app.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_achievements.*
 import javax.inject.Inject
 
-const val ACHIEVEMENTS_FR = "AchievementsFragment"
-
 class AchievementsFragment : BaseFragment(), AchievementView {
 
     @Inject

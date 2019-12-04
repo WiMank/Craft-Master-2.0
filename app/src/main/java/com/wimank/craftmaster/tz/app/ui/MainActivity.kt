@@ -2,6 +2,8 @@ package com.wimank.craftmaster.tz.app.ui
 
 import android.os.Bundle
 import androidx.core.view.isVisible
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.google.android.material.snackbar.Snackbar
@@ -30,14 +32,12 @@ class MainActivity : BaseActivity(), MainActivityView,
     @ProvidePresenter
     fun providePresenter() = mMainActivityPresenter
 
+    private lateinit var mNavController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (savedInstanceState == null)
-            supportFragmentManager.beginTransaction().run {
-                replace(R.id.main_frame, SectionFragment())
-                commit()
-            }
+        mNavController = Navigation.findNavController(this, R.id.nav_host_fragment)
     }
 
     override fun showMessage(message: Int) {
@@ -58,27 +58,21 @@ class MainActivity : BaseActivity(), MainActivityView,
 
 
     override fun showRecipesListFragment(section: String, iconifiedSV: Boolean) {
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, RecipesListFragment.newInstance(section, iconifiedSV))
-            addToBackStack(RL_KEY_MODIFICATION)
-            commit()
-        }
+        mNavController.navigate(
+            R.id.action_sectionFragment_to_recipesListFragment,
+            Bundle().apply {
+                putString(RL_KEY_MODIFICATION, section)
+                putBoolean(ICONIFIED_SV, iconifiedSV)
+            }
+        )
     }
 
     override fun showAchievementsSection() {
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, AchievementsFragment())
-            addToBackStack(ACHIEVEMENTS_FR)
-            commit()
-        }
+        mNavController.navigate(R.id.action_sectionFragment_to_achievementsFragment)
     }
 
     override fun showBrewingSection() {
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, BrewingFragment())
-            addToBackStack(BREWING_FR)
-            commit()
-        }
+        mNavController.navigate(R.id.action_sectionFragment_to_brewingFragment)
     }
 
     override fun onRecipesListFragmentClick(recipesListItem: RecipesListItem) {
@@ -86,11 +80,10 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
     override fun onRecipeFragmentClick(recipeAttr: String) {
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, RecipeFragment.newInstance(recipeAttr))
-            addToBackStack(RECIPE_FRAGMENT_TAG)
-            commit()
-        }
+        mNavController.navigate(
+            R.id.action_recipeFragment_self,
+            Bundle().apply { putString(RECIPE_FRAGMENT_KEY, recipeAttr) }
+        )
     }
 
     override fun modDropClickListener(item: String) {
@@ -98,35 +91,28 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
     override fun showBlockAndItemsSection(item: String) {
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, RecipeFragment.newInstance(item))
-            addToBackStack(RECIPE_FRAGMENT_TAG)
-            commit()
-        }
+        mNavController.navigate(
+            R.id.action_recipesListFragment_to_recipeFragment,
+            Bundle().apply { putString(RECIPE_FRAGMENT_KEY, item) }
+        )
     }
 
     override fun showMobsSection(mob: String) {
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, MobFragment.newInstance(mob))
-            addToBackStack(MOB_FRAGMENT_TAG)
-            commit()
-        }
+        mNavController.navigate(
+            R.id.action_recipesListFragment_to_mobFragment,
+            Bundle().apply { putString(MOB_FRAGMENT_KEY, mob) }
+        )
     }
 
     override fun showBiomesSection(biome: String) {
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, BiomeFragment.newInstance(biome))
-            addToBackStack(MOB_FRAGMENT_TAG)
-            commit()
-        }
+        mNavController.navigate(
+            R.id.action_recipesListFragment_to_biomeFragment,
+            Bundle().apply { putString(BIOME_KEY, biome) }
+        )
     }
 
     override fun showFavoriteSection() {
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_frame, FavoriteFragment())
-            addToBackStack(FAV_FRAGMENT_TAG)
-            commit()
-        }
+        mNavController.navigate(R.id.favoriteFragment)
     }
 
     override fun setToolbarTitle(title: String) {

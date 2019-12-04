@@ -27,8 +27,7 @@ import kotlinx.android.synthetic.main.fragment_recipe.*
 import java.io.File
 import javax.inject.Inject
 
-private const val RECIPE_FRAGMENT_KEY = "recipe_attr"
-const val RECIPE_FRAGMENT_TAG = "RecipeFragment"
+const val RECIPE_FRAGMENT_KEY = "recipe_attr"
 
 class RecipeFragment : BaseFragment(), RecipeView {
 
@@ -227,15 +226,6 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     interface OnRecipeFragmentClickListener {
         fun onRecipeFragmentClick(recipeAttr: String)
-    }
-
-    companion object {
-        fun newInstance(recipeAttr: String) =
-            RecipeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(RECIPE_FRAGMENT_KEY, recipeAttr)
-                }
-            }
     }
 
 }

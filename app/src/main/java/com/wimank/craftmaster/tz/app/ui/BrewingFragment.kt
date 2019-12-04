@@ -12,8 +12,6 @@ import com.wimank.craftmaster.tz.app.mvp.common.IMAGE_FOLDER_NAME
 import kotlinx.android.synthetic.main.fragment_brewing.view.*
 import java.io.File
 
-const val BREWING_FR = "BrewingFragment"
-
 class BrewingFragment : Fragment() {
 
     override fun onCreateView(

@@ -21,8 +21,6 @@ import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.fragment_favorite.view.*
 import javax.inject.Inject
 
-const val FAV_FRAGMENT_TAG = "FavoriteFragment"
-
 class FavoriteFragment : BaseFragment(), FavoriteView {
 
     @Inject
@@ -105,4 +103,5 @@ class FavoriteFragment : BaseFragment(), FavoriteView {
     interface OnItemFavClickListener {
         fun onFavItemClick(favoriteEntity: FavoriteEntity)
     }
+
 }
