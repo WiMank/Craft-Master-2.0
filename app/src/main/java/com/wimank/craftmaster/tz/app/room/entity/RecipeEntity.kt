@@ -13,7 +13,8 @@ import com.google.gson.annotations.SerializedName
             entity = DescriptionEntity::class,
             parentColumns = ["recipeAttr", "recipeImageName"],
             childColumns = ["recipeAttr", "recipeImageName"],
-            onDelete = CASCADE
+            onDelete = CASCADE,
+            onUpdate = CASCADE
         )]
 )
 data class RecipeEntity(

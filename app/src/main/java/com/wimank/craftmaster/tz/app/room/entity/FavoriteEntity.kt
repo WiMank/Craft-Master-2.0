@@ -12,7 +12,8 @@ import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
         entity = DescriptionEntity::class,
         parentColumns = ["recipeAttr", "recipeImageName"],
         childColumns = ["fRecipeAttr", "recipeImageName"],
-        onDelete = CASCADE
+        onDelete = CASCADE,
+        onUpdate = CASCADE
     )]
 )
 data class FavoriteEntity(
