@@ -92,7 +92,7 @@ class MainActivity : BaseActivity(), MainActivityView,
 
     override fun showBlockAndItemsSection(item: String) {
         mNavController.navigate(
-            R.id.action_recipesListFragment_to_recipeFragment,
+            R.id.action_favoriteFragment_to_recipeFragment,
             Bundle().apply { putString(RECIPE_FRAGMENT_KEY, item) }
         )
     }
