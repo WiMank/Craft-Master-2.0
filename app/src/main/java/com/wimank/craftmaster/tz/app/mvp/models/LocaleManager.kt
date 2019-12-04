@@ -24,5 +24,6 @@ class LocaleManager(private val mContext: Context) {
         }
     }
 
-    fun getContext() = mContext
+    fun getString(value: Int) = mContext.getString(value)
+
 }

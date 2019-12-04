@@ -213,6 +213,10 @@ class RecipeFragment : BaseFragment(), RecipeView {
         mDescriptionEntity?.let { mRecipePresenter.checkFavorite(it.recipeAttr) }
     }
 
+    override fun hideCraftTable() {
+        craft_table_cc.visibility = View.GONE
+    }
+
     override fun onDetach() {
         super.onDetach()
         mListenerRecipe = null
