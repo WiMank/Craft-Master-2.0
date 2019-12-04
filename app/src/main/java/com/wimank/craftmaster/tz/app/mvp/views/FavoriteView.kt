@@ -14,9 +14,9 @@ interface FavoriteView : MvpView {
 
     fun showProgress(visibilityFlag: Boolean)
 
+    @StateStrategyType(SkipStrategy::class)
     fun showList(list: List<FavoriteEntity>)
 
-    @StateStrategyType(SkipStrategy::class)
     fun updateList(list: List<FavoriteEntity>)
 
     fun optionalTitleSetting(titleMod: String)
