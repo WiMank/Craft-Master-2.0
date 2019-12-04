@@ -27,7 +27,6 @@ import kotlinx.android.synthetic.main.fragment_recipe.*
 import java.io.File
 import javax.inject.Inject
 
-
 private const val RECIPE_FRAGMENT_KEY = "recipe_attr"
 const val RECIPE_FRAGMENT_TAG = "RecipeFragment"
 

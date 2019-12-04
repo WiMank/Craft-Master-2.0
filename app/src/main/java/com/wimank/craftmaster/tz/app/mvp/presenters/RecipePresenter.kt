@@ -32,12 +32,6 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                         viewState.showProgress(false)
                         viewState.initTableListeners(it.second)
                         viewState.fillRecipeImages(it.first)
-
-                        if (mRecipeManager.checkCraftTableFilling(it.second))
-                            viewState.hideCraftTable()
-                        else
-                            viewState.fillCraftTable(it.second)
-
                         viewState.showLocalizedName(mRecipeManager.localizeString(it.first.recipeName))
                         viewState.showLocalizeDescription(mRecipeManager.localizeString(it.first.descriptionCraft))
                         viewState.showLocalizeLeftPar(mRecipeManager.localizeString(it.first.leftParameter))
@@ -46,6 +40,12 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                         viewState.showLocalizeRightParText(mRecipeManager.localizeString(it.first.rightParameterText))
                         viewState.setRecipeAttr(it.first)
                         loadDevices(recipeAttr)
+
+                        if (mRecipeManager.checkCraftTableFilling(it.second))
+                            viewState.hideCraftTable()
+                        else
+                            viewState.fillCraftTable(it.second)
+
                     },
                     onError = {
                         viewState.showProgress(false)
