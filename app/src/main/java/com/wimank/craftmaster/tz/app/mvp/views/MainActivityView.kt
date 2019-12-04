@@ -17,10 +17,13 @@ interface MainActivityView : MvpView {
     fun showProgress(visibilityFlag: Boolean)
 
     @StateStrategyType(SkipStrategy::class)
-    fun showRecipesListFragment(section: String, iconifiedSV: Boolean = true)
+    fun showRecipesList(section: String, iconifiedSV: Boolean = true)
 
     @StateStrategyType(SkipStrategy::class)
-    fun showBlockAndItemsSection(item: String)
+    fun showRecipeSection(item: String)
+
+    @StateStrategyType(SkipStrategy::class)
+    fun showRecipeSectionFromFav(item: String)
 
     @StateStrategyType(SkipStrategy::class)
     fun showMobsSection(mob: String)

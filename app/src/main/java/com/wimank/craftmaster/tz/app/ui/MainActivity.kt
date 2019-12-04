@@ -57,7 +57,7 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
 
-    override fun showRecipesListFragment(section: String, iconifiedSV: Boolean) {
+    override fun showRecipesList(section: String, iconifiedSV: Boolean) {
         mNavController.navigate(
             R.id.action_sectionFragment_to_recipesListFragment,
             Bundle().apply {
@@ -89,10 +89,19 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
     override fun modDropClickListener(item: String) {
-        showBlockAndItemsSection(item)
+        showRecipeSection(item)
     }
 
-    override fun showBlockAndItemsSection(item: String) {
+    override fun showRecipeSection(item: String) {
+        mNavController.navigate(
+            R.id.action_recipesListFragment_to_recipeFragment,
+            Bundle().apply {
+                putString(RECIPE_FRAGMENT_KEY, item)
+            }
+        )
+    }
+
+    override fun showRecipeSectionFromFav(item: String) {
         mNavController.navigate(
             R.id.action_favoriteFragment_to_recipeFragment,
             Bundle().apply {
@@ -120,7 +129,7 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
     override fun showFavoriteSection() {
-        mNavController.navigate(R.id.favoriteFragment)
+        mNavController.navigate(R.id.action_sectionFragment_to_favoriteFragment)
     }
 
     override fun setToolbarTitle(title: String) {
@@ -128,7 +137,7 @@ class MainActivity : BaseActivity(), MainActivityView,
     }
 
     override fun onFavItemClick(favoriteEntity: FavoriteEntity) {
-        showBlockAndItemsSection(favoriteEntity.fRecipeAttr)
+        showRecipeSectionFromFav(favoriteEntity.fRecipeAttr)
     }
 
 }

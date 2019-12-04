@@ -38,13 +38,14 @@ class MainActivityPresenter(
 
     fun choseListSection(section: String, item: String) {
         when (section) {
-            MC_VALUE -> viewState.showBlockAndItemsSection(item)
-            IC_VALUE -> viewState.showBlockAndItemsSection(item)
-            BC_VALUE -> viewState.showBlockAndItemsSection(item)
-            FR_VALUE -> viewState.showBlockAndItemsSection(item)
-            SEARCH_VALUE -> viewState.showBlockAndItemsSection(item)
+            MC_VALUE -> viewState.showRecipeSection(item)
+            IC_VALUE -> viewState.showRecipeSection(item)
+            BC_VALUE -> viewState.showRecipeSection(item)
+            FR_VALUE -> viewState.showRecipeSection(item)
+            SEARCH_VALUE -> viewState.showRecipeSection(item)
             MOBS_VALUE -> viewState.showMobsSection(item)
             BIOMES_VALUE -> viewState.showBiomesSection(item)
+            FAVORITES_VALUE -> viewState.showRecipeSectionFromFav(item)
         }
     }
 
@@ -53,8 +54,8 @@ class MainActivityPresenter(
             ACHIEVEMENTS_VALUE -> viewState.showAchievementsSection()
             BREWING_VALUE -> viewState.showBrewingSection()
             FAVORITES_VALUE -> viewState.showFavoriteSection()
-            SEARCH_VALUE -> viewState.showRecipesListFragment(section, false)
-            else -> viewState.showRecipesListFragment(section)
+            SEARCH_VALUE -> viewState.showRecipesList(section, false)
+            else -> viewState.showRecipesList(section)
         }
     }
 
