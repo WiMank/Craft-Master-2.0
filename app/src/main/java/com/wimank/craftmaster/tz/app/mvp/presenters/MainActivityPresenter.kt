@@ -1,6 +1,5 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.*
@@ -161,7 +160,6 @@ class MainActivityPresenter(
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(R.string.addinfo_err_loaded)
-                        Log.e("ADDINFO", "loadAcAchievements()", it)
                     })
         )
     }
