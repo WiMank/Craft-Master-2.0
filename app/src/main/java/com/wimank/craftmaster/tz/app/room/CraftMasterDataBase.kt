@@ -15,7 +15,8 @@ import com.wimank.craftmaster.tz.app.room.entity.*
         AchievementEntity::class,
         BiomesEntity::class,
         BrewingEntity::class,
-        FavoriteEntity::class
+        FavoriteEntity::class,
+        AdditionalEntity::class
     ],
     exportSchema = false,
     version = 1
@@ -30,4 +31,5 @@ abstract class CraftMasterDataBase : RoomDatabase() {
     abstract fun biomesDao(): BiomesDao
     abstract fun brewingDao(): BrewingDao
     abstract fun favoritesDao(): FavoritesDao
+    abstract fun additionalDao(): AdditionalDao
 }

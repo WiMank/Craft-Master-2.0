@@ -2,6 +2,7 @@ package com.wimank.craftmaster.tz.app.room.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
 import com.google.gson.annotations.SerializedName
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
@@ -10,7 +11,7 @@ import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
     tableName = "manufacturing_devices",
     primaryKeys = ["recipeAttr", "recipeImageName"],
     foreignKeys = [
-        androidx.room.ForeignKey(
+        ForeignKey(
             entity = DescriptionEntity::class,
             parentColumns = ["recipeAttr", "recipeImageName"],
             childColumns = ["recipeAttr", "recipeImageName"],
