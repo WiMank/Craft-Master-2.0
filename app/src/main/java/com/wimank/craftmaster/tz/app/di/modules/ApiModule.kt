@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.app.di.modules
 
+import com.wimank.craftmaster.tz.app.mvp.models.ApiManager
 import com.wimank.craftmaster.tz.app.rest.api.*
 import dagger.Module
 import dagger.Provides
@@ -49,5 +50,35 @@ class ApiModule {
     @Provides
     fun provideBrewingApi(retrofit: Retrofit): BrewingApi {
         return retrofit.create(BrewingApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideAddInfoApi(retrofit: Retrofit): AddInfoApi {
+        return retrofit.create(AddInfoApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideApiManager(
+        imageApi: ImageApi,
+        recipesApi: RecipesApi,
+        mobsApi: MobsApi,
+        devicesApi: DevicesApi,
+        achievementsApi: AchievementsApi,
+        biomesApi: BiomesApi,
+        brewingApi: BrewingApi,
+        addInfoApi: AddInfoApi
+    ): ApiManager {
+        return ApiManager(
+            imageApi,
+            recipesApi,
+            mobsApi,
+            devicesApi,
+            achievementsApi,
+            biomesApi,
+            brewingApi,
+            addInfoApi
+        )
     }
 }

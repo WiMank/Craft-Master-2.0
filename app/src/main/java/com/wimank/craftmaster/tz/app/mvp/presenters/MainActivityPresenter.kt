@@ -1,5 +1,6 @@
 package com.wimank.craftmaster.tz.app.mvp.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.*
@@ -140,6 +141,31 @@ class MainActivityPresenter(
         )
     }
 
+    private fun loadAdditionalInfo() {
+        viewState.showProgress(true)
+        unsubscribeOnDestroy(
+            Single.zip(
+                mDataManager.getAddInfo(),
+                mDataManager.getAddInfoFromDb(),
+                BiFunction { response: AddInfoResponse, locList: List<AdditionalEntity> ->
+                    if (response.success.isSuccess())
+                        mDataManager.containsData(response.additionalInfo, locList)
+
+                }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showProgress(false)
+                        viewState.showMessage(R.string.addinfo_successfully_loaded)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.addinfo_err_loaded)
+                        Log.e("ADDINFO", "loadAcAchievements()", it)
+                    })
+        )
+    }
+
     private fun loadAcAchievements() {
         viewState.showProgress(true)
         unsubscribeOnDestroy(
@@ -207,6 +233,7 @@ class MainActivityPresenter(
                     onSuccess = {
                         viewState.showProgress(false)
                         viewState.showMessage(R.string.brewing_load_successfully)
+                        loadAdditionalInfo()
                     },
                     onError = {
                         viewState.showProgress(false)

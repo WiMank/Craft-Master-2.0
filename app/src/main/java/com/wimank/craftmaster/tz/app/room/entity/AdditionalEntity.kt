@@ -49,4 +49,9 @@ data class AdditionalEntity(
     @SerializedName("vers")
     val vers: Int
 
-)
+) : BaseEntity {
+    override fun getVersion() = vers
+
+    override fun getImage() = recipeImageName
+
+}

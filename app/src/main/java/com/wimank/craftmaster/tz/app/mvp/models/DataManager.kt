@@ -1,7 +1,6 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
 import com.wimank.craftmaster.tz.app.mvp.common.IDataManager
-import com.wimank.craftmaster.tz.app.rest.api.*
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.app.room.entity.*
 import com.wimank.craftmaster.tz.app.utils.ImageUtils
@@ -9,14 +8,8 @@ import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
 
 class DataManager(
+    private val mApiManager: ApiManager,
     private val mImageUtils: ImageUtils,
-    private val mImageApi: ImageApi,
-    private val mRecipesApi: RecipesApi,
-    private val mMobsApi: MobsApi,
-    private val mDevicesApi: DevicesApi,
-    private val mAchievementsApi: AchievementsApi,
-    private val mBiomesApi: BiomesApi,
-    private val mBrewingApi: BrewingApi,
     private val mLocaleManager: LocaleManager,
     private val mCraftMasterDataBase: CraftMasterDataBase
 ) : IDataManager<BaseEntity> {
@@ -41,7 +34,7 @@ class DataManager(
                 downloadBrewingImage(entity)
                 return
             }
-            with(mImageApi.downloadImage(entity.getImage()).execute()) {
+            with(mApiManager.imageApi.downloadImage(entity.getImage()).execute()) {
                 if (isSuccessful) {
                     body()?.byteStream()?.let {
                         mImageUtils.writeImage(
@@ -57,7 +50,7 @@ class DataManager(
 
     private fun downloadBrewingImage(entity: BrewingEntity) {
         with(
-            mBrewingApi.downloadBrewingImage(
+            mApiManager.brewingApi.downloadBrewingImage(
                 mLocaleManager.getCurrentLocale().language
             ).execute()
         ) {
@@ -81,6 +74,7 @@ class DataManager(
             is AchievementEntity -> mCraftMasterDataBase.achievementDao().insert(entity)
             is BiomesEntity -> mCraftMasterDataBase.biomesDao().insert(entity)
             is BrewingEntity -> mCraftMasterDataBase.brewingDao().insert(entity)
+            is AdditionalEntity -> mCraftMasterDataBase.additionalDao().insert(entity)
         }
     }
 
@@ -93,10 +87,11 @@ class DataManager(
             is AchievementEntity -> mCraftMasterDataBase.achievementDao().delete(entity)
             is BiomesEntity -> mCraftMasterDataBase.biomesDao().delete(entity)
             is BrewingEntity -> mCraftMasterDataBase.brewingDao().delete(entity)
+            is AdditionalEntity -> mCraftMasterDataBase.additionalDao().delete(entity)
         }
     }
 
-    fun getRecipes() = mRecipesApi.getRecipes()
+    fun getRecipes() = mApiManager.recipesApi.getRecipes()
 
     fun getRecipesFromDb(): Single<List<RecipeEntity>> {
         return mCraftMasterDataBase.recipeDao().getRecipesFromDb()
@@ -106,30 +101,36 @@ class DataManager(
         return mCraftMasterDataBase.descriptionDao().getDescriptionFromDb()
     }
 
-    fun getMobs() = mMobsApi.getMobs()
+    fun getMobs() = mApiManager.mobsApi.getMobs()
 
     fun getMobsFromDb() = mCraftMasterDataBase.mobsDao().getMobs()
 
-    fun getManufacturingDevices() = mDevicesApi.getDevices()
+    fun getManufacturingDevices() = mApiManager.devicesApi.getDevices()
 
     fun getManufacturingDevicesDaoFromDb() =
         mCraftMasterDataBase.devicesDao().getDevices()
 
-    fun getAchievements() = mAchievementsApi.getAchievements()
+    fun getAchievements() = mApiManager.achievementsApi.getAchievements()
 
     fun getAchievementsFromDb(): Single<List<AchievementEntity>> {
         return mCraftMasterDataBase.achievementDao().getAllAchievements()
     }
 
-    fun getBiomes() = mBiomesApi.getBiomes()
+    fun getBiomes() = mApiManager.biomesApi.getBiomes()
 
     fun getBiomesFromDb(): Single<List<BiomesEntity>> {
         return mCraftMasterDataBase.biomesDao().getBiomes()
     }
 
-    fun getBrewing() = mBrewingApi.getVersBrewingImages()
+    fun getBrewing() = mApiManager.brewingApi.getVersBrewingImages()
 
     fun getBrewingFromDb(): Single<List<BrewingEntity>> {
         return mCraftMasterDataBase.brewingDao().getBrewingVersions()
+    }
+
+    fun getAddInfo() = mApiManager.addInfoApi.getAddInfo()
+
+    fun getAddInfoFromDb(): Single<List<AdditionalEntity>> {
+        return mCraftMasterDataBase.additionalDao().getAdditionalInfoList()
     }
 }
