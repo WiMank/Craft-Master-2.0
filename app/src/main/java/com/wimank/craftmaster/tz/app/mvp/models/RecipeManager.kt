@@ -3,10 +3,7 @@ package com.wimank.craftmaster.tz.app.mvp.models
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.rest.responses.LocalizedType
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
-import com.wimank.craftmaster.tz.app.room.entity.DescriptionEntity
-import com.wimank.craftmaster.tz.app.room.entity.DeviceEntity
-import com.wimank.craftmaster.tz.app.room.entity.FavoriteEntity
-import com.wimank.craftmaster.tz.app.room.entity.RecipeEntity
+import com.wimank.craftmaster.tz.app.room.entity.*
 import io.reactivex.Maybe
 import io.reactivex.Single
 
@@ -27,6 +24,10 @@ class RecipeManager(
         return craftMasterDataBase.devicesDao().getDeviceByName(recipeAttr)
     }
 
+    fun getAddInfoFromDb(recipeAttr: String): Maybe<AdditionalEntity> {
+        return craftMasterDataBase.additionalDao().getAddInfoByName(recipeAttr)
+    }
+
     fun getDeviceName(deviceEntity: DeviceEntity): String {
         return when {
             deviceEntity.furnace.stringIsNotEmpty() -> localizeString(deviceEntity.furnace)
@@ -36,6 +37,22 @@ class RecipeManager(
             deviceEntity.compressor.stringIsNotEmpty() -> localizeString(deviceEntity.compressor)
             deviceEntity.machineName.stringIsNotEmpty() -> localizeString(deviceEntity.machineName)
             else -> mLocaleManager.getString(R.string.recipe_craft_text)
+        }
+    }
+
+    fun getAddInfoText(additionalEntity: AdditionalEntity): String {
+        return when {
+            additionalEntity.attackDamage.isNotEmpty() -> additionalEntity.attackDamage
+
+            additionalEntity.durability.isNotEmpty() -> additionalEntity.durability
+
+            additionalEntity.restores.isNotEmpty() -> additionalEntity.restores
+
+            localizeString(additionalEntity.leftPr).isNotEmpty() -> localizeString(additionalEntity.leftPr)
+
+            localizeString(additionalEntity.rightPr).isNotEmpty() -> localizeString(additionalEntity.rightPr)
+
+            else -> ""
         }
     }
 

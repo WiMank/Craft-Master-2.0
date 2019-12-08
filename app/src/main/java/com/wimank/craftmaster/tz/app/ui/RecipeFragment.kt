@@ -215,6 +215,10 @@ class RecipeFragment : BaseFragment(), RecipeView {
         craft_table_cc.visibility = View.GONE
     }
 
+    override fun showAddInfo() {
+
+    }
+
     override fun onDetach() {
         super.onDetach()
         mListenerRecipe = null

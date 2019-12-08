@@ -49,4 +49,6 @@ interface RecipeView : MvpView {
 
     fun hideCraftTable()
 
+    fun showAddInfo()
+
 }

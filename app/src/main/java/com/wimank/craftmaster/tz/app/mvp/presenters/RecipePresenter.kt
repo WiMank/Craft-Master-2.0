@@ -40,6 +40,7 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                         viewState.showLocalizeRightParText(mRecipeManager.localizeString(it.first.rightParameterText))
                         viewState.setRecipeAttr(it.first)
                         loadDevices(recipeAttr)
+                        loadAddInfo(recipeAttr)
 
                         if (mRecipeManager.checkCraftTableFilling(it.second))
                             viewState.hideCraftTable()
@@ -73,6 +74,33 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                             if (nameNotEmpty() || imageNotEmpty())
                                 viewState.showMachine(this)
                         }
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.devices_load_error)
+                    },
+                    onComplete = {
+                        viewState.showDevice(
+                            mRecipeManager.getString(R.string.recipe_craft_text)
+                        )
+                    }
+                ))
+    }
+
+    private fun loadAddInfo(recipeAttr: String) {
+        unsubscribeOnDestroy(
+            mRecipeManager
+                .getAddInfoFromDb(recipeAttr)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showProgress(false)
+
+                        viewState.showLocalizeLeftPar(mRecipeManager.localizeString(it.leftPr))
+                        viewState.showLocalizeLeftParText((mRecipeManager.getAddInfoText(it)))
+
+
                     },
                     onError = {
                         viewState.showProgress(false)
