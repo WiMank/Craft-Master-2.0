@@ -40,18 +40,20 @@ class RecipeManager(
         }
     }
 
-    fun getAddInfoText(additionalEntity: AdditionalEntity): String {
+    fun getAddInfoLPText(additionalEntity: AdditionalEntity): String {
         return when {
             additionalEntity.attackDamage.isNotEmpty() -> additionalEntity.attackDamage
-
-            additionalEntity.durability.isNotEmpty() -> additionalEntity.durability
-
             additionalEntity.restores.isNotEmpty() -> additionalEntity.restores
-
+            additionalEntity.armor.isNotEmpty() -> additionalEntity.armor
             localizeString(additionalEntity.leftPr).isNotEmpty() -> localizeString(additionalEntity.leftPr)
+            else -> ""
+        }
+    }
 
+    fun getAddInfoRTText(additionalEntity: AdditionalEntity): String {
+        return when {
+            additionalEntity.durability.isNotEmpty() -> additionalEntity.durability
             localizeString(additionalEntity.rightPr).isNotEmpty() -> localizeString(additionalEntity.rightPr)
-
             else -> ""
         }
     }

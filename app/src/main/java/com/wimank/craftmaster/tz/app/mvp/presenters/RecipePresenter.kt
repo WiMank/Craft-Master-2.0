@@ -98,8 +98,10 @@ class RecipePresenter(private val mRecipeManager: RecipeManager) : BasePresenter
                         viewState.showProgress(false)
 
                         viewState.showLocalizeLeftPar(mRecipeManager.localizeString(it.leftPr))
-                        viewState.showLocalizeLeftParText((mRecipeManager.getAddInfoText(it)))
+                        viewState.showLocalizeLeftParText((mRecipeManager.getAddInfoLPText(it)))
 
+                        viewState.showLocalizeRightPar(mRecipeManager.localizeString(it.rightPr))
+                        viewState.showLocalizeRightParText((mRecipeManager.getAddInfoRTText(it)))
 
                     },
                     onError = {
