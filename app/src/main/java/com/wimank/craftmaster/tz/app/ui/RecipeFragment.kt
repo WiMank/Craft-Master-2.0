@@ -127,7 +127,6 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     override fun fillRecipeImages(entity: DescriptionEntity) {
         setImage(entity.recipeImageName, RECIPE_IMAGE)
-        setImage(entity.leftParameterImage, LEFT_P_IMAGE)
         setImage(entity.recipeImageName, RESULT_IMAGE)
     }
 
@@ -194,7 +193,6 @@ class RecipeFragment : BaseFragment(), RecipeView {
                 EIGHTH_SLOT -> glideApp.into(eighthSlot)
                 NINTH_SLOT -> glideApp.into(ninthSlot)
                 RECIPE_IMAGE -> glideApp.into(recipe_image)
-                LEFT_P_IMAGE -> glideApp.into(image_parameter)
                 RESULT_IMAGE -> glideApp.into(recipe_result_craft)
                 MACHINE_IMAGE -> glideApp.into(machine_image)
             }
@@ -213,10 +211,6 @@ class RecipeFragment : BaseFragment(), RecipeView {
 
     override fun hideCraftTable() {
         craft_table_cc.visibility = View.GONE
-    }
-
-    override fun showAddInfo() {
-
     }
 
     override fun onDetach() {
