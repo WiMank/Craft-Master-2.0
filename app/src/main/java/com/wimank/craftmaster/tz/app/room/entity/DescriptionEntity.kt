@@ -25,9 +25,6 @@ data class DescriptionEntity(
     @SerializedName("leftParameterText")
     val leftParameterText: LocalizedType,
 
-    @SerializedName("leftParameterImage")
-    val leftParameterImage: String,
-
     @SerializedName("rightParameter")
     val rightParameter: LocalizedType,
 

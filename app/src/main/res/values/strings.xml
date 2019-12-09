@@ -1,24 +1,10 @@
 <resources>
     <string name="app_name">Craft Master 2.0</string>
-    <string name="group_list_load_error">Error loading groups</string>
-    <string name="categories_list_load_error">Error loading categories</string>
-    <string name="groups_successfully_uploaded">Groups successfully loaded</string>
-    <string name="categories_successfully_uploaded">Categories successfully loaded</string>
-    <string name="failed_to_save_response">Failed to save data</string>
-    <string name="failed_to_download_images">Failed to download images</string>
-    <string name="failed_load_data_in_db">Error loading data from database</string>
     <string name="offline_mode">Offline mode</string>
-    <string name="list_update_error">List update error</string>
-    <string name="database_version_check_error">Database version check error</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="recipe_loading_completed">Recipe loading completed</string>
     <string name="recipes_list_loading_error">Recipes loading error</string>
-    <string name="сategories_successfully_loaded">Categories successfully loaded</string>
-    <string name="сategories_upload_error">Categories load error</string>
-    <string name="recipes_list_successfully_loaded">Recipes list successfully loaded</string>
     <string name="recipes_list_loaded_error">Recipes list load error</string>
     <string name="recipe_loading_error">Recipe loading error</string>
-    <string name="recipe_successfully_loaded">Recipe successfully loaded</string>
     <string name="mobs_successfully_loaded">Mobs successfully loaded</string>
     <string name="achievements_successfully_loaded">Achievements successfully loaded</string>
     <string name="achievements_successfully_error_loaded">Achievements error load</string>
@@ -48,14 +34,10 @@
     <string name="brewing_load_error">Brewing load error</string>
     <string name="brewing_load_successfully">Brewing successfully loaded</string>
     <string name="add_to_favorites">Add to favorites</string>
-    <string name="added_to_favorites">Added to favorites</string>
-    <string name="removed_from_favorites">Removed from favorites</string>
-    <string name="operation_error">Error in the operation</string>
     <string name="favorites_list">Favorites List</string>
     <string name="favorites_list_err">Error loading the favorite list</string>
     <string name="search">Search</string>
     <string name="look_at_the_wikipedia">Look at the wikipedia</string>
-    <string name="crafting_table">Crafting Table</string>
 
     <string name="addinfo_successfully_loaded">Additional Info successfully loaded</string>
     <string name="addinfo_err_loaded">Additional Info load error</string>

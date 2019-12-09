@@ -51,8 +51,6 @@ class RecipeDeserializer : JsonDeserializer<RecipeResponse> {
                 jo.get(leftParameterText).asJsonObject?.get("ru")?.asString ?: ""
             ),
 
-            jo.get("leftParameterImage").asString,
-
             LocalizedType(
                 jo.get(rightParameter).asJsonObject?.get("en")?.asString ?: "",
                 jo.get(rightParameter).asJsonObject?.get("ru")?.asString ?: ""
