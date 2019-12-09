@@ -29,7 +29,7 @@ class MainActivityPresenter(
     private fun updateData() {
         viewState.showProgress(true)
         if (mNetManager.isConnectedToNetwork())
-            loadRecipes()
+            checkDbVersion()
         else {
             viewState.showMessage(R.string.offline_mode)
             viewState.showProgress(false)
@@ -59,7 +59,36 @@ class MainActivityPresenter(
         }
     }
 
+    private fun checkDbVersion() {
+        viewState.showProgress(true)
+        unsubscribeOnDestroy(
+            Single.zip(
+                mDataManager.getDbVers(),
+                mDataManager.getDbVersFromDb(),
+                BiFunction { resp: DbVersResponse, ent: DbVersionEntity ->
+                    if (resp.success.isSuccess())
+                        if (resp.dbVers > ent.dbVersion) {
+                            mDataManager.insertDbVers(DbVersionEntity(resp.dbVers))
+                            loadRecipes()
+                        }
+                }
+
+            ).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onSuccess = {
+                        viewState.showProgress(false)
+                        viewState.showMessage(R.string.new_db_vers_suc)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(R.string.new_db_vers_err)
+                    })
+        )
+    }
+
     private fun loadRecipes() {
+        viewState.showProgress(true)
         unsubscribeOnDestroy(
             Single.zip(
                 mDataManager.getRecipes(),

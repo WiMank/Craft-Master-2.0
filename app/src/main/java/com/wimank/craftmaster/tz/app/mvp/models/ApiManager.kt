@@ -10,5 +10,6 @@ data class ApiManager(
     val achievementsApi: AchievementsApi,
     val biomesApi: BiomesApi,
     val brewingApi: BrewingApi,
-    val addInfoApi: AddInfoApi
+    val addInfoApi: AddInfoApi,
+    val dbVersApi: DbVersApi
 )

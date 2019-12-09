@@ -60,6 +60,12 @@ class ApiModule {
 
     @Singleton
     @Provides
+    fun provideDbVersApi(retrofit: Retrofit): DbVersApi {
+        return retrofit.create(DbVersApi::class.java)
+    }
+
+    @Singleton
+    @Provides
     fun provideApiManager(
         imageApi: ImageApi,
         recipesApi: RecipesApi,
@@ -68,7 +74,8 @@ class ApiModule {
         achievementsApi: AchievementsApi,
         biomesApi: BiomesApi,
         brewingApi: BrewingApi,
-        addInfoApi: AddInfoApi
+        addInfoApi: AddInfoApi,
+        dbVersApi: DbVersApi
     ): ApiManager {
         return ApiManager(
             imageApi,
@@ -78,7 +85,8 @@ class ApiModule {
             achievementsApi,
             biomesApi,
             brewingApi,
-            addInfoApi
+            addInfoApi,
+            dbVersApi
         )
     }
 }

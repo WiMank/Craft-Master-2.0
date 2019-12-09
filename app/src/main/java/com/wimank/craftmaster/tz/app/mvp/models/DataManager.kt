@@ -65,6 +65,10 @@ class DataManager(
         }
     }
 
+    fun insertDbVers(dbVersionEntity: DbVersionEntity) {
+        mCraftMasterDataBase.dbVersionDao().insert(dbVersionEntity)
+    }
+
     override fun insertEntity(entity: BaseEntity) {
         when (entity) {
             is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().insert(entity)
@@ -132,5 +136,11 @@ class DataManager(
 
     fun getAddInfoFromDb(): Single<List<AdditionalEntity>> {
         return mCraftMasterDataBase.additionalDao().getAdditionalInfoList()
+    }
+
+    fun getDbVers() = mApiManager.dbVersApi.getDbVers()
+
+    fun getDbVersFromDb(): Single<DbVersionEntity> {
+        return mCraftMasterDataBase.dbVersionDao().getDbVersFromDb()
     }
 }
