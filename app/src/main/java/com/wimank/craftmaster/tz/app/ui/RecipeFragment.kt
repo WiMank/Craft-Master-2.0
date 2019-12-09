@@ -219,7 +219,8 @@ class RecipeFragment : BaseFragment(), RecipeView {
     }
 
     private fun onTableItemClick(recipeAttr: String) {
-        mListenerRecipe?.onRecipeFragmentClick(recipeAttr)
+        if (recipeAttr != mDescriptionEntity?.recipeAttr)
+            mListenerRecipe?.onRecipeFragmentClick(recipeAttr)
     }
 
     interface OnRecipeFragmentClickListener {
