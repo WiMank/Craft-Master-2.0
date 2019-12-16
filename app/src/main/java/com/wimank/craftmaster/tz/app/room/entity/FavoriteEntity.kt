@@ -25,6 +25,8 @@ data class FavoriteEntity(
     val recipeImageName: String
 
 ) : BaseEntity {
+
     override fun getVersion() = 0
+
     override fun getImage() = recipeImageName
 }

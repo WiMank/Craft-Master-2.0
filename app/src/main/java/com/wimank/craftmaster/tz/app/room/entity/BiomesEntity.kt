@@ -38,6 +38,7 @@ data class BiomesEntity(
     @SerializedName("vers")
     val vers: Int = 0
 ) : BaseEntity {
+
     override fun getVersion() = vers
 
     override fun getImage() = biomeImage
