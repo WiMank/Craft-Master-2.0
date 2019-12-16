@@ -132,7 +132,7 @@ class MainActivity : BaseActivity(), MainActivityView,
         mNavController.navigate(R.id.action_sectionFragment_to_favoriteFragment)
     }
 
-    override fun setToolbarTitle(title: String) {
+    override fun updateToolbarTitle(title: String) {
         setTitle(title)
     }
 

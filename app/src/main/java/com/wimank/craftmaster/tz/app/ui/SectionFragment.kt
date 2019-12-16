@@ -65,7 +65,7 @@ class SectionFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        toolbarListener?.setToolbarTitle(getString(R.string.app_name))
+        setToolbarTitle(getString(R.string.app_name))
     }
 
     interface OnSectionFragmentClickListener {

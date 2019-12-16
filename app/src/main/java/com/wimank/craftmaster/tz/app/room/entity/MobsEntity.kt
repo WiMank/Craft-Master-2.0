@@ -75,6 +75,8 @@ data class MobsEntity(
     val vers: Int
 
 ) : BaseEntity {
+
     override fun getVersion() = vers
+
     override fun getImage() = mobIcon
 }

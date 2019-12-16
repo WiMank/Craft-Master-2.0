@@ -1,18 +1,18 @@
 package com.wimank.craftmaster.tz.app.mvp.models
 
-import com.wimank.craftmaster.tz.app.mvp.common.IDataManager
+import com.wimank.craftmaster.tz.app.mvp.common.DataManager
 import com.wimank.craftmaster.tz.app.room.CraftMasterDataBase
 import com.wimank.craftmaster.tz.app.room.entity.*
 import com.wimank.craftmaster.tz.app.utils.ImageUtils
 import io.reactivex.Single
 import org.apache.commons.collections4.CollectionUtils
 
-class DataManager(
+class ItemsDataManager(
     private val mApiManager: ApiManager,
     private val mImageUtils: ImageUtils,
     private val mLocaleManager: LocaleManager,
     private val mCraftMasterDataBase: CraftMasterDataBase
-) : IDataManager<BaseEntity> {
+) : DataManager<BaseEntity> {
 
     override fun containsData(serAr: List<BaseEntity>, locAr: List<BaseEntity>) {
         if (serAr.isNotEmpty()) {
@@ -25,6 +25,32 @@ class DataManager(
                 else
                     downloadImageAndInsertEntity(entity)
             }
+        }
+    }
+
+    override fun insertEntity(entity: BaseEntity) {
+        when (entity) {
+            is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().insert(entity)
+            is RecipeEntity -> mCraftMasterDataBase.recipeDao().insert(entity)
+            is MobsEntity -> mCraftMasterDataBase.mobsDao().insert(entity)
+            is DeviceEntity -> mCraftMasterDataBase.devicesDao().insert(entity)
+            is AchievementEntity -> mCraftMasterDataBase.achievementDao().insert(entity)
+            is BiomesEntity -> mCraftMasterDataBase.biomesDao().insert(entity)
+            is BrewingEntity -> mCraftMasterDataBase.brewingDao().insert(entity)
+            is AdditionalEntity -> mCraftMasterDataBase.additionalDao().insert(entity)
+        }
+    }
+
+    override fun deleteEntity(entity: BaseEntity) {
+        when (entity) {
+            is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().delete(entity)
+            is RecipeEntity -> mCraftMasterDataBase.recipeDao().delete(entity)
+            is MobsEntity -> mCraftMasterDataBase.mobsDao().delete(entity)
+            is DeviceEntity -> mCraftMasterDataBase.devicesDao().delete(entity)
+            is AchievementEntity -> mCraftMasterDataBase.achievementDao().delete(entity)
+            is BiomesEntity -> mCraftMasterDataBase.biomesDao().delete(entity)
+            is BrewingEntity -> mCraftMasterDataBase.brewingDao().delete(entity)
+            is AdditionalEntity -> mCraftMasterDataBase.additionalDao().delete(entity)
         }
     }
 
@@ -67,32 +93,6 @@ class DataManager(
 
     fun insertDbVers(dbVersionEntity: DbVersionEntity) {
         mCraftMasterDataBase.dbVersionDao().insert(dbVersionEntity)
-    }
-
-    override fun insertEntity(entity: BaseEntity) {
-        when (entity) {
-            is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().insert(entity)
-            is RecipeEntity -> mCraftMasterDataBase.recipeDao().insert(entity)
-            is MobsEntity -> mCraftMasterDataBase.mobsDao().insert(entity)
-            is DeviceEntity -> mCraftMasterDataBase.devicesDao().insert(entity)
-            is AchievementEntity -> mCraftMasterDataBase.achievementDao().insert(entity)
-            is BiomesEntity -> mCraftMasterDataBase.biomesDao().insert(entity)
-            is BrewingEntity -> mCraftMasterDataBase.brewingDao().insert(entity)
-            is AdditionalEntity -> mCraftMasterDataBase.additionalDao().insert(entity)
-        }
-    }
-
-    override fun deleteEntity(entity: BaseEntity) {
-        when (entity) {
-            is DescriptionEntity -> mCraftMasterDataBase.descriptionDao().delete(entity)
-            is RecipeEntity -> mCraftMasterDataBase.recipeDao().delete(entity)
-            is MobsEntity -> mCraftMasterDataBase.mobsDao().delete(entity)
-            is DeviceEntity -> mCraftMasterDataBase.devicesDao().delete(entity)
-            is AchievementEntity -> mCraftMasterDataBase.achievementDao().delete(entity)
-            is BiomesEntity -> mCraftMasterDataBase.biomesDao().delete(entity)
-            is BrewingEntity -> mCraftMasterDataBase.brewingDao().delete(entity)
-            is AdditionalEntity -> mCraftMasterDataBase.additionalDao().delete(entity)
-        }
     }
 
     fun getRecipes() = mApiManager.recipesApi.getRecipes()

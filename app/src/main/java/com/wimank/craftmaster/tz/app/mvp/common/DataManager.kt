@@ -1,6 +1,6 @@
 package com.wimank.craftmaster.tz.app.mvp.common
 
-interface IDataManager<in T> {
+interface DataManager<in T> {
 
     fun containsData(serAr: List<T>, locAr: List<T>)
 
