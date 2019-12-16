@@ -3,7 +3,7 @@ package com.wimank.craftmaster.tz.app.mvp.presenters
 import com.arellomobile.mvp.InjectViewState
 import com.wimank.craftmaster.tz.R
 import com.wimank.craftmaster.tz.app.mvp.common.*
-import com.wimank.craftmaster.tz.app.mvp.models.DataManager
+import com.wimank.craftmaster.tz.app.mvp.models.ItemsDataManager
 import com.wimank.craftmaster.tz.app.mvp.models.NetManager
 import com.wimank.craftmaster.tz.app.mvp.views.MainActivityView
 import com.wimank.craftmaster.tz.app.rest.responses.*
@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
 
 @InjectViewState
 class MainActivityPresenter(
-    private val mDataManager: DataManager,
+    private val mItemsDataManager: ItemsDataManager,
     private val mNetManager: NetManager
 ) : BasePresenter<MainActivityView>() {
 
@@ -63,12 +63,12 @@ class MainActivityPresenter(
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             Single.zip(
-                mDataManager.getDbVers(),
-                mDataManager.getDbVersFromDb(),
+                mItemsDataManager.getDbVers(),
+                mItemsDataManager.getDbVersFromDb(),
                 BiFunction { resp: DbVersResponse, ent: DbVersionEntity ->
                     if (resp.success.isSuccess())
                         if (resp.dbVers > ent.dbVersion) {
-                            mDataManager.insertDbVers(DbVersionEntity(resp.dbVers))
+                            mItemsDataManager.insertDbVers(DbVersionEntity(resp.dbVers))
                             loadRecipes()
                         }
                 }
@@ -91,15 +91,15 @@ class MainActivityPresenter(
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             Single.zip(
-                mDataManager.getRecipes(),
-                mDataManager.getDescriptionFromDb(),
-                mDataManager.getRecipesFromDb(),
+                mItemsDataManager.getRecipes(),
+                mItemsDataManager.getDescriptionFromDb(),
+                mItemsDataManager.getRecipesFromDb(),
                 Function3 { servRecipes: RecipeResponse,
                             descriptionList: List<DescriptionEntity>,
                             recipeList: List<RecipeEntity> ->
                     if (servRecipes.success.isSuccess()) {
-                        mDataManager.containsData(servRecipes.descriptionList, descriptionList)
-                        mDataManager.containsData(servRecipes.recipesList, recipeList)
+                        mItemsDataManager.containsData(servRecipes.descriptionList, descriptionList)
+                        mItemsDataManager.containsData(servRecipes.recipesList, recipeList)
                     }
                 })
                 .subscribeOn(Schedulers.io())
@@ -121,12 +121,12 @@ class MainActivityPresenter(
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             Single.zip(
-                mDataManager.getMobs(),
-                mDataManager.getMobsFromDb(),
+                mItemsDataManager.getMobs(),
+                mItemsDataManager.getMobsFromDb(),
                 BiFunction { mobsResponse: MobsResponse,
                              mobsDbList: List<MobsEntity> ->
                     if (mobsResponse.success.isSuccess())
-                        mDataManager.containsData(mobsResponse.mobsLost, mobsDbList)
+                        mItemsDataManager.containsData(mobsResponse.mobsLost, mobsDbList)
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -147,12 +147,12 @@ class MainActivityPresenter(
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             Single.zip(
-                mDataManager.getManufacturingDevices(),
-                mDataManager.getManufacturingDevicesDaoFromDb(),
+                mItemsDataManager.getManufacturingDevices(),
+                mItemsDataManager.getManufacturingDevicesDaoFromDb(),
                 BiFunction { manufacturingResponse: DevicesResponse,
                              mbDvList: List<DeviceEntity> ->
                     if (manufacturingResponse.success.isSuccess())
-                        mDataManager.containsData(manufacturingResponse.devices, mbDvList)
+                        mItemsDataManager.containsData(manufacturingResponse.devices, mbDvList)
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -173,11 +173,11 @@ class MainActivityPresenter(
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             Single.zip(
-                mDataManager.getAddInfo(),
-                mDataManager.getAddInfoFromDb(),
+                mItemsDataManager.getAddInfo(),
+                mItemsDataManager.getAddInfoFromDb(),
                 BiFunction { response: AddInfoResponse, locList: List<AdditionalEntity> ->
                     if (response.success.isSuccess())
-                        mDataManager.containsData(response.additionalInfo, locList)
+                        mItemsDataManager.containsData(response.additionalInfo, locList)
 
                 }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -197,12 +197,12 @@ class MainActivityPresenter(
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             Single.zip(
-                mDataManager.getAchievements(),
-                mDataManager.getAchievementsFromDb(),
+                mItemsDataManager.getAchievements(),
+                mItemsDataManager.getAchievementsFromDb(),
                 BiFunction { response: AchievementResponse,
                              locList: List<AchievementEntity> ->
                     if (response.success.isSuccess())
-                        mDataManager.containsData(response.list, locList)
+                        mItemsDataManager.containsData(response.list, locList)
                 }
             ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -223,11 +223,11 @@ class MainActivityPresenter(
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             Single.zip(
-                mDataManager.getBiomes(),
-                mDataManager.getBiomesFromDb(),
+                mItemsDataManager.getBiomes(),
+                mItemsDataManager.getBiomesFromDb(),
                 BiFunction { response: BiomesResponse, locList: List<BiomesEntity> ->
                     if (response.success.isSuccess())
-                        mDataManager.containsData(response.biomesList, locList)
+                        mItemsDataManager.containsData(response.biomesList, locList)
                 }
             ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -248,11 +248,11 @@ class MainActivityPresenter(
         viewState.showProgress(true)
         unsubscribeOnDestroy(
             Single.zip(
-                mDataManager.getBrewing(),
-                mDataManager.getBrewingFromDb(),
+                mItemsDataManager.getBrewing(),
+                mItemsDataManager.getBrewingFromDb(),
                 BiFunction { response: BrewingResponse, locList: List<BrewingEntity> ->
                     if (response.success.isSuccess())
-                        mDataManager.containsData(response.brewingImage, locList)
+                        mItemsDataManager.containsData(response.brewingImage, locList)
                 }
             ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

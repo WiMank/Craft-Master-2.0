@@ -134,7 +134,7 @@ class RecipesListFragment : BaseFragment(), RecipesListView {
     }
 
     override fun optionalTitleSetting(titleMod: String) {
-        toolbarListener?.setToolbarTitle(titleMod)
+        setToolbarTitle(titleMod)
     }
 
     override fun setModVar(mod: String) {

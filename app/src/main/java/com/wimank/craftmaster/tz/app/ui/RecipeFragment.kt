@@ -143,7 +143,7 @@ class RecipeFragment : BaseFragment(), RecipeView {
     }
 
     override fun showLocalizedName(name: String) {
-        toolbarListener?.setToolbarTitle(name)
+        setToolbarTitle(name)
     }
 
     override fun showLocalizeDescription(desc: String) {
