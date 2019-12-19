@@ -40,7 +40,7 @@
     <string name="look_at_the_wikipedia">Look at the wikipedia</string>
     <string name="addinfo_successfully_loaded">Additional Info successfully loaded</string>
     <string name="addinfo_err_loaded">Additional Info load error</string>
-    <string name="new_db_vers_suc">Database version verified</string>
+    <string name="new_db_vers_suc">Database version verified. Update…</string>
     <string name="new_db_vers_err">Database update error</string>
 
 </resources>

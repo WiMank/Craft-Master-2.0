@@ -23,7 +23,7 @@ class RetrofitModule {
 
     @Singleton
     @Provides
-    internal fun provideHttpCache(context: Context): Cache {
+    fun provideHttpCache(context: Context): Cache {
         val cacheSize = 10 * 1024 * 1024
         return Cache(context.cacheDir, cacheSize.toLong())
     }
@@ -47,7 +47,7 @@ class RetrofitModule {
 
     @Singleton
     @Provides
-    internal fun provideGson(): Gson {
+    fun provideGson(): Gson {
         return GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
             .setPrettyPrinting()
