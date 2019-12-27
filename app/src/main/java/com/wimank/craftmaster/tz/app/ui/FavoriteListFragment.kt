@@ -97,7 +97,7 @@ class FavoriteListFragment : BaseFragment(), FavoriteView {
     }
 
     override fun optionalTitleSetting(titleMod: String) {
-        setToolbarTitle(titleMod)
+        toolbarListener?.updateToolbarTitle(titleMod)
     }
 
     interface OnItemFavClickListener {
